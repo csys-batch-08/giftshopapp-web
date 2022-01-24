@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Mens tshirts</title>
+<title>mobile case</title>
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -153,11 +153,11 @@ left:50px;
 <%
 ProductsImpl dao=new ProductsImpl();
 List<ProductPojo> adminviewtshirt;
-adminviewtshirt=dao.adminviewtshirt();
+adminviewtshirt=dao.adminviewmobilecase();
 %>
 
 </form>
- <center><h2 class="Products">Mens tshirts</h2></center>
+ <center><h2 class="Products">Mobile cases</h2></center>
          <div class="recently added list">
         <table>
             <tbody>

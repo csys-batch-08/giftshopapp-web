@@ -102,9 +102,26 @@ form .button{
   transform: scale(0.99);
   background:rgb(241, 175, 7);
   }
+  a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+   position: relative;left: -250px;top: -250px;
+  
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.previous {
+  background-color: goldenrod;
+  color: white;
+}
     </style>
 </head>
 <body>
+<a href="adminlogin.jsp" class="previous">&laquo;Back</a>
 <div class="container">
         <form action="delete" method="post">
             <div class="user-details">

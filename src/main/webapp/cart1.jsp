@@ -105,7 +105,7 @@ form .button{
   width:100%;
   margin-top:1px;
   height:55px;
-  position:fixed;
+  position:relative;
  
  
   
@@ -247,21 +247,12 @@ th, td {
       <a href="homepage.jsp">Home</a>
       
       <div class="back">
-      <a href="addcart1.jsp">Back</a>
+      <a href="addcart.jsp">Back</a>
       </div>
       
   
 </div>
-
-
-	<div id="logo">
-		<img src="images/pngwing.com (2).png" height="45px" width="150px">
-	</div>
-	
-
 	<%
-		
-
 			double sum1=0;
 			int userid = (int) session.getAttribute("logincustomer");
 			viewcartPojo vcar1 = new viewcartPojo();
@@ -286,17 +277,25 @@ th, td {
 						<td>
 							<table id="carproduct">
 								<tbody>
-								
+									<tr>
 										<img src=<%=showProduct.getImage()%> alt="Show image">
+
+									
+									<br>
 										<div> product name : <%=showProduct.getProductname()%></div>
+									
 										<div>product type : <%=showProduct.getType()%></div>
+										
 										<div>price : Rs.<%=showProduct.getStandardcost()%></div>
+									
+										
 										<div>quantity : <%=showProduct.getQuantity()%></div>
+										
 										<div>purchase amount : <%=sum%></div>
 										
-											
-									
-
+                     <div class="button1">
+                    <input type="submit" value="Remove from cart">
+                  </div>
 										</td>
 									</tr>
 								</tbody>
@@ -320,22 +319,13 @@ th, td {
 				</tbody>
 			</table>
 <div class="total">Total amount Rs: <%=sum1%></div>
-
-
-	<!-- 		<input type="button" value="Buy now"
-				onclick="window.location='buynow'">
 				
-<input type="button" value="Remove from cart"
-				onclick="window.location='buynow'"> -->
-				
-				
+<!-- <input type="button" value="Remove from cart"
+				onclick="window.location='buynow'">  -->
+				 
 				 <div class="button">
                     <input type="submit" value="Buy now">
-                  </div>
-                  
-                  
-			 <!-- <a href="confirmordershow.jsp" ><button type="button" class="btn btn-default">Place order</button> </a>    -->
-									
+                  </div>									
 
 		</div>
 		</div>

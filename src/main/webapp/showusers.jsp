@@ -1,13 +1,24 @@
+<%@page import="com.chainsys.giftshop.model.UserPojo"%>
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Mens tshirts</title>
+
+<title>Users</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -28,7 +39,7 @@ body {
 	background-attachment: fixed;
 }
 
-table img {
+ table img {
 	width: 150px;
 	height: 150px;
 	border-style: solid;
@@ -117,18 +128,33 @@ table img {
 
 
 th, td {
-  padding: 10px;
+  padding: 26px;
   
-  
+}
+.car {
+	/* border: 100px;
+	width: 5000px;
+	background-color:white ;
+	border-radius:5px;
+	padding:20px;
+	border-color: coral;
+ */	
+  border-style: solid;
+  border-color: goldenrod;
+  width: 5000px;
+  background-color:white ;
+ padding:20px;
 }
 .back{
-position:absolute;
-left:50px;
+position:fixed;
+left:150px;
 }
 </style>
+
 </head>
+
 <body>
-<div class="navbar">
+	<div class="navbar">
 		<a href="index.jsp">Logout</a> 
 		<div class="dropdown">
 			<button class="dropbtn">
@@ -141,65 +167,72 @@ left:50px;
 				 <a href="delete.jsp">Delete</a> 
 				  <a href="showusers.jsp">Users</a>
 			</div>
-			
+
 		</div>
-		
-<div class="back">
-      <a href="adminshowproducts.jsp">Back</a>
+		<div class="back">
+      <a href="adminlogin.jsp">Back</a>
       </div>
 
 	</div>
-<form>
-<%
-ProductsImpl dao=new ProductsImpl();
-List<ProductPojo> adminviewtshirt;
-adminviewtshirt=dao.adminviewtshirt();
-%>
 
-</form>
- <center><h2 class="Products">Mens tshirts</h2></center>
-         <div class="recently added list">
-        <table>
-            <tbody>
-                <tr>
-                <%
-                int count=0;
-                                for(ProductPojo showProduct: adminviewtshirt){
-                %>
-                    <td>
-                        <table id="carproduct">
-                            <tbody>
-                                <tr>
-                                    <td><img src=<%=showProduct.getImage() %> alt="Show image"></td>    
-                                    <td class="car">
-                                      <span>product id: <%=showProduct.getProductId()%>  </span><br>
-                                        <span>product name : <%=showProduct.getProductName()%>  </span><br>
-                                        <span>description : <%=showProduct.getDescription()%> </span><br>
-                                        <span>price : Rs.<%=showProduct.getStandardCost() %> </span><br>
-                                        <span>category: <%=showProduct.getCategory()%></span><br>
-                                       <span>quantity: <%=showProduct.getQuantityonhand()%></span><br>
-                                       <span>Type: <%=showProduct.getType()%></span><br>
-                                       
-                                       <a href="adminlogin.jsp?productid=<%=showProduct.getProductId() %>"><button>Edit</button></a>  
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                       <% count ++;
-                       if(count==3){ %> 
-                    	   </tr>
-                    	   <tr>              
-                     <%count=0; }}%>  
-                       
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div>
-   </div>
+
+	
+	<form>
+		<%
+		
+
+		UserImpl dao=new UserImpl();
+       UserPojo us = new UserPojo();
+		List<UserPojo> show;
+		show=dao.showusers();
+		%>
+
+	</form>
+	<center><h2 class="Products">Users</h2></center>
+	<br>
+	<div class="recently added list">
+		<table>
+			<tbody>
+				<tr>
+					<%
+					
+					int count=0;
+					                for(UserPojo showProduct: show){
+					%>
+					<td>
+						<table id="carproduct">
+							<tbody>
+									
+									
+									<td class="car">
+									
+									<div>User Id: <%=showProduct.getUserid()%></div>
+									<div>Name: <%=showProduct.getUsername()%></div>
+									<div> Email:<%=showProduct.getEmail()%></div> 
+									 <div>Mobile number: <%=showProduct.getMobilenumber()%></div>
+									  <div>Address: <%=showProduct.getAddress()%></div>
+									 
+										
+										
+										</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</td>
+					<% count ++;
+                       if(count==4){ %>
+				</tr>
+				<tr>
+					<%count=0; }}%>
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	</div>
+	</div>
 
 </body>
 </html>

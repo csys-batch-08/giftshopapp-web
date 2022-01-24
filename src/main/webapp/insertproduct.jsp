@@ -25,31 +25,18 @@ body{
         background-attachment: fixed;
   /* background: linear-gradient(135deg,#f7ef8a,#d2ac47,#ae8625,#edc967); */
 }
-        .container{
+
+        .container{     
   max-width: 600px;
   /* height: 500px; */
   width: 100%;
   background-color:rgb(255, 255, 255);
-
   padding: 25px 30px;
-  border-radius: 5px;
+  border-radius: 15px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+ position: relative;left: 1px;top: 7px;
 }
-.container .title{
-  font-size: 25px;
-  font-weight: 500;
-  position: relative;
-}
-.container .title::before{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  border-radius: 5px;
-  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
-}
+
         .content form .user-details{
   display: ruby;
   flex-wrap: wrap;
@@ -57,8 +44,8 @@ body{
   margin: 20px 0 12px 0;
 }
 form .user-details .input-box{
-  margin-bottom: 15px;
-  width: calc(100% / 1 - 20px);
+  margin-bottom: 10px;
+ /*  width: calc(100% / 1 - 20px); */
 }
 form .input-box span.details{
   display: block;
@@ -66,7 +53,7 @@ form .input-box span.details{
   margin-bottom: -25px;
 }
 .user-details .input-box input{
-  height: 45px;
+  height: 40px;
   width: 100%;
   outline: none;
   font-size: 16px;
@@ -82,7 +69,7 @@ form .input-box span.details{
 }
 form .button{
    height: 45px;
-   margin: 35px 0;
+   margin: 2px 0;
  }
  form .button input{
    height: 100%;
@@ -102,9 +89,31 @@ form .button{
   transform: scale(0.99);
   background:rgb(241, 175, 7);
   }
+ 
+ a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+   position: relative;left: -250px;top: -250px;
+  
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.previous {
+  background-color: goldenrod;
+  color: white;
+}
+
     </style>
 </head>
 <body>
+
+<a href="adminlogin.jsp" class="previous">&laquo;Back</a>
+
+	
  <div class="container">
         <!-- <div class="title">Insert products</div> -->
     <form action="insert" method="post">

@@ -53,7 +53,8 @@ public class ProductsImpl implements ProductsDao {
 
 	public List<ProductPojo> adminShowProduct() {
 		List<ProductPojo> products = new ArrayList<ProductPojo>();
-		String prod = "select product_name,description,category,image from gproducts";
+		String prod="select product_name,description,category,image from gproducts";	
+		/* String prod="select*from gproducts"; */
 		Connection con;
 		ProductPojo product = null;
 		try {
@@ -287,6 +288,33 @@ public class ProductsImpl implements ProductsDao {
 
 		return products2;
 	}
+	public List<ProductPojo> adminviewmobilecase() {
+		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
+
+		String getview = "select *from gproducts where product_name='mobile case'";
+		Connection con;
+		ProductPojo prod = null;
+		try {
+			con = ConnectionUtil.gbconnection();
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(getview);
+			while (rs.next()) {
+
+				prod = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+						rs.getInt(6), rs.getString(7), rs.getString(8));
+
+				products2.add(prod);
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return products2;
+	}
 
 	public List<ProductPojo> mobilecase() {
 		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
@@ -383,4 +411,5 @@ public class ProductsImpl implements ProductsDao {
 
 		return products2;
 	}
+
 }

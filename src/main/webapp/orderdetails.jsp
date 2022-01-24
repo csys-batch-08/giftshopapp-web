@@ -15,14 +15,12 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
-
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
-
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
@@ -30,7 +28,6 @@ body {
 	/* background-size: cover; */
 	background-attachment: fixed;
 }
-
 table img {
 	width: 150px;
 	height: 150px;
@@ -42,17 +39,14 @@ table img {
   padding: 5px;
   width: 150px; */
 }
-
 table {
 	width: 20%;
 	float: left;
 }
-
 .button {
 	margin-top: 170px;
 	margin-left: 33px;
 }
-
 /* table, th, td {
   border:1px solid black;
 } */
@@ -67,7 +61,6 @@ table {
  
   
 }
-
 .navbar a {
   float: left;
   font-size: 16px;
@@ -84,12 +77,10 @@ table {
 		margin-right:5px;
 		position: relative;
 }
-
 .dropdown {
   float: right;
   overflow: hidden;
 }
-
 .dropdown .dropbtn {
   font-size: 18px;  
   border: none;
@@ -103,11 +94,9 @@ table {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
 }
-
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color:goldenrod;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -116,7 +105,6 @@ table {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-
 .dropdown-content a {
   float: none;
   color: black;
@@ -125,11 +113,9 @@ table {
   display: block;
   text-align: left;
 }
-
 .dropdown-content a:hover {
   background-color: #ddd;
 }
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -139,22 +125,19 @@ table {
 	top: -2px;
 	position: relative;
 }
-
 th, td {
-
   padding: 10px;
   
 }
 .total{
-
- position:fixed;left: 1070px;top: 150px; text-align: justify;
+ position:fixed;left: 470px;top: 80px; text-align: justify;
             border: 3px solid goldenrod;
             width: 200px;
             background-color: white;
             
-
 }
 .car {
+
 	border: 10px seashell;
 	width: 5000px;
 	background-color:white ;
@@ -168,9 +151,11 @@ left:200px;
 } 
 .but{
 position:fixed;
-right:200px;
-}
+right:580px;
+top:80px;
 
+
+}
 </style>
 </head>
 <body>
@@ -202,13 +187,8 @@ right:200px;
       </div>
   
 </div>
-	<!-- <div id="logo">
-		<img src="images/pngwing.com (2).png" height="45px" width="150px">
-	</div>
- -->
 	<%
 	
-
 		double total=0;
 		 int orderid=Integer.parseInt(request.getParameter("orderId"));    
 		showordersPojo orddetails = new showordersPojo();
@@ -240,18 +220,16 @@ right:200px;
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
 											<td><img src=<%=showPrice.getImage()%> alt="Show image"></td>
 										<td class="car">
-
-
-
-											
-                                              
-                                                <div>Product:<br><%=showPrice.getProductname()%> </div>
-												 <div>Qunantity:<%=showPrice.getQuantityordered()%></div>
-												 <div>size:<%=showPrice.getSize()%></div>
-											      <div>cost:<%=showPrice.getTotalprice()%></div>
-											      <div>price:<%=showPrice.getTotalprice()*showPrice.getQuantityordered()%></div>
+                                                <%=showPrice.getProductname()%>
+												 Qunantity:<%=showPrice.getQuantityordered()%>
+												 size:<%=showPrice.getSize()%>
+											      cost:<%=showPrice.getTotalprice()%>
+											      purchase price:<%=showPrice.getTotalprice()*showPrice.getQuantityordered()%>
 											      
 											
 										</td>
@@ -291,7 +269,7 @@ right:200px;
 				</tbody>
 			</table>
 	</form>
-	<div class="total">Total purchase:Rs:<%=total%></div>
+	<div class="total">Total amount:Rs:<%=total%></div>
 
 	</div>
 	</div>

@@ -13,14 +13,12 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
-
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
-
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
@@ -28,7 +26,6 @@ body {
 	/* background-size: cover; */
 	background-attachment: fixed;
 }
-
 table img {
 	width: 150px;
 	height: 150px;
@@ -40,14 +37,12 @@ table img {
   padding: 5px;
   width: 150px; */
 }
-
 table {
 	width: 10%;
 	float: left;
 	border-spacing: 10px;
 	
 }
-
 .button {
 	margin-top: 150px;
 	margin-left: 38px;
@@ -56,16 +51,13 @@ table {
 	margin-top: 5px;
 	margin-left: 37px;
 }
-
 /* table, th, td {
   border:1px solid black;
 } */
-
 th, td {
 	text-align: left;
 	padding: 2px;
 }
-
 .car {
 	border: 10px seashell;
 	width: 5000px;
@@ -74,7 +66,6 @@ th, td {
 	padding:20px;
 	
 }
-
 .navbar {
 	overflow: hidden;
 	background-color: seashell;
@@ -83,7 +74,6 @@ th, td {
 	height: 55px;
 	position: FIXED;
 }
-
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -100,12 +90,10 @@ th, td {
 	margin-right: 5px;
 	position: relative;
 }
-
 .dropdown {
 	float: right;
 	overflow: hidden;
 }
-
 .dropdown .dropbtn {
 	font-size: 18px;
 	border: none;
@@ -119,11 +107,9 @@ th, td {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
 }
-
 .navbar a:hover, .dropdown:hover .dropbtn {
 	background-color: goldenrod;
 }
-
 .dropdown-content {
 	display: none;
 	position: fixed;
@@ -132,7 +118,6 @@ th, td {
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 }
-
 .dropdown-content a {
 	float: none;
 	color: black;
@@ -141,18 +126,12 @@ th, td {
 	display: block;
 	text-align: left;
 }
-
 .dropdown-content a:hover {
 	background-color: #ddd;
 }
-
 .dropdown:hover .dropdown-content {
 	display: block;
 }
-
-
-
-
 </style>
 </head>
 <body>
@@ -188,7 +167,6 @@ th, td {
 			 int userid= (int) session.getAttribute("logincustomer");
 			OrdersPojo showord = new OrdersPojo();
 			showord.setUserid(userid);
-
 			 /* showord.setUserid(userid);
 		 */	
 		 OrdersImpl dao = new OrdersImpl();
@@ -197,8 +175,6 @@ th, td {
 			show = dao.userOrderDetails(showord);
 		%>
 	<%
-
-
 				for (OrdersPojo  showPrice : show) {
 	%>
 	<form>

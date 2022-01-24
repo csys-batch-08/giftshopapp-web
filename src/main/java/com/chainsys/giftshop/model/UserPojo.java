@@ -1,14 +1,20 @@
 package com.chainsys.giftshop.model;
 
 public class UserPojo {
-	
-
+private int userid;
 private String Username;
 private String Password;
 private String email;
 private Long mobilenumber;
 private String address;
 
+
+public int getUserid() {
+	return userid;
+}
+public void setUserid(int userid) {
+	this.userid = userid;
+}
 public String getUsername() {
 	return Username;
 }
@@ -56,6 +62,14 @@ public UserPojo(String username, String password, String email, Long mobilenumbe
 	super();
 	Username = username;
 	Password = password;
+	this.email = email;
+	this.mobilenumber = mobilenumber;
+	this.address = address;
+}
+public UserPojo(int userid, String username, String email, Long mobilenumber, String address) {
+	super();
+	this.userid = userid;
+	Username = username;
 	this.email = email;
 	this.mobilenumber = mobilenumber;
 	this.address = address;

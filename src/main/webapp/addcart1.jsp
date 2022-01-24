@@ -1,4 +1,4 @@
-						<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.SQLException"%>
 <%@page import="com.chainsys.giftshop.impl.viewCartImpl"%>
 <%@page import="com.chainsys.giftshop.model.viewcartPojo"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -164,24 +164,13 @@ left:50px;
       </div>
   
 </div>
-<!-- 	<div id="logo">
-		<img src="images/pngwing.com (2).png" height="45px" width="150px">
-	</div> -->
 	<%
-	
-
 		int pid = Integer.parseInt(request.getParameter("pid"));
-		System.out.println(pid);
 		String image = request.getParameter("img");
 		String pname = request.getParameter("pname");
-		System.out.println(pname);
 		String type = request.getParameter("type");
-		System.out.println(type);
 		Double price = Double.parseDouble(request.getParameter("price"));
-		System.out.println(price);
-
 		int userid = (int) session.getAttribute("logincustomer");
-
 		viewcartPojo vcart = new viewcartPojo();
 		vcart.setImage(image);
 		vcart.setProductid(pid);
@@ -189,9 +178,9 @@ left:50px;
 		vcart.setType(type);
 		vcart.setUserid(userid);
 		vcart.setStandardcost(price);
-
 		session.setAttribute("cart", vcart);
 	%>
+	
 	<div class="abcd">
 		<form action="addcart1" method="post">
 		<br>
@@ -200,9 +189,12 @@ left:50px;
 			<img src="<%=image%>">
 			<p>Product name:<%=pname%></p>
 			<p>Id:<%=pid%></p>
+			<p>Type:<%=type%></p>
+
 			<p>Rs.<%=price%></p>
 			
-		<label for="quantity">choose quantity:</label> <select name="qqq">
+		<label for="quantity">choose quantity:</label> 
+		<select name="qqq">
 			<option value=1>1</option>
 			<option value=2>2</option>
 			<option value=3>3</option>

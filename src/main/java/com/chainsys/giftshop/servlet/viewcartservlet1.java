@@ -18,15 +18,9 @@ public class viewcartservlet1 extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		/*
-		 * String size=req.getParameter("sss"); System.out.println(size);
-		 */
 		 int qty=Integer.parseInt(req.getParameter("qqq"));
-		 System.out.println(qty);
 		 HttpSession session=req.getSession();
 	      viewcartPojo vcar=(viewcartPojo)session.getAttribute("cart");
-	      
-			/* vcar.setSize(size); */
 	      vcar.setQuantity(qty);
 	      viewCartImpl dao=new viewCartImpl();
 	      try {

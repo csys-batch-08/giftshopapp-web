@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>admin</title>
+
 <style>
 body {
 	background-image: url("images/bg.jpg");
@@ -121,9 +122,43 @@ form .button4 input:hover {
 	transform: scale(0.99);
 	background: rgb(241, 7, 7);
 }
+
+form .button5 {
+	height: 45px;
+	margin: 35px 0;
+}
+
+form .button5 input {
+	height: 100%;
+	width: 20%;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	background: rgba(165, 110, 9, 0.863);
+	position: relative;
+	left: 505px;
+	top: 180px;
+}
+
+form .button5 input:hover {
+	transform: scale(0.99);
+	background: rgb(255, 230, 0);
+}
+.admin{
+position: relative;
+	left: 20px;
+	top: -70px;
+}
 </style>
 </head>
 <body>
+
+<div class="admin">
 	<form action="adminshowproducts.jsp"method="post">
 		<div class="button1">
 			<input type="submit" value="show products">
@@ -143,6 +178,12 @@ form .button4 input:hover {
 		<div class="button4">
 			<input type="submit" value="Delete product">
 		</div>
+		</form>
+		<form action="showusers.jsp">
+		<div class="button5">
+			<input type="submit" value="Show my users">
+		</div>
 	</form>
+	</div>
 </body>
 </html>

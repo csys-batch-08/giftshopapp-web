@@ -196,8 +196,8 @@ th, td {
 
 											<div>
 
-												<%=showPrice.getProductName()%>
-												<%-- Id:<%=showPrice.getProductId()%> --%>
+												Name:<%=showPrice.getProductName()%>
+												 Id:<%=showPrice.getProductId()%> 
 											</div>
 											<div>
 												Type:<%=showPrice.getType()%>
@@ -220,10 +220,9 @@ th, td {
 							&price=<%=showPrice.getStandardCost()%>">
 
 
-								<!-- <input type="button" value="add to cart"> -->
+	
 								<div class="button">
-									<button type="button" class="btn btn-default">Add to
-										cart</button>
+		<button type="button" class="btn btn-default">Add to cart</button>
 								</div>
 						</a>
 							</div>
