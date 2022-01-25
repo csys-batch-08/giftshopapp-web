@@ -181,7 +181,7 @@ left:150px;
 
 		ProductsImpl dao = new ProductsImpl();
 		List<ProductPojo> price1;
-		price1 = dao.price();
+		price1 = dao.viewmenstshirt();
 	%>
 	<%
 	

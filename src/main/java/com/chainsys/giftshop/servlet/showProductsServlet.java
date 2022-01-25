@@ -17,11 +17,9 @@ public class showProductsServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("vel");
+	
 		int productid=Integer.parseInt (req.getParameter("productid"));
-		System.out.println("vel1");
 		String productname=req.getParameter("productname");
-		System.out.println("vel2");
 		String description =req.getParameter("productdescription");
 		System.out.println("vel3");
 		System.out.println(description);

@@ -1,8 +1,11 @@
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,28 +53,60 @@ table img {
 }
 
 .button {
-	margin-top: -1573px;
+	position: relative;
+	margin-top: -1680px;
 	margin-left: 50px;
 }
 
 .button1 {
-
+	position: relative;
 	margin-top: -32px;
 	margin-left: 323px;
 }
 
 .button2 {
+	position: relative;
 	margin-top: -32px;
-	margin-left: 585px;
+	margin-left: 615px;
 }
+
 .button3 {
+	position: relative;
 	margin-top: -32px;
-	margin-left: 865px;
+	margin-left: 889px;
 }
+
 .button4 {
+	position: relative;
 	margin-top: -32px;
-	margin-left: 1130px;
+	margin-left: 1174px;
 }
+.button5 {
+	position: relative;
+	margin-top: 195px;
+	margin-left: 1174px;
+}
+.button6 {
+	position: relative;
+	margin-top: -35px;
+		margin-left: 900px;
+}
+.button7 {
+	position: relative;
+	margin-top: -35px;
+		margin-left: 615px;
+}
+.button8 {
+	position: relative;
+	margin-top: -35px;
+	margin-left: 323px;
+}
+.button9 {
+	position: relative;
+	margin-top: -35px;
+	margin-left: 50px;
+}
+
 
 span b {
 	margin-left: -120px;
@@ -79,8 +114,12 @@ span b {
 }
 
 th, td {
-	padding: 18px;
+	padding-right: 100px;
+	padding-bottom: 80px;
+	padding-left: 32px;
+	padding-top: 1px;
 }
+
 .navbar {
 	overflow: hidden;
 	background-color: seashell;
@@ -155,8 +194,8 @@ th, td {
 }
 
 .back {
-	position: fixed;
-	left: 150px;
+	position: relative;
+	left: -550px;
 }
 </style>
 </head>
@@ -175,94 +214,82 @@ th, td {
 			<div class="dropdown-content">
 				<a href="mensshowproducts.jsp">mens</a> <a href="#">womens</a> <a
 					href="#">kids</a> <a href="#">occasions</a>
-
 			</div>
-
 		</div>
-
 		<a href="userallproducts.jsp">All collections</a> <a
 			href="homepage.jsp">Home</a>
 		<div class="back">
 			<a href="homepage.jsp">Back</a>
 		</div>
-
 	</div>
 
 
+	<table>
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${usershow}" var="userproducts">
 
-	<form>
-		<%
-		ProductsImpl dao = new ProductsImpl();
-				List<ProductPojo> ShowProduct;
-				ShowProduct = dao.adminShowProduct();
-		%>
-	</form>
+					<td><img src="${userproducts.image}"></td>
+					<c:choose>
+						<c:when test="${count==5}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>
 
 
-	<div class="recently added list">
-		<table>
-			<tbody>
-				<tr>
-					<%
-					int count = 0;
-								for (ProductPojo ushowProduct : ShowProduct) {
-					%>
-					<td>
-						<table id="carproduct">
-							<tbody>
-								<tr>
-									
-									<td><img src=<%=ushowProduct.getImage()%> alt="Show image"></td>
 
-									<td>
-									&nbsp; &nbsp; 
-									</td>
-								</tr>
-							</tbody>
-						</table>
-
-					</td>
-					<%
-					count++;
-					if (count == 5) {
-					%>
-				</tr>
-				<tr>
-					<%
-					count = 0;
-					}
-					}
-					%>
-
-				</tr>
-			</tbody>
-		</table>
-		<div class="button">
-			<a href="viewtshirt.jsp"><button type="button"
-					class="btn btn-default">View product</button> </a>
-		</div>
-		<div class="button1">
-			<a href="viewtshirt.jsp"><button type="button"
-					class="btn btn-default">View product</button> </a>
-		</div>
-		<div class="button2">
-			<a href="mobilecase.jsp"><button type="button"
-					class="btn btn-default">View product</button> </a>
-		</div>
-		<div class="button3">
-			<a href="viewtshirt.jsp"><button type="button"
-					class="btn btn-default">View product</button> </a>
-		</div>
-		<div class="button4">
-			<a href="viewtshirt.jsp"><button type="button"
-					class="btn btn-default">View product</button> </a>
-		</div>
+	<div class="button">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
 	</div>
+	<div class="button1">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
 	</div>
+	<div class="button2">
+		<a href="mobilecase.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
 	</div>
-
-
-
+	<div class="button3">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+	</div>
+	<div class="button4">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+	</div>
+	<div class="button5">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+	</div>
+	<div class="button6">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+	</div>
+	<div class="button7">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+	</div>
+	<div class="button8">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+	</div>
+	<div class="button9">
+		<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+	</div>
 
 </body>
 </html>

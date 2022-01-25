@@ -54,7 +54,6 @@ public class ProductsImpl implements ProductsDao {
 	public List<ProductPojo> adminShowProduct() {
 		List<ProductPojo> products = new ArrayList<ProductPojo>();
 		String prod="select product_name,description,category,image from gproducts";	
-		/* String prod="select*from gproducts"; */
 		Connection con;
 		ProductPojo product = null;
 		try {
@@ -228,7 +227,7 @@ public class ProductsImpl implements ProductsDao {
 
 	}
 
-	public List<ProductPojo> price() {
+	public List<ProductPojo> viewmenstshirt() {
 		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
 
 		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='Mens tshirt'";

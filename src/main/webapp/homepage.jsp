@@ -156,8 +156,9 @@ body {
 
 	<div class="navbar">
 		<a href="offersflip1.jsp">$ Offers of the day $</a> <a
-			href="index.jsp">Logout</a> <a href="gorders.jsp">My orders</a> <a
-			href="cart.jsp">My cart</a>
+			href="index.jsp">Logout</a> 
+			<a href="gorders.jsp">My orders</a> 
+			<a href="cart.jsp">My cart</a>
 
 
 		<div class="dropdown">
@@ -174,7 +175,7 @@ body {
 
 		</div>
 
-		<a href="userallproducts.jsp">All collections</a>
+		<a href="userallproducts">All collections</a>
 		 <a href="homepage.jsp">Home</a>
 
 	</div>

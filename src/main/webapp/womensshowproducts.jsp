@@ -133,7 +133,7 @@ th, td {
 </head>
 <body>
 	<div class="navbar">
-		<a href="index.jsp">Logout</a> <a href="showorders.jsp">My orders</a>
+		<a href="index.jsp">Logout</a> <a href="gorders.jsp">My orders</a>
 		<a href="cart.jsp">My cart</a>
 
 
