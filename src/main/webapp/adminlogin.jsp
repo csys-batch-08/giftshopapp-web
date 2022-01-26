@@ -159,7 +159,7 @@ position: relative;
 <body>
 
 <div class="admin">
-	<form action="adminshowproducts.jsp"method="post">
+	<form action="adminshowproducts"method="post">
 		<div class="button1">
 			<input type="submit" value="show products">
 		</div>
@@ -179,7 +179,7 @@ position: relative;
 			<input type="submit" value="Delete product">
 		</div>
 		</form>
-		<form action="showusers.jsp">
+		<form action="showusers"method="post">
 		<div class="button5">
 			<input type="submit" value="Show my users">
 		</div>

@@ -3,6 +3,8 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,9 +33,9 @@ body {
 table img {
 	width: 150px;
 	height: 150px;
-	border-style: solid;
+	/* border-style: solid;
 	border-radius: 5%;
-	border: 5px solid #daa520;
+	border: 5px solid #daa520; */
 } 
 .button1 {
 	margin-top: 15px;
@@ -118,12 +120,23 @@ table img {
 
 th, td {
   padding: 10px;
+  padding-right: 35px;
   
   
 }
 .back{
 position:absolute;
 left:50px;
+}
+.car {
+	border-style: solid;
+	border-color: goldenrod;
+width: 100%;
+	background-color: white;
+	padding: 20px;
+	border-radius:3px;
+	
+	
 }
 </style>
 </head>
@@ -145,61 +158,44 @@ left:50px;
 		</div>
 		
 <div class="back">
-      <a href="adminshowproducts.jsp">Back</a>
+      <a href="adminshowproducts">Back</a>
       </div>
-
 	</div>
-<form>
-<%
-ProductsImpl dao=new ProductsImpl();
-List<ProductPojo> adminviewtshirt;
-adminviewtshirt=dao.adminviewmobilecase();
-%>
+ <table>
+		<tbody>
+			<th>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${adminviewmobilecase}" var="adminshowmobilecase">
 
-</form>
- <center><h2 class="Products">Mobile cases</h2></center>
-         <div class="recently added list">
-        <table>
-            <tbody>
-                <tr>
-                <%
-                int count=0;
-                                for(ProductPojo showProduct: adminviewtshirt){
-                %>
-                    <td>
-                        <table id="carproduct">
-                            <tbody>
-                                <tr>
-                                    <td><img src=<%=showProduct.getImage() %> alt="Show image"></td>    
-                                    <td class="car">
-                                      <span>product id: <%=showProduct.getProductId()%>  </span><br>
-                                        <span>product name : <%=showProduct.getProductName()%>  </span><br>
-                                        <span>description : <%=showProduct.getDescription()%> </span><br>
-                                        <span>price : Rs.<%=showProduct.getStandardCost() %> </span><br>
-                                        <span>category: <%=showProduct.getCategory()%></span><br>
-                                       <span>quantity: <%=showProduct.getQuantityonhand()%></span><br>
-                                       <span>Type: <%=showProduct.getType()%></span><br>
-                                       
-                                       <a href="adminlogin.jsp?productid=<%=showProduct.getProductId() %>"><button>Edit</button></a>  
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                       <% count ++;
-                       if(count==3){ %> 
-                    	   </tr>
-                    	   <tr>              
-                     <%count=0; }}%>  
-                       
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div>
-   </div>
+<td>
+					<div class="car">
+					<center><div><img src="${adminshowmobilecase.image}"></div> </center>
+						<center><div>Id:${adminshowmobilecase.productId}</div> </center>
+						<center><div>Product name:${adminshowmobilecase.productName}</div></center>
+						<center><div>Description:${adminshowmobilecase.description}</div></center>
+						<center><div>Price:${adminshowmobilecase.standardCost}</div></center>
+						<center><div>category:${adminshowmobilecase.category}</div></center>
+						<center><div>Quantity:${adminshowmobilecase.quantityonhand}</div></center>
+						<center><div>Type:${adminshowmobilecase.type}</div></center>
+					</div>
+					<td>
+					<c:choose>
+
+						<c:when test="${count==3}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</th>
+		</tbody>
+	</table>
 
 </body>
 </html>

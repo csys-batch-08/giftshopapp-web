@@ -35,7 +35,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
       viewcartPojo vcar=new viewcartPojo(image, pname, type, price, size, qty,0);
       viewCartImpl dao=new viewCartImpl();
       try {
-	dao.insertview(vcar);
+	dao.insertcart1(vcar);
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

@@ -1,10 +1,11 @@
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,45 +21,28 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
+
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
 	background-size: 1370px 620px;
-	/* background-size: cover; */
 	background-attachment: fixed;
 }
+
 table img {
 	width: 150px;
 	height: 150px;
-	border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520;
-	/* border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px; */
-}
-table {
-	width: 2%;
-	float: left;
-}
-.button {
-	margin-top: 170px;
-	margin-left: 33px;
-}
-/* table, th, td {
-  border:1px solid black;
-} */
-
-th, td {
-  padding: 7px;
-  
+} 
+.button1 {
+	margin-top: 15px;
+	margin-left: 3px;
 }
 
 .navbar {
@@ -136,9 +120,26 @@ th, td {
 	display: block;
 }
 
+
+th, td {
+  padding: 15px;
+  
+  
+}
+
 .back{
-position:fixed;
-left:150px;
+position:absolute;
+left:50px;
+}
+.car {
+	border-style: solid;
+	border-color: goldenrod;
+width: 100%;
+	background-color: white;
+	padding: 20px;
+	border-radius:3px;
+	
+	
 }
 </style>
 
@@ -172,98 +173,61 @@ left:150px;
       </div>
   
 </div>
-
-
-
-
-	<%
+                         
+                       <table>
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${menstshirt}" var="menstshirts">
+				<td>
+                            <div class="car">
+					<div><img src="${menstshirts.image}"></center></div> 
+					<br>
+					<div><center>${menstshirts.productId}</center></div>
+					<div><center>${menstshirts.productName}</center></div> 
+					<div><center>${menstshirts.type}</center></div> 
+					<div><center><b>Rs:${menstshirts.standardCost}</center></b></div> 
+				
+				<br>
+				
+		<center><a href="addtocart?
+		pid=${menstshirts.productId}
+		&image=${menstshirts.image}
+		&productName=${menstshirts.productName}
+		&type=${menstshirts.type}
+		&cost=${menstshirts.standardCost}"><button type="button"
+				class="btn btn-default">Add to cart</button></a></center>
 	
-
-		ProductsImpl dao = new ProductsImpl();
-		List<ProductPojo> price1;
-		price1 = dao.viewmenstshirt();
-	%>
-	<%
-	
-				for (ProductPojo showPrice : price1) {
-	%>
-	<form>
-
-
-
-		<div class="abcd">
-			<table>
-				<tbody>
-					<tr>
-						<td>
-
-							<table id="product">
-								<tbody>
-									<tr>
-										<div id="item1">
-
-											<td><img src=<%=showPrice.getImage()%> alt="Show image"></td>
-										<td class="car">
-
-
-
-											<div>
-
-												<%=showPrice.getProductName()%>
-											</div>
-											<div>
-												Type:<%=showPrice.getType()%>
-											</div>
-											<div>
-												<b>Rs:<%=showPrice.getStandardCost()%></b>
-
-											</div>
-
-
-										</td>
-									</tr>
-								</tbody>
-							</table> <a
-							href="addcart.jsp?
+					</div>
+	</td>
+					<c:choose>
+						<c:when test="${count==6}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>  
+                         
+                         <%-- <a href="addcart.jsp?
 							&pid=<%=showPrice.getProductId()%>
 							&pname=<%=showPrice.getProductName()%>
 							&img=<%=showPrice.getImage()%>
 							&type=<%=showPrice.getType()%>
 							&price=<%=showPrice.getStandardCost()%>">
-								<div class="button">
-									<button type="button" class="btn btn-default">Add to
-										cart</button>
-								</div>
-						</a>
+					        <div class="button">
+							<button type="button" class="btn btn-default">Add to cart</button>
 							</div>
-
-
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-
-						<%
-										
-										
-										
-										}
-										%>
-
-					</tr>
-				</tbody>
-			</table>
-	</form>
-
-	</div>
-	</div>
-	</div>
-	</div>
-
-
-
-
-	</div>
+						     </a> --%>
+							
 </body>
 </html>

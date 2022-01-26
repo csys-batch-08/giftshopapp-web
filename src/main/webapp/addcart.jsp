@@ -1,14 +1,14 @@
-<%@page import="java.sql.SQLException"%>
-<%@page import="com.chainsys.giftshop.impl.viewCartImpl"%>
-<%@page import="com.chainsys.giftshop.model.viewcartPojo"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>
+ <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
@@ -31,9 +31,7 @@ body {
 img {
 	width: 200px;
 	height: 200px;
-	border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520;
+	
 }
 .navbar {
   overflow: hidden;
@@ -119,20 +117,24 @@ img {
 	position: relative;
 } */
 
-.abcd{
 
-position:fixed;
-left:100px;
-}
-th, td {
-  padding: 7px;
-  
-}
 .back{
 position:absolute;
 left:50px;
 }
-
+.car {
+position:relative;
+left:-30px;
+top:100px;
+	border-style: solid;
+	border-color: goldenrod;
+width: 20%;
+	background-color: white;
+	padding: 20px;
+	border-radius:3px;
+	
+	
+}
 </style>
 </head>
 <body>
@@ -164,36 +166,25 @@ left:50px;
       </div>
   
 </div>
-	<%
-		int pid = Integer.parseInt(request.getParameter("pid"));
-		String image = request.getParameter("img");
-		String pname = request.getParameter("pname");
-		String type = request.getParameter("type");
-		Double price = Double.parseDouble(request.getParameter("price"));
-		int userid = (int) session.getAttribute("logincustomer");
-		viewcartPojo vcart = new viewcartPojo();
-		vcart.setImage(image);
-		vcart.setProductid(pid);
-		vcart.setProductname(pname);
-		vcart.setType(type);
-		vcart.setUserid(userid);
-		vcart.setStandardcost(price);
-		session.setAttribute("cart", vcart);
-	%>
-	
-	<div class="abcd">
-		<form action="addcart" method="post">
-		<br>
-		<br>
-        <br>
-			<img src="<%=image%>">
-			<p>Product name:<%=pname%></p>
-			<p>Id:<%=pid%></p>
-			<p>Type:<%=type%></p>
 
-			<p>Rs.<%=price%></p>
-			
-			<label for="size">Choose your size:</label> 
+
+			<form action="addcart" method="post">	 
+				
+                          <center> <div class="car">
+					
+					<img src="${cartitems1.image}">
+					<br>
+					Id:${cartitems1.productid}
+					<br>
+					Name:${cartitems1.productname}
+					<br> 
+					Type:${cartitems1.type}
+					<br>
+					<b>Rs:${cartitems1.standardcost}</b>
+					<br>
+				
+				
+				<label for="size">Choose your size:</label> 
 			<select name="sss">
 				<option value="S">S</option>
 				<option value="M">M</option>
@@ -217,9 +208,10 @@ left:50px;
 			<option value=10>10</option>
 			<option value=11>11</option>
 			<option value=12>12</option>
-		</select> <input type="submit">
+		</select> <br><br><input type="submit">
+
+					</div></center>
+	</form>
 		
-		</div>
-		</form>
 </body>
 </html>

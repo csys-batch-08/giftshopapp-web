@@ -263,7 +263,7 @@ public class ProductsImpl implements ProductsDao {
 	public List<ProductPojo> adminviewtshirt() {
 		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
 
-		String getview = "select*from gproducts where product_name='Mens tshirt'";
+		String getview = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name='Mens tshirt'and category='mens'";
 		Connection con;
 		ProductPojo prod = null;
 		try {

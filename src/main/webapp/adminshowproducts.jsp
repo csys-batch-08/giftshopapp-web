@@ -3,6 +3,8 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +26,10 @@ body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
 	background-size: 1370px 620px;
-	/* background-size: cover; */
+	background-size: cover;
 	background-attachment: fixed;
+	
+	 
 }
 
  table img {
@@ -35,6 +39,9 @@ body {
 	border-radius: 5%;
 	border: 5px solid #daa520;
 } 
+table{
+
+}
 
 
 .navbar {
@@ -43,12 +50,13 @@ body {
   width:100%;
   margin-top:1px;
   height:55px;
+  position:fixed;
  
  
   
 }
 .navbar a {
-	float: left;
+	
 	font-size: 16px;
 	color: black;
 	text-align: center;
@@ -114,28 +122,92 @@ body {
 
 
 th, td {
-  padding: 10px;
-  
+padding: 25px; 
+padding-right:40px;
+}
+table{
+/* border-spacing: 22px; */
+
 }
 .button1 {
-   position:relative;
-	top: -2465px;
-	left: 75px;
+   position:absolute;
+	top: 300px;
+	left: 55px;
 }
 .button2 {
-   position:relative;
-	top: -2489px;
-	left: 550px;
+  position:absolute;
+	top: 300px;
+	left: 335px;
 }
 .button3 {
-   position:relative;
-	top: -2515px;
-	left: 990px;
+   position:absolute;
+	top: 300px;
+	left: 630px;
 }
+.button4 {
+   position:absolute;
+	top: 300px;
+	left: 910px;
+}
+.button5 {
+   position:absolute;
+	top: 537px;
+	left: 55px;
+}
+.button6 {
+   position:absolute;
+	top: 537px;
+	left: 335px;
+}
+.button7 {
+   position:absolute;
+	top: 537px;
+	left: 630px;
+}
+.button8 {
+   position:absolute;
+	top: 537px;
+	left: 910px;
+}
+.button9 {
+   position:absolute;
+	top: 770px;
+	left: 55px;
+}
+.button10 {
+   position:absolute;
+	top: 770px;
+	left: 335px;
+}
+.button11 {
+   position:absolute;
+	top: 770px;
+	left: 630px;
+}
+.button12 {
+   position:absolute;
+	top: 770px;
+	left: 910px;
+}
+.buttona {
+   position:absolute;
+	top: 300px;
+	left: 1195px;
+}
+.buttonb {
+   position:absolute;
+	top: 537px;
+	left: 1195px;
+}
+.buttonc {
+   position:absolute;
+	top: 770px;
+	left: 1195px;
+} 
 .back{
-position:fixed;
-left:150px;
-}
+position:relative;
+left:-1000px;
+} 
 </style>
 </head>
 <body>
@@ -160,66 +232,84 @@ left:150px;
       </div>
 	</div>
 
-<form>
-<%
-ProductsImpl dao=new ProductsImpl();
-List<ProductPojo> adminShowProduct;
- adminShowProduct=dao.adminShowProduct();
-%>
-
-</form>
  <center><h2 class="Products">All products</h2></center>
-         <div class="recently added list">
-        <table>
-            <tbody>
-                <tr>
-                <%
-                int count=0;
-                                for(ProductPojo showProduct: adminShowProduct){
-                %>
-                
-                    <td>
-                        <table id="carproduct">
-                            <tbody>
-                                <tr>
-                                    <td><img src=<%=showProduct.getImage() %> alt="Show image"></td>    
-                                    <td class="car">
-                               
-                                        <span>product name : <%=showProduct.getProductName()%>  </span><br>
-                                        <span>description : <%=showProduct.getDescription()%> </span><br>
-                                        
-                                        <span>category: <%=showProduct.getCategory()%></span><br>
-                                       
-                                        
-                                    
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>  
-                            
-                    </td>
-                       <% count ++;
-                       if(count==3){ %> 
-                    	   </tr>
-                    	   <tr>              
-                     <%count=0; }}%>  
-                       
-                </tr>
-            </tbody>
-        </table>
-         
-        </div>
-    </div>
-   </div>
+ 
+ <table>
+		<tbody>
+			<th>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${adminshowproduct}" var="adminshow">
+
+<td>
+					<div class="car">
+					<div><img src="${adminshow.image}"></div> 
+						<div><center><b>${adminshow.productName}</b></center></div> 
+					</div>
+					<td>
+					<c:choose>
+
+						<c:when test="${count==5}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</th>
+		</tbody>
+	</table>
+ 
 	<div class="button1">
-<a href="adminviewtshirts.jsp"><button>view</button></a> 
+<a href="adminviewmenstshirt"><button>view product</button></a> 
 		</div>	
 		<div class="button2">
-<a href="adminviewtshirts.jsp"><button>view</button></a> 
+<a href="adminviewtshirts.jsp"><button>view product</button></a> 
 		</div> 
 				<div class="button3">
-<a href="adminviewmobilecase.jsp"><button>view</button></a> 
+<a href="adminviewmobilecase"><button>view product</button></a> 
 		</div> 
+		<div class="button4">
+<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+		</div> 
+		<div class="button5">
+<a href="adminviewtshirts.jsp"><button>view product</button></a> 
+		</div>	
+		<div class="button6">
+<a href="adminviewtshirts.jsp"><button>view product</button></a> 
+		</div> 
+				<div class="button7">
+<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+		</div> 
+		<div class="button8">
+<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+		</div>
+				<div class="button9">
+<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+		</div> 
+		<div class="button10">
+<a href="adminviewtshirts.jsp"><button>view product</button></a> 
+		</div>	
+		<div class="button11">
+<a href="adminviewtshirts.jsp"><button>view product</button></a> 
+		</div> 
+				<div class="button12">
+<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+		</div> 
+		<div class="buttona">
+<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+		</div> 
+		<div class="buttonb">
+<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+		</div> 
+		<div class="buttonc">
+<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+		</div> 
+		
 </body>
 
 

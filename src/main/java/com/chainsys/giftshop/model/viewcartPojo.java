@@ -84,6 +84,12 @@ public viewcartPojo() {
 	super();
 	// TODO Auto-generated constructor stub
 }
+@Override
+public String toString() {
+	return "viewcartPojo [image=" + image + ", productname=" + productname + ", type=" + type + ", standardcost="
+			+ standardcost + ", size=" + size + ", quantity=" + quantity + ", userid=" + userid + ", productid="
+			+ productid + ", totalprice=" + totalprice + "]";
+}
 public viewcartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
 		int userid, int productid) {
 	super();

@@ -85,13 +85,6 @@ public class ProductPojo {
 		this.category = category;
 		this.quantityonhand = quantityonhand;
 	}
-//
-//	public Product(String productName, int productId) {
-//		super();
-//		this.productName = productName;
-//		this.productId = productId;
-//
-//	}
 
 	@Override
 	public String toString() {

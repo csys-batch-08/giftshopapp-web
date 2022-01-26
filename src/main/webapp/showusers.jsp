@@ -2,11 +2,13 @@
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,28 +41,27 @@ body {
 	background-attachment: fixed;
 }
 
- table img {
+table img {
 	width: 150px;
 	height: 150px;
 	border-style: solid;
 	border-radius: 5%;
 	border: 5px solid #daa520;
-} 
+}
+
 .button1 {
 	margin-top: 15px;
 	margin-left: 3px;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
- 
- 
-  
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -126,113 +127,84 @@ body {
 	display: block;
 }
 
+td {
+	 padding: 20px;
+	 padding-right: 25px;
+	  padding-left: 20px;
+}
 
-th, td {
-  padding: 26px;
-  
-}
 .car {
-	/* border: 100px;
-	width: 5000px;
-	background-color:white ;
-	border-radius:5px;
-	padding:20px;
-	border-color: coral;
- */	
-  border-style: solid;
-  border-color: goldenrod;
-  width: 5000px;
-  background-color:white ;
- padding:20px;
+	border-style: solid;
+	border-color: goldenrod;
+width: 100%;
+	background-color: white;
+	padding: 20px;
+	border-radius:3px;
+	
+	
 }
-.back{
-position:fixed;
-left:150px;
+.back {
+	position: relative;
+	left: -1000px;
 }
+
 </style>
 
 </head>
 
 <body>
 	<div class="navbar">
-		<a href="index.jsp">Logout</a> 
+		<a href="index.jsp">Logout</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				actions <i class="fa fa-caret-down"></i>
 			</button>
 
 			<div class="dropdown-content">
-				<a href="insertproduct.jsp">Insert</a>
-				 <a href="update.jsp">Update</a> 
-				 <a href="delete.jsp">Delete</a> 
-				  <a href="showusers.jsp">Users</a>
+				<a href="insertproduct.jsp">Insert</a> <a href="update.jsp">Update</a>
+				<a href="delete.jsp">Delete</a> <a href="showusers.jsp">Users</a>
 			</div>
 
 		</div>
 		<div class="back">
-      <a href="adminlogin.jsp">Back</a>
-      </div>
+			<a href="adminlogin.jsp">Back</a>
+		</div>
 
 	</div>
-
-
-	
-	<form>
-		<%
-		
-
-		UserImpl dao=new UserImpl();
-       UserPojo us = new UserPojo();
-		List<UserPojo> show;
-		show=dao.showusers();
-		%>
-
-	</form>
 	<center><h2 class="Products">Users</h2></center>
-	<br>
-	<div class="recently added list">
-		<table>
-			<tbody>
-				<tr>
-					<%
-					
-					int count=0;
-					                for(UserPojo showProduct: show){
-					%>
+	 
+	<table>
+		<tbody>
+			<th>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${users}" var="showusers">
+
+<td>
+					<div class="car">
+						<div>User id:${showusers.userid}</div> 
+						<%-- <div>${showusers.Username}</div> --%>
+						<div>Email:${showusers.email}</div>
+						<div>Mobile number:${showusers.mobilenumber}</div>
+						<div>Address:${showusers.address}</div>
+					</div>
 					<td>
-						<table id="carproduct">
-							<tbody>
-									
-									
-									<td class="car">
-									
-									<div>User Id: <%=showProduct.getUserid()%></div>
-									<div>Name: <%=showProduct.getUsername()%></div>
-									<div> Email:<%=showProduct.getEmail()%></div> 
-									 <div>Mobile number: <%=showProduct.getMobilenumber()%></div>
-									  <div>Address: <%=showProduct.getAddress()%></div>
-									 
-										
-										
-										</td>
-								</tr>
-							</tbody>
-						</table>
+					<c:choose>
 
-					</td>
-					<% count ++;
-                       if(count==4){ %>
-				</tr>
-				<tr>
-					<%count=0; }}%>
-
-				</tr>
-			</tbody>
-		</table>
-
-	</div>
-	</div>
-	</div>
+						<c:when test="${count==4}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</th>
+		</tbody>
+	</table>
 
 </body>
 </html>

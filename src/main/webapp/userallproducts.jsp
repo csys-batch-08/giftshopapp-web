@@ -232,6 +232,7 @@ th, td {
 				<c:forEach items="${usershow}" var="userproducts">
 
 					<td><img src="${userproducts.image}"></td>
+					
 					<c:choose>
 						<c:when test="${count==5}">
 			</tr>
@@ -251,7 +252,7 @@ th, td {
 
 
 	<div class="button">
-		<a href="viewtshirt.jsp"><button type="button"
+		<a href="mensviewtshirt"><button type="button"
 				class="btn btn-default">View product</button> </a>
 	</div>
 	<div class="button1">
