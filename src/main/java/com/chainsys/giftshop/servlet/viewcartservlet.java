@@ -13,28 +13,33 @@ import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.impl.viewCartImpl;
 import com.chainsys.giftshop.model.viewcartPojo;
-@WebServlet("/addcart")
+@WebServlet("/viewcart")
 public class viewcartservlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		HttpSession session=req.getSession();
+		viewcartPojo vcart = (viewcartPojo) session.getAttribute("cartitmes");
+		  int productid = vcart.getProductid();
+		  String image = vcart.getImage(); 
+		  String productname = vcart.getProductname();
+		  String type =vcart.getType(); 
+		  Double standardcost =vcart.getStandardcost();
 		 String size=req.getParameter("sss");
 		 System.out.println(size);
 		 int qty=Integer.parseInt(req.getParameter("qqq"));
 		 System.out.println(qty);
-		 HttpSession session=req.getSession();
+		 
 	      viewcartPojo vcar1=new viewcartPojo();
-	    		  session.getAttribute("cart");
 	    		  int userid = (int) session.getAttribute("logincustomer");
 	       vcar1.setUserid(userid);
 	      vcar1.setSize(size);
 	      vcar1.setQuantity(qty);
-	      System.out.println(userid);
+	      viewcartPojo vcar=new viewcartPojo(image,productname,type,standardcost,size,qty,userid,productid);
 	      viewCartImpl dao=new viewCartImpl();
-	      viewcartPojo vcar=new viewcartPojo();
 	      try {
-				dao.insertcart1(vcar);
+				dao.insertview(vcar);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -42,16 +47,9 @@ public class viewcartservlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			resp.sendRedirect("cart.jsp");	
+			resp.sendRedirect("cart");	
+			/* RequestDispatcher rd=req.getRequestDispatcher("cart"); */
+			/* rd.forward(req,resp); */
 			
 		}
-	      
-			/*
-			 * viewCartImpl vci=new viewCartImpl(); try { viewcartPojo
-			 * vcp=vci.insertview(vcar1); req.setAttribute("viewcart", vcp);
-			 * RequestDispatcher rd=req.getRequestDispatcher("cart.jsp"); rd.forward(req,
-			 * resp); } catch (ClassNotFoundException e) { // TODO Auto-generated catch
-			 * block e.printStackTrace(); } catch (SQLException e) { // TODO Auto-generated
-			 * catch block e.printStackTrace(); }
-			 */
 }

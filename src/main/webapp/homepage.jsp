@@ -155,9 +155,9 @@ body {
 
 
 	<div class="navbar">
-		<a href="offersflip1.jsp">$ Offers of the day $</a> <a
+		<a href="offersflip.jsp">$ Offers of the day $</a> <a
 			href="index.jsp">Logout</a> 
-			<a href="gorders.jsp">My orders</a> 
+			<a href="orders">My orders</a> 
 			<a href="cart.jsp">My cart</a>
 
 

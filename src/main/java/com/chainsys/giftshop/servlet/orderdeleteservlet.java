@@ -18,10 +18,13 @@ public class orderdeleteservlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	      int orderId=Integer.parseInt(req.getParameter("orderId"));
+		System.out.println("hai");
+		 HttpSession session=req.getSession();	 
+	  	int orderid=Integer.parseInt(session.getAttribute("orderid").toString());
+	      System.out.println(orderid);
 	      boolean flag=false;
 	 	 OrdersPojo vcar1 =new OrdersPojo();
-	 	 vcar1.setOrderid(orderId);
+	 	 vcar1.setOrderid(orderid);
 	 	 OrdersImpl obj2 = new OrdersImpl();
 	 	 try {
 			flag=obj2.cancelorder(vcar1);

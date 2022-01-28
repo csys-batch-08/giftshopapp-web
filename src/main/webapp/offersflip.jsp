@@ -196,10 +196,10 @@ body {
 <div class="flip-box">
   <div class="flip-box-inner">
     <div class="flip-box-front">
-     <a href="offertshirt1.jsp"> <img src="images/shoppinggggggg (1).webp" alt="show image" width="300" height="300"></a>
+     <a href="offertshirt"> <img src="images/shoppinggggggg (1).webp" alt="show image" width="300" height="300"></a>
     </div>
     <div class="flip-box-back">
-      <a href="offertshirt1.jsp"><img src="images/the-boss-the-real-boss-mustard.jpg" alt="show image" width="300" height="300"></a>
+      <a href="offertshirt"><img src="images/the-boss-the-real-boss-mustard.jpg" alt="show image" width="300" height="300"></a>
     </div>
   </div>
 </div>
@@ -209,10 +209,10 @@ body {
 <div class="flip-box1">
   <div class="flip-box1-inner">
     <div class="flip-box1-front">
-     <a href="offersmobile1.jsp"> <img src="images/d115c5dcb9969b565f15c24bdabe424f.jpg_720x720q80.jpg_.webp" alt="show image" width="300" height="300"></a>
+     <a href="offersmobile"> <img src="images/d115c5dcb9969b565f15c24bdabe424f.jpg_720x720q80.jpg_.webp" alt="show image" width="300" height="300"></a>
     </div>
     <div class="flip-box1-back">
-      <a href="offersmobile1.jsp"><img src="images/Zapvi-Banner-Homepage-2.webp" alt="show image" width="300" height="300"></a>
+      <a href="offersmobile"><img src="images/Zapvi-Banner-Homepage-2.webp" alt="show image" width="300" height="300"></a>
     </div>
   </div>
 </div>

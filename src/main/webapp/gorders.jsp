@@ -3,6 +3,8 @@
 <%@page import="com.chainsys.giftshop.model.OrdersPojo"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,33 +39,22 @@ table img {
   padding: 5px;
   width: 150px; */
 }
-table {
-	width: 10%;
-	float: left;
-	border-spacing: 10px;
-	
-}
-.button {
-	margin-top: 150px;
-	margin-left: 38px;
-}
-.button1 {
-	margin-top: 5px;
-	margin-left: 37px;
-}
-/* table, th, td {
-  border:1px solid black;
-} */
+
+
+
 th, td {
-	text-align: left;
-	padding: 2px;
+	padding-left: 35px;
+	Padding-top:60px;
 }
 .car {
-	border: 10px seashell;
-	width: 5000px;
-	background-color:seashell ;
-	border-radius:5px;
-	padding:20px;
+	border-style: solid;
+	border-color: goldenrod;
+     width: 100%;
+	background-color: white;
+	padding: 20px;
+	border-radius:3px;
+	
+	
 	
 }
 .navbar {
@@ -157,102 +148,44 @@ th, td {
 
 		<a href="userallproducts.jsp">All collections</a> <a
 			href="homepage.jsp">Home</a>
-			
-
 	</div>
+	<form action="orderdetails"method="post">
+	    <table>
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${showorders}" var="orders">
+				<td>
+                            <div class="car">
+					
+					<center>Order id:${orders.orderid}</center>
+				<center>Order date:${orders.orderdate}</center>
+					<center>Status:${orders.status}</center>
+					<br>
+	<center><input type="button" value="view details"
+									onclick="window.location='orderdetails?ordid=${orders.orderid}'">
+									</center>
 	
-
-	<%
-		
-			 int userid= (int) session.getAttribute("logincustomer");
-			OrdersPojo showord = new OrdersPojo();
-			showord.setUserid(userid);
-			 /* showord.setUserid(userid);
-		 */	
-		 OrdersImpl dao = new OrdersImpl();
-			List<OrdersPojo> show;
+					</div>
+	</td>
+					<c:choose>
+						<c:when test="${count==5}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
 			
-			show = dao.userOrderDetails(showord);
-		%>
-	<%
-				for (OrdersPojo  showPrice : show) {
-	%>
-	<form>
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>  
 
-
-
-		<div class="abcd">
-			<table>
-				<tbody>
-					<tr>
-						<td>
-
-							<table id="product">
-								<tbody>
-									<tr>
-
-										<br>
-										<br>
-										<br>
-										<td class="car">
-
-
-
-
-											<div calss="qwety">
-												<div>Order id:<%=showPrice.getOrderid()%></div>
-												<br>
-												 <div>Order date:<br><%=showPrice.getOrderdate()%></div>
-												 <br>
-												 <div>status:<%=showPrice.getStatus()%></div>
-											</div>
-
-
-
-
-
-
-
-										</td>
-									</tr>
-								</tbody>
-							</table> <!-- <input type="button" value="add to cart"> -->
-
-							<div class="button">
-
-								<input type="button" value="order details"
-									onclick="window.location='orderdetails.jsp?orderId=<%=showPrice.getOrderid()%>'">
-							</div>
-							
-							</div>
-
-
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-
-						<%
-										
-										
-										
-										}
-										%>
-
-					</tr>
-				</tbody>
-			</table>
-	</form>
-
-	</div>
-	</div>
-	</div>
-	</div>
-
-
-
-
-	</div>
+</form>
 </body>
 </html>

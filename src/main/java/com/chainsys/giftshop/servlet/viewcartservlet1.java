@@ -12,30 +12,43 @@ import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.impl.viewCartImpl;
 import com.chainsys.giftshop.model.viewcartPojo;
-@WebServlet("/addcart1")
+@WebServlet("/viewcart1")
 public class viewcartservlet1 extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String size=req.getParameter("sss");
+		HttpSession session=req.getSession();
+		viewcartPojo vcart = (viewcartPojo) session.getAttribute("cartitmes");
+		  int productid = vcart.getProductid();
+		  String image = vcart.getImage(); 
+		  String productname = vcart.getProductname();
+		  String type =vcart.getType(); 
+		  Double standardcost =vcart.getStandardcost();
+		 String size=req.getParameter("sss");
+		 System.out.println(size);
 		 int qty=Integer.parseInt(req.getParameter("qqq"));
-		 HttpSession session=req.getSession();
-	      viewcartPojo vcar=(viewcartPojo)session.getAttribute("cart");
-	      vcar.setSize(size);
-	      vcar.setQuantity(qty);
+		 System.out.println(qty);
+		 
+	      viewcartPojo vcar1=new viewcartPojo();
+	    		  int userid = (int) session.getAttribute("logincustomer");
+	       vcar1.setUserid(userid);
+	      vcar1.setSize(size);
+	      vcar1.setQuantity(qty);
+	      viewcartPojo vcar=new viewcartPojo(image,productname,type,standardcost,size,qty,userid,productid);
 	      viewCartImpl dao=new viewCartImpl();
 	      try {
-			dao.insertcart1(vcar);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				dao.insertview(vcar);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			resp.sendRedirect("cart1");	
+			/* RequestDispatcher rd=req.getRequestDispatcher("cart"); */
+			/* rd.forward(req,resp); */
+			
 		}
-		resp.sendRedirect("cart1.jsp");	
-		
-	}
-
 }

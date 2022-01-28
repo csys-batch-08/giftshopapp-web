@@ -14,19 +14,12 @@ import com.chainsys.giftshop.util.ConnectionUtil;
 
 public class viewCartImpl {
 
-	public void insertview3(viewcartPojo vcar) throws ClassNotFoundException, SQLException {
+	public void insertview(viewcartPojo vcar) throws ClassNotFoundException, SQLException {
 
 		String insertQuery = "insert into gcart(image,product_name,p_type,standard_cost,p_size,quantity,user_id,product_id)values(?,?,?,?,?,?,?,?)";
 				
 		Connection con = ConnectionUtil.gbconnection();
-		PreparedStatement pstmt = con.prepareStatement(insertQuery);		
-		System.out.println(vcar.getProductid());
-		System.out.println(vcar.getProductname());
-		System.out.println(vcar.getImage());
-		System.out.println(vcar.getStandardcost());
-		System.out.println(vcar.getUserid());
-		System.out.println(vcar.getType());
-		
+		PreparedStatement pstmt = con.prepareStatement(insertQuery);
 		pstmt.setString(1, vcar.getImage());
 		pstmt.setString(2, vcar.getProductname());
 		pstmt.setString(3, vcar.getType());
@@ -35,19 +28,76 @@ public class viewCartImpl {
 		pstmt.setInt(6, vcar.getQuantity());
 		pstmt.setInt(7, vcar.getUserid());
 		pstmt.setInt(8, vcar.getProductid());
-
 		int i = pstmt.executeUpdate();
 		System.out.println(i + "product inserted");
 		pstmt.close();
 		con.close();
 	}
 
+	public List<viewcartPojo>insertcart1(viewcartPojo vcar) throws ClassNotFoundException, SQLException {
+		Connection con = ConnectionUtil.gbconnection();
+		List<viewcartPojo> cart = new ArrayList<viewcartPojo>();
+		System.out.println("vel2");
+		String insertQuery = "insert into gcart(image,product_name,p_type,standard_cost,p_size,quantity,user_id,product_id)values(?,?,?,?,?,?,?,?)";	
+		PreparedStatement pstmt = con.prepareStatement(insertQuery);
+		pstmt.setString(1, vcar.getImage());
+		pstmt.setString(2, vcar.getProductname());
+		pstmt.setString(3, vcar.getType());
+		pstmt.setDouble(4, vcar.getStandardcost());
+		pstmt.setString(5, vcar.getSize());
+		pstmt.setInt(6, vcar.getQuantity());
+		pstmt.setInt(7, vcar.getUserid());
+		pstmt.setInt(8, vcar.getProductid());
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			System.out.println("vel3");
+			vcar.setImage(rs.getString(1));
+			vcar.setProductname(rs.getString(2));
+			vcar.setType(rs.getString(3));
+			vcar.setStandardcost(rs.getDouble(4));
+			vcar.setSize(rs.getString(5));
+			vcar.setQuantity(rs.getInt(6));
+			vcar.setUserid(rs.getInt(7));
+			vcar.setProductid(rs.getInt(8));
+		}
+		int i = pstmt.executeUpdate();
+		System.out.println(i + "product inserted");
+		pstmt.close();
+		con.close();
+		
+		return cart;
+	}
+	
+	/*
+	 * correct method
+	 */
+	
+	public List<viewcartPojo> showcart(viewcartPojo vcar1) throws ClassNotFoundException, SQLException {
+		Connection con = ConnectionUtil.gbconnection();
+		List<viewcartPojo> cart = new ArrayList<viewcartPojo>();
+		String query = "select image,product_name,p_type,standard_cost,p_size,quantity,product_id from gcart where user_id=?";
+		PreparedStatement stmt = con.prepareStatement(query);
+		stmt.setInt(1, vcar1.getUserid());
+		ResultSet rs = stmt.executeQuery();
+		System.out.println("hlo12"+vcar1.getUserid());
+		while (rs.next()) {
+			System.out.println("hlo2");
+			vcar1=new viewcartPojo();
+			vcar1.setImage(rs.getString(1));
+			vcar1.setProductname(rs.getString(2));
+			vcar1.setType(rs.getString(3));
+			vcar1.setStandardcost(rs.getDouble(4));
+			vcar1.setSize(rs.getString(5));
+			vcar1.setQuantity(rs.getInt(6));
+			vcar1.setProductid(rs.getInt(7));
+			cart.add(vcar1);
+			}
+		return cart;
+	}
+	
 	public List<viewcartPojo> showcart() {
 		List<viewcartPojo> view = new ArrayList<viewcartPojo>();
 		String show = "select*from gcart";
-
-//		 String insert1 ="insert into gcart (image,product_name,p_type,standard_cost,p_size,quantity)values(?,?,?,?,?,?)";
-
 		Connection con;
 		viewcartPojo show1 = null;
 		try {
@@ -55,16 +105,8 @@ public class viewCartImpl {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(show);
 			while (rs.next()) {
-
-//				System.out.format("%-15s%-15s%-25s%-25s%-15s%-5s", rs.getInt(1), rs.getString(2), rs.getString(3),
-//						rs.getDouble(4), rs.getString(5), rs.getInt(6),rs.getString(7));
-//				System.out.println();
-
 				show1 = new viewcartPojo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
 						rs.getString(5), rs.getInt(6), rs.getInt(7));
-
-//				product=new Product(rs.getInt(1), rs.getString(2), rs.getString(3),
-//						rs.getDouble(4), rs.getString(5), rs.getInt(6),rs.getString(7));
 				view.add(show1);
 			}
 
@@ -77,7 +119,7 @@ public class viewCartImpl {
 
 
 
-	public List<viewcartPojo> showcart(viewcartPojo vcar1) throws ClassNotFoundException, SQLException {
+	public List<viewcartPojo> showcart1(viewcartPojo vcar1) throws ClassNotFoundException, SQLException {
 		Connection con = ConnectionUtil.gbconnection();
 		List<viewcartPojo> cart = new ArrayList<viewcartPojo>();
 		String query = "select image,product_name,p_type,standard_cost,p_size,quantity,product_id from gcart where user_id=?";
@@ -157,51 +199,5 @@ String showcart = "select*from gcart where user_id=? and product_id=? and p_size
 		return false;
 }
 	
-public List<viewcartPojo>insertcart1(viewcartPojo vcar) throws ClassNotFoundException, SQLException {
-	Connection con = ConnectionUtil.gbconnection();
-	List<viewcartPojo> cart = new ArrayList<viewcartPojo>();
-	System.out.println("vel2");
-	String insertQuery = "insert into gcart(image,product_name,p_type,standard_cost,p_size,quantity,user_id,product_id)values(?,?,?,?,?,?,?,?)";	
-	PreparedStatement pstmt = con.prepareStatement(insertQuery);
-	
-	ResultSet rs = pstmt.executeQuery();
-	while (rs.next()) {
-		System.out.println("vel3");
-		pstmt.setString(1, vcar.getImage());
-		pstmt.setString(2, vcar.getProductname());
-		pstmt.setString(3, vcar.getType());
-		pstmt.setDouble(4, vcar.getStandardcost());
-		pstmt.setString(5, vcar.getSize());
-		pstmt.setInt(6, vcar.getQuantity());
-		pstmt.setInt(7, vcar.getUserid());
-		pstmt.setInt(8, vcar.getProductid());
-	}
-	int i = pstmt.executeUpdate();
-	System.out.println(i + "product inserted");
-	pstmt.close();
-	con.close();
-	
-	return cart;
-}
 
-public List<viewcartPojo> showcart1111(viewcartPojo vcar1) throws ClassNotFoundException, SQLException {
-	Connection con = ConnectionUtil.gbconnection();
-	List<viewcartPojo> cart = new ArrayList<viewcartPojo>();
-	String query = "select image,product_name,p_type,standard_cost,p_size,quantity,product_id from gcart where user_id=?";
-	PreparedStatement stmt = con.prepareStatement(query);
-	stmt.setInt(1, vcar1.getUserid());
-	ResultSet rs = stmt.executeQuery();
-	while (rs.next()) {
-		vcar1=new viewcartPojo();
-		vcar1.setImage(rs.getString(1));
-		vcar1.setProductname(rs.getString(2));
-		vcar1.setType(rs.getString(3));
-		vcar1.setStandardcost(rs.getDouble(4));
-		vcar1.setSize(rs.getString(5));
-		vcar1.setQuantity(rs.getInt(6));
-		vcar1.setProductid(rs.getInt(7));
-		cart.add(vcar1);
-		}
-	return cart;
-}
 }

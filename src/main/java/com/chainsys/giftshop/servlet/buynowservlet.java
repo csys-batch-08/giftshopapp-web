@@ -51,7 +51,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 	  viewCartImpl obj1 = new viewCartImpl();
 	  List<viewcartPojo> cartlist;
 	try {
-		cartlist = obj1.showcart(vcar1);
+		cartlist = obj1.showcart1(vcar1);
 		 for(int i=0;cartlist.size()>i;i++)
 		  {
 			 OrdersPojo orders = new OrdersPojo();

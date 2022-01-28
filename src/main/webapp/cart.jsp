@@ -2,6 +2,8 @@
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -14,116 +16,57 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
 }
+
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
+	background-size: 1370px 620px;
 	background-attachment: fixed;
-	/* background-size: 1370px 620px; */
-	background-size: cover; 
-	
- }
+}
 
 table img {
-	width: 250px;
-	height: 250px;
-	border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520;
+	width: 150px;
+	height: 150px;
+} 
+.button1 {
+	margin-top: 15px;
+	margin-left: 3px;
 }
 
-table {
-	width: 2%;
-	float: left;
-}
-/* #carproduct{
- position:absolute;left:30px;top:-2px;
-} */
-.show{
-
-  background-color:rgb(255, 255, 255);
-  /* background-color:rgba(253, 253, 253, 0.973); */
-  padding: 25px 30px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-  position:absolute;left:360px;top:50px;
-  height:300px;
- 
-}
-.total{
-
- position:fixed;left: 1070px;top: 150px; text-align: justify;
-            border: 3px solid goldenrod;
-            width: 200px;
-            background-color: white;
-            
-
-}
-.btn-default {
-    background: #0099cc;
-    color: #ffffff;
-  position: absolute;left: 1100px;top: 200px; text-align: justify;
-  width:105px;
-}
-.btn-default.outline:active, .btn-default.outline.active {
-	border-color: #007299;
-	color: #007299;
-	box-shadow: none;
-}
-form .button{
-   height: 45px;
-   margin: 35px 0;
-   
- }
-  form .button input{
-   height: 7%;
-   width: 10%;
-   border-radius: 5px;
-   border: none;
-   color: #fff;
-   font-size: 18px;
-   font-weight: 500;
-   letter-spacing: 1px;
-   cursor: pointer;
-   transition: all 0.3s ease;
-   background:rgba(165, 110, 9, 0.863);
-   position: fixed;left: 1100px;top: 195px;
- }
- form .button input:hover{
-  transform: scale(0.99);
-  background:rgb(241, 175, 7);
-  }
-  .navbar {
+.navbar {
   overflow: hidden;
   background-color:seashell;
   width:100%;
   margin-top:1px;
   height:55px;
-  position:relative;
  
  
   
 }
 .navbar a {
-	float: right;
+	float: left;
 	font-size: 16px;
 	color: black;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
-	
+	float: right;
 	font-style: italic;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
 	font-size: 18px;
-	/* margin-right: 25px;
-	margin-right: 5px; */
+	margin-right: 25px;
+	margin-right: 5px;
 }
 
 .dropdown {
@@ -175,47 +118,56 @@ form .button{
 	display: block;
 }
 
-#logo {
-	position: relative;
-	left: 100px;
-	top: -70px;
+
+th, td {
+  padding: 15px;
+  
+  
 }
-
-
-
-a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
- 
+.total{
+ position:fixed;left: 1070px;top: 150px; text-align: justify;
+            border: 3px solid goldenrod;
+            width: 200px;
+            background-color: white;
+            
 }
-
-a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.previous {
-  background-color: #daa520;
-  color: black;
-}
-
-.next {
-  background-color: #04AA6D;
-  color: white;
-}
-
-.round {
-  border-radius: 50%;
-}
+form .button{
+   height: 45px;
+   margin: 35px 0;
+   
+ }
+  form .button input{
+   height: 7%;
+   width: 10%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background:rgba(165, 110, 9, 0.863);
+   position: fixed;left: 1100px;top: 195px;
+ }
+ form .button input:hover{
+  transform: scale(0.99);
+  background:rgb(241, 175, 7);
+  }
 
 .back{
-position:relative;
-left:-630px;
+position:absolute;
+left:50px;
 }
-th, td {
-  padding: 7px;
-  
+.car {
+	border-style: solid;
+	border-color: goldenrod;
+width: 100%;
+	background-color: white;
+	padding: 20px;
+	border-radius:3px;
+	
+	
 }
 
 </style>
@@ -252,86 +204,54 @@ th, td {
       
   
 </div>
-	<%
-			double sum1=0;
-			int userid = (int) session.getAttribute("logincustomer");
-			viewcartPojo vcar1 = new viewcartPojo();
-			vcar1.setUserid(userid);
-			viewCartImpl dao = new viewCartImpl();
-			List<viewcartPojo> insertcart = dao.showcart(vcar1);
-		%>
-	<form action="buynow"method="post">
+		<form action="buynow"method="post">
 		<center><h2 class="Products">your cart</h2></center>
-		<div class="recently added list">
-			<table>
-				<tbody>
-					<tr>
-						<%
-						
+		
+		<table>
+		<tbody>
+			<th>
+			<tr>
 
-										int count = 0;
-										for (viewcartPojo showProduct : insertcart) {
-											double sum= showProduct.getStandardcost()*showProduct.getQuantity();
-											 sum1+=sum;
-						%>
-						<td>
-							<table id="carproduct">
-								<tbody>
-									<tr>
-										<img src=<%=showProduct.getImage()%> alt="Show image">
-
-									
-									<br>
-										<div> product name : <%=showProduct.getProductname()%></div>
-									
-										<div>product type : <%=showProduct.getType()%></div>
-										
-										<div>price : Rs.<%=showProduct.getStandardcost()%></div>
-										
-										<div>size: <%=showProduct.getSize()%></div>
-										
-										<div>quantity : <%=showProduct.getQuantity()%></div>
-										
-										<div>purchase amount : <%=sum%></div>
-										
-                     <div class="button1">
-                    <input type="submit" value="Remove from cart">
-                  </div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-						</td>
-						<%
-						count++;
-						if (count == 4) {
-						%>
-					</tr>
-					<tr>
-						<%
-						count = 0;
-						}
-						}
-						%>
-
-					</tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${car}" var="cartproducts">
+				 <c:set var="sum" value="${cartproducts.standardcost*cartproducts.quantity}" />
+	             <c:set var="sum1" value="${sum1+sum}"/>
+											
+				<td>
 				
-				</tbody>
-			</table>
-<div class="total">Total amount Rs: <%=sum1%></div>
 				
-<!-- <input type="button" value="Remove from cart"
-				onclick="window.location='buynow'">  -->
-				 
-				 <div class="button">
+                     <div class="car">
+					<div><img src="${cartproducts.image}"></center></div> 
+					<br>
+					<center>${cartproducts.productname}</center>
+					<center>${cartproducts.type}</center>
+					<center>Rs:${cartproducts.standardcost}</center>
+					<center><b>Size:${cartproducts.size}</center></b>
+					<center><b>qty:${cartproducts.quantity}</center></b> 
+					<center><b>Purchase amount:${sum}</center></b> 
+				
+				<br>
+					<td>
+					<c:choose>
+
+						<c:when test="${count==4}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</th>
+		</tbody>
+	</table>						
+                  <div class="button">
                     <input type="submit" value="Buy now">
-                  </div>									
-
-		</div>
-		</div>
-		</div>
-
-	</form>
+                  </div>				
+</form>
+			<div class="total">Total amount Rs:${sum1}</div>	 	
 </body>
 </html>

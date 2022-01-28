@@ -2,7 +2,8 @@
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -33,21 +34,25 @@ body {
 table img {
 	width: 300px;
 	height: 300px;
-	border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520;
-	/* border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px; */
+
 }
 table {
-	width: 2%;
-	float: left;
+padding: 30px;
+	padding-left:330px;
 }
 .button {
 	margin-top: 170px;
 	margin-left: 33px;
+}
+.car {
+	border-style: solid;
+	border-color: goldenrod;
+    width: 100%;
+	background-color: white;
+	padding: 5px;
+	border-radius:3px;
+	
+	
 }
  .abc{
 
@@ -56,118 +61,91 @@ table {
                           
                
         }
-        .abcd{
-        margin-top: 100px;
-        margin-left: 230px;
+        .qwerty{
+        
+        font-size: 40px;
+               color:maroon; 
+               margin-top:-500px;
+                margin-left:170px;
+        }
+        .qwertyyy{
+        
+         font-size: 40px;
+               color:maroon; 
+               margin-top:-400px;
+                margin-left:1000px;
+        }
         
         }
-         .p{
-       position:absolute;left:310px;top:40px;
-        }
-        .p1{
-       position:absolute;left:730px;top:40px;
-        }
+    
+     
 </head>
 </style>
 <body>
-<div class="p">
-<p>Nomral price:<del>Rs:180</del></p>
-</div>
-<div class="p1">
-<p>Nomral price:<del>Rs:210</del></p>
-</div>
-		<%
-		ProductsImpl dao=new ProductsImpl();
-		List<ProductPojo>offers;
-		offers=dao.offertshirt();
-		%>
-
-	<%
-	
-				for (ProductPojo showPrice : offers) {
-					
-	%>
-	<form>
-
-
-
-		<div class="abcd">
-			<table>
-				<tbody>
-					<tr>
-						<td>
-
-							<table id="product">
-								<tbody>
-									<tr>
-										<div id="item1">
-
-											<td><img src=<%=showPrice.getImage()%> alt="Show image"></td>
-										<td class="car">
-
-
-
-											<div>
-
-												<%=showPrice.getProductName()%>
-											</div>
-											<div>
-												Type:<%=showPrice.getType()%>
-											</div>
-											<div>
-												<b>Offer price:Rs:<%=showPrice.getStandardCost()%></b>
-
-											</div>
-
-
-										</td>
-									</tr>
-								</tbody>
-							</table> <a
-							href="addcart.jsp?
-							&pid=<%=showPrice.getProductId()%>
-							&pname=<%=showPrice.getProductName()%>
-							&img=<%=showPrice.getImage()%>
-							&type=<%=showPrice.getType()%>
-							&price=<%=showPrice.getStandardCost()%>">
-								<div class="button">
-									<button type="button" class="btn btn-default">Add to
-										cart</button>
-								</div>
-						</a>
-							</div>
-
-
-							</div>
-						</td>
-
-					</tr>
-					<tr>
-
-						<%
-										
-										
-										
-										}
-										%>
-
-					</tr>
-				</tbody>
-			</table>
-	</form>
 <div class="abc">
  <marquee width="100%" direction="left" height="100px">
        offers of the day !!!
         </marquee>
-	</div>
-	</div>
-	</div>
-	</div>
+        </div>
+ 
+	 
 
-
-
-
+    
+                       <table>
+		<tbody>
+			<td>
+			<tr>
+			 <c:set var="count" value="1" />
+				<c:forEach items="${offertshirt}" var="offerstee">
+				<td>
+                            <div class="car">
+					<div><img src="${offerstee.image}"></center></div> 
+					
+					<%-- <div><center>${offerstee.productId}</center></div>  --%>
+					<div><center>${offerstee.productName}</center></div> 
+					<div><center>${offerstee.type}</center></div> 
+					<div><center><b>Offer price:Rs:${offerstee.standardCost}</center></b></div> 
+				
+			
+				
+		<center><a href="addtocart?
+		pid=${offerstee.productId}
+		&image=${offerstee.image}
+		&productName=${offerstee.productName}
+		&type=${offerstee.type}
+		&cost=${offerstee.standardCost}"><button type="button"
+				class="btn btn-default">Add to cart</button></a></center>
+	
+					</div>
+	</td>
+					<c:choose>
+						<c:when test="${count==6}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			
+			</c:forEach> 
+			</tr>
+			</td>
+		</tbody>
+	</table>  
+	</form>
+	<div class="qwerty">
+ <marquee width="100%" direction="down" height="400px">
+      <p>Normal<br>&nbsp price<br><del>&nbsp&nbsp$180</del></p>
+        </marquee>
 	</div>
-
+	
+	   <div class="qwertyyy">
+ <marquee width="100%"direction="down" height="400px">
+     <p>Normal<br>&nbspprice<br><del>&nbsp&nbsp$210</del></p>
+        </marquee>
+	</div>
+	
 </body>
 </html>

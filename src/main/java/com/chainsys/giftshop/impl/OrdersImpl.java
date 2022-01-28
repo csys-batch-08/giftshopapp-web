@@ -114,12 +114,17 @@ public class OrdersImpl implements OrdersDao {
 	public List<OrdersPojo> userOrderDetails(OrdersPojo showord) throws ClassNotFoundException, SQLException {
 		Connection con = ConnectionUtil.gbconnection();
 		List<OrdersPojo> orderlist = new ArrayList<OrdersPojo>();
+		System.out.println("hai");
 		String query = " select order_id,trunc(order_date),status from gorders where user_id=?";
+		System.out.println("hai2");
 		PreparedStatement stmt = con.prepareStatement(query);
 		stmt.setInt(1, showord.getUserid());
+		
+		System.out.println(showord.getUserid());
 		// stmt.executeUpdate();
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
+			System.out.println("hai1");
 			OrdersPojo ord1 = new OrdersPojo();
 			ord1.setOrderid(rs.getInt(1));
 			ord1.setOrderdate(rs.getDate(2));

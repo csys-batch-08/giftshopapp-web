@@ -2,7 +2,8 @@
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -31,20 +32,24 @@ body {
  }
 
 table img {
-	width: 250px;
-	height: 250px;
-	border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520;
+	width: 150px;
+	height: 150px;
 }
 
 table {
 	width: 2%;
 	float: left;
 }
-/* #carproduct{
- position:absolute;left:30px;top:-2px;
-} */
+.car {
+	border-style: solid;
+	border-color: goldenrod;
+width: 100%;
+	background-color: white;
+	padding: 20px;
+	border-radius:3px;
+	
+	
+}
 .show{
 
   background-color:rgb(255, 255, 255);
@@ -57,13 +62,11 @@ table {
  
 }
 .total{
-
  position:fixed;left: 1070px;top: 150px; text-align: justify;
             border: 3px solid goldenrod;
             width: 200px;
             background-color: white;
             
-
 }
 .btn-default {
     background: #0099cc;
@@ -214,7 +217,8 @@ position:relative;
 left:-630px;
 }
 th, td {
-  padding: 7px;
+  padding: 15px;
+  
   
 }
 
@@ -252,85 +256,53 @@ th, td {
       
   
 </div>
-	<%
-			double sum1=0;
-			int userid = (int) session.getAttribute("logincustomer");
-			viewcartPojo vcar1 = new viewcartPojo();
-			vcar1.setUserid(userid);
-			viewCartImpl dao = new viewCartImpl();
-			List<viewcartPojo> insertcart = dao.showcart(vcar1);
-		%>
 	<form action="buynow"method="post">
 		<center><h2 class="Products">your cart</h2></center>
-		<div class="recently added list">
-			<table>
-				<tbody>
-					<tr>
-						<%
-						
+		<table>
+		<tbody>
+			<th>
+			<tr>
 
-										int count = 0;
-										for (viewcartPojo showProduct : insertcart) {
-											double sum= showProduct.getStandardcost()*showProduct.getQuantity();
-											 sum1+=sum;
-						%>
-						<td>
-							<table id="carproduct">
-								<tbody>
-									<tr>
-										<img src=<%=showProduct.getImage()%> alt="Show image">
-
-									
-									<br>
-										<div> product name : <%=showProduct.getProductname()%></div>
-									
-										<div>product type : <%=showProduct.getType()%></div>
-										
-										<div>price : Rs.<%=showProduct.getStandardcost()%></div>
-									
-										
-										<div>quantity : <%=showProduct.getQuantity()%></div>
-										
-										<div>purchase amount : <%=sum%></div>
-										
-                     <div class="button1">
-                    <input type="submit" value="Remove from cart">
-                  </div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-						</td>
-						<%
-						count++;
-						if (count == 4) {
-						%>
-					</tr>
-					<tr>
-						<%
-						count = 0;
-						}
-						}
-						%>
-
-					</tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${car}" var="cartproducts">
+				 <c:set var="sum" value="${cartproducts.standardcost*cartproducts.quantity}" />
+	             <c:set var="sum1" value="${sum1+sum}"/>
+											
+				<td>
 				
-				</tbody>
-			</table>
-<div class="total">Total amount Rs: <%=sum1%></div>
 				
-<!-- <input type="button" value="Remove from cart"
-				onclick="window.location='buynow'">  -->
-				 
-				 <div class="button">
+                     <div class="car">
+					<div><img src="${cartproducts.image}"></center></div> 
+					<br>
+					<center>${cartproducts.productname}</center>
+					<center>${cartproducts.type}</center>
+					<center>Rs:${cartproducts.standardcost}</center>
+					<center><b>qty:${cartproducts.quantity}</center></b> 
+					<center><b>Purchase amount:${sum}</center></b> 
+				
+				<br>
+					<td>
+					<c:choose>
+
+						<c:when test="${count==3}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>
+			</th>
+		</tbody>
+	</table>						
+                  <div class="button">
                     <input type="submit" value="Buy now">
-                  </div>									
-
-		</div>
-		</div>
-		</div>
-
-	</form>
+                  </div>				
+</form>
+			<div class="total">Total amount Rs:${sum1}</div>	 	
+	
 </body>
 </html>

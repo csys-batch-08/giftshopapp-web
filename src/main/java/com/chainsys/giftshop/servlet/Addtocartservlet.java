@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.model.viewcartPojo;
+
 @WebServlet("/addtocart")
 public class Addtocartservlet extends HttpServlet {
 
@@ -34,8 +35,15 @@ public class Addtocartservlet extends HttpServlet {
 		vcart.setType(type);
 		vcart.setUserid(userid);
 		vcart.setStandardcost(price);
-		 session.setAttribute("cartitems1", vcart);
-		
+		session.setAttribute("cartitmes", vcart);
+		/*
+		 * session.setAttribute("productid",vcart.getProductid()); session.setAttribute(
+		 * "productimage",vcart.getImage()); session.setAttribute(
+		 * "productname",vcart.getProductname()); session.setAttribute(
+		 * "producttype",vcart.getType()); session.setAttribute(
+		 * "productprice",vcart.getStandardcost()); System.out.println(vcart);
+		 * System.out.println(session.getAttribute("productimage"));
+		 */
 		/* req.setAttribute("cartitems1", session); */
 		RequestDispatcher rd=req.getRequestDispatcher("addcart.jsp");
 		rd.forward(req, resp);

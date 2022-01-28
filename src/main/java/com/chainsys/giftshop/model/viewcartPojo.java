@@ -123,5 +123,9 @@ public viewcartPojo(String image, String productname, String type, double standa
 	this.productid = productid;
 	this.totalprice = totalprice;
 }
+public viewcartPojo(String image2, String productname2, String type2, Double standardcost2, int qty, int userid2,
+		int productid2) {
+	// TODO Auto-generated constructor stub
+}
 
 }

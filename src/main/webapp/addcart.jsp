@@ -166,21 +166,18 @@ width: 20%;
       </div>
   
 </div>
-
-
-			<form action="addcart" method="post">	 
+			<form action="viewcart" method="get">	 
 				
-                          <center> <div class="car">
-					
-					<img src="${cartitems1.image}">
+                      <center> <div class="car">
+					<img src="${sessionScope.cartitmes.getImage()}">
 					<br>
-					Id:${cartitems1.productid}
+					Id:${sessionScope.cartitmes.getProductid()}
 					<br>
-					Name:${cartitems1.productname}
+					Name:${sessionScope.cartitmes.getProductname()}
 					<br> 
-					Type:${cartitems1.type}
+					Type:${sessionScope.cartitmes.getType()}
 					<br>
-					<b>Rs:${cartitems1.standardcost}</b>
+					<b>Rs:${sessionScope.cartitmes.getStandardcost()}</b>
 					<br>
 				
 				
