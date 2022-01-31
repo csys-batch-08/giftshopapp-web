@@ -154,9 +154,9 @@ th, td {
 	
 }
 
-.back {
-	position: fixed;
-	left: 200px;
+.back{
+position:absolute;
+left:50px;
 }
 
 .button {
@@ -167,30 +167,22 @@ th, td {
 </style>
 </head>
 <body>
-	<div class="navbar">
-		<a href="index.jsp">Logout</a> <a href="userallproducts.jsp">My
-			orders</a> <a href="cart.jsp">My cart</a>
-
-
+		<div class="navbar">
+		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
+			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				categories <i class="fa fa-caret-down"></i>
 			</button>
-
 			<div class="dropdown-content">
-				<a href="mensshowproducts.jsp">mens</a> <a href="#">womens</a> <a
-					href="#">kids</a> <a href="#">occasions</a>
-
+				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
+				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
 			</div>
-
 		</div>
-
-		<a href="userallproducts.jsp">All collections</a> <a
-			href="homepage.jsp">Home</a>
+		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
 		<div class="back">
-			<a href="gorders.jsp">Back</a>
+			<a href="homepage.jsp">Back</a>
 		</div>
-
 	</div>
 	
 	<form action="cancel"method="get">
@@ -214,7 +206,13 @@ th, td {
 							<br>
 							<center>${orddetails.productname}</center>
 							<center>Quantity:${orddetails.quantityordered}</center>
-							<center>Size:${orddetails.size}</center>
+							<center><b><c:choose>  
+    <c:when test="${orddetails.size =='ra'}">    
+    </c:when>  
+    <c:otherwise>  
+      ${orddetails.size} 
+    </c:otherwise>  
+</c:choose></center></b>
 							<center>Rs:${orddetails.totalprice}</center>
 							<center><b>Purchase amount:${orddetails.totalprice*orddetails.quantityordered}</center>
 							</b> <br>

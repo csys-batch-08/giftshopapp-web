@@ -155,10 +155,10 @@ body {
 
 
 	<div class="navbar">
-		<a href="offersflip.jsp">$ Offers of the day $</a> <a
+		<a href="offersflip.jsp"><u>$ Offers of the day $</u></a> <a
 			href="index.jsp">Logout</a> 
 			<a href="orders">My orders</a> 
-			<a href="cart.jsp">My cart</a>
+			<a href="cart">My cart</a>
 
 
 		<div class="dropdown">
@@ -167,10 +167,10 @@ body {
 			</button>
 
 			<div class="dropdown-content">
-				<a href="mensshowproducts.jsp">mens</a> 
-				<a href="womensshowproducts.jsp">womens</a> 
-				<a href="kidsshowproducts.jsp">kids</a> 
-				<a href="occasionsshowproducts.jsp">occasions</a>
+				<a href="mensproducts">mens</a> 
+				<a href="womensshowproducts">womens</a> 
+				<a href="kidsshowproducts">kids</a> 
+				<a href="occasionsshowproducts">occasions</a>
 			</div>
 
 		</div>

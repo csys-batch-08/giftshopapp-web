@@ -115,7 +115,7 @@ a:hover {
 
 	
  <div class="container">
-        <!-- <div class="title">Insert products</div> -->
+        
     <form action="insert" method="post">
         <div class="user-details">
             <div class="input-box">

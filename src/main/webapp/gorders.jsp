@@ -123,32 +123,31 @@ th, td {
 .dropdown:hover .dropdown-content {
 	display: block;
 }
+.back{
+position:absolute;
+left:50px;
+}
 </style>
 </head>
 <body>
-	<div class="navbar">
-		<a href="index.jsp">Logout</a> <a href="userallproducts.jsp">My
-			orders</a> <a href="cart.jsp">My cart</a>
-
-
+		<div class="navbar">
+		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
+			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				categories <i class="fa fa-caret-down"></i>
 			</button>
-
 			<div class="dropdown-content">
-				<a href="mensshowproducts.jsp">mens</a>
-				 <a href="womensshowproducts.jsp">womens</a> 
-				 <a href="kidsshowproducts.jsp">kids</a> <a href="#">occasions</a>
-					
-
+				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
+				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
 			</div>
-
 		</div>
-
-		<a href="userallproducts.jsp">All collections</a> <a
-			href="homepage.jsp">Home</a>
+		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
+		<div class="back">
+			<a href="homepage.jsp">Back</a>
+		</div>
 	</div>
+
 	<form action="orderdetails"method="post">
 	    <table>
 		<tbody>

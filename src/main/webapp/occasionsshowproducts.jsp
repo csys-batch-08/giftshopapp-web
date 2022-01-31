@@ -1,7 +1,8 @@
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -39,9 +40,7 @@ body {
  table img {
 	width: 150px;
 	height: 150px;
-	border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520;
+	
 } 
 .button1 {
 	margin-top: 180px;
@@ -125,95 +124,156 @@ body {
 
 
 th, td {
-  padding: 1px;
-  
+
+padding:55px;
+    padding-top: 10px;
+    
+}
+.car {
+
+	border-style: solid;
+	border-color: goldenrod;
+     width: 100%;
+	background-color: white;
+	margin-top:-60px;
+	margin-bottom: 70px;
+	padding: 20px;
+	border-radius:3px;
+	
+	
+	
+}
+.button1 {
+	position: absolute;
+	top:280px;
+	left:230px;
+}
+.button2 {
+	position: absolute;
+	top:465px;
+	left:430px;
+}
+.button3 {
+	position: absolute;
+	top:464px;
+	left:765px;
+}
+.button4 {
+	position: absolute;
+	top:465px;
+	left:1120px;
+}
+.button5 {
+	position: absolute;
+	top:845px;
+	left:1120px;
+}
+
+.button6 {
+	position: absolute;
+	top:853px;
+	left:765px;
+}
+.button7 {
+	position: absolute;
+	top:848px;
+	left:430px;
+}
+.button8 {
+	position: absolute;
+	top:854px;
+	left:100px;
+}
+.back{
+position:absolute;
+left:50px;
 }
 </style>
 
 </head>
 <body>
-	<div class="navbar">
-		<a href="index.jsp">Logout</a> <a href="showorders.jsp">My orders</a>
-		<a href="cart.jsp">My cart</a>
-
-
+		<div class="navbar">
+		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
+			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				categories <i class="fa fa-caret-down"></i>
 			</button>
-
 			<div class="dropdown-content">
-				<a href="mensshowproducts.jsp">mens</a>
-				 <a href="womensshowproducts.jsp">womens</a> <a
-					href="kidsshowproducts.jsp">kids</a> <a href="#">occasions</a>
-
+				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
+				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
 			</div>
-
 		</div>
-
-		<a href="userallproducts.jsp">All collections</a> <a
-			href="homepage.jsp">Home</a>
-
+		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
+		<div class="back">
+			<a href="homepage.jsp">Back</a>
+		</div>
 	</div>
-
-
-	
-	<form>
-		<%
-		
-
-		ProductsImpl dao=new ProductsImpl();
-		List<ProductPojo> mens;
-		mens=dao.occasions();
-		%>
-
-	</form>
-	<h2 class="Products">occasions</h2>
-	<div class="recently added list">
-		<table>
-			<tbody>
-				<tr>
-					<%
+<center><h2 class="Products">occasions</h2></center>
+<table>
+		<tbody>
+			<td>
+			<tr>
+				<c:set var="count" value="1" />
+				<c:forEach items="${occasions}" var="occasionsproducts">
+				<td>
+                            <div class="car">
+					<center><img src="${occasionsproducts.image}"></center>
+					<br>
+					<center>${occasionsproducts.productName}</center>
+				<center>${occasionsproducts.description}</center>
+					<center><b>Starts from Rs:${occasionsproducts.standardCost}</b></center>
+					<br>
+					</div>
 					
-					int count=0;
-					                for(ProductPojo showProduct: mens){
-					%>
-					<td>
-						<table id="carproduct">
-							<tbody>
-									<td><img src=<%=showProduct.getImage() %> alt="Show image"></td>
-									<br>
-									<br>
-									<td class="car"><span>product name : <%=showProduct.getProductName()%>
-									</span><br> <span>description : <%=showProduct.getDescription()%>
-									</span><br> <span>price : Rs.<%=showProduct.getStandardCost() %>
-									</span><br> <span>category: <%=showProduct.getCategory()%></span><br>
-
-										<!-- <a href="viewtshirt.jsp?"><button>view product</button></a> -->
-
-
-										<div class="button1">
-											<a href="viewtshirt.jsp"><button type="button"
-													class="btn btn-default">View product</button> </a>
-										</div></td>
-								</tr>
-							</tbody>
-						</table>
-
-					</td>
-					<% count ++;
-                       if(count==4){ %>
-				</tr>
-				<tr>
-					<%count=0; }}%>
-
-				</tr>
-			</tbody>
-		</table>
-
-	</div>
-	</div>
-	</div>
-
+	</td>
+					<c:choose>
+						<c:when test="${count==4}">
+			</tr>
+			<tr>
+				<c:set var="count" value="1" />
+			</c:when>
+			<c:otherwise>
+				<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			
+			</c:forEach>
+			</tr>
+			</td>
+		</tbody>
+	</table>  
+	<div class="button1">
+					<a href="valentinesday"><button type="button"
+				class="btn btn-default">View product</button> </a>
+				</div>
+				<div class="button2">
+					<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+				</div>
+				<div class="button3">
+					<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+				</div>
+			<div class="button4">
+					<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+				</div>
+				<div class="button5">
+					<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+				</div>
+				<div class="button6">
+					<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+				</div>
+				<div class="button7">
+					<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+				</div>
+				<div class="button8">
+					<a href="viewtshirt.jsp"><button type="button"
+				class="btn btn-default">View product</button> </a>
+				</div>
 </body>
 </html>

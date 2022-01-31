@@ -12,16 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.giftshop.impl.ProductsImpl;
 import com.chainsys.giftshop.model.ProductPojo;
+
 @WebServlet("/adminviewmenstshirt")
 public class Adminviewmenstshirtservlet extends HttpServlet {
-@Override
-protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	// TODO Auto-generated method stub
-     ProductsImpl pi=new ProductsImpl();
-List<ProductPojo>pp=pi.adminviewtshirt();
-req.setAttribute("adminviewmenstshirt", pp);
-RequestDispatcher rd=req.getRequestDispatcher("adminviewtshirts.jsp");
-rd.forward(req, resp);
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		ProductsImpl pi = new ProductsImpl();
+		List<ProductPojo> pp = pi.adminviewtshirt();
+		req.setAttribute("adminviewmenstshirt", pp);
+		RequestDispatcher rd = req.getRequestDispatcher("adminviewtshirts.jsp");
+		rd.forward(req, resp);
 
-}
+	}
 }

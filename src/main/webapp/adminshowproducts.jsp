@@ -274,7 +274,7 @@ left:-1000px;
 <a href="adminviewmobilecase"><button>view product</button></a> 
 		</div> 
 		<div class="button4">
-<a href="adminviewmobilecase.jsp"><button>view product</button></a> 
+<a href="adminviewcaricature"><button>view product</button></a> 
 		</div> 
 		<div class="button5">
 <a href="adminviewtshirts.jsp"><button>view product</button></a> 

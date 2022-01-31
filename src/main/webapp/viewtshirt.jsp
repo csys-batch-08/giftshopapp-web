@@ -145,34 +145,23 @@ width: 100%;
 
 </head>
 <body>
-<div class="navbar">
-<a href="index.jsp">Logout</a>
-<a href="gorders.jsp">My orders</a>
-<a href="cart.jsp">My cart</a>
-
-
-  <div class="dropdown">
-    <button class="dropbtn">categories 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    
-    <div class="dropdown-content">
-      <a href="mensshowproducts.jsp">mens</a>
-      <a href="#">womens</a>
-      <a href="#">kids</a>
-      <a href="#">occasions</a>
-      
-    </div>
- 
-  </div> 
-        
-    <a href="userallproducts.jsp">All collections</a>
-      <a href="homepage.jsp">Home</a>
-       <div class="back">
-      <a href="userallproducts.jsp">Back</a>
-      </div>
-  
-</div>
+	<div class="navbar">
+		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
+			href="cart">My cart</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				categories <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
+				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
+			</div>
+		</div>
+		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
+		<div class="back">
+			<a href="homepage.jsp">Back</a>
+		</div>
+	</div>
                          
                        <table>
 		<tbody>
@@ -217,17 +206,7 @@ width: 100%;
 			</td>
 		</tbody>
 	</table>  
-                         
-                         <%-- <a href="addcart.jsp?
-							&pid=<%=showPrice.getProductId()%>
-							&pname=<%=showPrice.getProductName()%>
-							&img=<%=showPrice.getImage()%>
-							&type=<%=showPrice.getType()%>
-							&price=<%=showPrice.getStandardCost()%>">
-					        <div class="button">
-							<button type="button" class="btn btn-default">Add to cart</button>
-							</div>
-						     </a> --%>
+                     
 							
 </body>
 </html>

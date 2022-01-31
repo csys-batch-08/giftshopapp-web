@@ -12,22 +12,22 @@ import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.impl.OrdersImpl;
 import com.chainsys.giftshop.model.OrdersPojo;
+
 @WebServlet("/cancel")
 public class orderdeleteservlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("hai");
-		 HttpSession session=req.getSession();	 
-	  	int orderid=Integer.parseInt(session.getAttribute("orderid").toString());
-	      System.out.println(orderid);
-	      boolean flag=false;
-	 	 OrdersPojo vcar1 =new OrdersPojo();
-	 	 vcar1.setOrderid(orderid);
-	 	 OrdersImpl obj2 = new OrdersImpl();
-	 	 try {
-			flag=obj2.cancelorder(vcar1);
+
+		HttpSession session = req.getSession();
+		int orderid = Integer.parseInt(session.getAttribute("orderid").toString());
+		boolean flag = false;
+		OrdersPojo vcar1 = new OrdersPojo();
+		vcar1.setOrderid(orderid);
+		OrdersImpl obj2 = new OrdersImpl();
+		try {
+			flag = obj2.cancelorder(vcar1);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,11 +35,8 @@ public class orderdeleteservlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	 	 if(flag)
-		 {
-		 resp.sendRedirect("orderdelete.jsp");
-		 }
-	 	
-	 	System.out.println("welcome");
+		if (flag) {
+			resp.sendRedirect("orderdelete.jsp");
+		}
 	}
 }

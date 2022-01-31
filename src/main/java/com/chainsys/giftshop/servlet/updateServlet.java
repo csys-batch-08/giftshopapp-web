@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.giftshop.impl.ProductsImpl;
 import com.chainsys.giftshop.model.ProductPojo;
+
 @WebServlet("/update")
 public class updateServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int productid=Integer.parseInt(req.getParameter("productid"));
-		double price=Double.parseDouble(req.getParameter("price"));
-		int qunatity=Integer.parseInt(req.getParameter("quantity"));
-		ProductPojo pr=new ProductPojo(productid, price, qunatity);
-		ProductsImpl product=new ProductsImpl();
+		int productid = Integer.parseInt(req.getParameter("productid"));
+		double price = Double.parseDouble(req.getParameter("price"));
+		int qunatity = Integer.parseInt(req.getParameter("quantity"));
+		ProductPojo pr = new ProductPojo(productid, price, qunatity);
+		ProductsImpl product = new ProductsImpl();
 		try {
 			product.update(pr);
 			resp.sendRedirect("adminlogin.jsp");
@@ -32,8 +33,7 @@ public class updateServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
-	
+
 }

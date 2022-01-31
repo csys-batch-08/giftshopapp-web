@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add to cart</title>
  <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -110,14 +110,6 @@ img {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-/*  #logo {
-	
-	left: 100px;
-	top: -2px;
-	position: relative;
-} */
-
-
 .back{
 position:absolute;
 left:50px;
@@ -138,46 +130,36 @@ width: 20%;
 </style>
 </head>
 <body>
-<div class="navbar">
-<a href="index.jsp">Logout</a>
-<a href="userallproducts.jsp">My orders</a>
-<a href="cart.jsp">My cart</a>
+	<div class="navbar">
+		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
+			href="cart">My cart</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				categories <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
+				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
+			</div>
+		</div>
+		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
+		<div class="back">
+			<a href="homepage.jsp">Back</a>
+		</div>
+	</div>
 
-
-  <div class="dropdown">
-    <button class="dropbtn">categories 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    
-    <div class="dropdown-content">
-      <a href="mensshowproducts.jsp">mens</a>
-      <a href="#">womens</a>
-      <a href="#">kids</a>
-      <a href="#">occasions</a>
-      
-    </div>
- 
-  </div> 
-        
-    <a href="userallproducts.jsp">All collections</a>
-      <a href="homepage.jsp">Home</a>
-       <div class="back">
-      <a href="viewtshirt.jsp">Back</a>
-      </div>
-  
-</div>
 			<form action="viewcart" method="get">	 
 				
                       <center> <div class="car">
-					<img src="${sessionScope.cartitmes.getImage()}">
+					<img src="${sessionScope.cartitems.getImage()}">
 					<br>
-					Id:${sessionScope.cartitmes.getProductid()}
+					Id:${sessionScope.cartitems.getProductid()}
 					<br>
-					Name:${sessionScope.cartitmes.getProductname()}
+					Name:${sessionScope.cartitems.getProductname()}
 					<br> 
-					Type:${sessionScope.cartitmes.getType()}
+					Type:${sessionScope.cartitems.getType()}
 					<br>
-					<b>Rs:${sessionScope.cartitmes.getStandardcost()}</b>
+					<b>Rs:${sessionScope.cartitems.getStandardcost()}</b>
 					<br>
 				
 				

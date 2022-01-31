@@ -149,10 +149,6 @@ form .user-details .input-box{
               <div class="button">
                 <input type="submit" value="Login">
               </div>
-              <%String erroruserid=(String)session.getAttribute("erroruserid");
-     if(erroruserid!=null){ %>
-		<p id="errorcontent"><%=erroruserid %></p>
-		<% session.removeAttribute("erroruserid");} %>
             </form>
           </div>
         </div>

@@ -137,13 +137,13 @@ padding: 30px;
 	</form>
 	<div class="qwerty">
  <marquee width="100%" direction="down" height="400px">
-      <p>Normal<br>&nbsp price<br><del>&nbsp&nbsp$180</del></p>
+      <p>Normal<br>&nbsp price<br><del>&nbsp&nbsp$1450</del></p>
         </marquee>
 	</div>
 	
 	   <div class="qwertyyy">
  <marquee width="100%"direction="down" height="400px">
-     <p>Normal<br>&nbspprice<br><del>&nbsp&nbsp$210</del></p>
+     <p>Normal<br>&nbspprice<br><del>&nbsp&nbsp$810</del></p>
         </marquee>
 	</div>
 	

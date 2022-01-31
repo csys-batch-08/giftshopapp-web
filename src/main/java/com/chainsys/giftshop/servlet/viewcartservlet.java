@@ -13,33 +13,46 @@ import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.impl.viewCartImpl;
 import com.chainsys.giftshop.model.viewcartPojo;
+
 @WebServlet("/viewcart")
 public class viewcartservlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+        int flag=0;
+		HttpSession session = req.getSession();
+		viewcartPojo vcart = (viewcartPojo) session.getAttribute("cartitems");
+		viewCartImpl dao = new viewCartImpl();
+		int productid = vcart.getProductid();
+		String image = vcart.getImage();
+		String productname = vcart.getProductname();
+		String type = vcart.getType();
+		Double standardcost = vcart.getStandardcost();
+		String size = req.getParameter("sss");
+          if(size==null) {
+			size="ra";
+		  }
+		int qty = Integer.parseInt(req.getParameter("qqq"));
+		viewcartPojo vcart1 = new viewcartPojo();
+		int userid = (int) session.getAttribute("logincustomer");
 		
-		HttpSession session=req.getSession();
-		viewcartPojo vcart = (viewcartPojo) session.getAttribute("cartitmes");
-		  int productid = vcart.getProductid();
-		  String image = vcart.getImage(); 
-		  String productname = vcart.getProductname();
-		  String type =vcart.getType(); 
-		  Double standardcost =vcart.getStandardcost();
-		 String size=req.getParameter("sss");
-		 System.out.println(size);
-		 int qty=Integer.parseInt(req.getParameter("qqq"));
-		 System.out.println(qty);
-		 
-	      viewcartPojo vcar1=new viewcartPojo();
-	    		  int userid = (int) session.getAttribute("logincustomer");
-	       vcar1.setUserid(userid);
-	      vcar1.setSize(size);
-	      vcar1.setQuantity(qty);
-	      viewcartPojo vcar=new viewcartPojo(image,productname,type,standardcost,size,qty,userid,productid);
-	      viewCartImpl dao=new viewCartImpl();
-	      try {
-				dao.insertview(vcar);
+		vcart1.setUserid(userid);
+		vcart1.setProductid(productid);
+		vcart1.setSize(size);
+		try {
+		     flag=dao.duplicatecart(vcart1);
+			System.out.println(flag);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}if(flag>0){
+			int sum= flag+qty;
+			viewcartPojo vcar = new viewcartPojo(image, productname, type, standardcost, size, sum, userid, productid);
+			try {
+				dao.updatecart(vcar);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,8 +61,18 @@ public class viewcartservlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			resp.sendRedirect("cart");	
-			/* RequestDispatcher rd=req.getRequestDispatcher("cart"); */
-			/* rd.forward(req,resp); */
-			
 		}
+		else {
+		viewcartPojo vcar = new viewcartPojo(image, productname, type, standardcost, size, qty, userid, productid);
+		try {
+			dao.insertview(vcar);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		resp.sendRedirect("cart");
+	}}
 }

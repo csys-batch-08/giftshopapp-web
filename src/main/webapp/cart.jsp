@@ -174,36 +174,24 @@ width: 100%;
 </head>
 <body>
 
-<div class="navbar">
-<a href="index.jsp">Logout</a>
-<a href="gorders.jsp">My orders</a>
-<a href="cart.jsp">My cart</a>
+	<div class="navbar">
+		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
+			href="cart">My cart</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				categories <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
+				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
+			</div>
+		</div>
+		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
+		<div class="back">
+			<a href="homepage.jsp">Back</a>
+		</div>
+	</div>
 
-
-  <div class="dropdown">
-    <button class="dropbtn">categories 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    
-    <div class="dropdown-content">
-      <a href="mensshowproducts.jsp">mens</a>
-      <a href="womensshowproducts.jsp">womens</a>
-      <a href="kidsshowproducts.jsp">kids</a>
-      <a href="occasionsshowproducts.jsp">occasions</a>
-      
-    </div>
- 
-  </div> 
-        
-    <a href="userallproducts.jsp">All collections</a>
-      <a href="homepage.jsp">Home</a>
-      
-      <div class="back">
-      <a href="addcart.jsp">Back</a>
-      </div>
-      
-  
-</div>
 		<form action="buynow"method="post">
 		<center><h2 class="Products">your cart</h2></center>
 		
@@ -226,11 +214,20 @@ width: 100%;
 					<center>${cartproducts.productname}</center>
 					<center>${cartproducts.type}</center>
 					<center>Rs:${cartproducts.standardcost}</center>
-					<center><b>Size:${cartproducts.size}</center></b>
+					<center><b><c:choose>  
+    <c:when test="${cartproducts.size =='ra'}">    
+    </c:when>  
+    <c:otherwise>  
+      Size:${cartproducts.size} 
+    </c:otherwise>  
+</c:choose></center></b>
 					<center><b>qty:${cartproducts.quantity}</center></b> 
 					<center><b>Purchase amount:${sum}</center></b> 
 				
 				<br>
+				                 <center><input type="button" value="remove from cart"
+									onclick="window.location='removecart?pid=${cartproducts.productid}&size=${cartproducts.size}'"></center>
+									
 					<td>
 					<c:choose>
 

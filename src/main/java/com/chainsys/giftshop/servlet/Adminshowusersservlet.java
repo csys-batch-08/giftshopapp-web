@@ -12,16 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chainsys.giftshop.impl.UserImpl;
 import com.chainsys.giftshop.model.UserPojo;
+
 @WebServlet("/showusers")
 public class Adminshowusersservlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UserImpl ui=new UserImpl();
-		List<UserPojo>up=ui.showusers();
+		UserImpl ui = new UserImpl();
+		List<UserPojo> up = ui.showusers();
 		req.setAttribute("users", up);
-		RequestDispatcher rd=req.getRequestDispatcher("showusers.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("showusers.jsp");
 		rd.forward(req, resp);
 	}
 }

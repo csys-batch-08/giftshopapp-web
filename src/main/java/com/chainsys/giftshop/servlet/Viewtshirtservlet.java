@@ -15,15 +15,14 @@ import com.chainsys.giftshop.model.ProductPojo;
 
 @WebServlet("/viewtshirt")
 public class Viewtshirtservlet extends HttpServlet {
-@Override
-protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	// TODO Auto-generated method stub
-	ProductsImpl pi=new ProductsImpl();
-	List<ProductPojo>pp=pi.viewmenstshirt();
-	req.setAttribute("viewtshirt", pp);
-	RequestDispatcher rd=req.getRequestDispatcher("addcart.jsp");
-	rd.forward(req, resp);
-	
-	
-}
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		ProductsImpl pi = new ProductsImpl();
+		List<ProductPojo> pp = pi.viewmenstshirt();
+		req.setAttribute("viewtshirt", pp);
+		RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
+		rd.forward(req, resp);
+
+	}
 }
