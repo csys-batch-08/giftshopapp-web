@@ -183,7 +183,7 @@ width: 100%;
 <td>
 					<div class="car">
 						<div>User id:${showusers.userid}</div> 
-						<%-- <div>${showusers.Username}</div> --%>
+						
 						<div>Email:${showusers.email}</div>
 						<div>Mobile number:${showusers.mobilenumber}</div>
 						<div>Address:${showusers.address}</div>

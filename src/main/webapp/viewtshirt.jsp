@@ -122,7 +122,11 @@ table img {
 
 
 th, td {
-  padding: 15px;
+padding-top: 5px;
+padding-right: 50px;
+padding-bottom:30px;
+padding-left:27px;
+ 
   
   
 }
@@ -173,7 +177,7 @@ width: 100%;
                             <div class="car">
 					<div><img src="${menstshirts.image}"></center></div> 
 					<br>
-					<div><center>${menstshirts.productId}</center></div>
+					
 					<div><center>${menstshirts.productName}</center></div> 
 					<div><center>${menstshirts.type}</center></div> 
 					<div><center><b>Rs:${menstshirts.standardCost}</center></b></div> 
@@ -191,7 +195,7 @@ width: 100%;
 					</div>
 	</td>
 					<c:choose>
-						<c:when test="${count==6}">
+						<c:when test="${count==5}">
 			</tr>
 			<tr>
 				<c:set var="count" value="1" />

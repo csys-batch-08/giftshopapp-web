@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.chainsys.giftshop.impl.OrdersImpl"%>
 <%@page import="com.chainsys.giftshop.model.OrdersPojo"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -155,11 +156,13 @@ left:50px;
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${showorders}" var="orders">
+				<fmt:parseDate pattern="yyyy-MM-dd" value="${orders.orderdate}"
+				var="parsedDate" />
 				<td>
                             <div class="car">
 					
 					<center>Order id:${orders.orderid}</center>
-				<center>Order date:${orders.orderdate}</center>
+				<center>Order date:<fmt:formatDate pattern="dd-MM-yyyy" value="${parsedDate}" /></center>
 					<center>Status:${orders.status}</center>
 					<br>
 	<center><input type="button" value="view details"

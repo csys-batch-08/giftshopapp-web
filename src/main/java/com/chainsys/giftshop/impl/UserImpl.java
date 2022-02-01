@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.User;
-
 import com.chainsys.giftshop.dao.UserDao;
 import com.chainsys.giftshop.model.ProductPojo;
 import com.chainsys.giftshop.model.UserPojo;

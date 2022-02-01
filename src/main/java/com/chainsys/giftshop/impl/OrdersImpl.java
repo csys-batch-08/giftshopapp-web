@@ -4,43 +4,50 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.chainsys.giftshop.dao.OrdersDao;
 import com.chainsys.giftshop.model.OrdersPojo;
-import com.chainsys.giftshop.model.ProductPojo;
-import com.chainsys.giftshop.model.viewcartPojo;
 import com.chainsys.giftshop.util.ConnectionUtil;
 
 public class OrdersImpl implements OrdersDao {
 
-	public void orderinsert(int userid, String productname, int quantity, double price)
-			throws ClassNotFoundException, SQLException {
+	public void orderinsert(int userid, String productname, int quantity, double price) throws SQLException {
 		String insertQuery = "insert into gorders(user_id,product_name,quantity,price) values(?,?,?,?)";
-		Connection con = ConnectionUtil.gbconnection();
-		PreparedStatement pstmt = con.prepareStatement(insertQuery);
-		pstmt.setInt(1, userid);
-		pstmt.setString(2, productname);
-		pstmt.setInt(3, quantity);
-		pstmt.setDouble(4, price);
-		int i = pstmt.executeUpdate();
-		pstmt.executeUpdate("commit");
-		OrdersImpl addproduct = new OrdersImpl();
-		pstmt.close();
-		con.close();
+		PreparedStatement pstmt =null;
+		Connection con =null;
+		try {
+			con= ConnectionUtil.gbconnection();
+			pstmt= con.prepareStatement(insertQuery);
+			pstmt.setInt(1, userid);
+			pstmt.setString(2, productname);
+			pstmt.setInt(3, quantity);
+			pstmt.setDouble(4, price);
+			pstmt.executeUpdate();
+			pstmt.executeUpdate("commit");
+		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}if(con!=null){
+				con.close();
+			}
+		}
 	}
 
-	public ResultSet showorders(int userid) throws Exception {
-		String prod = "select user_id,product_name,p_type,order_id,order_date,p_size,total_price,quantity,status from gorders where user_id in ?";
+	   public ResultSet showorders(int userid) throws Exception {
+		String prod ="select user_id,product_name,p_type,order_id,order_date,p_size,total_price,quantity,status from gorders where user_id in ?";
 		Connection con;
+		PreparedStatement pstmt =null;
 		con = ConnectionUtil.gbconnection();
-		PreparedStatement stmt = con.prepareStatement(prod);
-		stmt.setInt(1, userid);
-		ResultSet rs = stmt.executeQuery();
+		pstmt= con.prepareStatement(prod);
+		pstmt.setInt(1, userid);
+		ResultSet rs = pstmt.executeQuery();
 		return rs;
-
 	}
 
 	public void insert(OrdersPojo product1) throws ClassNotFoundException, SQLException {
@@ -53,7 +60,7 @@ public class OrdersImpl implements OrdersDao {
 		pstmt.setDouble(4, product1.getTotalprice());
 		pstmt.setInt(5, product1.getQuantiy());
 		pstmt.setString(6, product1.getStatus());
-		int i = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 		pstmt.executeUpdate("commit");
 		pstmt.close();
 		con.close();
@@ -66,9 +73,8 @@ public class OrdersImpl implements OrdersDao {
 		Connection con = ConnectionUtil.gbconnection();
 		PreparedStatement pstmt = con.prepareStatement(insertQuery);
 		pstmt.setInt(1, order.getUserid());
-		int i = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 		pstmt.executeUpdate("commit");
-		OrdersImpl addproduct = new OrdersImpl();
 		pstmt.close();
 		con.close();
 	}
@@ -79,7 +85,7 @@ public class OrdersImpl implements OrdersDao {
 		Connection con = ConnectionUtil.gbconnection();
 		PreparedStatement pstmt = con.prepareStatement(insertQuery);
 		pstmt.setInt(1, order.getUserid());
-		int i = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
 			orderid = rs.getInt(1);
@@ -99,13 +105,13 @@ public class OrdersImpl implements OrdersDao {
 		pstmt.setInt(4, order1.getUserid());
 		pstmt.setInt(5, order1.getProductid());
 		pstmt.setString(6, order1.getProdutsize());
-		int i = pstmt.executeUpdate();
+		pstmt.executeUpdate();
 		pstmt.executeUpdate("commit");
 	}
 
 	public List<OrdersPojo> userOrderDetails(OrdersPojo showord) throws ClassNotFoundException, SQLException {
 		Connection con = ConnectionUtil.gbconnection();
-		List<OrdersPojo> orderlist = new ArrayList<OrdersPojo>();
+		List<OrdersPojo> orderlist = new ArrayList<>();
 		String query = " select order_id,trunc(order_date),status from gorders where user_id=?";
 		PreparedStatement stmt = con.prepareStatement(query);
 		stmt.setInt(1, showord.getUserid());
@@ -125,8 +131,7 @@ public class OrdersImpl implements OrdersDao {
 		String delcart = "update gorders set status='order cancelled' where order_id=?";
 		PreparedStatement pstmt = con.prepareStatement(delcart);
 		pstmt.setInt(1, vcar2.getOrderid());
-		int i = pstmt.executeUpdate();
-
+		pstmt.executeUpdate();
 		return true;
 
 	}
