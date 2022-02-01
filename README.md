@@ -1,11 +1,9 @@
 # giftshopapp-web
 
-Online giftshop
+#### Objective
+*purchase* customize gifts online
 
-Objective:
-purchase customize gifts online
-
-Features :
+### Features :
 
 1)Register 
 
@@ -35,7 +33,7 @@ Features :
 
 14)offers for users
 
-Admin :
+## Admin :
 
 Admin Email: vel@gmail.com
 Password: velu@1234
@@ -50,7 +48,7 @@ Password: velu@1234
 
 5)Admin Can View All users
 
-User:
+## User:
 
 UserEmail: karthi@gmail.com
 Password : karthi@6477
