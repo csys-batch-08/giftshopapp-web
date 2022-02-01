@@ -1,9 +1,9 @@
 # giftshopapp-web
 
-#### Objective
-*purchase* customize gifts online
+## Objective
+*purchase customize gifts online*
 
-### Features :
+## Features :
 
 1)Register 
 
