@@ -6,7 +6,7 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>All products</title>
@@ -204,32 +204,14 @@ table{
 	top: 770px;
 	left: 1195px;
 } 
-.back{
-position:relative;
-left:-1000px;
-} 
+
 </style>
 </head>
 <body>
 <div class="navbar">
 		<a href="index.jsp">Logout</a> 
-		<div class="dropdown">
-			<button class="dropbtn">
-				actions <i class="fa fa-caret-down"></i>
-			</button>
+		<a href="adminlogin.jsp">Home</a> 
 
-			<div class="dropdown-content">
-				<a href="insertproduct.jsp">Insert</a>
-				 <a href="update.jsp">Update</a> 
-				 <a href="delete.jsp">Delete</a> 
-				  <a href="showusers.jsp">Users</a>
-			</div>
-
-		</div>
-		
- <div class="back">
-      <a href="adminlogin.jsp">Back</a>
-      </div>
 	</div>
 
  <center><h2 class="Products">All products</h2></center>

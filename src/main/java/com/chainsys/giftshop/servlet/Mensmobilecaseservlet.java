@@ -10,15 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.giftshop.impl.ProductsImpl;
+import com.chainsys.giftshop.impl.ProductsDaoImpl;
 import com.chainsys.giftshop.model.ProductPojo;
 
 @WebServlet("/mensmobilecase")
 public class Mensmobilecaseservlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ProductsImpl pi = new ProductsImpl();
+		ProductsDaoImpl pi = new ProductsDaoImpl();
 		List<ProductPojo> pp = pi.mobilecase();
 		req.setAttribute("mensmobilecase", pp);
 		RequestDispatcher rd = req.getRequestDispatcher("mensmobilecase.jsp");

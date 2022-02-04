@@ -7,11 +7,11 @@ import com.chainsys.giftshop.model.viewcartPojo;
 
 public interface CartDao {
 
-	public void insertview(viewcartPojo vcar) throws ClassNotFoundException, SQLException;
+	public void insertview(viewcartPojo vcar);
 
-	public List<viewcartPojo> insertcart1(viewcartPojo vcar) throws ClassNotFoundException, SQLException;
+	public List<viewcartPojo> insertcart1(viewcartPojo vcar);
 
-	public List<viewcartPojo> showcart(viewcartPojo vcar1) throws ClassNotFoundException, SQLException;
+	public List<viewcartPojo> showcart(viewcartPojo vcar1);
 
 	public List<viewcartPojo> showcart();
 

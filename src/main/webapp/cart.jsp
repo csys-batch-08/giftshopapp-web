@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>cart</title>
@@ -170,6 +170,7 @@ width: 100%;
 	
 }
 
+
 </style>
 </head>
 <body>
@@ -225,9 +226,25 @@ width: 100%;
 					<center><b>Purchase amount:${sum}</center></b> 
 				
 				<br>
-				                 <center><input type="button" value="remove from cart"
-									onclick="window.location='removecart?pid=${cartproducts.productid}&size=${cartproducts.size}'"></center>
-									
+				
+				<center> <a href="editservlet?pid=${cartproducts.productid}&qty=${cartproducts.quantity}">
+		         <button type="button"class="bbtn btn-primary">Update cart</button>
+		         </a></center>
+		         <br>
+		         <center><a href="removecart?pid=${cartproducts.productid}&size=${cartproducts.size}">
+		         <button type="button"class="bbtn btn-danger">Remove from cart</button>
+		         </a></center>
+		         
+			 <%--   <center><input type="button" value="remove from cart"
+				 onclick="window.location='removecart?pid=${cartproducts.productid}&size=${cartproducts.size}'"></center>
+				 <br> 
+				<center><input type="button" value="Update cart"
+				 onclick="window.location='editservlet?pid=${cartproducts.productid}&qty=${cartproducts.quantity}'"></center>
+				 <br> --%>
+				 		           
+		         
+		     
+		         
 					<td>
 					<c:choose>
 
@@ -249,6 +266,8 @@ width: 100%;
                     <input type="submit" value="Buy now">
                   </div>				
 </form>
-			<div class="total">Total amount Rs:${sum1}</div>	 	
+			<div class="total">Total amount Rs:${sum1}</div>
+			
+		
 </body>
 </html>

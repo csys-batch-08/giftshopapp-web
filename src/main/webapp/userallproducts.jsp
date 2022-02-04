@@ -7,7 +7,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>All collections</title>
@@ -45,68 +45,65 @@ table img {
 	border-style: solid;
 	border-radius: 5%;
 	border: 5px solid #daa520;
-
-	/* border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px; */
 }
 
-.button {
-	position: relative;
-	margin-top: -1680px;
-	margin-left: 50px;
+.button{
+position: absolute;
+	top:330px;
+	left:43px;
 }
-
 .button1 {
-	position: relative;
-	margin-top: -32px;
-	margin-left: 323px;
-}
-
+		position: absolute;
+		top:330px;
+		left:333px;
+	} 
 .button2 {
-	position: relative;
-	margin-top: -32px;
-	margin-left: 615px;
+	position: absolute;
+		top:330px;
+		left:615px;
 }
-
 .button3 {
-	position: relative;
-	margin-top: -32px;
-	margin-left: 889px;
+position: absolute;
+		top:330px;
+		left:895px;
 }
-
 .button4 {
-	position: relative;
-	margin-top: -32px;
-	margin-left: 1174px;
+position: absolute;
+		top:330px;
+		left:1180px;
 }
 .button5 {
-	position: relative;
-	margin-top: 195px;
-	margin-left: 1174px;
-}
-.button6 {
-	position: relative;
-	margin-top: -35px;
-		margin-left: 900px;
-}
-.button7 {
-	position: relative;
-	margin-top: -35px;
-		margin-left: 615px;
-}
-.button8 {
-	position: relative;
-	margin-top: -35px;
-	margin-left: 323px;
-}
-.button9 {
-	position: relative;
-	margin-top: -35px;
-	margin-left: 50px;
+	position: absolute;
+	top:585px;
+	left:43px;
 }
 
+.button6 {
+	position: absolute;
+	top:585px;
+	left:333px;
+}
+.button7 {
+	position: absolute;
+	top:585px;
+	left:615px;
+}
+.button8 {
+	position: absolute;
+	top:585px;
+	left:895px;
+}
+.button9 {
+	position: absolute;
+	top:585px;
+	left:1180px;
+}
+
+
+.back{
+position:absolute;
+left:50px;
+}
 
 span b {
 	margin-left: -120px;
@@ -197,6 +194,12 @@ th, td {
 position:absolute;
 left:50px;
 }
+.input-group{
+width:30%;
+position:absolute;
+left:280px;
+top:13px;
+}
 </style>
 </head>
 <body>
@@ -211,7 +214,7 @@ left:50px;
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
 				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
-			</div>
+			</div>	
 		</div>
 		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
 		<div class="back">
@@ -227,7 +230,9 @@ left:50px;
 				<c:set var="count" value="1" />
 				<c:forEach items="${usershow}" var="userproducts">
 
-					<td><img src="${userproducts.image}"></td>
+					<td><img src="${userproducts.image}">
+					<center>${userproducts.productName}</center>
+					</td>
 					
 					<c:choose>
 						<c:when test="${count==5}">
@@ -264,11 +269,11 @@ left:50px;
 				class="btn btn-default">View product</button> </a>
 	</div>
 	<div class="button4">
-		<a href="viewtshirt.jsp"><button type="button"
+		<a href="kidsmugs"><button type="button"
 				class="btn btn-default">View product</button> </a>
 	</div>
 	<div class="button5">
-		<a href="viewtshirt.jsp"><button type="button"
+		<a href="kidstshirts"><button type="button"
 				class="btn btn-default">View product</button> </a>
 	</div>
 	<div class="button6">
@@ -276,7 +281,7 @@ left:50px;
 				class="btn btn-default">View product</button> </a>
 	</div>
 	<div class="button7">
-		<a href="viewtshirt.jsp"><button type="button"
+		<a href="womenswatch"><button type="button"
 				class="btn btn-default">View product</button> </a>
 	</div>
 	<div class="button8">
@@ -284,7 +289,7 @@ left:50px;
 				class="btn btn-default">View product</button> </a>
 	</div>
 	<div class="button9">
-		<a href="viewtshirt.jsp"><button type="button"
+		<a href="mensmobilecase"><button type="button"
 				class="btn btn-default">View product</button> </a>
 	</div>
 

@@ -10,17 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.giftshop.dao.UserDao;
 import com.chainsys.giftshop.exception.LoginException;
-import com.chainsys.giftshop.impl.UserImpl;
+import com.chainsys.giftshop.impl.UserDaoImpl;
 import com.chainsys.giftshop.model.UserPojo;
 
 @WebServlet("/reg")
 public class registerServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		UserImpl ui = new UserImpl();
+		UserDaoImpl ui = new UserDaoImpl();
 		PrintWriter out = resp.getWriter();
 		String username = req.getParameter("username");
 		Long phone = Long.parseLong(req.getParameter("phone"));
@@ -57,7 +55,7 @@ public class registerServlet extends HttpServlet {
 				throw new LoginException();
 
 			}
-		} catch (ClassNotFoundException | SQLException | LoginException e) {
+		} catch (LoginException e) {
 
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Mobile number already registered');");

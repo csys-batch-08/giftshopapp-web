@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.giftshop.impl.UserImpl;
+import com.chainsys.giftshop.impl.UserDaoImpl;
 import com.chainsys.giftshop.model.UserPojo;
 
 @WebServlet("/showusers")
@@ -18,8 +18,7 @@ public class Adminshowusersservlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		UserImpl ui = new UserImpl();
+		UserDaoImpl ui = new UserDaoImpl();
 		List<UserPojo> up = ui.showusers();
 		req.setAttribute("users", up);
 		RequestDispatcher rd = req.getRequestDispatcher("showusers.jsp");

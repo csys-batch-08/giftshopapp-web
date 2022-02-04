@@ -163,7 +163,15 @@ public class ProductPojo {
 
 	public ProductPojo() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	public ProductPojo(int productId, String productName, String description, String category, String image) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.description = description;
+		this.category = category;
+		this.image = image;
 	}
 
 }

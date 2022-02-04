@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Welcome giftshop</title>
@@ -40,8 +40,8 @@ body {
 #slogan {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	position: relative;
-	left: 380px;
-	top: 370px;
+	left: 320px;
+	top: 350px;
 	letter-spacing: 4px;
 	text-align: left;
 	position: fixed;
@@ -192,7 +192,7 @@ body {
 	</div>
 
 	<div id="slogan">
-		<P>Order same day delivery gifts to their doorstep</P>
+		<P>Make your loved ones happy with one of our personalized gifts !</P>
 	</div>
 
 	<a href="userallproducts.jsp" class="Buynow">Buy now</a>

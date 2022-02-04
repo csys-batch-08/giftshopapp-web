@@ -6,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Customized valentines gifts</title>
@@ -164,7 +164,7 @@ width: 100%;
                             <div class="car">
 					<div><center><img src="${valentines.image}"></center></div> 
 					<br>
-					<div><center>${valentines.productId}</center></div>
+					
 					<div><center>${valentines.productName}</center></div> 
 					<div><center>${valentines.type}</center></div> 
 					<div><center><b>Rs:${valentines.standardCost}</center></b></div> 
@@ -176,7 +176,9 @@ width: 100%;
 		&image=${valentines.image}
 		&productName=${valentines.productName}
 		&type=${valentines.type}
-		&cost=${valentines.standardCost}"><button type="button"
+		&cost=${valentines.standardCost}">
+		
+		<button type="button"
 				class="btn btn-default">Add to cart</button></a></center>
 	
 					</div>

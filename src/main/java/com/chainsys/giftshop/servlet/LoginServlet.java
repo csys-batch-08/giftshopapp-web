@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.exception.LoginException;
-import com.chainsys.giftshop.impl.UserImpl;
+import com.chainsys.giftshop.impl.UserDaoImpl;
 import com.chainsys.giftshop.model.userloginPojo;
 
 @WebServlet("/login")
@@ -21,12 +21,11 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		String username = req.getParameter("username");
 		String pwd = req.getParameter("password");
 		userloginPojo ul = new userloginPojo(username, pwd);
-		UserImpl ui = new UserImpl();
+		UserDaoImpl ui = new UserDaoImpl();
 		HttpSession session = req.getSession();
 		PrintWriter out = resp.getWriter();
 

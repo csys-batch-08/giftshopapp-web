@@ -5,12 +5,12 @@
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Tshirts</title>
+<title>T shirts</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
@@ -39,22 +39,21 @@ body {
 table img {
 	width: 150px;
 	height: 150px;
-} 
+}
+
 .button1 {
 	margin-top: 15px;
 	margin-left: 3px;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
- 
- 
-  
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -120,30 +119,25 @@ table img {
 	display: block;
 }
 
-
 th, td {
-padding-top: 5px;
-padding-right: 50px;
-padding-bottom:30px;
-padding-left:27px;
- 
-  
-  
+	padding-top: 5px;
+	padding-right: 50px;
+	padding-bottom: 30px;
+	padding-left: 27px;
 }
 
-.back{
-position:absolute;
-left:50px;
+.back {
+	position: absolute;
+	left: 50px;
 }
+
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 20px;
-	border-radius:3px;
-	
-	
+	border-radius: 3px;
 }
 </style>
 
@@ -166,51 +160,66 @@ width: 100%;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-                         
-                       <table>
+
+	<table>
 		<tbody>
 			<td>
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${menstshirt}" var="menstshirts">
-				<td>
-                            <div class="car">
-					<div><img src="${menstshirts.image}"></center></div> 
-					<br>
-					
-					<div><center>${menstshirts.productName}</center></div> 
-					<div><center>${menstshirts.type}</center></div> 
-					<div><center><b>Rs:${menstshirts.standardCost}</center></b></div> 
-				
-				<br>
-				
-		<center><a href="addtocart?
+					<td>
+						<div class="car">
+							<div>
+								<img src="${menstshirts.image}">
+								</center>
+							</div>
+							<br>
+
+							<div>
+								<center>${menstshirts.productName}</center>
+							</div>
+							<div>
+								<center>${menstshirts.type}</center>
+							</div>
+							<div>
+								<center>
+									<b>Rs:${menstshirts.standardCost}
+								</center>
+								</b>
+							</div>
+
+							<br>
+
+							<center>
+								<a
+									href="addtocart?
 		pid=${menstshirts.productId}
 		&image=${menstshirts.image}
 		&productName=${menstshirts.productName}
 		&type=${menstshirts.type}
-		&cost=${menstshirts.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a></center>
-	
-					</div>
-	</td>
+		&cost=${menstshirts.standardCost}"><button
+										type="button" class="btn btn-default">Add to cart</button></a>
+							</center>
+
+						</div>
+					</td>
 					<c:choose>
 						<c:when test="${count==5}">
 			</tr>
 			<tr>
 				<c:set var="count" value="1" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			
-			</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<c:set var="count" value="${count+1}" />
+				</c:otherwise>
+				</c:choose>
+
+				</c:forEach>
 			</tr>
 			</td>
 		</tbody>
-	</table>  
-                     
-							
+	</table>
+
+
 </body>
 </html>

@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Order Details</title>
@@ -206,16 +206,18 @@ left:50px;
 							<br>
 							<center>${orddetails.productname}</center>
 							<center>Quantity:${orddetails.quantityordered}</center>
-							<center><b><c:choose>  
+							<center><c:choose>  
     <c:when test="${orddetails.size =='ra'}">    
     </c:when>  
     <c:otherwise>  
-      ${orddetails.size} 
+      size:${orddetails.size} 
     </c:otherwise>  
-</c:choose></center></b>
+</c:choose></center>
 							<center>Rs:${orddetails.totalprice}</center>
-							<center><b>Purchase amount:${orddetails.totalprice*orddetails.quantityordered}</center>
+							<center><b>Purchase amount:Rs:${orddetails.totalprice*orddetails.quantityordered}</center>
 							</b> <br>
+							 	<%-- <input type="button" value="Re-order"
+										onclick="window.location='viewcart?pid=${orddetails.productid}&size=${cartproducts.size}'"> --%>
 							<td><c:choose>
 
 									<c:when test="${count==4}">
@@ -239,9 +241,9 @@ left:50px;
 
 
 	
- <div class="button">
+                <div class="button">
                 <input type="submit" value="cancel order">
-              </div>
+               </div>
 
 </form>
 	<div class="total">Total amount:Rs:${total}</div>

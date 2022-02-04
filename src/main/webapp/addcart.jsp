@@ -4,11 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Add to cart</title>
- <style>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
@@ -24,14 +29,13 @@ body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
 	background-size: 1370px 620px;
-	/* background-size: cover; */
 	background-attachment: fixed;
 }
 
 img {
-	width: 200px;
-	height: 200px;
-	
+	width: 350px;
+	height: 350px;
+	border-radius:20px;
 }
 .navbar {
   overflow: hidden;
@@ -46,25 +50,27 @@ img {
 }
 
 .navbar a {
-  float: left;
-  font-size: 16px;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  float:right;
-  font-style: italic;
+position:relative;
+color: black;
+text-decoration: none;
+ font-style: italic;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
-		 font-size: 18px;
-		margin-right:25px;
-		margin-right:5px;
-		position: relative;
+  font-size: 18px;
+  
+  text-align: center;
+  padding: 14px 16px; 
+  
+  float:right;
+ 
+		
 }
 
 .dropdown {
   float: right;
   overflow: hidden;
+  left:870px;
+  top:-7px;
 }
 
 .dropdown .dropbtn {
@@ -110,29 +116,122 @@ img {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.qty .count {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 2px
+    ;min-width: 35px;
+    text-align: center;
+}
+.qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    }
+.qty .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    background-clip: padding-box;
+}
+div {
+    text-align: center;
+}
+.minus:hover{
+    background-color: #717fe0 !important;
+}
+.plus:hover{
+    background-color: #717fe0 !important;
+}
+/*Prevent text selection*/
+span{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+input{  
+    border: 0;
+    width: 2%;
+}
+nput::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input:disabled{
+    background-color:white;
+}
+
+.counter{
+
+margin-top:-40px;
+}
+th, td {
+	position:relative;
+left:170px;
+top:110px;
+background-color: white;
+	padding: 50px;
+	
+	
+	
+}
 .back{
 position:absolute;
-left:50px;
+left:100px;
+ top:1px;
 }
-.car {
-position:relative;
-left:-30px;
-top:100px;
-	border-style: solid;
-	border-color: goldenrod;
-width: 20%;
-	background-color: white;
-	padding: 20px;
-	border-radius:3px;
-	
-	
+.logout{
+position:absolute;
+left:1200px;
+ top:1px;
 }
+.orders{
+position:absolute;
+left:1100px;
+ top:1px;
+}
+.home{
+position:absolute;
+left:650px;
+ top:1px;
+}
+.products{
+position:absolute;
+left:750px;
+ top:1px;
+}
+.cart{
+position:absolute;
+left:1000px;
+ top:1px;
+}
+
 </style>
 </head>
+
 <body>
+
 	<div class="navbar">
-		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
-			href="cart">My cart</a>
+	<div class="home"><a href="homepage.jsp">Home</a></div>
+		<div class="products"><a href="userallproducts">All collections</a></div>
 		<div class="dropdown">
 			<button class="dropbtn">
 				categories <i class="fa fa-caret-down"></i>
@@ -142,28 +241,34 @@ width: 20%;
 				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
 			</div>
 		</div>
-		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
+		<div class="cart"><a href="cart">My cart</a></div>
+		<div class="orders"><a href="orders">My orders</a></div>
+		<div class="logout"><a href="index.jsp">Logout</a> </div>
 		<div class="back">
-			<a href="homepage.jsp">Back</a>
+		<a href="homepage.jsp">Back</a>
 		</div>
-	</div>
+		</div>
+		
+	
+
+<table>
+<caption></caption>
 
 			<form action="viewcart" method="get">	 
+			         <td>
+					<div><img src="${sessionScope.cartitems.getImage()}"></div>
+					</td>
+					
+			<td>
+			
+				<center><h1><div>${sessionScope.cartitems.getProductname()}</div></h1>
+					
+					<h3><div>${sessionScope.cartitems.getType()}</div></h3>
+					
+					<h3><div><b>Rs:${sessionScope.cartitems.getStandardcost()}</b></div></h3>
+					
 				
-                      <center> <div class="car">
-					<img src="${sessionScope.cartitems.getImage()}">
-					<br>
-					Id:${sessionScope.cartitems.getProductid()}
-					<br>
-					Name:${sessionScope.cartitems.getProductname()}
-					<br> 
-					Type:${sessionScope.cartitems.getType()}
-					<br>
-					<b>Rs:${sessionScope.cartitems.getStandardcost()}</b>
-					<br>
-				
-				
-				<label for="size">Choose your size:</label> 
+				<h4><label for="size">Choose your size:</label> 
 			<select name="sss">
 				<option value="S">S</option>
 				<option value="M">M</option>
@@ -171,26 +276,39 @@ width: 20%;
 				<option value="XL">XL</option>
 				<option value="2XL">2XL</option>
 				<option value="3xl">3XL</option>
-			</select>
-<br>
-		<label for="quantity">choose quantity:</label> 
-		<select name="qqq">
-			<option value=1>1</option>
-			<option value=2>2</option>
-			<option value=3>3</option>
-			<option value=4>4</option>
-			<option value=5>5</option>
-			<option value=6>6</option>
-			<option value=7>7</option>
-			<option value=8>8</option>
-			<option value=9>9</option>
-			<option value=10>10</option>
-			<option value=11>11</option>
-			<option value=12>12</option>
-		</select> <br><br><input type="submit">
-
-					</div></center>
+			</select></h4>
+			            <div class="counter">
+			             <div class="qty mt-5">
+                        <span class="minus bg-dark" onclick="minus()">-</span>
+                        <input type="number" class="count"  id="count"name="qty" value="1">
+                        <span class="plus bg-dark" onclick="plus()">+</span>
+                        </div>
+                        </div>
+                       
+                        <br>
+       <div class="button"><button type="submit"class="bbtn btn-dark">Add to cart</button></a></div>
+       
+       </center>
+       </td>
+       
+					
 	</form>
-		
+	</table>
 </body>
 </html>
+
+                    <script>
+                    function minus() {
+                    	var count=document.getElementById('count');
+        				
+						count.value--;
+						if(count.value==0){
+							count.value=1;
+						}
+					}
+                    function plus() {
+						var count=document.getElementById('count');
+				
+						count.value++;
+					}
+                    </script>

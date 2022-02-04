@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Thank you</title>
@@ -36,7 +36,7 @@ body {
 	background-attachment: fixed;
 }
 .exit{
- position: absolute;left: 450px;top: 250px; text-align: center;
+ position: absolute;left: 400px;top: 250px; text-align: center;
            
             /* color:goldenrod;   */        
 
@@ -61,7 +61,7 @@ position: absolute;left: 400px;top: 280px;
 <div class="exit">
 
             <h1>order placed successfully</h1>
-<p><u>Your order will be delivered within 2 to 3 working days</u> </p>
+<p><u>Your order will be delivered within 2 to 3 working days to your registered address</u> </p>
 </div>
 <a href="homepage.jsp"><button type="button" class="btn btn-success">Continue shopping</button></a>
 <a href="index.jsp"><button type="button" class="btn btn-danger">Exit</button></a>

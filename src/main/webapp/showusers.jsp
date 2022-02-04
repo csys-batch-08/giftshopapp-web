@@ -4,13 +4,11 @@
 <%@page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
-
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 
@@ -147,6 +145,11 @@ width: 100%;
 	position: relative;
 	left: -1000px;
 }
+.searchproduct{
+position:absolute;
+left:570px;
+top:-6px;
+}
 
 </style>
 
@@ -155,17 +158,13 @@ width: 100%;
 <body>
 	<div class="navbar">
 		<a href="index.jsp">Logout</a>
-		<div class="dropdown">
-			<button class="dropbtn">
-				actions <i class="fa fa-caret-down"></i>
-			</button>
-
-			<div class="dropdown-content">
-				<a href="insertproduct.jsp">Insert</a> <a href="update.jsp">Update</a>
-				<a href="delete.jsp">Delete</a> <a href="showusers.jsp">Users</a>
-			</div>
-
-		</div>
+	<a href="adminlogin.jsp">Home</a> 
+		<div class="searchproduct">
+         <form action="searchuser" method=""><br> <input type="text" name="users"
+			id="proname"placeholder="search users">
+		<button type="submit">search</button>
+	</form>
+	</div>
 		<div class="back">
 			<a href="adminlogin.jsp">Back</a>
 		</div>
@@ -183,7 +182,7 @@ width: 100%;
 <td>
 					<div class="car">
 						<div>User id:${showusers.userid}</div> 
-						
+						<div>Name:${showusers.username}</div>
 						<div>Email:${showusers.email}</div>
 						<div>Mobile number:${showusers.mobilenumber}</div>
 						<div>Address:${showusers.address}</div>

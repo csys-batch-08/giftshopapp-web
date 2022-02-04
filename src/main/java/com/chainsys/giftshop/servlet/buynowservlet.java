@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chainsys.giftshop.impl.OrdersImpl;
-import com.chainsys.giftshop.impl.viewCartImpl;
+import com.chainsys.giftshop.impl.OrdersDaoImpl;
+import com.chainsys.giftshop.impl.ViewCartDaoImpl;
 import com.chainsys.giftshop.model.OrdersPojo;
 import com.chainsys.giftshop.model.viewcartPojo;
 
@@ -20,36 +20,19 @@ import com.chainsys.giftshop.model.viewcartPojo;
 public class buynowservlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		int uid = (int) session.getAttribute("logincustomer");
 		int ordip = 0;
 		boolean flag = false;
 		OrdersPojo order = new OrdersPojo();
 		order.setUserid(uid);
-		OrdersImpl obj = new OrdersImpl();
-		try {
-			obj.createorder(order);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		OrdersDaoImpl obj = new OrdersDaoImpl();
+		obj.createorder(order);
 
-		try {
-			ordip = obj.getorder(order);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ordip = obj.getorder(order);
 		viewcartPojo vcar1 = new viewcartPojo();
 		vcar1.setUserid(uid);
-		viewCartImpl obj1 = new viewCartImpl();
+		ViewCartDaoImpl obj1 = new ViewCartDaoImpl();
 		List<viewcartPojo> cartlist;
 		try {
 			cartlist = obj1.showcart1(vcar1);
@@ -62,28 +45,24 @@ public class buynowservlet extends HttpServlet {
 				orders.setProdutsize(cartlist.get(i).getSize());
 				orders.setProducttype(cartlist.get(i).getType());
 				orders.setTotalprice(cartlist.get(i).getStandardcost());
-				OrdersImpl ord = new OrdersImpl();
+				OrdersDaoImpl ord = new OrdersDaoImpl();
 				ord.insertorder(orders);
 			}
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		viewcartPojo vcar2 = new viewcartPojo();
 		vcar2.setUserid(uid);
-		viewCartImpl obj2 = new viewCartImpl();
+		ViewCartDaoImpl obj2 = new ViewCartDaoImpl();
 		try {
 			flag = obj2.emptycart(vcar2);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (flag) {

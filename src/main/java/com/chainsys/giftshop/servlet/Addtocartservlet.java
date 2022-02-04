@@ -17,10 +17,9 @@ public class Addtocartservlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		HttpSession session = req.getSession();
-		int pid = Integer.parseInt(req.getParameter("pid"));
+		int productid = Integer.parseInt(req.getParameter("pid"));
 		String image = req.getParameter("image");
 		String pname = req.getParameter("productName");
 		String type = req.getParameter("type");
@@ -28,7 +27,8 @@ public class Addtocartservlet extends HttpServlet {
 		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
 		viewcartPojo vcart = new viewcartPojo();
 		vcart.setImage(image);
-		vcart.setProductid(pid);
+		vcart.setProductid(productid);
+		session.setAttribute("pidd", productid);
 		vcart.setProductname(pname);
 		vcart.setType(type);
 		vcart.setUserid(userid);
