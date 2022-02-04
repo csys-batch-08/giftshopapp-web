@@ -48,6 +48,8 @@ Password: velu@1234
 
 5)Admin Can View All users
 
+6)Admin can search users
+
 ## User:
 
 UserEmail: karthi@gmail.com
