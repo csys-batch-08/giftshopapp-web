@@ -27,14 +27,14 @@ public class Removefromcartservlet extends HttpServlet {
 		vcar.setUserid(uid);
 		vcar.setSize(size);
 		ViewCartDaoImpl pi = new ViewCartDaoImpl();
+		viewcartPojo vcp = null;
 		try {
-			viewcartPojo vcp = pi.removefromcart(vcar);
-			vcp.setProductid(productid);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+			vcp = pi.removefromcart(vcar);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		vcp.setProductid(productid);
 		RequestDispatcher rd = req.getRequestDispatcher("cart");
 		rd.forward(req, resp);
 	}

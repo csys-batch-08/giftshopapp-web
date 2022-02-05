@@ -33,7 +33,6 @@ body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
 	background-size: 1370px 620px;
-	/* background-size: cover; */
 	background-attachment: fixed;
 }
 
@@ -42,6 +41,13 @@ body {
 	height: 150px;
 	
 } 
+table{
+margin-top:100px;
+}
+h2{
+
+margin-left:600px;
+}
 .button1 {
 	margin-top: 180px;
 	margin-left: -140px;
@@ -209,39 +215,35 @@ left:50px;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-<center><h2 class="Products">occasions</h2></center>
+<h2>occasions</h2>
 <table>
-		<tbody>
-			<td>
+		
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${occasions}" var="occasionsproducts">
+				
 				<td>
                             <div class="car">
-					<center><img src="${occasionsproducts.image}"></center>
+					<img src="${occasionsproducts.image}"alt="show image">
 					<br>
-					<center>${occasionsproducts.productName}</center>
-				<center>${occasionsproducts.description}</center>
-					<center><b>Starts from Rs:${occasionsproducts.standardCost}</b></center>
+					${occasionsproducts.productName}
+				${occasionsproducts.description}
+					<strong>Starts from Rs:${occasionsproducts.standardCost}</strong>
 					<br>
 					</div>
 					
 	</td>
 					<c:choose>
-						<c:when test="${count==4}">
-			</tr>
+				    <c:when test="${count==4}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
-			
 			</c:forEach>
-			</tr>
-			</td>
-		</tbody>
+			</tr>	
 	</table>  
 	<div class="button1">
 					<a href="valentinesday"><button type="button"

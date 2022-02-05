@@ -139,7 +139,7 @@ form .user-details .input-box{
         <div class="user-details">
         
           <div class="input-box">
-            <span class="details">Username</span>
+            <span class="details">User name</span>
             <input type="text" name="username"pattern="[A-Za-z]{3,}"					
             title="minimum 3 characters should be there."placeholder="Enter your nickname" required>
           </div>

@@ -4,6 +4,7 @@
 <%@page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -15,118 +16,55 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
 }
+
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
+	background-size: 1370px 620px;
 	background-attachment: fixed;
-	/* background-size: 1370px 620px; */
-	background-size: cover; 
-	
- }
+}
 
 table img {
 	width: 150px;
 	height: 150px;
+} 
+.button1 {
+	margin-top: 15px;
+	margin-left: 3px;
 }
 
-table {
-	width: 2%;
-	float: left;
-}
-.car {
-	border-style: solid;
-	border-color: goldenrod;
-width: 100%;
-	background-color: white;
-	padding: 20px;
-	border-radius:3px;
-	
-	
-}
-.show{
-
-  background-color:rgb(255, 255, 255);
-  /* background-color:rgba(253, 253, 253, 0.973); */
-  padding: 25px 30px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-  position:absolute;left:360px;top:50px;
-  height:300px;
- 
-}
-.total{
- position:fixed;left: 1070px;top: 150px; text-align: justify;
-            border: 3px solid goldenrod;
-            width: 200px;
-            background-color: white;
-            
-}
-.btn-default {
-    background: #0099cc;
-    color: #ffffff;
-  position: absolute;left: 1100px;top: 200px; text-align: justify;
-  width:105px;
-}
-.btn-default.outline:active, .btn-default.outline.active {
-	border-color: #007299;
-	color: #007299;
-	box-shadow: none;
-}
-form .button{
-   height: 45px;
-   margin: 35px 0;
-   
- }
-  form .button input{
-   height: 7%;
-   width: 10%;
-   border-radius: 5px;
-   border: none;
-   color: #fff;
-   font-size: 18px;
-   font-weight: 500;
-   letter-spacing: 1px;
-   cursor: pointer;
-   transition: all 0.3s ease;
-   background:rgba(165, 110, 9, 0.863);
-   position: fixed;left: 1100px;top: 195px;
- }
- form .button input:hover{
-  transform: scale(0.99);
-  background:rgb(241, 175, 7);
-  }
-  .navbar {
+.navbar {
   overflow: hidden;
   background-color:seashell;
   width:100%;
   margin-top:1px;
   height:55px;
-  position:relative;
- 
- 
-  
+
 }
 .navbar a {
-	float: right;
+	float: left;
 	font-size: 16px;
 	color: black;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
-	
+	float: right;
 	font-style: italic;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
 	font-size: 18px;
-	/* margin-right: 25px;
-	margin-right: 5px; */
+	margin-right: 25px;
+	margin-right: 5px;
 }
 
 .dropdown {
@@ -178,48 +116,57 @@ form .button{
 	display: block;
 }
 
-#logo {
-	position: relative;
-	left: 100px;
-	top: -70px;
+
+th, td {
+  padding: 15px;
+  
+  
 }
-
-
-
-a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
- 
+.total{
+ position:fixed;left: 1070px;top: 150px; text-align: justify;
+            border: 3px solid goldenrod;
+            width: 200px;
+            background-color: white;
+            
 }
-
-a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.previous {
-  background-color: #daa520;
-  color: black;
-}
-
-.next {
-  background-color: #04AA6D;
-  color: white;
-}
-
-.round {
-  border-radius: 50%;
-}
+form .button{
+   height: 45px;
+   margin: 35px 0;
+   
+ }
+  form .button input{
+   height: 7%;
+   width: 10%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background:rgba(165, 110, 9, 0.863);
+   position: fixed;left: 1100px;top: 195px;
+ }
+ form .button input:hover{
+  transform: scale(0.99);
+  background:rgb(241, 175, 7);
+  }
 
 .back{
 position:absolute;
 left:50px;
 }
-th, td {
-  padding: 15px;
-  
-  
+.car {
+	border-style: solid;
+	border-color: goldenrod;
+width: 100%;
+	background-color: white;
+	padding: 20px;
+	border-radius:3px;	
+}
+h2{
+margin-left:500px;
 }
 
 </style>
@@ -243,12 +190,10 @@ th, td {
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-	
-	<form action="buynow"method="post">
-		<center><h2 class="Products">your cart</h2></center>
+
+		<form action="buynow"method="post">
+		<h2 class="Products">your cart</h2>
 		<table>
-		<tbody>
-			<th>
 			<tr>
 
 				<c:set var="count" value="1" />
@@ -256,49 +201,51 @@ th, td {
 				 <c:set var="sum" value="${cartproducts.standardcost*cartproducts.quantity}" />
 	             <c:set var="sum1" value="${sum1+sum}"/>
 											
-				<td>
-				
-				
+			<td>
                      <div class="car">
-					<div><img src="${cartproducts.image}"></center></div> 
-					<br>
-					<center>${cartproducts.productname}</center>
-					<center>${cartproducts.type}</center>
-					<center>Rs:${cartproducts.standardcost}</center>
-					<center><b>Size:${cartproducts.size}</center></b>
-					<center><b>qty:${cartproducts.quantity}</center></b> 
-					<center><b>Purchase amount:${sum}</center></b> 
-					<br>
-				                  <center><input type="button" value="remove from cart"
-									onclick="window.location='removecart?pid=${cartproducts.productid}&size=${cartproducts.size}'"></center>
-									
-									
-				<br>
-					<td>
-					<c:choose>
-
-						<c:when test="${count==4}">
-			</tr>
+					<div class="images"><img src="${cartproducts.image}"alt="show image"></div> 
+					${cartproducts.productname}<br>
+					${cartproducts.type}<br>
+					RS:${cartproducts.standardcost}
+					
+					<strong><c:choose>  
+                    <c:when test="${cartproducts.size =='ra'}">    
+                    </c:when>  
+                    <c:otherwise>  
+                    Size:${cartproducts.size} 
+                    </c:otherwise>  
+                     </c:choose></strong><br>
+                     
+					<strong>quantity:${cartproducts.quantity}</strong> <br>
+					<strong>Purchase amount:${sum}</strong><br><br>
+					
+					<a href="editservlet?pid=${cartproducts.productid}&qty=${cartproducts.quantity}">
+			         <button type="button"class="bbtn btn-primary">Update cart</button>
+			         </a>
+			         <br><br>
+			        <a href="removecart?pid=${cartproducts.productid}&size=${cartproducts.size}">
+			         <button type="button"class="bbtn btn-danger">Remove from cart</button>
+			         </a>
+                     </div>
+		    <td>
+					    <c:choose>
+                        <c:when test="${count==4}">
+                        <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</th>
-		</tbody>
+			</tr>	
 	</table>						
                   <div class="button">
                     <input type="submit" value="Buy now">
-                  </div>	
-			
+                  </div>				
 </form>
-			<div class="total">Total amount Rs:${sum1}</div>	
-			 	
-	                 <div class="button1">
-					
+			<div class="total">Total amount RS:${sum1}</div>
+			
+		
 </body>
 </html>

@@ -29,10 +29,9 @@ public class Cartoneservlet extends HttpServlet {
 		List<viewcartPojo> vcp = new ArrayList<viewcartPojo>();
 		try {
 			vcp = vci.showcart(vcar1);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		req.setAttribute("car", vcp);
 		RequestDispatcher rd = req.getRequestDispatcher("cartmobile.jsp");

@@ -1,15 +1,14 @@
 package com.chainsys.giftshop.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.chainsys.giftshop.model.ProductPojo;
 
 public interface ProductsDao {
 
-	public void insert(ProductPojo product) throws ClassNotFoundException, SQLException;
+	public void insert(ProductPojo product);
 
-	public void update(ProductPojo product2) throws SQLException, ClassNotFoundException;
+	public void update(ProductPojo product2);
 
 	public List<ProductPojo> adminShowProduct();
 
@@ -23,9 +22,9 @@ public interface ProductsDao {
 
 	public List<ProductPojo> occasions();
 
-	public void delete(ProductPojo product3) throws SQLException, ClassNotFoundException;
+	public void delete(ProductPojo product3);
 
-	public int productid(String prodname) throws Exception;
+	public int productid(String prodname);
 
 	public ProductPojo validateProduct(String proName);
 

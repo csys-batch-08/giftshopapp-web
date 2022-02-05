@@ -29,22 +29,18 @@ public class Editcartservlet extends HttpServlet {
 		ViewCartDaoImpl vci = new ViewCartDaoImpl();
 		try {
 			vcpojo = vci.editcart(vcp);
-			session.setAttribute("cartitems", vcpojo);
-			System.out.println(vcpojo.getSize());
-			if (vcpojo.getSize().equals("ra")) {
-				RequestDispatcher rd = req.getRequestDispatcher("addcartone.jsp");
-				rd.forward(req, resp);
-			} else {
-				RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
-				rd.forward(req, resp);
-			}
-
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}
+		session.setAttribute("cartitems", vcpojo);
+		System.out.println(vcpojo.getSize());
+		if (vcpojo.getSize().equals("ra")) {
+			RequestDispatcher rd = req.getRequestDispatcher("addcartone.jsp");
+			rd.forward(req, resp);
+		} else {
+			RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
+			rd.forward(req, resp);
 		}
 	}
 }

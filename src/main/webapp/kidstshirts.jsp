@@ -154,61 +154,50 @@ width: 100%;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
+	
+	
 	 <table>
-		<tbody>
-			<td>
+	 
+	
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${kidstshirts}" var="kidstee">
+				
 				<td>
                             <div class="car">
-					<div><img src="${kidstee.image}"></center></div> 
+					<div><img src="${kidstee.image}"alt="show image"></div> 
 					<br>
-					<div><center>${kidstee.productId}</center></div>
-					<div><center>${kidstee.productName}</center></div> 
-					<div><center>${kidstee.type}</center></div> 
-					<div><center><b>Rs:${kidstee.standardCost}</center></b></div> 
+					<div>${kidstee.productId}</div>
+					<div>${kidstee.productName}</div> 
+					<div>${kidstee.type}</div> 
+					<div><strong>RS:${kidstee.standardCost}</strong></div> 
 				
 				<br>
 				
-		<center><a href="addtocart?
+	<a href="addtocart?
 		pid=${kidstee.productId}
 		&image=${kidstee.image}
 		&productName=${kidstee.productName}
 		&type=${kidstee.type}
 		&cost=${kidstee.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a></center>
+				class="btn btn-default">Add to cart</button></a>
 	
 					</div>
 	</td>
+	
 					<c:choose>
-						<c:when test="${count==6}">
-			</tr>
+				    <c:when test="${count==6}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
-			
 			</c:forEach>
-			</tr>
-			</td>
-		</tbody>
+			</tr>	
+			
 	</table>  
-                     
-	</form>
-
-	</div>
-	</div>
-	</div>
-	</div>
-
-
-
-
-	</div>
 
 </body>
 </html>

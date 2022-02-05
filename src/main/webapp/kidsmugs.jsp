@@ -154,61 +154,48 @@ width: 100%;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-	 <table>
-		<tbody>
-			<td>
+	  
+	  
+	  <table>
 			<tr>
-				<c:set var="count" value="1" />
-				<c:forEach items="${kidsmugs}" var="kidsmug">
-				<td>
-                            <div class="car">
-					<div><img src="${kidsmug.image}"></center></div> 
+			
+			       <c:set var="count" value="1" />
+				   <c:forEach items="${kidsmugs}" var="kidsmug">
+				   
+			<td>
+                    <div class="car">
+					<div><img src="${kidsmug.image}"alt="show image"></div> 
 					<br>
-					<div><center>${kidsmug.productId}</center></div>
-					<div><center>${kidsmug.productName}</center></div> 
-					<div><center>${kidsmug.type}</center></div> 
-					<div><center><b>Rs:${kidsmug.standardCost}</center></b></div> 
+					<div>${kidsmug.productId}</div>
+					<div>${kidsmug.productName}</div> 
+					<div>${kidsmug.type}</div> 
+					<div><strong>RS:${kidsmug.standardCost}</strong></div> 
 				
-				<br>
-				
-		<center><a href="addtocartmobile?
+				<br>		
+		<a href="addtocartmobile?
 		pid=${kidsmug.productId}
 		&image=${kidsmug.image}
 		&productName=${kidsmug.productName}
 		&type=${kidsmug.type}
 		&cost=${kidsmug.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a></center>
-	
+				class="btn btn-default">Add to cart</button></a>
 					</div>
-	</td>
+					
+	     </td>
 					<c:choose>
-						<c:when test="${count==6}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
+				    <c:when test="${count==6}">
+				    <c:set var="count" value="1" />
+	<tr>
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
-			
 			</c:forEach>
-			</tr>
-			</td>
-		</tbody>
-	</table>  
-                     
-	</form>
-
-	</div>
-	</div>
-	</div>
-	</div>
+			</tr>	
 
 
-
-
-	</div>
+             </table>
 
 </body>
 </html>

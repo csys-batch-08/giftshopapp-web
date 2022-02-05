@@ -7,7 +7,7 @@
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,117 +32,121 @@ body {
 	/* background-size: cover; */
 	background-attachment: fixed;
 }
+
 table img {
 	width: 300px;
 	height: 300px;
+}
 
-}
 table {
-padding: 30px;
-	padding-left:330px;
+	padding: 30px;
+	padding-left: 330px;
 }
+
 .button {
 	margin-top: 170px;
 	margin-left: 33px;
 }
+
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-    width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 5px;
-	border-radius:3px;
-	
-	
+	border-radius: 3px;
 }
- .abc{
 
-            font-size: 60px;
-               color:maroon; 
-                          
-               
-        }
-          .qwerty{
-        
-        font-size: 40px;
-               color:maroon; 
-               margin-top:-500px;
-                margin-left:170px;
-        }
-        .qwertyyy{
-        
-         font-size: 40px;
-               color:maroon; 
-               margin-top:-400px;
-                margin-left:1000px;
-        }
-</head>
+.abc {
+	font-size: 60px;
+	color: maroon;
+}
+
+.qwerty {
+	font-size: 40px;
+	color: maroon;
+	margin-top: -500px;
+	margin-left: 170px;
+}
+
+.qwertyyy {
+	font-size: 40px;
+	color: maroon;
+	margin-top: -400px;
+	margin-left: 1000px;
+}
+</
+head
+>
 </style>
 <body>
 	<div class="abc">
- <marquee width="100%" direction="left" height="100px">
-       offers of the day !!!
-        </marquee>
-        </div>
- 
-	 
+		<marquee width="100%" direction="left" height="100px">
+			offers of the day !!! </marquee>
+	</div>
 
-    
-                       <table>
-		<tbody>
-			<td>
-			<tr>
-			 <c:set var="count" value="1" />
-				<c:forEach items="${offerskids}" var="offerskid">
+
+
+
+	<table>
+
+		<tr>
+			<c:set var="count" value="1" />
+			<c:forEach items="${offerskids}" var="offerskid">
+
 				<td>
-                            <div class="car">
-					<div><img src="${offerskid.image}"></center></div> 
-					
-					<%-- <div><center>${offerstee.productId}</center></div>  --%>
-					<div><center>${offerskid.productName}</center></div> 
-					<div><center>${offerskid.type}</center></div> 
-					<div><center><b>Offer price:Rs:${offerskid.standardCost}</center></b></div> 
-				
-			
-				
-		<center><a href="addtocartmobile?
+					<div class="car">
+						<div>
+							<img src="${offerskid.image}" alt="show image">
+						</div>
+						<div>${offerskid.productName}</div>
+						<div>${offerskid.type}</div>
+						<div>
+							<strong>Offer price:Rs:${offerskid.standardCost}</strong>
+						</div>
+
+
+
+						<a
+							href="addtocartmobile?
 		pid=${offerskid.productId}
 		&image=${offerskid.image}
 		&productName=${offerskid.productName}
 		&type=${offerskid.type}
-		&cost=${offerskid.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a></center>
-	
+		&cost=${offerskid.standardCost}"><button
+								type="button" class="btn btn-default">Add to cart</button></a>
+
 					</div>
-	</td>
-					<c:choose>
-						<c:when test="${count==6}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
-			</c:when>
-			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			
-			</c:forEach> 
-			</tr>
-			</td>
-		</tbody>
-	</table>  
-	</form>
-       
-        <div class="qwerty">
- <marquee width="100%" direction="down" height="400px">
-      <p>Normal<br>&nbsp price<br><del>&nbsp&nbsp$1605</del></p>
-        </marquee>
+				</td>
+				<c:choose>
+					<c:when test="${count==6}">
+						<c:set var="count" value="1" />
+						<tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="${count+1}" />
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+		</tr>
+	</table>
+
+	<div class="qwerty">
+		<marquee width="100%" direction="down" height="400px">
+			<p>
+				Normal<br>price<br>
+				<del>$1605</del>
+			</p>
+		</marquee>
 	</div>
-	
-	   <div class="qwertyyy">
- <marquee width="100%"direction="down" height="400px">
-     <p>Normal<br>&nbspprice<br><del>&nbsp&nbsp$885</del></p>
-        </marquee>
+
+	<div class="qwertyyy">
+		<marquee width="100%" direction="down" height="400px">
+			<p>
+				Normal<br>price<br>
+				<del>$885</del>
+			</p>
+		</marquee>
 	</div>
 </body>
 </html>

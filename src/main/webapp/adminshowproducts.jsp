@@ -125,83 +125,80 @@ th, td {
 padding: 25px; 
 padding-right:40px;
 }
-table{
-/* border-spacing: 22px; */
 
-}
 .button1 {
    position:absolute;
-	top: 300px;
+	top: 250px;
 	left: 55px;
 }
 .button2 {
   position:absolute;
-	top: 300px;
+	top: 250px;
 	left: 335px;
 }
 .button3 {
    position:absolute;
-	top: 300px;
+	top: 250px;
 	left: 630px;
 }
 .button4 {
    position:absolute;
-	top: 300px;
+	top: 250px;
 	left: 910px;
 }
 .button5 {
    position:absolute;
-	top: 537px;
+	top: 480px;
 	left: 55px;
 }
 .button6 {
    position:absolute;
-	top: 537px;
+	top: 480px;
 	left: 335px;
 }
 .button7 {
    position:absolute;
-	top: 537px;
+	top: 480px;
 	left: 630px;
 }
 .button8 {
    position:absolute;
-	top: 537px;
+	top: 480px;
 	left: 910px;
 }
 .button9 {
    position:absolute;
-	top: 770px;
+	top: 720px;
 	left: 55px;
 }
 .button10 {
    position:absolute;
-	top: 770px;
+	top: 720px;
 	left: 335px;
 }
 .button11 {
    position:absolute;
-	top: 770px;
+	top: 720px;
 	left: 630px;
 }
 .button12 {
    position:absolute;
-	top: 770px;
+	top: 720px;
 	left: 910px;
 }
 .buttona {
    position:absolute;
-	top: 300px;
+	top: 250px;
 	left: 1195px;
 }
 .buttonb {
    position:absolute;
-	top: 537px;
+	top: 480px;
 	left: 1195px;
 }
 .buttonc {
    position:absolute;
-	top: 770px;
+	top: 720px;
 	left: 1195px;
 } 
 
@@ -214,36 +211,30 @@ table{
 
 	</div>
 
- <center><h2 class="Products">All products</h2></center>
+ <h2 class="Products">All products</h2>
  
  <table>
-		<tbody>
-			<th>
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${adminshowproduct}" var="adminshow">
 
-<td>
+            <td>
 					<div class="car">
-					<div><img src="${adminshow.image}"></div> 
-						<div><center><b>${adminshow.productName}</b></center></div> 
+					<div><img src="${adminshow.image}" alt="show image"></div> 
+					<div><strong>${adminshow.productName}</strong></div> 
 					</div>
-					<td>
+		   <td>
 					<c:choose>
-
-						<c:when test="${count==5}">
-			</tr>
+				    <c:when test="${count==5}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</th>
-		</tbody>
+			</tr>		
 	</table>
  
 	<div class="button1">

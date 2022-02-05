@@ -155,60 +155,42 @@ width: 100%;
 		</div>
 	</div>
 	 <table>
-		<tbody>
-			<td>
+		
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${womenscaricature}" var="womenscari">
+				
 				<td>
                             <div class="car">
-					<div><center><img src="${womenscari.image}"></center></div> 
+					<div><img src="${womenscari.image}"alt="show image"></div> 
 					<br>
-					<div><center>${womenscari.productId}</center></div>
-					<div><center>${womenscari.productName}</center></div> 
-					<div><center><b>${womenscari.type}</b></center></div> 
-					<div><center><b>Rs:${womenscari.standardCost}</center></b></div> 
+					<div>${womenscari.productId}</div>
+					<div>${womenscari.productName}</div> 
+					<div><strong>${womenscari.type}</strong></div> 
+					<div><b>RS:${womenscari.standardCost}</b></div> 
+
 				
-				<br>
-				
-		<center><a href="addtocartmobile?
+		<a href="addtocartmobile?
 		pid=${womenscari.productId}
 		&image=${womenscari.image}
 		&productName=${womenscari.productName}
 		&type=${womenscari.type}
 		&cost=${womenscari.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a></center>
+				class="btn btn-default">Add to cart</button></a>
 	
 					</div>
 	</td>
 					<c:choose>
-						<c:when test="${count==6}">
-			</tr>
+				    <c:when test="${count==6}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
-			
 			</c:forEach>
-			</tr>
-			</td>
-		</tbody>
+			</tr>	
 	</table>  
-                     
-	</form>
-
-	</div>
-	</div>
-	</div>
-	</div>
-
-
-
-
-	</div>
-
 </body>
 </html>

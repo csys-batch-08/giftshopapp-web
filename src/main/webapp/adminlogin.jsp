@@ -295,7 +295,7 @@ background-color: goldenrod;
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <center><h1 class="modal-title">Insert</h1></center>
+          <h1 class="modal-title">Insert</h1>
         </div>
         <div class="modal-body">
          
@@ -369,7 +369,7 @@ background-color: goldenrod;
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <center><h1 class="modal-title">Update</h1></center>
+          <h1 class="modal-title">Update</h1>
         </div>
         <div class="modal-body">
          

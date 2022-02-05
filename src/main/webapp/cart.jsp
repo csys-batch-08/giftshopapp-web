@@ -49,9 +49,7 @@ table img {
   width:100%;
   margin-top:1px;
   height:55px;
- 
- 
-  
+
 }
 .navbar a {
 	float: left;
@@ -165,11 +163,11 @@ left:50px;
 width: 100%;
 	background-color: white;
 	padding: 20px;
-	border-radius:3px;
-	
-	
+	border-radius:3px;	
 }
-
+h2{
+margin-left:500px;
+}
 
 </style>
 </head>
@@ -194,11 +192,8 @@ width: 100%;
 	</div>
 
 		<form action="buynow"method="post">
-		<center><h2 class="Products">your cart</h2></center>
-		
+		<h2 class="Products">your cart</h2>
 		<table>
-		<tbody>
-			<th>
 			<tr>
 
 				<c:set var="count" value="1" />
@@ -206,67 +201,50 @@ width: 100%;
 				 <c:set var="sum" value="${cartproducts.standardcost*cartproducts.quantity}" />
 	             <c:set var="sum1" value="${sum1+sum}"/>
 											
-				<td>
-				
-				
+			<td>
                      <div class="car">
-					<div><img src="${cartproducts.image}"></center></div> 
-					<br>
-					<center>${cartproducts.productname}</center>
-					<center>${cartproducts.type}</center>
-					<center>Rs:${cartproducts.standardcost}</center>
-					<center><b><c:choose>  
-    <c:when test="${cartproducts.size =='ra'}">    
-    </c:when>  
-    <c:otherwise>  
-      Size:${cartproducts.size} 
-    </c:otherwise>  
-</c:choose></center></b>
-					<center><b>qty:${cartproducts.quantity}</center></b> 
-					<center><b>Purchase amount:${sum}</center></b> 
-				
-				<br>
-				
-				<center> <a href="editservlet?pid=${cartproducts.productid}&qty=${cartproducts.quantity}">
-		         <button type="button"class="bbtn btn-primary">Update cart</button>
-		         </a></center>
-		         <br>
-		         <center><a href="removecart?pid=${cartproducts.productid}&size=${cartproducts.size}">
-		         <button type="button"class="bbtn btn-danger">Remove from cart</button>
-		         </a></center>
-		         
-			 <%--   <center><input type="button" value="remove from cart"
-				 onclick="window.location='removecart?pid=${cartproducts.productid}&size=${cartproducts.size}'"></center>
-				 <br> 
-				<center><input type="button" value="Update cart"
-				 onclick="window.location='editservlet?pid=${cartproducts.productid}&qty=${cartproducts.quantity}'"></center>
-				 <br> --%>
-				 		           
-		         
-		     
-		         
-					<td>
-					<c:choose>
-
-						<c:when test="${count==4}">
-			</tr>
+					<div class="images"><img src="${cartproducts.image}"alt="show image"></div> 
+					${cartproducts.productname}<br>
+					${cartproducts.type}<br>
+					RS:${cartproducts.standardcost}
+					
+					<strong><c:choose>  
+                    <c:when test="${cartproducts.size =='ra'}">    
+                    </c:when>  
+                    <c:otherwise>  
+                    Size:${cartproducts.size} 
+                    </c:otherwise>  
+                     </c:choose></strong><br>
+                     
+					<strong>quantity:${cartproducts.quantity}</strong> <br>
+					<strong>Purchase amount:${sum}</strong><br><br>
+					
+					<a href="editservlet?pid=${cartproducts.productid}&qty=${cartproducts.quantity}">
+			         <button type="button"class="bbtn btn-primary">Update cart</button>
+			         </a>
+			         <br><br>
+			        <a href="removecart?pid=${cartproducts.productid}&size=${cartproducts.size}">
+			         <button type="button"class="bbtn btn-danger">Remove from cart</button>
+			         </a>
+                     </div>
+		    <td>
+					    <c:choose>
+                        <c:when test="${count==4}">
+                        <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</th>
-		</tbody>
+			</tr>	
 	</table>						
                   <div class="button">
                     <input type="submit" value="Buy now">
                   </div>				
 </form>
-			<div class="total">Total amount Rs:${sum1}</div>
+			<div class="total">Total amount RS:${sum1}</div>
 			
 		
 </body>

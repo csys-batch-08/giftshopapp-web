@@ -33,28 +33,25 @@ public class buynowservlet extends HttpServlet {
 		viewcartPojo vcar1 = new viewcartPojo();
 		vcar1.setUserid(uid);
 		ViewCartDaoImpl obj1 = new ViewCartDaoImpl();
-		List<viewcartPojo> cartlist;
+		List<viewcartPojo> cartlist = null;
 		try {
 			cartlist = obj1.showcart1(vcar1);
-			for (int i = 0; cartlist.size() > i; i++) {
-				OrdersPojo orders = new OrdersPojo();
-				orders.setUserid(uid);
-				orders.setOrderid(ordip);
-				orders.setProductid(cartlist.get(i).getProductid());
-				orders.setQuantiy(cartlist.get(i).getQuantity());
-				orders.setProdutsize(cartlist.get(i).getSize());
-				orders.setProducttype(cartlist.get(i).getType());
-				orders.setTotalprice(cartlist.get(i).getStandardcost());
-				OrdersDaoImpl ord = new OrdersDaoImpl();
-				ord.insertorder(orders);
-			}
-
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException | SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-
+		for (int i = 0; cartlist.size() > i; i++) {
+			OrdersPojo orders = new OrdersPojo();
+			orders.setUserid(uid);
+			orders.setOrderid(ordip);
+			orders.setProductid(cartlist.get(i).getProductid());
+			orders.setQuantiy(cartlist.get(i).getQuantity());
+			orders.setProdutsize(cartlist.get(i).getSize());
+			orders.setProducttype(cartlist.get(i).getType());
+			orders.setTotalprice(cartlist.get(i).getStandardcost());
+			OrdersDaoImpl ord = new OrdersDaoImpl();
+			ord.insertorder(orders);
+		}
 		viewcartPojo vcar2 = new viewcartPojo();
 		vcar2.setUserid(uid);
 		ViewCartDaoImpl obj2 = new ViewCartDaoImpl();

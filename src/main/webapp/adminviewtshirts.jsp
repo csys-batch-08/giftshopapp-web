@@ -3,13 +3,13 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Mens tshirts</title>
+<title>caricatures</title>
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -20,22 +20,20 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	
 }
 
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
 	background-size: 1370px 620px;
-	/* background-size: cover; */
 	background-attachment: fixed;
 }
 
 table img {
 	width: 150px;
 	height: 150px;
-	/* border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520; */
+	
 } 
 .button1 {
 	margin-top: 15px;
@@ -120,6 +118,7 @@ table img {
 
 th, td {
   padding: 10px;
+  padding-right: 35px;
   
   
 }
@@ -128,65 +127,64 @@ position:absolute;
 left:50px;
 }
 .car {
+
 	border-style: solid;
 	border-color: goldenrod;
-width: 100%;
+    width: 100%;
 	background-color: white;
 	padding: 20px;
 	border-radius:3px;
 	
 	
 }
+.images{
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
 </style>
 </head>
 <body>
 <div class="navbar">
 		<a href="index.jsp">Logout</a> 
-		<a href="adminlogin.jsp">Home</a> 
+<a href="adminlogin.jsp">Home</a> 
 		
 <div class="back">
       <a href="adminshowproducts">Back</a>
       </div>
-
 	</div>
-
- <center><h2 class="Products">Mens tshirts</h2></center>
-        <table>
-		<tbody>
-			<th>
+ <table>
+		
+			
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${adminviewmenstshirt}" var="adminshowmenstshirt">
 
-<td>
+            <td>
 					<div class="car">
-					<center><div><img src="${adminshowmenstshirt.image}"></div> </center>
-						<center><div>Id:${adminshowmenstshirt.productId}</div> </center>
-						<center><div>Product name:${adminshowmenstshirt.productName}</div></center>
-						<center><div>Description:${adminshowmenstshirt.description}</div></center>
-						<center><div>Price:${adminshowmenstshirt.standardCost}</div></center>
-						<center><div>category:${adminshowmenstshirt.category}</div></center>
-						<center><div>Quantity:${adminshowmenstshirt.quantityonhand}</div></center>
-						<center><div>Type:${adminshowmenstshirt.type}</div></center>
+					<div class="images"><img src="${adminshowmenstshirt.image}"alt="show image"></div>
+						<div>product id:${adminshowmenstshirt.productId}</div>
+						<div>Product name:${adminshowmenstshirt.productName}</div>
+						<div>Description:${adminshowmenstshirt.description}</div>
+						<div>Price:${adminshowmenstshirt.standardCost}</div>
+						<div>category:${adminshowmenstshirt.category}</div>
+						<div>Quantity:${adminshowmenstshirt.quantityonhand}</div>
+						<div>Type:${adminshowmenstshirt.type}</div>
 					</div>
-					<td>
+	       <td>
 					<c:choose>
-
-						<c:when test="${count==4}">
-			</tr>
+				    <c:when test="${count==3}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</th>
-		</tbody>
+			</tr>		
 	</table>
- 
-
 </body>
 </html>

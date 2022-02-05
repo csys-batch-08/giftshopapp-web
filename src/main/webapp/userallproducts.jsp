@@ -224,29 +224,26 @@ top:13px;
 
 
 	<table>
-		<tbody>
-			<td>
+		
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${usershow}" var="userproducts">
 
 					<td><img src="${userproducts.image}">
-					<center>${userproducts.productName}</center>
+					<div>${userproducts.productName}</div>
 					</td>
 					
 					<c:choose>
-						<c:when test="${count==5}">
-			</tr>
+				    <c:when test="${count==5}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</td>
+			</tr>	
 		</tbody>
 	</table>
 

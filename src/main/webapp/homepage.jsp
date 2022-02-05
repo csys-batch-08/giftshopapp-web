@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Welcome giftshop</title>
+<title>Welcome gift shop</title>
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -148,6 +148,15 @@ body {
 	top: 2px;
 	position: fixed;
 }
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 </style>
 
 </head>
@@ -155,8 +164,8 @@ body {
 
 
 	<div class="navbar">
-		<a href="offersflip.jsp"><u>$ Offers of the day $</u></a> <a
-			href="index.jsp">Logout</a> 
+		<a href="offersflip.jsp"> <div class="blink_me">$ Offers of the day $</div></a> 
+		<a href="index.jsp">Logout</a> 
 			<a href="orders">My orders</a> 
 			<a href="cart">My cart</a>
 
@@ -182,7 +191,7 @@ body {
 
 
 	<div id="logo">
-		<img src="images/pngwing.com (2).png" height="45px" width="150px">
+		<img src="images/pngwing.com (2).png" height="45px" width="150px" alt="show image">
 	</div>
 
 	<div id="title">

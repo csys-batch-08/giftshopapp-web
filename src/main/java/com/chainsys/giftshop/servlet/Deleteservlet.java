@@ -2,7 +2,6 @@ package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,16 +21,10 @@ public class Deleteservlet extends HttpServlet {
 		int productid = Integer.parseInt(req.getParameter("pid"));
 		ProductPojo pr = new ProductPojo(productid);
 		ProductsDaoImpl product = new ProductsDaoImpl();
-		try {
-			product.delete(pr);
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Product deleted successfully');");
-			out.println("location='adminlogin.jsp';");
-			out.println("</script>");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		product.delete(pr);
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('Product deleted successfully');");
+		out.println("location='adminlogin.jsp';");
+		out.println("</script>");
 	}
 }

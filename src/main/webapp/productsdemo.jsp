@@ -2,7 +2,6 @@
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -214,7 +213,7 @@ top:1px;
 		</div>
 		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
 		<div class="searchproduct">
-         <form action="search" method=""><br> <input type="text" name="proname"
+         <form action="search" method="post"><br> <input type="text" name="proname"
 			id="proname"placeholder="search product">
 		<button type="submit">search</button>
 	</form>
@@ -226,72 +225,29 @@ top:1px;
 	</div>
 
 	<table>
-		<tbody>
-			<td>
+		
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${products}" var="userproducts">
-					<td><img src="${userproducts.image}">
-					<center>${userproducts.productName}</center>
-					<br>
+				
+					<td>
+					
+					
+					<img src="${userproducts.image}"alt="show image">
+					<div>${userproducts.productName}</div>
+					
+					<td>
 					<c:choose>
-						<c:when test="${count==5}">
-			</tr>
+				    <c:when test="${count==5}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</td>
-		</tbody>
+			</tr>	
 	</table>
-
-
-
-	<!-- <div class="button">
-		<a href="mensviewtshirt"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button1">
-		<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button2">
-		<a href="mensmobilecase"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button3">
-		<a href="womenscaricature"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button4">
-		<a href="kidsmugs"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button5">
-		<a href="kidstshirts"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button6">
-		<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button7">
-		<a href="womenswatch"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button8">
-		<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>
-	<div class="button9">
-		<a href="mensmobilecase"><button type="button"
-				class="btn btn-default">View product</button> </a>
-	</div>  -->
-
 </body>
 </html>

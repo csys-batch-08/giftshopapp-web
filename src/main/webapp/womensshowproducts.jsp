@@ -129,6 +129,13 @@ padding:55px;
     padding-top: 10px;
     
 }
+table{
+margin-top:100px;
+}
+h2{
+
+margin-left:600px;
+}
 .car {
 
 	border-style: solid;
@@ -209,39 +216,33 @@ left:50px;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-	<center><h2 class="Products">Womens products</h2></center>
+<h2>Womens products</h2>
 <table>
-		<tbody>
-			<td>
+		
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${womens}" var="womesnproducts">
+				
 				<td>
                             <div class="car">
-					<center><img src="${womesnproducts.image}"></center>
-					<br>
-					<center>${womesnproducts.productName}</center>
-				<center>${womesnproducts.description}</center>
-					<center><b>Price:${womesnproducts.standardCost}</b></center>
-					
-					<br>
+					<img src="${womesnproducts.image}"alt="show image">
+					<div>${womesnproducts.productName}</div>
+				<div>${womesnproducts.description}</div>
+					<div><strong>Price:${womesnproducts.standardCost}</strong></div>
 					</div>
 					
 	</td>
 					<c:choose>
-						<c:when test="${count==4}">
-			</tr>
+				    <c:when test="${count==4}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
-			
 			</c:forEach>
-			</tr>
-			</td>
+			</tr>	
 		</tbody>
 	</table> 
 	<div class="button1">

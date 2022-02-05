@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,707 +16,1102 @@ public class ProductsDaoImpl implements ProductsDao {
 //	private static final ProductsImpl ProductDao1 = null;
 
 	@Override
-	public void insert(ProductPojo product1) throws ClassNotFoundException, SQLException {
-
-		String insertQuery = "insert into gproducts (product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type)values(?,?,?,?,?,?,?,?)";
-		Connection con = ConnectionUtil.gbconnection();
-		PreparedStatement pstmt = con.prepareStatement(insertQuery);
-		pstmt.setInt(1, product1.getProductId());
-		pstmt.setString(2, product1.getProductName());
-		pstmt.setString(3, product1.getDescription());
-		pstmt.setDouble(4, product1.getStandardCost());
-		pstmt.setString(5, product1.getCategory());
-		pstmt.setInt(6, product1.getQuantityonhand());
-		pstmt.setString(7, product1.getImage());
-		pstmt.setString(8, product1.getType());
-		pstmt.executeUpdate();
-		pstmt.close();
-		con.close();
+	public void insert(ProductPojo product1) {
+		String Query = "insert into gproducts (product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type)values(?,?,?,?,?,?,?,?)";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		try {
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(Query);
+			pstmt.setInt(1, product1.getProductId());
+			pstmt.setString(2, product1.getProductName());
+			pstmt.setString(3, product1.getDescription());
+			pstmt.setDouble(4, product1.getStandardCost());
+			pstmt.setString(5, product1.getCategory());
+			pstmt.setInt(6, product1.getQuantityonhand());
+			pstmt.setString(7, product1.getImage());
+			pstmt.setString(8, product1.getType());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
-	public void update(ProductPojo product2) throws SQLException, ClassNotFoundException {
+	public void update(ProductPojo product2) {
 		String UpdateQuery = "update gproducts set standard_cost=?,quantity_onhand=? where product_id=?";
-		Connection con = ConnectionUtil.gbconnection();
-		PreparedStatement pstmt = con.prepareStatement(UpdateQuery);
-		pstmt.setDouble(1, product2.getStandardCost());
-		pstmt.setInt(2, product2.getQuantityonhand());
-		pstmt.setInt(3, product2.getProductId());
-		pstmt.executeUpdate();
-		con.close();
-		pstmt.close();
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		try {
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(UpdateQuery);
+			pstmt.setDouble(1, product2.getStandardCost());
+			pstmt.setInt(2, product2.getQuantityonhand());
+			pstmt.setInt(3, product2.getProductId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public List<ProductPojo> adminShowProduct() {
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
 		List<ProductPojo> products = new ArrayList<ProductPojo>();
-		String prod = "select product_name,description,category,image from gproducts";
-		Connection con;
-		ProductPojo product = null;
+		String query = "select product_name,description,category,image from gproducts";
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(prod);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				product = new ProductPojo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
-				products.add(product);
+				ProductPojo pp = new ProductPojo();
+				pp = new ProductPojo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+				products.add(pp);
 			}
 
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+
 		return products;
+
 	}
 
 	@Override
 	public void showProduct() {
-		String prod = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts";
-		Connection con;
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(prod);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	@Override
 	public List<ProductPojo> mens() {
-		List<ProductPojo> products = new ArrayList<ProductPojo>();
-		String products1 = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where category='mens'";
-		Connection con;
-		ProductPojo product = null;
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where category='mens'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
+		List<ProductPojo> products = new ArrayList<>();
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(products1);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				product = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+				pp = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
 						rs.getString(7));
-				products.add(product);
+				products.add(pp);
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+
 		return products;
+
 	}
 
 	@Override
 	public List<ProductPojo> womens() {
-		List<ProductPojo> products = new ArrayList<ProductPojo>();
-		String products1 = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where category='womens'";
-		Connection con;
-		ProductPojo product = null;
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where category='womens'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
+		List<ProductPojo> products = new ArrayList<>();
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(products1);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery(query);
 			while (rs.next()) {
-				product = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+				pp = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
 						rs.getString(7));
-				products.add(product);
+				products.add(pp);
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+
 		return products;
+
 	}
 
 	@Override
 	public List<ProductPojo> kids() {
-		List<ProductPojo> products = new ArrayList<ProductPojo>();
-		String products1 = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where category='kids'";
-		Connection con;
-		ProductPojo product = null;
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where category='kids'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
+		List<ProductPojo> products = new ArrayList<>();
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(products1);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				product = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+				pp = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
 						rs.getString(7));
-				products.add(product);
+				products.add(pp);
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+
 		return products;
+
 	}
 
 	@Override
 	public List<ProductPojo> occasions() {
-		List<ProductPojo> products = new ArrayList<ProductPojo>();
-		String products1 = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where category='occasions'";
-		Connection con;
-		ProductPojo product = null;
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where category='occasions'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
+		List<ProductPojo> products = new ArrayList<>();
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(products1);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				product = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+				pp = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
 						rs.getString(7));
-				products.add(product);
+				products.add(pp);
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+
 		return products;
+
 	}
 
 	@Override
-	public void delete(ProductPojo product3) throws SQLException, ClassNotFoundException {
-		System.out.println("row deleted successfully");
-		String Deletequery = "delete from gproducts where product_id=?";
-		Connection con = ConnectionUtil.gbconnection();
-		PreparedStatement pstmt = con.prepareStatement(Deletequery);
-		pstmt.setInt(1, product3.getProductId());
-		pstmt.executeUpdate();
+	public void delete(ProductPojo product3) {
+		String query = "delete from gproducts where product_id=?";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		try {
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, product3.getProductId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
-	public int productid(String prodname) throws Exception {
-		String UpdateQuery = "select product_id from gproducts where product_name in ?";
-		Connection con = ConnectionUtil.gbconnection();
-		PreparedStatement pstmt = con.prepareStatement(UpdateQuery);
-		pstmt.setString(1, prodname);
-
-		ResultSet rs = pstmt.executeQuery();
-		while (rs.next()) {
-			return rs.getInt(1);
+	public int productid(String prodname) {
+		String query = "select product_id from gproducts where product_name in ?";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		try {
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, prodname);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return -1;
 	}
 
 	@Override
 	public ProductPojo validateProduct(String productname) {
-
-		String validdateQuery = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name=?";
-		ProductPojo product1 = null;
-
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name=?";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
-			Connection con = ConnectionUtil.gbconnection();
-			PreparedStatement pstmt = con.prepareStatement(validdateQuery);
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, productname);
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				product1 = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
-						rs.getString(5), rs.getInt(6));
-				return product1;
+				pp = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+						rs.getInt(6));
+				return pp;
 			}
 
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		return product1;
-
+		return pp;
 	}
 
 	@Override
 	public List<ProductPojo> viewmenstshirt() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='Mens tshirt'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='Mens tshirt'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
-
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setProductId(rs.getInt(5));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
-
-				products2.add(prod);
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setProductId(rs.getInt(5));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> adminviewtshirt() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getview = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name='Mens tshirt'and category='menstee'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name='Mens tshirt'and category='menstee'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getview);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+				pp = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
 						rs.getInt(6), rs.getString(7), rs.getString(8));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> adminviewmobilecase() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getview = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name='mobile case'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name='mobile case'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getview);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+				pp = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
 						rs.getInt(6), rs.getString(7), rs.getString(8));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> adminviewcaricature() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getview = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name='womens caricature'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type from gproducts where product_name='womens caricature'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getview);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+				pp = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
 						rs.getInt(6), rs.getString(7), rs.getString(8));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> mobilecase() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='mobile case'and category='menscase'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='mobile case'and category='menscase'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setProductId(rs.getInt(5));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setProductId(rs.getInt(5));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> offertshirt() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_id in(11,12)";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_id in(11,12)";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
-				prod.setProductId(rs.getInt(5));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
+				pp.setProductId(rs.getInt(5));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> offersgift() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_id in(13,14)";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_id in(13,14)";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
-				prod.setProductId(rs.getInt(5));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
+				pp.setProductId(rs.getInt(5));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> offerskids() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_id in(15,16)";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_id in(15,16)";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
-				prod.setProductId(rs.getInt(5));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
+				pp.setProductId(rs.getInt(5));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> viewwomenscaricature() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='womens caricature' and category='womens caricature'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='womens caricature' and category='womens caricature'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setProductId(rs.getInt(5));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setProductId(rs.getInt(5));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> viewwomenswatch() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='womens watch' and category='womens watch'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='womens watch' and category='womens watch'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setProductId(rs.getInt(5));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setProductId(rs.getInt(5));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> viewkidsmugs() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='kids mugs'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='kids mugs'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setProductId(rs.getInt(5));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setProductId(rs.getInt(5));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> viewkidstshirts() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='kids tshirts'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name='kids tshirts'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setProductId(rs.getInt(5));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setProductId(rs.getInt(5));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	@Override
 	public List<ProductPojo> viewvalentines() {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
-		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where category='valentines'";
-		Connection con;
-		ProductPojo prod = null;
+		List<ProductPojo> products = new ArrayList<>();
+		String query = "select product_name,standard_cost,image,p_type,product_id from gproducts where category='valentines'";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setProductId(rs.getInt(5));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setProductId(rs.getInt(5));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
 
-				products2.add(prod);
+				products.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products;
 	}
 
 	public List<ProductPojo> serachProduct(String proName) {
 		List<ProductPojo> searchproducts = new ArrayList<>();
-		String searchquery = "select product_name,description,category,image from gproducts where lower(product_name ) like ?  ";
+		String query = "select product_name,description,category,image from gproducts where lower(product_name ) like ?  ";
+		PreparedStatement pstmt = null;
+		Connection con = null;
 		ResultSet rs = null;
 		try {
-			Connection con = ConnectionUtil.gbconnection();
-			PreparedStatement pre = con.prepareStatement(searchquery);
-			pre.setString(1, proName + "%");
-			/* pre.setString(2, id + "%"); */
-			rs = pre.executeQuery();
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, proName + "%");
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				ProductPojo search = new ProductPojo(rs.getString("product_name"), rs.getString("description"),
+				ProductPojo pp = new ProductPojo(rs.getString("product_name"), rs.getString("description"),
 						rs.getString("category"), rs.getString("image"));
 
-				searchproducts.add(search);
+				searchproducts.add(pp);
 			}
 
-		} catch (Exception e) {
-
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
 		return searchproducts;
 	}
 
 	public List<ProductPojo> products(String products) {
-		List<ProductPojo> products2 = new ArrayList<ProductPojo>();
-
+		List<ProductPojo> products1 = new ArrayList<>();
 		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name=?";
-		Connection con;
-		ProductPojo prod = null;
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(getprice);
+			pstmt = con.prepareStatement(getprice);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
+				pp = new ProductPojo();
+				pp.setImage(rs.getString(3));
+				pp.setProductName(rs.getString(1));
+				pp.setProductId(rs.getInt(5));
+				pp.setStandardCost(rs.getDouble(2));
+				pp.setType(rs.getString(4));
 
-				prod = new ProductPojo();
-				prod.setImage(rs.getString(3));
-				prod.setProductName(rs.getString(1));
-				prod.setProductId(rs.getInt(5));
-				prod.setStandardCost(rs.getDouble(2));
-				prod.setType(rs.getString(4));
-
-				products2.add(prod);
+				products1.add(pp);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-
-		return products2;
+		return products1;
 	}
 
 	public List<ProductPojo> adminShowdelete() {
 		List<ProductPojo> products = new ArrayList<ProductPojo>();
-		String prod = "select product_id,product_name,description,category,image from gproducts";
-		Connection con;
-		ProductPojo product = null;
+		String query = "select product_id,product_name,description,category,image from gproducts";
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		ProductPojo pp = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(prod);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				product = new ProductPojo(rs.getInt("product_id"), rs.getString("product_name"),
-						rs.getString("description"), rs.getString("category"), rs.getString("image"));
+				pp = new ProductPojo(rs.getInt("product_id"), rs.getString("product_name"), rs.getString("description"),
+						rs.getString("category"), rs.getString("image"));
 
-				products.add(product);
+				products.add(pp);
 			}
 
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return products;
 	}

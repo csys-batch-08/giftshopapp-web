@@ -160,66 +160,48 @@ th, td {
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-
 	<table>
-		<tbody>
-			<td>
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${menstshirt}" var="menstshirts">
+				
 					<td>
 						<div class="car">
 							<div>
-								<img src="${menstshirts.image}">
-								</center>
-							</div>
-							<br>
-
-							<div>
-								<center>${menstshirts.productName}</center>
+								<img src="${menstshirts.image}"alt="show images">
 							</div>
 							<div>
-								<center>${menstshirts.type}</center>
+								${menstshirts.productName}
 							</div>
 							<div>
-								<center>
-									<b>Rs:${menstshirts.standardCost}
-								</center>
-								</b>
+								${menstshirts.type}
 							</div>
-
-							<br>
-
-							<center>
-								<a
-									href="addtocart?
+							<div>
+									<strong>RS:${menstshirts.standardCost}
+								
+								</strong>
+							</div>
+							
+								<a href="addtocart?
 		pid=${menstshirts.productId}
 		&image=${menstshirts.image}
 		&productName=${menstshirts.productName}
 		&type=${menstshirts.type}
-		&cost=${menstshirts.standardCost}"><button
-										type="button" class="btn btn-default">Add to cart</button></a>
-							</center>
-
+		&cost=${menstshirts.standardCost}">
+		<button type="button" class="btn btn-default">Add to cart</button></a>
 						</div>
 					</td>
 					<c:choose>
-						<c:when test="${count==5}">
-			</tr>
+				    <c:when test="${count==5}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
-				</c:when>
-				<c:otherwise>
-					<c:set var="count" value="${count+1}" />
-				</c:otherwise>
-				</c:choose>
-
-				</c:forEach>
-			</tr>
-			</td>
-		</tbody>
+			</c:when>
+			<c:otherwise>
+			<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>	
 	</table>
-
-
 </body>
 </html>

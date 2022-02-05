@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>mobile case</title>
+<title>caricatures</title>
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -20,22 +20,20 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	
 }
 
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
 	background-size: 1370px 620px;
-	/* background-size: cover; */
 	background-attachment: fixed;
 }
 
 table img {
 	width: 150px;
 	height: 150px;
-	/* border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520; */
+	
 } 
 .button1 {
 	margin-top: 15px;
@@ -129,61 +127,64 @@ position:absolute;
 left:50px;
 }
 .car {
+
 	border-style: solid;
 	border-color: goldenrod;
-width: 100%;
+    width: 100%;
 	background-color: white;
 	padding: 20px;
 	border-radius:3px;
 	
 	
 }
+.images{
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
 </style>
 </head>
 <body>
 <div class="navbar">
 		<a href="index.jsp">Logout</a> 
-	<a href="adminlogin.jsp">Home</a> 
+<a href="adminlogin.jsp">Home</a> 
 		
 <div class="back">
       <a href="adminshowproducts">Back</a>
       </div>
 	</div>
  <table>
-		<tbody>
-			<th>
+		
+			
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${adminviewmobilecase}" var="adminshowmobilecase">
 
-<td>
+            <td>
 					<div class="car">
-					<center><div><img src="${adminshowmobilecase.image}"></div> </center>
-						<center><div>Id:${adminshowmobilecase.productId}</div> </center>
-						<center><div>Product name:${adminshowmobilecase.productName}</div></center>
-						<center><div>Description:${adminshowmobilecase.description}</div></center>
-						<center><div>Price:${adminshowmobilecase.standardCost}</div></center>
-						<center><div>category:${adminshowmobilecase.category}</div></center>
-						<center><div>Quantity:${adminshowmobilecase.quantityonhand}</div></center>
-						<center><div>Type:${adminshowmobilecase.type}</div></center>
+					<div class="images"><img src="${adminshowmobilecase.image}"alt="show image"></div>
+						<div>product id:${adminshowmobilecase.productId}</div>
+						<div>Product name:${adminshowmobilecase.productName}</div>
+						<div>Description:${adminshowmobilecase.description}</div>
+						<div>Price:${adminshowmobilecase.standardCost}</div>
+						<div>category:${adminshowmobilecase.category}</div>
+						<div>Quantity:${adminshowmobilecase.quantityonhand}</div>
+						<div>Type:${adminshowmobilecase.type}</div>
 					</div>
-					<td>
+	       <td>
 					<c:choose>
-
-						<c:when test="${count==3}">
-			</tr>
+				    <c:when test="${count==3}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</th>
-		</tbody>
+			</tr>		
 	</table>
-
 </body>
 </html>

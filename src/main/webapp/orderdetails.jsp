@@ -187,8 +187,7 @@ left:50px;
 	
 	<form action="cancel"method="get">
 	<table>
-		<tbody>
-			<th>
+		
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${orderdetails}" var="orddetails">
@@ -196,51 +195,35 @@ left:50px;
 					<c:set var="total" value="${total+totals}" />
 
 					<td>
-
-
 						<div class="car">
-							<div>
-								<img src="${orddetails.image}">
-								</center>
-							</div>
-							<br>
-							<center>${orddetails.productname}</center>
-							<center>Quantity:${orddetails.quantityordered}</center>
-							<center><c:choose>  
+								<div><img src="${orddetails.image}"alt="show image"></div>
+							<div>${orddetails.productname}</div>
+							<div>Quantity:${orddetails.quantityordered}</div>
+							<c:choose>  
     <c:when test="${orddetails.size =='ra'}">    
     </c:when>  
     <c:otherwise>  
       size:${orddetails.size} 
     </c:otherwise>  
-</c:choose></center>
-							<center>Rs:${orddetails.totalprice}</center>
-							<center><b>Purchase amount:Rs:${orddetails.totalprice*orddetails.quantityordered}</center>
-							</b> <br>
-							 	<%-- <input type="button" value="Re-order"
-										onclick="window.location='viewcart?pid=${orddetails.productid}&size=${cartproducts.size}'"> --%>
-							<td><c:choose>
-
-									<c:when test="${count==4}">
-			</tr>
+</c:choose>
+							RS:${orddetails.totalprice}
+							<div><strong>Purchase amount:Rs:${orddetails.totalprice*orddetails.quantityordered}</strong> </div>
+							
+							</div>
+							<td>
+						
+							<c:choose>
+				    <c:when test="${count==4}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
-				</c:when>
-				<c:otherwise>
-					<c:set var="count" value="${count+1}" />
-					<c:set var="orderid" value="${orddetails.orderid}" scope="session" />
-				</c:otherwise>
-				</c:choose>
-				</c:forEach>
-			</tr>
-			</th>
-		</tbody>
+			</c:when>
+			<c:otherwise>
+			<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>	
 	</table>
-
-
-
-
-
-	
                 <div class="button">
                 <input type="submit" value="cancel order">
                </div>

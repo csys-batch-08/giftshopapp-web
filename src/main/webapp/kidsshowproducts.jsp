@@ -35,12 +35,13 @@ body {
 	/* background-size: cover; */
 	background-attachment: fixed;
 }
+table{
+margin-top:100px;
+}
+h2{
 
-/*  table img {
-	width: 150px;
-	height: 150px;
-	
-}  */
+margin-left:600px;
+}
 .car {
 
 	border-style: solid;
@@ -55,11 +56,6 @@ body {
 	
 	
 }
-
-/* .button1 {
-	margin-top: 180px;
-	margin-left: -140px;
-} */
 
 .navbar {
   overflow: hidden;
@@ -297,51 +293,42 @@ left:50px;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-<center><h2 class="Products">Kids products</h2></center>
+<h2 class="Products">Kids products</h2>
 	
 	<table>
-		<tbody>
-			<td>
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${kids}" var="kidsproducts">
+				
 				<td>
 						<div class="car">
-							<center>
-								<img id="myImg" src="${kidsproducts.image}" alt="Snow">
+								<img id="myImg" src="${kidsproducts.image}" alt="image">
 								<div id="myModal" class="modal">
 									<span class="close">&times;</span> <img class="modal-content"
 										id="img01">
 									<div id="caption"></div>
 								</div>
 								<br>
-								<%-- <center><img src="${kidsproducts.image}"></center>  --%>
-								
 <br>
-								<center>${kidsproducts.productName}</center>
-								<center>${kidsproducts.description}</center>
-								<center>
-									<b>Price:${kidsproducts.standardCost}</b>
-								</center>
+								${kidsproducts.productName}
+								${kidsproducts.description}
+									<strong>Price:${kidsproducts.standardCost}</strong>
 								<br>
 						</div>
 
 					</td>
+					
 					<c:choose>
-						<c:when test="${count==4}">
-			</tr>
+				    <c:when test="${count==4}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
-			
 			</c:forEach>
-			</tr>
-			</td>
-		</tbody>
+			</tr>	
 	</table>  
 	<div class="button1">
 					<a href="kidsmugs"><button type="button"

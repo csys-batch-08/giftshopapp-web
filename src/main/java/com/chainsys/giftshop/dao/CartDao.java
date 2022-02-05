@@ -11,17 +11,17 @@ public interface CartDao {
 
 	public List<viewcartPojo> insertcart1(viewcartPojo vcar);
 
-	public List<viewcartPojo> showcart(viewcartPojo vcar1);
+	public List<viewcartPojo> showcart(viewcartPojo vcar1) throws ClassNotFoundException, SQLException;
 
 	public List<viewcartPojo> showcart();
 
-	public List<viewcartPojo> showcart1(viewcartPojo vcar1) throws ClassNotFoundException, SQLException;
+	public List<viewcartPojo> showcart1(viewcartPojo vcar1);
 
 	public boolean emptycart(viewcartPojo vcar2) throws SQLException, ClassNotFoundException;
 
-	public List<viewcartPojo> mycart(viewcartPojo vcart) throws ClassNotFoundException, SQLException;
+	public List<viewcartPojo> mycart(viewcartPojo vcart);
 
-	public boolean duplicatecart(viewcartPojo vcart) throws ClassNotFoundException, SQLException;
+	public int duplicatecart(viewcartPojo vcart);
 
-	public viewcartPojo removefromcart(viewcartPojo vcar) throws ClassNotFoundException, SQLException;
+	public viewcartPojo removefromcart(viewcartPojo vcar);
 }

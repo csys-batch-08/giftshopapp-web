@@ -1,9 +1,6 @@
 <%@page import="com.chainsys.giftshop.model.*"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.* "%>
-
-
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -61,14 +58,9 @@ position: absolute;left: 400px;top: 280px;
 <div class="exit">
 
             <h1>order placed successfully</h1>
-<p><u>Your order will be delivered within 2 to 3 working days to your registered address</u> </p>
+<p>Your order will be delivered within 2 to 3 working days to your registered address </p>
 </div>
 <a href="homepage.jsp"><button type="button" class="btn btn-success">Continue shopping</button></a>
-<a href="index.jsp"><button type="button" class="btn btn-danger">Exit</button></a>
-<!--  <p>
-        <span class="glyphicon">&#xe013;</span>
-      </p> --> 
-      <i class="glyphicon" style="font-size:30px;color:black;">&#xe013</i>
-      
+<a href="index.jsp"><button type="button" class="btn btn-danger">Exit</button></a>   
 </body>
 </html>

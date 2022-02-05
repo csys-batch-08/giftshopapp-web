@@ -21,10 +21,8 @@ public class Cartservlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		HttpSession session = req.getSession();
 		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
-
 		viewcartPojo vcar1 = new viewcartPojo();
 		vcar1.setUserid(userid);
 		ViewCartDaoImpl vci = new ViewCartDaoImpl();
@@ -32,8 +30,10 @@ public class Cartservlet extends HttpServlet {
 		try {
 			vcp = vci.showcart(vcar1);
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		req.setAttribute("car", vcp);

@@ -41,11 +41,6 @@ body {
 	border-radius: 5%;
 	border: 5px solid #daa520;
 } 
-table{
-
-}
-
-
 .navbar {
   overflow: hidden;
   background-color:seashell;
@@ -121,94 +116,16 @@ table{
 .dropdown:hover .dropdown-content {
 	display: block;
 }
-
-
 th, td {
-padding: 25px; 
-padding-right:40px;
-}
-table{
-/* border-spacing: 22px; */
-
-}
-.button1 {
-   position:absolute;
-	top: 300px;
-	left: 55px;
-}
-.button2 {
-  position:absolute;
-	top: 300px;
-	left: 335px;
-}
-.button3 {
-   position:absolute;
-	top: 300px;
-	left: 630px;
-}
-.button4 {
-   position:absolute;
-	top: 300px;
-	left: 910px;
-}
-.button5 {
-   position:absolute;
-	top: 537px;
-	left: 55px;
-}
-.button6 {
-   position:absolute;
-	top: 537px;
-	left: 335px;
-}
-.button7 {
-   position:absolute;
-	top: 537px;
-	left: 630px;
-}
-.button8 {
-   position:absolute;
-	top: 537px;
-	left: 910px;
-}
-.button9 {
-   position:absolute;
-	top: 770px;
-	left: 55px;
-}
-.button10 {
-   position:absolute;
-	top: 770px;
-	left: 335px;
-}
-.button11 {
-   position:absolute;
-	top: 770px;
-	left: 630px;
-}
-.button12 {
-   position:absolute;
-	top: 770px;
-	left: 910px;
-}
-.buttona {
-   position:absolute;
-	top: 300px;
-	left: 1195px;
-}
-.buttonb {
-   position:absolute;
-	top: 537px;
-	left: 1195px;
-}
-.buttonc {
-   position:absolute;
-	top: 770px;
-	left: 1195px;
+padding: 20px; 
+padding-right:43px;
 } 
 .back{
 position:relative;
 left:-1000px;
+}
+.car{
+margin-top:60px;
 } 
 
 </style>
@@ -230,47 +147,33 @@ left:-1000px;
       <a href="adminlogin.jsp">Back</a>
       </div>
 	</div>
-
- <center><h2 class="Products">All products</h2></center>
- 
+	
  <table>
-		<tbody>
-			<th>
-			<tr>
+	    <tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${deleteproduct}" var="deletepro">
-
-<td>
+       <td>
 					<div class="car">
-					<div><center><img src="${deletepro.image}"></center></div> 
-					<div><center><b>${deletepro.productId}</b></center></div> 
-						<div><center><b>${deletepro.productName}</b></center></div> 
-						
-						<div class="button">
-                <center><a href="delproduct?pid=${deletepro.productId}"><button onclick="deleteproduct()">Delete product</button></a> 
-		</div></center>	
-		
-		
-					</div>
-					<td>
-					
-					<c:choose>
-
-						<c:when test="${count==5}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
+					<img src="${deletepro.image}"alt="show image"> 
+					<div>Product id:${deletepro.productId}</div> 
+					<div>${deletepro.productName}</div>
+					<div class="button">
+				     <a href="delproduct?pid=${deletepro.productId}"><button onclick="deleteproduct()">Delete product</button></a>
+					 </div>
+				     </div>			
+	  <td>
+			<c:choose>
+			<c:when test="${count==5}">			
+			<c:set var="count" value="1" />
+	  <tr>
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</th>
-		</tbody>
-	</table>
-		
+	 </tr>
+	</table>		
 </body>
 <script type="text/javascript">
 function deleteproduct() {
@@ -279,8 +182,5 @@ function deleteproduct() {
 		event.preventDefault();
 	}
 }
-
-
 </script>
-
 </html>

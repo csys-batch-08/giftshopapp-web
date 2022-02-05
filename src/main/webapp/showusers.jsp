@@ -160,7 +160,7 @@ top:-6px;
 		<a href="index.jsp">Logout</a>
 	<a href="adminlogin.jsp">Home</a> 
 		<div class="searchproduct">
-         <form action="searchuser" method=""><br> <input type="text" name="users"
+         <form action="searchuser" method=post><br> <input type="text" name="users"
 			id="proname"placeholder="search users">
 		<button type="submit">search</button>
 	</form>
@@ -170,11 +170,10 @@ top:-6px;
 		</div>
 
 	</div>
-	<center><h2 class="Products">Users</h2></center>
+	<h2 class="Products">Users</h2>
 	 
 	<table>
-		<tbody>
-			<th>
+		
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${users}" var="showusers">
@@ -188,22 +187,18 @@ top:-6px;
 						<div>Address:${showusers.address}</div>
 					</div>
 					<td>
+					
 					<c:choose>
-
-						<c:when test="${count==4}">
-			</tr>
+				    <c:when test="${count==4}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</th>
-		</tbody>
+			</tr>	
 	</table>
-
 </body>
 </html>

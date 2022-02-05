@@ -20,22 +20,20 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	
 }
 
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
 	background-size: 1370px 620px;
-	/* background-size: cover; */
 	background-attachment: fixed;
 }
 
 table img {
 	width: 150px;
 	height: 150px;
-	/* border-style: solid;
-	border-radius: 5%;
-	border: 5px solid #daa520; */
+	
 } 
 .button1 {
 	margin-top: 15px;
@@ -129,15 +127,23 @@ position:absolute;
 left:50px;
 }
 .car {
+
 	border-style: solid;
 	border-color: goldenrod;
-width: 100%;
+    width: 100%;
 	background-color: white;
 	padding: 20px;
 	border-radius:3px;
 	
 	
 }
+.images{
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
 </style>
 </head>
 <body>
@@ -150,40 +156,35 @@ width: 100%;
       </div>
 	</div>
  <table>
-		<tbody>
-			<th>
+		
+			
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${adminviewcaricature}" var="adminviewcar">
 
-<td>
+            <td>
 					<div class="car">
-					<center><div><img src="${adminviewcar.image}"></div> </center>
-						<center><div>Id:${adminviewcar.productId}</div> </center>
-						<center><div>Product name:${adminviewcar.productName}</div></center>
-						<center><div>Description:${adminviewcar.description}</div></center>
-						<center><div>Price:${adminviewcar.standardCost}</div></center>
-						<center><div>category:${adminviewcar.category}</div></center>
-						<center><div>Quantity:${adminviewcar.quantityonhand}</div></center>
-						<center><div>Type:${adminviewcar.type}</div></center>
+					<div class="images"><img src="${adminviewcar.image}"alt="show image"></div>
+						<div>product id:${adminviewcar.productId}</div>
+						<div>Product name:${adminviewcar.productName}</div>
+						<div>Description:${adminviewcar.description}</div>
+						<div>Price:${adminviewcar.standardCost}</div>
+						<div>category:${adminviewcar.category}</div>
+						<div>Quantity:${adminviewcar.quantityonhand}</div>
+						<div>Type:${adminviewcar.type}</div>
 					</div>
-					<td>
+	       <td>
 					<c:choose>
-
-						<c:when test="${count==3}">
-			</tr>
+				    <c:when test="${count==3}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
 			</c:forEach>
-			</tr>
-			</th>
-		</tbody>
+			</tr>		
 	</table>
-
 </body>
 </html>

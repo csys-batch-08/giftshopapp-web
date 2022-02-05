@@ -2,7 +2,6 @@ package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,15 +30,11 @@ public class insertServlet extends HttpServlet {
 		String type = req.getParameter("type");
 		ProductPojo pr = new ProductPojo(productid, productname, description, cost, category, qunatity, image, type);
 		ProductsDaoImpl product = new ProductsDaoImpl();
-		try {
-			product.insert(pr);
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('product inserted successfully');");
-			out.println("location='adminlogin.jsp';");
-			out.println("</script>");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		product.insert(pr);
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('product inserted successfully');");
+		out.println("location='adminlogin.jsp';");
+		out.println("</script>");
 
 	}
 

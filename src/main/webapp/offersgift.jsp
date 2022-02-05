@@ -85,64 +85,54 @@ padding: 30px;
        offers of the day !!!
         </marquee>
         </div>
- 
-	 
-
-    
                        <table>
-		<tbody>
-			<td>
+		
 			<tr>
 			 <c:set var="count" value="1" />
 				<c:forEach items="${offersgift}" var="offersgif">
+				
 				<td>
                             <div class="car">
-					<div><img src="${offersgif.image}"></center></div> 
-					
-					<%-- <div><center>${offerstee.productId}</center></div>  --%>
-					<div><center>${offersgif.productName}</center></div> 
-					<div><center>${offersgif.type}</center></div> 
-					<div><center><b>Offer price:Rs:${offersgif.standardCost}</center></b></div> 
+					<div><img src="${offersgif.image}"alt="show image"></div>
+					<div>${offersgif.productName}</div> 
+					<div>${offersgif.type}</div> 
+					<div><strong>Offer price:Rs:${offersgif.standardCost}</strong></div> 
 				
 			
 				
-		<center><a href="addtocartmobile?
+		<a href="addtocartmobile?
 		pid=${offersgif.productId}
 		&image=${offersgif.image}
 		&productName=${offersgif.productName}
 		&type=${offersgif.type}
 		&cost=${offersgif.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a></center>
+				class="btn btn-default">Add to cart</button></a>
 	
 					</div>
 	</td>
 					<c:choose>
-						<c:when test="${count==6}">
-			</tr>
+				    <c:when test="${count==6}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
-			
-			</c:forEach> 
-			</tr>
-			</td>
-		</tbody>
+			</c:forEach>
+			</tr>	
 	</table>  
-	</form>
+	
        
         <div class="qwerty">
  <marquee width="100%" direction="down" height="400px">
-      <p>Normal<br>&nbsp price<br><del>&nbsp&nbsp$950</del></p>
+      <p>Normal<br>price<br><del>$950</del></p>
         </marquee>
 	</div>
 	
 	   <div class="qwertyyy">
  <marquee width="100%"direction="down" height="400px">
-     <p>Normal<br>&nbspprice<br><del>&nbsp&nbsp$700</del></p>
+     <p>Normal<br>price<br><del>$700</del></p>
         </marquee>
 	</div>
 </body>

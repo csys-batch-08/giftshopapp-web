@@ -1,7 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,14 +21,8 @@ public class updateServlet extends HttpServlet {
 		int qunatity = Integer.parseInt(req.getParameter("quantity"));
 		ProductPojo pr = new ProductPojo(productid, price, qunatity);
 		ProductsDaoImpl product = new ProductsDaoImpl();
-		try {
-			product.update(pr);
-			resp.sendRedirect("adminlogin.jsp");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		product.update(pr);
+		resp.sendRedirect("adminlogin.jsp");
 
 	}
 

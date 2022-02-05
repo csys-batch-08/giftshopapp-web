@@ -295,9 +295,7 @@ left:50px;
 		</div>
 	</div>
 	 <table>
-		<tbody>
-			<td>
-			<tr>
+	<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${mensmobilecase}" var="menscase">
 				
@@ -312,7 +310,41 @@ left:50px;
 									<div id="caption"></div>
 								</div>
 								<br>
-        <script>
+					<br>
+					<div>${menscase.productId}</div>
+					<c:set var="pid" value="${menscase.productId}" scope="session" />
+					<div>${menscase.productName}</div> 
+					<div>${menscase.type}</div> 
+					<div><strong>RS:${menscase.standardCost}</strong></div> 
+				
+				<br>
+				
+		<a href="addtocartmobile?
+		pid=${menscase.productId}
+		&image=${menscase.image}
+		&productName=${menscase.productName}
+		&type=${menscase.type}
+		&cost=${menscase.standardCost}"><button type="button"
+				class="btn btn-default">Add to cart</button></a>
+	
+					</div>
+	</td>
+	
+					<c:choose>
+				    <c:when test="${count==6}">
+				    <c:set var="count" value="1" />
+			<tr>
+			</c:when>
+			<c:otherwise>
+			<c:set var="count" value="${count+1}" />
+			</c:otherwise>
+			</c:choose>
+			</c:forEach>
+			</tr>	
+			
+	</table>  
+</body>
+<script>
 		var modal = document.getElementById("myModal");
 		var img = document.getElementById("myImg");
 		var modalImg = document.getElementById("img01");
@@ -327,48 +359,4 @@ left:50px;
 			modal.style.display = "none";
 		}
 	     </script> 
-	     
-					<%-- <div><img src="${menscase.image}"></center></div>  --%>
-					<br>
-					<div><center>${menscase.productId}</center></div>
-					<c:set var="pid" value="${menscase.productId}" scope="session" />
-					<div><center>${menscase.productName}</center></div> 
-					<div><center>${menscase.type}</center></div> 
-					<div><center><b>Rs:${menscase.standardCost}</center></b></div> 
-				
-				<br>
-				
-		<center><a href="addtocartmobile?
-		pid=${menscase.productId}
-		&image=${menscase.image}
-		&productName=${menscase.productName}
-		&type=${menscase.type}
-		&cost=${menscase.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a></center>
-	
-					</div>
-	</td>
-					<c:choose>
-						<c:when test="${count==6}">
-			</tr>
-			<tr>
-				<c:set var="count" value="1" />
-				
-			</c:when>
-			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			
-			
-			</c:forEach>
-			
-			</tr>
-			</td>
-		</tbody>
-	</table>  
-                     
-	</form>
-
-</body>
 </html>

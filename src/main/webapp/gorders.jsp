@@ -151,41 +151,32 @@ left:50px;
 
 	<form action="orderdetails"method="post">
 	    <table>
-		<tbody>
-			<td>
+
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${showorders}" var="orders">
 				<fmt:parseDate pattern="yyyy-MM-dd" value="${orders.orderdate}"
 				var="parsedDate" />
-				<td>
-                            <div class="car">
-					
-					<center>Order id:${orders.orderid}</center>
-				<center>Order date:<fmt:formatDate pattern="dd-MM-yyyy" value="${parsedDate}" /></center>
-					<center>Status:${orders.status}</center>
+		   <td>
+                    <div class="car">
+					Order id:${orders.orderid}
+				    Order date:<fmt:formatDate pattern="dd-MM-yyyy" value="${parsedDate}" />
+					Status:${orders.status}
 					<br>
-	<center><input type="button" value="view details"
-									onclick="window.location='orderdetails?ordid=${orders.orderid}'">
-									</center>
-	
+	              <input type="button" value="view details"onclick="window.location='orderdetails?ordid=${orders.orderid}'">
 					</div>
 	</td>
 					<c:choose>
-						<c:when test="${count==5}">
-			</tr>
+				    <c:when test="${count==5}">
+				    <c:set var="count" value="1" />
 			<tr>
-				<c:set var="count" value="1" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="count" value="${count+1}" />
+			<c:set var="count" value="${count+1}" />
 			</c:otherwise>
 			</c:choose>
-			
 			</c:forEach>
-			</tr>
-			</td>
-		</tbody>
+			</tr>	
 	</table>  
 
 </form>
