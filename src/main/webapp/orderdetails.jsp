@@ -41,15 +41,14 @@ table img {
 table {
 	width: 20%;
 	float: left;
+	margin-top:80px;
 }
 
 .button {
 	margin-top: 170px;
 	margin-left: 33px;
 }
-/* table, th, td {
-  border:1px solid black;
-} */
+
 .navbar {
 	overflow: hidden;
 	background-color: seashell;
@@ -172,7 +171,7 @@ left:50px;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -187,7 +186,9 @@ left:50px;
 	<c:set var="orderdetailsid" value="${sessionScope.order}" scope="session" />
 	<form action="cancel" method="get">
 	<table>    
+	<caption></caption>
 			<tr>
+			<th></th>
 				<c:set var="count" value="1" />
 				<c:forEach items="${orderdetails}" var="orddetails">
 					<c:set var="totals" value="${orddetails.totalprice*orddetails.quantityordered}" />

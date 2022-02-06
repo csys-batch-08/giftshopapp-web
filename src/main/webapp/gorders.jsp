@@ -136,7 +136,7 @@ left:50px;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -151,8 +151,10 @@ left:50px;
 
 	<form action="orderdetails"method="post">
 	    <table>
-
+	   <caption></caption>
+<th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${showorders}" var="orders">
 				<fmt:parseDate pattern="yyyy-MM-dd" value="${orders.orderdate}"

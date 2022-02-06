@@ -30,11 +30,6 @@ body {
 	background-attachment: fixed;
 }
 
-/*  table img {
-	width: 150px;
-	height: 150px;
-	
-}  */
 
 table{
 margin-top:50px;
@@ -53,12 +48,6 @@ margin-top:50px;
 	
 	
 }
-
-/* .button1 {
-	margin-top: 180px;
-	margin-left: -140px;
-} */
-
 .navbar {
   overflow: hidden;
   background-color:seashell;
@@ -138,7 +127,7 @@ margin-top:50px;
 th, td {
 
 padding: 15px;
-    
+ padding-left:10px;
 }
 .button1 {
 	position: absolute;
@@ -282,7 +271,7 @@ left:50px;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -295,7 +284,9 @@ left:50px;
 		</div>
 	</div>
 	 <table>
+	 <caption></caption>
 	<tr>
+	<th></th>
 				<c:set var="count" value="1" />
 				<c:forEach items="${mensmobilecase}" var="menscase">
 				
@@ -305,7 +296,7 @@ left:50px;
                             <div class="car">
 								<img id="myImg" src="${menscase.image}" alt="image">
 								<div id="myModal" class="modal">
-									<span class="close">&times;</span> <img class="modal-content"id="img01">
+									<span class="close">&times;</span> <img class="modal-content"id="img01"alt="show image">
 									<div id="caption"></div>
 								</div>
 								<br>

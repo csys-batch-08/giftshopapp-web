@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>admin</title>
+<title>Admin</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -14,7 +14,6 @@ body {
 	background-image: url("images/bg.jpg");
 	background-repeat: no-repeat;
 	background-size: 1370px 620px;
-	/* background-size: cover; */
 	background-attachment: fixed;
 }
 
@@ -253,33 +252,7 @@ background-color: goldenrod;
 
 <body>
 
-<div class="admin">
-	<form action="adminshowproducts"method="post">
-		<div class="button1">
-			<input type="submit" value="show products">
-		</div>
-	</form>
-	<form action="insertproduct.jsp">
-		<div class="button2">
-			<input type="submit" value="Insert product">
-		</div>
-	</form>
-	<form action="update.jsp">
-		<div class="button3">
-			<input type="submit" value="update product">
-		</div>
-	</form>
-	<form action="delete.jsp">
-		<div class="button4">
-			<input type="submit" value="Delete product">
-		</div>
-		</form>
-		<form action="showusers"method="post">
-		<div class="button5">
-			<input type="submit" value="Show my users">
-		</div>
-	</form>
-	</div> -->
+
 	<a href="adminshowproducts"><button type="button" class="btn btn-info">Show products</button></a>
 	
 		<!-- insert -->

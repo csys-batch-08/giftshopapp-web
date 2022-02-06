@@ -30,7 +30,6 @@ public class Cartoneservlet extends HttpServlet {
 		try {
 			vcp = vci.showcart(vcar1);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		req.setAttribute("car", vcp);

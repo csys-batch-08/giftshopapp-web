@@ -17,7 +17,6 @@ import com.chainsys.giftshop.model.ProductPojo;
 public class adminviewmobilecaseservlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		ProductsDaoImpl pi = new ProductsDaoImpl();
 		List<ProductPojo> pp = pi.adminviewmobilecase();
 		req.setAttribute("adminviewmobilecase", pp);

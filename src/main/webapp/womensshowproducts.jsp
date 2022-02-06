@@ -130,7 +130,7 @@ padding:55px;
     
 }
 table{
-margin-top:100px;
+margin-top:40px;
 }
 h2{
 
@@ -204,7 +204,7 @@ left:50px;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -218,8 +218,10 @@ left:50px;
 	</div>
 <h2>Womens products</h2>
 <table>
-		
+		<caption></caption>
+		<th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${womens}" var="womesnproducts">
 				

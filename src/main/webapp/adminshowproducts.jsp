@@ -40,6 +40,7 @@ body {
 	border: 5px solid #daa520;
 } 
 table{
+margin-top:-50px;
 
 }
 
@@ -214,7 +215,10 @@ padding-right:40px;
  <h2 class="Products">All products</h2>
  
  <table>
+ <caption></caption>
+ <th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${adminshowproduct}" var="adminshow">
 

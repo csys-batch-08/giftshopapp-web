@@ -172,7 +172,7 @@ body {
 
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 
 			<div class="dropdown-content">

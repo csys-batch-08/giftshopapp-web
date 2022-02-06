@@ -51,52 +51,6 @@ position: absolute;
 	top:330px;
 	left:43px;
 }
-.button1 {
-		position: absolute;
-		top:330px;
-		left:333px;
-	} 
-.button2 {
-	position: absolute;
-		top:330px;
-		left:615px;
-}
-.button3 {
-position: absolute;
-		top:330px;
-		left:895px;
-}
-.button4 {
-position: absolute;
-		top:330px;
-		left:1180px;
-}
-.button5 {
-	position: absolute;
-	top:585px;
-	left:43px;
-}
-
-.button6 {
-	position: absolute;
-	top:585px;
-	left:333px;
-}
-.button7 {
-	position: absolute;
-	top:585px;
-	left:615px;
-}
-.button8 {
-	position: absolute;
-	top:585px;
-	left:895px;
-}
-.button9 {
-	position: absolute;
-	top:585px;
-	left:1180px;
-}
 
 
 .back{
@@ -204,7 +158,7 @@ top:1px;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -225,8 +179,9 @@ top:1px;
 	</div>
 
 	<table>
-		
+		<caption></caption>
 			<tr>
+			<th></th>
 				<c:set var="count" value="1" />
 				<c:forEach items="${products}" var="userproducts">
 				

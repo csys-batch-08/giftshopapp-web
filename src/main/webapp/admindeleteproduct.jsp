@@ -149,7 +149,10 @@ margin-top:60px;
 	</div>
 	
  <table>
+ <caption></caption>
+ <th></th>
 	    <tr>
+	   
 				<c:set var="count" value="1" />
 				<c:forEach items="${deleteproduct}" var="deletepro">
        <td>

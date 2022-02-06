@@ -37,7 +37,6 @@ public class buynowservlet extends HttpServlet {
 		try {
 			cartlist = obj1.showcart1(vcar1);
 		} catch (ClassNotFoundException | SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		for (int i = 0; cartlist.size() > i; i++) {

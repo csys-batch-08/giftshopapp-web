@@ -240,7 +240,7 @@ th, td {
 		</div>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -264,9 +264,10 @@ th, td {
 
 
 	<table>
-	
 		<caption></caption>
+		
 		<tr>
+		<th></th>
 			<td><img src="${sessionScope.cartitems.getImage()}"alt="show image"></td>
 			<td>
 				<h1>${sessionScope.cartitems.getProductname()}</h1>

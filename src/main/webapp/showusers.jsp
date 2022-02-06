@@ -173,8 +173,10 @@ top:-6px;
 	<h2 class="Products">Users</h2>
 	 
 	<table>
-		
+		<caption></caption>
+		<th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${users}" var="showusers">
 

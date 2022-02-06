@@ -178,7 +178,7 @@ margin-left:500px;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -193,9 +193,13 @@ margin-left:500px;
 
 		<form action="buynow"method="post">
 		<h2 class="Products">your cart</h2>
+		
 		<table>
+		
+		<caption></caption>
+		
 			<tr>
-
+                <th></th>
 				<c:set var="count" value="1" />
 				<c:forEach items="${car}" var="cartproducts">
 				 <c:set var="sum" value="${cartproducts.standardcost*cartproducts.quantity}" />

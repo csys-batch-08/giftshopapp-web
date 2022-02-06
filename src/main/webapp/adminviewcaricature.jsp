@@ -158,7 +158,10 @@ display: block;
 	
 	
  <table>
+ <caption></caption>
+ <th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${adminviewcaricature}" var="adminviewcar">
 

@@ -38,7 +38,7 @@ body {
 	background-attachment: fixed;
 }
 table{
-margin-top:100px;
+margin-top:-70px;
 }
 h2{
 
@@ -132,7 +132,7 @@ margin-left:600px;
 th, td {
 
 padding:55px;
-    padding-top: 10px;
+ 
     
 }
 .car {
@@ -204,7 +204,7 @@ left:50px;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -219,8 +219,10 @@ left:50px;
 		<h2>Mens products</h2>
 	
 	<table>
-		
+		<caption></caption>
+		<th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${mens}" var="mesnproducts">
 				

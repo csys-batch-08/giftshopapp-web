@@ -92,8 +92,10 @@ padding: 30px;
 
     
                        <table>
+                       <caption></caption>
 		
 			<tr>
+			<th></th>
 			 <c:set var="count" value="1" />
 				<c:forEach items="${offertshirt}" var="offerstee">
 				

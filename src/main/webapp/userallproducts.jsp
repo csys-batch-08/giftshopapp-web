@@ -111,10 +111,11 @@ span b {
 }
 
 th, td {
+    padding-top:-215px;
 	padding-right: 100px;
-	padding-bottom: 80px;
+	padding-bottom: 70px;
 	padding-left: 32px;
-	padding-top: 1px;
+	
 }
 
 .navbar {
@@ -209,7 +210,7 @@ top:13px;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -224,8 +225,10 @@ top:13px;
 
 
 	<table>
-		
+		<caption></caption>
+		<th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${usershow}" var="userproducts">
 

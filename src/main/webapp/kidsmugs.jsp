@@ -117,7 +117,7 @@ table img {
 th, td {
   padding: 15px;
   
-  
+ padding-left:10px;
 }
 
 .back{
@@ -142,7 +142,7 @@ width: 100%;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -157,7 +157,9 @@ width: 100%;
 	  
 	  
 	  <table>
+	  <caption></caption>
 			<tr>
+			<th></th>
 			
 			       <c:set var="count" value="1" />
 				   <c:forEach items="${kidsmugs}" var="kidsmug">

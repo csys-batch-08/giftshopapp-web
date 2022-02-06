@@ -40,7 +40,6 @@ public class viewcartservlet extends HttpServlet {
 		try {
 			flag = dao.duplicatecart(vcart1);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (flag > 0) {
@@ -48,7 +47,6 @@ public class viewcartservlet extends HttpServlet {
 			try {
 				dao.updatecart(vcar);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			resp.sendRedirect("cart");
@@ -57,10 +55,8 @@ public class viewcartservlet extends HttpServlet {
 			try {
 				dao.insertview(vcar);
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			resp.sendRedirect("cart");

@@ -48,6 +48,9 @@ table img {
  
   
 }
+table{
+margin-left:20px;
+}
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -116,7 +119,7 @@ table img {
 
 th, td {
   padding: 15px;
-  
+  padding-right:10px;
   
 }
 
@@ -142,7 +145,7 @@ width: 100%;
 			href="cart">My cart</a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				categories <i class="fa fa-caret-down"></i>
+				categories <em class="fa fa-caret-down"></em>
 			</button>
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
@@ -155,7 +158,10 @@ width: 100%;
 		</div>
 	</div>
 	 <table>
+	 <caption></caption>
+	 <th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${valentinesday}" var="valentines">
 				<td>
@@ -175,7 +181,7 @@ width: 100%;
 					</div>
 	<td>
 					<c:choose>
-				    <c:when test="${count==6}">
+				    <c:when test="${count==5}">
 				    <c:set var="count" value="1" />
 			<tr>
 			</c:when>

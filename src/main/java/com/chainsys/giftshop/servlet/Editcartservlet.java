@@ -18,7 +18,6 @@ import com.chainsys.giftshop.model.viewcartPojo;
 public class Editcartservlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
 		int productid = Integer.parseInt(req.getParameter("pid"));
@@ -30,11 +29,9 @@ public class Editcartservlet extends HttpServlet {
 		try {
 			vcpojo = vci.editcart(vcp);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		session.setAttribute("cartitems", vcpojo);
-		System.out.println(vcpojo.getSize());
 		if (vcpojo.getSize().equals("ra")) {
 			RequestDispatcher rd = req.getRequestDispatcher("addcartone.jsp");
 			rd.forward(req, resp);

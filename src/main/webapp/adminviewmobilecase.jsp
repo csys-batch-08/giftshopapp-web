@@ -156,9 +156,10 @@ display: block;
       </div>
 	</div>
  <table>
-		
-			
+		<caption></caption>
+			<th></th>
 			<tr>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${adminviewmobilecase}" var="adminshowmobilecase">
 

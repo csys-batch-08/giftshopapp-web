@@ -31,7 +31,6 @@ public class Removefromcartservlet extends HttpServlet {
 		try {
 			vcp = pi.removefromcart(vcar);
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		vcp.setProductid(productid);
