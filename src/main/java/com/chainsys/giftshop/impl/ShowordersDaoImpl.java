@@ -17,13 +17,14 @@ public class ShowordersDaoImpl implements ShowordersDao {
 	public List<showordersPojo> myorders(showordersPojo showord) {
 		PreparedStatement pstmt = null;
 		Connection con = null;
-		List<showordersPojo> view = new ArrayList<showordersPojo>();
+		ResultSet rs = null;
+		List<showordersPojo> view = new ArrayList<>();
 		String showcart = "select g.user_id,g.order_id,g.order_date,g.status,o.quantity_ordered,o.total_price,o.p_size,p.product_name,p.standard_cost,p.image from gorders g join gorder_items1 o on g.order_id=o.order_id join gproducts p on p.product_id = o.product_id where o.user_id=?";
 		try {
 			con = ConnectionUtil.gbconnection();
 			pstmt = con.prepareStatement(showcart);
 			pstmt.setInt(1, showord.getUserid());
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				showordersPojo showords = new showordersPojo();
 				showords.setUserid(rs.getInt(1));
@@ -38,17 +39,18 @@ public class ShowordersDaoImpl implements ShowordersDao {
 				showords.setImage(rs.getString(10));
 				view.add(showords);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}finally {
 			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -61,13 +63,14 @@ public class ShowordersDaoImpl implements ShowordersDao {
 	public List<showordersPojo> orderdetails(showordersPojo orddetails) {
 		PreparedStatement pstmt = null;
 		Connection con = null;
+		ResultSet rs = null;
 		String showorderdetails = "select o.order_id,o.quantity_ordered,o.total_price,o.p_size,p.product_name,p.image,(o.quantity_ordered*o.total_price)as toalllll from gorders g join gorder_items1 o on g.order_id=o.order_id join gproducts p on p.product_id = o.product_id  where o.order_id=? group by o.order_id,g.user_id,g.order_id,g.order_date,g.status,o.quantity_ordered,o.total_price,o.p_size,p.product_name,p.image";
-		List<showordersPojo> view = new ArrayList<showordersPojo>();
+		List<showordersPojo> view = new ArrayList<>();
 		try {
 			con = ConnectionUtil.gbconnection();
 			pstmt = con.prepareStatement(showorderdetails);
 			pstmt.setInt(1, orddetails.getOrderid());
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				showordersPojo orderdetails = new showordersPojo();
 				orderdetails.setOrderid(rs.getInt(1));
@@ -80,18 +83,20 @@ public class ShowordersDaoImpl implements ShowordersDao {
 				view.add(orderdetails);
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}finally {
 			try {
-				if (con != null) {
-					con.close();
-				}
 				if (pstmt != null) {
 					pstmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

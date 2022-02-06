@@ -304,8 +304,7 @@ left:50px;
 						<div class="car">
 								<img id="myImg" src="${kidsproducts.image}" alt="image">
 								<div id="myModal" class="modal">
-									<span class="close">&times;</span> <img class="modal-content"
-										id="img01">
+									<span class="close">&times;</span> <img class="modal-content"id="img01">
 									<div id="caption"></div>
 								</div>
 								<br>

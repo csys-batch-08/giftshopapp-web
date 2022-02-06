@@ -253,7 +253,7 @@ background-color: goldenrod;
 
 <body>
 
-<!-- <div class="admin">
+<div class="admin">
 	<form action="adminshowproducts"method="post">
 		<div class="button1">
 			<input type="submit" value="show products">

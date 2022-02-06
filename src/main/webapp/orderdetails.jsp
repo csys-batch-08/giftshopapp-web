@@ -184,10 +184,9 @@ left:50px;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-	
-	<form action="cancel"method="get">
-	<table>
-		
+	<c:set var="orderdetailsid" value="${sessionScope.order}" scope="session" />
+	<form action="cancel" method="get">
+	<table>    
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${orderdetails}" var="orddetails">

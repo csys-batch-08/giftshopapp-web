@@ -67,7 +67,6 @@ public class UserPojo {
 
 	public UserPojo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public UserPojo(String username, String password, String email, Long mobilenumber, String address) {

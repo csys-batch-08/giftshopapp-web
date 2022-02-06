@@ -28,18 +28,15 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(4, user.getPassword());
 			pstmt.setString(5, user.getAddress());
 			pstmt.executeUpdate();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (con != null) {
-					con.close();
-				}
 				if (pstmt != null) {
 					pstmt.close();
+				}
+				if (con != null) {
+					con.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -53,27 +50,29 @@ public class UserDaoImpl implements UserDao {
 		UserPojo logUser = null;
 		PreparedStatement pstmt = null;
 		Connection con = null;
+		ResultSet rs = null;
 		String query = "select user_id,user_name,email,mobile_number,role from user_gift where mobile_number=?";
 		try {
 			con = ConnectionUtil.gbconnection();
 			pstmt = con.prepareStatement(query);
 			pstmt.setLong(1, user.getMobilenumber());
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				logUser = new UserPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5));
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e ) {
 			e.printStackTrace();
 		} finally {
 			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -87,28 +86,30 @@ public class UserDaoImpl implements UserDao {
 		UserPojo logUser = null;
 		PreparedStatement pstmt = null;
 		Connection con = null;
+		ResultSet rs = null;
 		String query = "select user_id,user_name,email,mobile_number,role from user_gift where email=?";
 		try {
 			con = ConnectionUtil.gbconnection();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getEmail());
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				logUser = new UserPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5));
 
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e ) {
 			e.printStackTrace();
 		} finally {
 			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -145,7 +146,6 @@ public class UserDaoImpl implements UserDao {
 				products.add(users);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return products;

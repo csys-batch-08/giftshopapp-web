@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.model.viewcartPojo;
 
+@SuppressWarnings("serial")
 @WebServlet("/addtocart")
 public class Addtocartservlet extends HttpServlet {
 

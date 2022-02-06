@@ -155,9 +155,9 @@ display: block;
       <a href="adminshowproducts">Back</a>
       </div>
 	</div>
+	
+	
  <table>
-		
-			
 			<tr>
 				<c:set var="count" value="1" />
 				<c:forEach items="${adminviewcaricature}" var="adminviewcar">

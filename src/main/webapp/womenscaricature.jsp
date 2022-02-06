@@ -167,7 +167,7 @@ width: 100%;
 					<div>${womenscari.productId}</div>
 					<div>${womenscari.productName}</div> 
 					<div><strong>${womenscari.type}</strong></div> 
-					<div><b>RS:${womenscari.standardCost}</b></div> 
+					<div><strong>RS:${womenscari.standardCost}</strong></div> 
 
 				
 		<a href="addtocartmobile?

@@ -166,8 +166,8 @@ width: 100%;
 					<br>
 					<div>${womenswat.productId}</div>
 					<div>${womenswat.productName}</div> 
-					<div><b>${womenswat.type}</b></div> 
-					<div><b>RS:${womenswat.standardCost}</b></div> 		
+					<div><strong>${womenswat.type}</strong></div> 
+					<div><strong>RS:${womenswat.standardCost}</strong></div> 		
 				<br>
 				
 		<a href="addtocartmobile?

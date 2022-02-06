@@ -13,16 +13,16 @@ import com.chainsys.giftshop.util.ConnectionUtil;
 
 public class ProductsDaoImpl implements ProductsDao {
 
-//	private static final ProductsImpl ProductDao1 = null;
+
 
 	@Override
 	public void insert(ProductPojo product1) {
-		String Query = "insert into gproducts (product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type)values(?,?,?,?,?,?,?,?)";
+		String query = "insert into gproducts (product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type)values(?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		Connection con = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			pstmt = con.prepareStatement(Query);
+			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, product1.getProductId());
 			pstmt.setString(2, product1.getProductName());
 			pstmt.setString(3, product1.getDescription());
@@ -32,17 +32,15 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt.setString(7, product1.getImage());
 			pstmt.setString(8, product1.getType());
 			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (con != null) {
-					con.close();
-				}
 				if (pstmt != null) {
 					pstmt.close();
+				}
+				if (con != null) {
+					con.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -52,28 +50,27 @@ public class ProductsDaoImpl implements ProductsDao {
 
 	@Override
 	public void update(ProductPojo product2) {
-		String UpdateQuery = "update gproducts set standard_cost=?,quantity_onhand=? where product_id=?";
+		String query = "update gproducts set standard_cost=?,quantity_onhand=? where product_id=?";
 		PreparedStatement pstmt = null;
 		Connection con = null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			pstmt = con.prepareStatement(UpdateQuery);
+			pstmt = con.prepareStatement(query);
 			pstmt.setDouble(1, product2.getStandardCost());
 			pstmt.setInt(2, product2.getQuantityonhand());
 			pstmt.setInt(3, product2.getProductId());
 			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (con != null) {
-					con.close();
-				}
 				if (pstmt != null) {
 					pstmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -85,7 +82,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		PreparedStatement pstmt = null;
 		Connection con = null;
 		ResultSet rs = null;
-		List<ProductPojo> products = new ArrayList<ProductPojo>();
+		List<ProductPojo> products = new ArrayList<>();
 		String query = "select product_name,description,category,image from gproducts";
 		try {
 			con = ConnectionUtil.gbconnection();
@@ -97,20 +94,18 @@ public class ProductsDaoImpl implements ProductsDao {
 				products.add(pp);
 			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -131,22 +126,19 @@ public class ProductsDaoImpl implements ProductsDao {
 			con = ConnectionUtil.gbconnection();
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+			
+		} catch (SQLException | ClassNotFoundException  e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -171,20 +163,18 @@ public class ProductsDaoImpl implements ProductsDao {
 						rs.getString(7));
 				products.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -212,21 +202,20 @@ public class ProductsDaoImpl implements ProductsDao {
 						rs.getString(7));
 				products.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -253,20 +242,18 @@ public class ProductsDaoImpl implements ProductsDao {
 						rs.getString(7));
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -294,20 +281,18 @@ public class ProductsDaoImpl implements ProductsDao {
 						rs.getString(7));
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -328,17 +313,15 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, product3.getProductId());
 			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (con != null) {
-					con.close();
-				}
 				if (pstmt != null) {
 					pstmt.close();
+				}
+				if (con != null) {
+					con.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -360,20 +343,18 @@ public class ProductsDaoImpl implements ProductsDao {
 			while (rs.next()) {
 				return rs.getInt(1);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -399,21 +380,18 @@ public class ProductsDaoImpl implements ProductsDao {
 						rs.getInt(6));
 				return pp;
 			}
-
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -443,20 +421,18 @@ public class ProductsDaoImpl implements ProductsDao {
 				pp.setType(rs.getString(4));
 				products.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -484,20 +460,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -525,21 +499,20 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -566,20 +539,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -611,20 +582,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -656,20 +625,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -701,20 +668,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -736,7 +701,6 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-
 				pp = new ProductPojo();
 				pp.setImage(rs.getString(3));
 				pp.setProductName(rs.getString(1));
@@ -746,20 +710,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -791,20 +753,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -836,21 +796,20 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -881,20 +840,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -926,20 +883,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -971,20 +926,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -1011,20 +964,18 @@ public class ProductsDaoImpl implements ProductsDao {
 				searchproducts.add(pp);
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -1033,7 +984,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		return searchproducts;
 	}
 
-	public List<ProductPojo> products(String products) {
+	public List<ProductPojo> products() {
 		List<ProductPojo> products1 = new ArrayList<>();
 		String getprice = "select product_name,standard_cost,image,p_type,product_id from gproducts where product_name=?";
 		PreparedStatement pstmt = null;
@@ -1054,20 +1005,18 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products1.add(pp);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -1077,7 +1026,7 @@ public class ProductsDaoImpl implements ProductsDao {
 	}
 
 	public List<ProductPojo> adminShowdelete() {
-		List<ProductPojo> products = new ArrayList<ProductPojo>();
+		List<ProductPojo> products = new ArrayList<>();
 		String query = "select product_id,product_name,description,category,image from gproducts";
 		PreparedStatement pstmt = null;
 		Connection con = null;
@@ -1094,20 +1043,18 @@ public class ProductsDaoImpl implements ProductsDao {
 				products.add(pp);
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
+		}  finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (con != null) {
 					con.close();
 				}
-				if (pstmt != null) {
-					pstmt.close();
+				if (rs != null) {
+					rs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

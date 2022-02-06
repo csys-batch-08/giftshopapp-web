@@ -98,7 +98,6 @@ public class viewcartPojo {
 
 	public viewcartPojo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

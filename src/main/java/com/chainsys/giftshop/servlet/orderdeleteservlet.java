@@ -14,17 +14,15 @@ import com.chainsys.giftshop.model.OrdersPojo;
 
 @WebServlet("/cancel")
 public class orderdeleteservlet extends HttpServlet {
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
-		int orderid = Integer.parseInt(session.getAttribute("orderid").toString());
-		boolean flag = false;
+		int orderid = (int) session.getAttribute("orderdetailsid");
 		OrdersPojo vcar1 = new OrdersPojo();
 		vcar1.setOrderid(orderid);
 		OrdersDaoImpl obj2 = new OrdersDaoImpl();
-		flag = obj2.cancelorder(vcar1);
+		boolean flag = obj2.cancelorder(vcar1);
 		if (flag) {
 			resp.sendRedirect("orderdelete.jsp");
 		}
