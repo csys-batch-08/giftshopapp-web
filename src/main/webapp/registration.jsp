@@ -46,7 +46,6 @@ body{
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
 }
 .content form .user-details{
   display: ruby;
@@ -140,26 +139,26 @@ form .user-details .input-box{
         
           <div class="input-box">
             <span class="details">User name</span>
-            <input type="text" name="username"id="username"pattern="[A-Za-z]{3,}"					
+            <input type="text"id="username" name="username"pattern="[A-Za-z]{3,}"					
             title="minimum 3 characters should be there."placeholder="Enter your nickname" required>
           </div>
           
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" name="email"id="email"pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+"					
+            <input type="text" id="email"name="email"pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+"					
             title="You have to insert @ and . in the username ex.abc@gmail.com" placeholder="Enter your email" onkeydown="validation()"required>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" name="phone"id="phone"pattern="[6-9]{1}[0-9]{9}"placeholder="Enter your number"minlength="10" maxlength="10" required>
+            <input type="text" id="phone"name="phone"pattern="[6-9]{1}[0-9]{9}"placeholder="Enter your number"minlength="10" maxlength="10" required>
           </div>
            <div class="input-box">
             <span class="details">Address</span>
-            <input type="text" name="address"id="address"placeholder="Enter your location"required>
+            <input type="text" id="address"name="address"placeholder="Enter your location"required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="password" name="password"id="password"pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&?/*$^]).{8,16}$"
+            <input type="password"id="password"name="password"pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&?/*$^]).{8,16}$"
             title="Minimum 8 characters should be there.There should be atleast one numeric,special character,capital letter and small letter." 
             placeholder="Enter your password" minlength="8" maxlength="16" required>
           </div>
