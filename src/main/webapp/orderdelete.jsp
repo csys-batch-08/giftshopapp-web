@@ -28,11 +28,12 @@ margin-top:-500px;
 font-size: 85px;
 }
 </style>
+
 </head>
 <body>
 
 
-<iframe src="https://giphy.com/embed/g0sx0vvZd3JbGDhmxd" width="620" height="620" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>
+  <iframe src="https://giphy.com/embed/g0sx0vvZd3JbGDhmxd" width="620" height="620"  class="giphy-embed" title="gif"></iframe>
 
          <script>
          setTimeout(function(){

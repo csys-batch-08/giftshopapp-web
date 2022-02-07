@@ -48,7 +48,7 @@ public class Viewcartservlet extends HttpServlet {
 			dao.insertview(vcar);
 			resp.sendRedirect("cart");
 		}
-		} catch (IOException e) {
+		} catch (NumberFormatException  | IOException e) {
 			e.printStackTrace();
 		}
 	}

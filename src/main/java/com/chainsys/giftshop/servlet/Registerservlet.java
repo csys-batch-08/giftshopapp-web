@@ -23,10 +23,10 @@ public class Registerservlet extends HttpServlet {
 			String username = req.getParameter("username");
 			Long phone = Long.parseLong(req.getParameter("phone"));
 			String address = req.getParameter("address");
-			String Password = req.getParameter("password");
+			String password = req.getParameter("password");
 			UserPojo user1 = new UserPojo(0, null, null, phone, null);
 			UserPojo usednum;
-			try {
+	     	try {
 				usednum = ui.validateUserNum(user1);
 				if (usednum == null) {
 					String email = req.getParameter("email");
@@ -35,9 +35,9 @@ public class Registerservlet extends HttpServlet {
 					try {
 						usedmail = ui.validateUsermail(user2);
 						if (usedmail == null) {
-							UserPojo user = new UserPojo(username, Password, email, phone, address);
+							UserPojo user = new UserPojo(username, password, email, phone, address);
 							boolean flag = ui.insert(user);
-							if (flag == true) {
+							if (flag) {
 								resp.sendRedirect("login.jsp");
 							}
 						} else {

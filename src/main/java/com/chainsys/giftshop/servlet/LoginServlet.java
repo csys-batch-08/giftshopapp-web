@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 		String username = req.getParameter("username");
 		String pwd = req.getParameter("password");
-		UserloginPojo userlogin=new UserloginPojo();
+		UserloginPojo userlogin=null;
 		UserloginPojo ulp = new UserloginPojo(username, pwd);
 		UserDaoImpl ui = new UserDaoImpl();
 		HttpSession session = req.getSession();

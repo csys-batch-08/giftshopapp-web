@@ -1,7 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -27,7 +26,7 @@ public class Cartoneservlet extends HttpServlet {
 		ViewCartPojo vcar1 = new ViewCartPojo();
 		vcar1.setUserid(userid);
 		ViewCartDaoImpl vci = new ViewCartDaoImpl();
-		List<ViewCartPojo> vcp = new ArrayList<>();
+		List<ViewCartPojo> vcp = null;
 		vcp = vci.showcartpage(vcar1);
 		req.setAttribute("car", vcp);
 		RequestDispatcher rd = req.getRequestDispatcher("cartmobile.jsp");

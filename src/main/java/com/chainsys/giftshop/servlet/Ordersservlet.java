@@ -1,7 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -26,7 +25,7 @@ public class Ordersservlet extends HttpServlet {
 		OrdersDaoImpl oi = new OrdersDaoImpl();
 		OrdersPojo showord = new OrdersPojo();
 		showord.setUserid(userid);
-		List<OrdersPojo> op = new ArrayList<>();
+		List<OrdersPojo> op = null;
 		op = oi.userOrderDetails(showord);
 		req.setAttribute("showorders", op);
 		RequestDispatcher rd = req.getRequestDispatcher("gorders.jsp");

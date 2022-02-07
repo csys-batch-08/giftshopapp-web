@@ -6,8 +6,8 @@ public class UserPojo implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private int userid;
-	private String Username;
-	private String Password;
+	private String userName;
+	private String password;
 	private String email;
 	private Long mobilenumber;
 	private String address;
@@ -21,19 +21,19 @@ public class UserPojo implements Serializable {
 	}
 
 	public String getUsername() {
-		return Username;
+		return userName;
 	}
 
 	public void setUsername(String username) {
-		Username = username;
+		userName = username;
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 
 	public String getEmail() {
@@ -62,8 +62,8 @@ public class UserPojo implements Serializable {
 
 	public UserPojo(String username, String password, String email, Long mobilenumber) {
 
-		this.Username = username;
-		this.Password = password;
+		this.userName = username;
+		this.password = password;
 		this.email = email;
 		this.mobilenumber = mobilenumber;
 	}
@@ -74,8 +74,8 @@ public class UserPojo implements Serializable {
 
 	public UserPojo(String username, String password, String email, Long mobilenumber, String address) {
 		super();
-		Username = username;
-		Password = password;
+		userName = username;
+		this.password = password;
 		this.email = email;
 		this.mobilenumber = mobilenumber;
 		this.address = address;
@@ -84,7 +84,7 @@ public class UserPojo implements Serializable {
 	public UserPojo(int userid, String username, String email, Long mobilenumber, String address) {
 		super();
 		this.userid = userid;
-		Username = username;
+		userName = username;
 		this.email = email;
 		this.mobilenumber = mobilenumber;
 		this.address = address;

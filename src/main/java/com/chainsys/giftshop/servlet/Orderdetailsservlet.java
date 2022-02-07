@@ -1,7 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -30,7 +29,7 @@ public class Orderdetailsservlet extends HttpServlet {
 		ShowOrdersPojo orddetails = new ShowOrdersPojo();
 		orddetails.setOrderid(orderid);
 		ShowordersDaoImpl soi = new ShowordersDaoImpl();
-		List<ShowOrdersPojo> sop = new ArrayList<>();
+		List<ShowOrdersPojo> sop = null;
 	        status=soi.checkstatus(orddetails);
 		sop = soi.orderdetails(orddetails);
 		req.setAttribute("orderdetails", sop);

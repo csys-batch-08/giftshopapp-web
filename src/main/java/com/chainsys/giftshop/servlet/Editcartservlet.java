@@ -24,7 +24,7 @@ public class Editcartservlet extends HttpServlet {
 		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
 		int productid = Integer.parseInt(req.getParameter("pid"));
 		ViewCartPojo vcp = new ViewCartPojo();
-		ViewCartPojo  vcpojo= new ViewCartPojo();
+		ViewCartPojo  vcpojo= null;
 		vcp.setProductid(productid);
 		vcp.setUserid(userid);
 		ViewCartDaoImpl vci = new ViewCartDaoImpl();
