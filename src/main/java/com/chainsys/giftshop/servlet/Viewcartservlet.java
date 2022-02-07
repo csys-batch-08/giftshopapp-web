@@ -1,8 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +17,7 @@ public class Viewcartservlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {	
 		int flag = 0;
 		HttpSession session = req.getSession();
 		ViewCartPojo vcart = (ViewCartPojo) session.getAttribute("cartitems");
@@ -28,7 +27,7 @@ public class Viewcartservlet extends HttpServlet {
 		String productname = vcart.getProductname();
 		String type = vcart.getType();
 		Double standardcost = vcart.getStandardcost();
-		String size = req.getParameter("sss");
+		String size = req.getParameter("size");
 		if (size == null) {
 			size = "ra";
 		}
@@ -39,27 +38,18 @@ public class Viewcartservlet extends HttpServlet {
 		vcart1.setUserid(userid);
 		vcart1.setProductid(productid);
 		vcart1.setSize(size);
-		try {
-			flag = dao.duplicatecart(vcart1);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		flag = dao.duplicatecart(vcart1);
 		if (flag > 0) {
 			ViewCartPojo vcar = new ViewCartPojo(image, productname, type, standardcost, size, qty, userid, productid);
-			try {
-				dao.updatecart(vcar);
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
+			dao.updatecart(vcar);
 			resp.sendRedirect("cart");
 		} else {
 			ViewCartPojo vcar = new ViewCartPojo(image, productname, type, standardcost, size, qty, userid, productid);
-			try {
-				dao.insertview(vcar);
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
+			dao.insertview(vcar);
 			resp.sendRedirect("cart");
+		}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

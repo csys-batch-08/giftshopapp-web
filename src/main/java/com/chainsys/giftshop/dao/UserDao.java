@@ -1,7 +1,5 @@
 package com.chainsys.giftshop.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import com.chainsys.giftshop.model.UserPojo;
@@ -9,15 +7,13 @@ import com.chainsys.giftshop.model.UserloginPojo;
 
 public interface UserDao {
 
-	public boolean insert(UserPojo user) throws ClassNotFoundException, SQLException;
+	public boolean insert(UserPojo user);
 
-	public UserPojo validateUserNum(UserPojo user) throws ClassNotFoundException, SQLException;
+	public UserPojo validateUserNum(UserPojo user);
 
-	public UserPojo validateUsermail(UserPojo user) throws ClassNotFoundException, SQLException;
+	public UserPojo validateUsermail(UserPojo user);
 
-	public ResultSet validateuser1(UserloginPojo ul) throws ClassNotFoundException, SQLException;
+	public UserloginPojo validateuser(UserloginPojo ul);
 
 	public List<UserPojo> showusers();
-
-	public ResultSet validateuser(String Email, String password) throws ClassNotFoundException, SQLException;
 }

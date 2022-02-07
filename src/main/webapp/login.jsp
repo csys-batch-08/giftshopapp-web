@@ -135,12 +135,12 @@ form .user-details .input-box{
               <div class="user-details">
                 <div class="input-box">
                   <span class="details">Email</span>
-                  <input type="text" name="username"pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+"					
+                  <input type="text" name="username"id="username"pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+"					
             title="You have to insert @ and . in the username ex.abc@gmail.com" placeholder="Enter your mail id" required>
                 </div>
                 <div class="input-box">
                   <span class="details">Password</span>
-                  <input type="password" name="password"pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&?/*$^]).{8,16}$"
+                  <input type="password" name="password"id="password"pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&?/*$^]).{8,16}$"
             title="Minimum 8 characters should be there.There should be atleast one numeric,special character,capital letter and small letter." name="password"
             minlength="8" maxlength="16"
              placeholder="Enter your password" required>

@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.chainsys.giftshop.dao.ShowordersDao;
 import com.chainsys.giftshop.logger.Logger;
+import com.chainsys.giftshop.model.OrdersPojo;
 import com.chainsys.giftshop.model.ShowOrdersPojo;
 import com.chainsys.giftshop.util.ConnectionUtil;
 
@@ -83,5 +84,28 @@ public class ShowordersDaoImpl implements ShowordersDao {
 		return view;
 
 	}
+	public String checkstatus(ShowOrdersPojo orddetails) {
+		PreparedStatement pstmt = null;
+		Connection con = null;
+		ResultSet rs = null;
+		String status=null;
+		String query = "select status from gorders where order_id=?";
+		try {
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, orddetails.getOrderid());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				status=rs.getNString("status");
+			}
 
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
+		}
+		return status;
+	}
 }

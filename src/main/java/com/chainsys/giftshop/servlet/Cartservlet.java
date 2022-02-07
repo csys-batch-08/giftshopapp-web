@@ -1,7 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,11 +27,7 @@ public class Cartservlet extends HttpServlet {
 		vcar1.setUserid(userid);
 		ViewCartDaoImpl vci = new ViewCartDaoImpl();
 		List<ViewCartPojo> vcp = new ArrayList<>();
-		try {
-			vcp = vci.showcart(vcar1);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		vcp = vci.showcartpage(vcar1);
 		req.setAttribute("car", vcp);
 		RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
 		try {

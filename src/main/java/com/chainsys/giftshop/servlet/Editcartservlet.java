@@ -1,8 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +37,7 @@ public class Editcartservlet extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
 			rd.forward(req, resp);
 		}
-		}catch (ClassNotFoundException | SQLException | IOException | ServletException e) {
+		}catch (IOException | ServletException e) {
 			e.printStackTrace();
 		}
 	}

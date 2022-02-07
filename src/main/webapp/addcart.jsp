@@ -273,7 +273,7 @@ th, td {
 				<h1>${sessionScope.cartitems.getProductname()}</h1>
 				<h3>${sessionScope.cartitems.getType()}</h3>
 				<h3><strong>RS:${sessionScope.cartitems.getStandardcost()}</strong></h3>
-				<h4><label for="size">Choose your size:</label> <select name="sss">
+				<h4><label for="size">Choose your size:</label> <select name="size">
 						<option value="S">S</option>
 						<option value="M">M</option>
 						<option value="L">L</option>

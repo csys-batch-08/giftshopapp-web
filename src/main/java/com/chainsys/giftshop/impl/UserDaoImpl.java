@@ -1,14 +1,11 @@
 package com.chainsys.giftshop.impl;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.chainsys.giftshop.dao.UserDao;
+import com.chainsys.giftshop.logger.Logger;
 import com.chainsys.giftshop.model.UserPojo;
 import com.chainsys.giftshop.model.UserloginPojo;
 import com.chainsys.giftshop.util.ConnectionUtil;
@@ -18,6 +15,8 @@ public class UserDaoImpl implements UserDao {
 	public boolean insert(UserPojo user) {
 		PreparedStatement pstmt = null;
 		Connection con = null;
+		boolean flag=false;
+		int i=0;
 		String query = "insert into user_gift(user_name,email,mobile_number,user_Password,address) values(?,?,?,?,?)";
 		try {
 			con = ConnectionUtil.gbconnection();
@@ -27,22 +26,20 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setLong(3, user.getMobilenumber());
 			pstmt.setString(4, user.getPassword());
 			pstmt.setString(5, user.getAddress());
-			pstmt.executeUpdate();
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}  finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+			i=pstmt.executeUpdate();
+			if(i>0) {
+				flag=true;
+			}else {
+				flag=false;
 			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
-		return true;
+		finally {
+			ConnectionUtil.close(null, pstmt, con);
+		}	
+		return flag;
 	}
 
 	@Override
@@ -61,28 +58,18 @@ public class UserDaoImpl implements UserDao {
 				logUser = new UserPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5));
 			}
 
-		} catch (SQLException | ClassNotFoundException e ) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-				if (rs != null) {
-					rs.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
+		}	
 		return logUser;
 	}
 
 	@Override
-	public UserPojo validateUsermail(UserPojo user) throws ClassNotFoundException, SQLException {
+	public UserPojo validateUsermail(UserPojo user){
 		UserPojo logUser = null;
 		PreparedStatement pstmt = null;
 		Connection con = null;
@@ -98,85 +85,95 @@ public class UserDaoImpl implements UserDao {
 
 			}
 
-		} catch (SQLException | ClassNotFoundException e ) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-				if (rs != null) {
-					rs.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
+		}	
 		return logUser;
 	}
 
 	@Override
-	public ResultSet validateuser1(UserloginPojo ul) throws ClassNotFoundException, SQLException {
+	public UserloginPojo validateuser(UserloginPojo ulp)  {
+		PreparedStatement pstmt = null;
+		Connection con = null;
 		ResultSet rs = null;
-		String validate = "select user_id,user_name,user_password,email,mobile_number,role,address from user_gift where email = ? and user_password = ?";
-		Connection con = ConnectionUtil.gbconnection();
-		PreparedStatement Pstmt = con.prepareStatement(validate);
-		Pstmt.setString(1, ul.getUsername());
-		Pstmt.setString(2, ul.getPassword());
-		rs = Pstmt.executeQuery();
-		return rs;
+		String query = "select user_id,user_name,user_password,email,mobile_number,role,address from user_gift where email = ? and user_password = ?";
+		try {
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, ulp.getEmail());
+			pstmt.setString(2, ulp.getPassword());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				ulp=new UserloginPojo(rs.getInt("user_id"),rs.getString("user_name"),rs.getString("user_password"),rs.getString("email"),rs.getLong("mobile_number"),rs.getString("address"),rs.getString("role"));
+			}
+		}catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
+		}	
+		return ulp;
 	}
 
 	@Override
 	public List<UserPojo> showusers() {
 		List<UserPojo> products = new ArrayList<>();
-		String products1 = "select user_id,user_name,email,mobile_number,address from user_gift";
-		Connection con;
+		String query = "select user_id,user_name,email,mobile_number,address from user_gift";
+		PreparedStatement pstmt = null;
+		Connection con=null;
 		UserPojo users = null;
+		ResultSet rs=null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(products1);
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				users = new UserPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5));
 
 				products.add(users);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
+		}	
 		return products;
 	}
 
-	@Override
-	public ResultSet validateuser(String Email, String password) throws ClassNotFoundException, SQLException {
-		return null;
-	}
+
 
 	public List<UserPojo> serachusers(String users) {
 		List<UserPojo> searchproducts = new ArrayList<>();
-		String searchquery = "select user_id,user_name,email,mobile_number,address from user_gift where lower(user_name ) like ? ";
+		PreparedStatement pstmt = null;
+		Connection con=null;
+		String query = "select user_id,user_name,email,mobile_number,address from user_gift where lower(user_name ) like ? ";
 		ResultSet rs = null;
 		try {
-			Connection con = ConnectionUtil.gbconnection();
-			PreparedStatement pre = con.prepareStatement(searchquery);
-			pre.setString(1, users + "%");
-			rs = pre.executeQuery();
+			con = ConnectionUtil.gbconnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, users + "%");
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				UserPojo search = new UserPojo(rs.getInt("user_id"), rs.getString("user_name"), rs.getString("email"),
 						rs.getLong("mobile_number"), rs.getString("address"));
-
 				searchproducts.add(search);
 			}
-
 		} catch (Exception e) {
-
-			e.printStackTrace();
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
-
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
+		}	
 		return searchproducts;
 	}
+
+
 }

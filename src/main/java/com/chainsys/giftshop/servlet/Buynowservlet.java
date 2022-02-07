@@ -1,7 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +36,7 @@ public class Buynowservlet extends HttpServlet {
 		ViewCartDaoImpl obj1 = new ViewCartDaoImpl();
 		List<ViewCartPojo> cartlist = null;
 		
-			cartlist = obj1.showcart1(vcar1);
+			cartlist = obj1.showcartpage(vcar1);
 		for (int i = 0; cartlist.size() > i; i++) {
 			OrdersPojo orders = new OrdersPojo();
 			orders.setUserid(uid);
@@ -60,7 +59,7 @@ public class Buynowservlet extends HttpServlet {
 				resp.sendRedirect("exit.jsp");
 			
 		}
-	}catch (ClassNotFoundException | SQLException | IOException e) {
+	}catch (IOException e) {
 		e.printStackTrace();
 	} 
 

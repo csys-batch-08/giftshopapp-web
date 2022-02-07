@@ -21,7 +21,9 @@ public class Orderdetailsservlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) {
+		String status=null;
 		try {
+		
 		HttpSession session = req.getSession();
 		int orderid = Integer.parseInt(req.getParameter("ordid"));
 		session.setAttribute("order", orderid);
@@ -29,8 +31,10 @@ public class Orderdetailsservlet extends HttpServlet {
 		orddetails.setOrderid(orderid);
 		ShowordersDaoImpl soi = new ShowordersDaoImpl();
 		List<ShowOrdersPojo> sop = new ArrayList<>();
+	        status=soi.checkstatus(orddetails);
 		sop = soi.orderdetails(orddetails);
 		req.setAttribute("orderdetails", sop);
+		req.setAttribute("status", status);
 		RequestDispatcher rd = req.getRequestDispatcher("orderdetails.jsp");
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {

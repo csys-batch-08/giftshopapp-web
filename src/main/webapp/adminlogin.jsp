@@ -277,35 +277,35 @@ background-color: goldenrod;
         <div class="user-details">
             <div class="input-box">
                 <span class="details">Product id</span>
-                <input type="text"name="productid"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product id" required>
+                <input type="text"name="productid"id="productid"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product id" required>
               </div>
             <div class="input-box">
                 <span class="details">Product name</span>
-                <input type="text" name ="productname"placeholder="Enter product name" required>
+                <input type="text" name ="productname"id="productname"placeholder="Enter product name" required>
               </div>
               <div class="input-box">
                 <span class="details">Description</span>
-                <input type="text" name ="productdescription"placeholder="Enter product Decription" required>
+                <input type="text" name ="productdescription"id="productdescription"placeholder="Enter product Decription" required>
               </div>
               <div class="input-box">
                 <span class="details">price</span>
-                <input type="text" name ="productprice"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"placeholder="Enter product price" required>
+                <input type="text" name ="productprice"id="productprice"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"placeholder="Enter product price" required>
               </div>
               <div class="input-box">
                 <span class="details">category</span>
-                <input type="text"name ="productcategory" placeholder="Enter product category" required>
+                <input type="text"name ="productcategory"id="productcategory" placeholder="Enter product category" required>
               </div>
               <div class="input-box">
                 <span class="details">quantity</span>
-                <input type="text" name ="productquantity"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"placeholder="Enter product quantity" required>
+                <input type="text" name ="productquantity"id="productquantity"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"placeholder="Enter product quantity" required>
               </div>
                <div class="input-box">
                 <span class="details">Image</span>
-                <input type="text" name ="image"placeholder="Insert product image" required>
+                <input type="text" name ="image"id="image"placeholder="Insert product image" required>
               </div>
                <div class="input-box">
                 <span class="details">Type</span>
-                <input type="text" name ="type"placeholder="enter product type" required>
+                <input type="text" name ="type"id="type"placeholder="enter product type" required>
               </div>
             </div>
             <div class="button">
@@ -351,15 +351,15 @@ background-color: goldenrod;
 			<div class="user-details">
 				<div class="input-box">
 					<span class="details">Product id</span> <input type="text"
-						name="productid"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product id" required>
+						name="productid"id="productsid"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product id" required>
 				</div>
 				<div class="input-box">
-					<span class="details">price</span> <input type="text" name="price"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"
+					<span class="details">price</span> <input type="text" name="price"id="price"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"
 						placeholder="Enter product price to update" required>
 				</div>
 				<div class="input-box">
 					<span class="details">quantity</span> <input type="number"
-						name="quantity"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product quantity to update"
+						name="quantity"id="number"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product quantity to update"
 						required>
 				</div>
 			</div>

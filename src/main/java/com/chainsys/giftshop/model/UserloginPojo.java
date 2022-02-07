@@ -69,11 +69,6 @@ public class UserloginPojo implements Serializable {
 		this.password = password;
 	}
 
-	public UserloginPojo(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
-	}
 
 	@Override
 	public String toString() {
@@ -92,4 +87,17 @@ public class UserloginPojo implements Serializable {
 		this.role = role;
 	}
 
+	public UserloginPojo(String email,String password) {
+		super();
+		this.email = email;
+		this.password = password;
+		
+	}
+
+	public UserloginPojo() {
+		super();
+	
+	}
+
+	
 }

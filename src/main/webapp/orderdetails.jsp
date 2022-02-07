@@ -7,6 +7,8 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -225,10 +227,15 @@ left:50px;
 			</c:forEach>
 			</tr>	
 	</table>
+	
+	             <c:set var="String" value="${status}" />
+			<c:if test="${fn:containsIgnoreCase(String, 'ordered')}">
+				 
                 <div class="button">
                 <input type="submit" value="cancel order">
                </div>
 
+			</c:if>
 </form>
 	<div class="total">Total amount:Rs:${total}</div>
 </body>

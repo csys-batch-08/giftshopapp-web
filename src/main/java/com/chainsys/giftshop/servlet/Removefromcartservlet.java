@@ -1,8 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +33,7 @@ public class Removefromcartservlet extends HttpServlet {
 		vcp.setProductid(productid);
 		RequestDispatcher rd = req.getRequestDispatcher("cart");
 		rd.forward(req, resp);
-		}catch (ClassNotFoundException | SQLException | IOException e) {	
+		}catch (NumberFormatException | IOException e) {	
 			e.printStackTrace();
 		}
 	}
