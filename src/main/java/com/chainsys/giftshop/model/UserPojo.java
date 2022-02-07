@@ -1,6 +1,10 @@
 package com.chainsys.giftshop.model;
 
-public class UserPojo {
+import java.io.Serializable;
+
+public class UserPojo implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private int userid;
 	private String Username;
 	private String Password;
@@ -59,7 +63,6 @@ public class UserPojo {
 	public UserPojo(String username, String password, String email, Long mobilenumber) {
 
 		this.Username = username;
-		System.out.println(username);
 		this.Password = password;
 		this.email = email;
 		this.mobilenumber = mobilenumber;

@@ -1,6 +1,6 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.chainsys.giftshop.impl.ViewCartDaoImpl"%>
-<%@page import="com.chainsys.giftshop.model.viewcartPojo"%>
+<%@page import="com.chainsys.giftshop.model.ViewCartPojo"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

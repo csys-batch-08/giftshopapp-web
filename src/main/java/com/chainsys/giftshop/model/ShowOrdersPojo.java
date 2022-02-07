@@ -1,9 +1,12 @@
 package com.chainsys.giftshop.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class showordersPojo {
 
+public class ShowOrdersPojo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int userid;
 	private int orderid;
 	private Date orderdate;
@@ -63,7 +66,7 @@ public class showordersPojo {
 		this.totalprice = totalprice;
 	}
 
-	public showordersPojo() {
+	public ShowOrdersPojo() {
 		super();
 	}
 
@@ -99,7 +102,7 @@ public class showordersPojo {
 		this.image = image;
 	}
 
-	public showordersPojo(int userid, int orderid, Date orderdate, String status, int quantityordered, int totalprice,
+	public ShowOrdersPojo(int userid, int orderid, Date orderdate, String status, int quantityordered, int totalprice,
 			String size, String productname, double standardcost, String image) {
 		super();
 		this.userid = userid;

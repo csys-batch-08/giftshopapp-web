@@ -1,8 +1,11 @@
 package com.chainsys.giftshop.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrdersPojo {
+public class OrdersPojo implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	public OrdersPojo() {
 		super();
 	}

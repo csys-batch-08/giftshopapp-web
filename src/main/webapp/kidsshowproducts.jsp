@@ -312,9 +312,9 @@ left:50px;
 								</div>
 								<br>
 <br>
-								${kidsproducts.productName}
+								${kidsproducts.productName}<br>
 								${kidsproducts.description}
-									<strong>Price:${kidsproducts.standardCost}</strong>
+									<strong>Starts from RS:${kidsproducts.standardCost}</strong>
 								<br>
 						</div>
 
@@ -334,35 +334,35 @@ left:50px;
 	</table>  
 	<div class="button1">
 					<a href="kidsmugs"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button2">
 					<a href="kidstshirts"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button3">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 			<div class="button4">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button5">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button6">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button7">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button8">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 
 	<script>

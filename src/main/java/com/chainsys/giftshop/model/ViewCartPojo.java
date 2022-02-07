@@ -1,7 +1,10 @@
 package com.chainsys.giftshop.model;
 
-public class viewcartPojo {
+import java.io.Serializable;
 
+public class ViewCartPojo implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private String image;
 	private String productname;
 	private String type;
@@ -84,7 +87,7 @@ public class viewcartPojo {
 		this.productid = productid;
 	}
 
-	public viewcartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
+	public ViewCartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
 			int userid) {
 		super();
 		this.image = image;
@@ -96,7 +99,7 @@ public class viewcartPojo {
 		this.userid = userid;
 	}
 
-	public viewcartPojo() {
+	public ViewCartPojo() {
 		super();
 	}
 
@@ -107,7 +110,7 @@ public class viewcartPojo {
 				+ productid + ", totalprice=" + totalprice + "]";
 	}
 
-	public viewcartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
+	public ViewCartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
 			int userid, int productid) {
 		super();
 		this.image = image;
@@ -120,7 +123,7 @@ public class viewcartPojo {
 		this.productid = productid;
 	}
 
-	public viewcartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
+	public ViewCartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
 			int userid, int productid, double totalprice) {
 		super();
 		this.image = image;
@@ -134,7 +137,7 @@ public class viewcartPojo {
 		this.totalprice = totalprice;
 	}
 
-	public viewcartPojo(String image2, String productname2, String type2, Double standardcost2, int qty, int userid2,
+	public ViewCartPojo(String image2, String productname2, String type2, Double standardcost2, int qty, int userid2,
 			int productid2) {
 
 	}

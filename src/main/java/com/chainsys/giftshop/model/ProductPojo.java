@@ -1,7 +1,10 @@
 package com.chainsys.giftshop.model;
 
-public class ProductPojo {
+import java.io.Serializable;
 
+public class ProductPojo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int productId;
 	private String productName;
 	private String description;

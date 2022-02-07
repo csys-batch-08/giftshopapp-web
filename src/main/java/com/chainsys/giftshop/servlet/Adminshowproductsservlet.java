@@ -15,14 +15,20 @@ import com.chainsys.giftshop.model.ProductPojo;
 
 @WebServlet("/adminshowproducts")
 public class Adminshowproductsservlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp){
 
 		ProductsDaoImpl pi = new ProductsDaoImpl();
 		List<ProductPojo> pp = pi.adminShowProduct();
 		req.setAttribute("adminshowproduct", pp);
 		RequestDispatcher rd = req.getRequestDispatcher("adminshowproducts.jsp");
-		rd.forward(req, resp);
-
+		try {
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		} 
 	}
 }

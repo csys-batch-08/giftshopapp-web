@@ -126,11 +126,11 @@ body {
 th, td {
 
 padding:55px;
-    padding-top: 10px;
+ 
     
 }
 table{
-margin-top:40px;
+margin-top:-70px;
 }
 h2{
 
@@ -230,7 +230,7 @@ left:50px;
 					<img src="${womesnproducts.image}"alt="show image">
 					<div>${womesnproducts.productName}</div>
 				<div>${womesnproducts.description}</div>
-					<div><strong>Price:${womesnproducts.standardCost}</strong></div>
+					<div><strong>Starts from RS:${womesnproducts.standardCost}</strong></div>
 					</div>
 					
 	</td>
@@ -249,19 +249,19 @@ left:50px;
 	</table> 
 	<div class="button1">
 					<a href="womenscaricature"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button2">
 					<a href="womenswatch"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button3">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 			<div class="button4">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button5">
 					<a href="viewtshirt.jsp"><button type="button"
@@ -269,15 +269,15 @@ left:50px;
 				</div>
 				<div class="button6">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button7">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button8">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div> 
 	
 </body>

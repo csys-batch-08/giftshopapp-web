@@ -17,18 +17,24 @@ import com.chainsys.giftshop.model.OrdersPojo;
 
 @WebServlet("/orders")
 public class Ordersservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp){
 		HttpSession session = req.getSession();
 		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
 		OrdersDaoImpl oi = new OrdersDaoImpl();
 		OrdersPojo showord = new OrdersPojo();
 		showord.setUserid(userid);
-		List<OrdersPojo> op = new ArrayList<OrdersPojo>();
+		List<OrdersPojo> op = new ArrayList<>();
 		op = oi.userOrderDetails(showord);
 		req.setAttribute("showorders", op);
 		RequestDispatcher rd = req.getRequestDispatcher("gorders.jsp");
-		rd.forward(req, resp);
+		try {
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 

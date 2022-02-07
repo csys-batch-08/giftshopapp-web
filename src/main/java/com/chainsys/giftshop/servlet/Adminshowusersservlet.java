@@ -15,13 +15,18 @@ import com.chainsys.giftshop.model.UserPojo;
 
 @WebServlet("/showusers")
 public class Adminshowusersservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp){
 		UserDaoImpl ui = new UserDaoImpl();
 		List<UserPojo> up = ui.showusers();
 		req.setAttribute("users", up);
 		RequestDispatcher rd = req.getRequestDispatcher("showusers.jsp");
-		rd.forward(req, resp);
+		try {
+			rd.forward(req, resp);
+		} catch (ServletException | IOException  e) {
+			e.printStackTrace();
+		}
 	}
 }

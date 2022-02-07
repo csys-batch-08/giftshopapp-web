@@ -10,7 +10,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Customized valentines gifts</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <style>
+
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
@@ -169,7 +172,7 @@ width: 100%;
 					<div><img src="${valentines.image}" alt="show image"></div> 
 					<div>${valentines.productName}</div> 
 					<div>${valentines.type}</div> 
-					<div><strong>RS:${valentines.standardCost}</strong></div> 
+					<div><strong>RS:${valentines.standardCost}</strong></div><br>
 		<a href="addtocartmobile?
 		pid=${valentines.productId}
 		&image=${valentines.image}
@@ -177,7 +180,7 @@ width: 100%;
 		&type=${valentines.type}
 		&cost=${valentines.standardCost}">
 		<button type="button"
-				class="btn btn-default">Add to cart</button></a>
+				class="btn btn-info">Add to cart</button></a>
 					</div>
 	<td>
 					<c:choose>

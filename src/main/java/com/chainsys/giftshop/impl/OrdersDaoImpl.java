@@ -3,11 +3,11 @@ package com.chainsys.giftshop.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.chainsys.giftshop.dao.OrdersDao;
+import com.chainsys.giftshop.logger.Logger;
 import com.chainsys.giftshop.model.OrdersPojo;
 import com.chainsys.giftshop.util.ConnectionUtil;
 
@@ -26,19 +26,12 @@ public class OrdersDaoImpl implements OrdersDao {
 			pstmt.setInt(3, quantity);
 			pstmt.setDouble(4, price);
 			pstmt.executeUpdate();
-		} catch (SQLException | ClassNotFoundException e ) {
-			e.printStackTrace();
-		}  finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
 
@@ -59,19 +52,12 @@ public class OrdersDaoImpl implements OrdersDao {
 						rs.getInt("order_id"), rs.getDate("order_date"), rs.getString("p_size"),
 						rs.getDouble("total_price"), rs.getInt("quantity"), rs.getString("status"));
 			}
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
 		}
 
 		return op;
@@ -93,19 +79,12 @@ public class OrdersDaoImpl implements OrdersDao {
 			pstmt.setInt(5, product.getQuantiy());
 			pstmt.setString(6, product.getStatus());
 			pstmt.executeUpdate();
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
 
@@ -119,20 +98,12 @@ public class OrdersDaoImpl implements OrdersDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, order.getUserid());
 			pstmt.executeUpdate();
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
 
@@ -152,22 +123,12 @@ public class OrdersDaoImpl implements OrdersDao {
 			if (rs.next()) {
 				orderid = rs.getInt(1);
 			}
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-				if (rs != null) {
-					rs.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return orderid;
 	}
@@ -187,20 +148,12 @@ public class OrdersDaoImpl implements OrdersDao {
 			pstmt.setInt(5, order1.getProductid());
 			pstmt.setString(6, order1.getProdutsize());
 			pstmt.executeUpdate();
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
 
@@ -225,22 +178,12 @@ public class OrdersDaoImpl implements OrdersDao {
 				orderlist.add(op);
 			}
 
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-				if (rs != null) {
-					rs.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return orderlist;
 	}
@@ -262,19 +205,12 @@ public class OrdersDaoImpl implements OrdersDao {
 			} else {
 				flag = false;
 			}
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(null, pstmt, con);
 		}
 		return flag;
 	}
@@ -298,23 +234,12 @@ public class OrdersDaoImpl implements OrdersDao {
 				order.setProdutsize(rs.getString("p_size"));
 			}
 
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-				if (rs != null) {
-					rs.close();
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (Exception e) {
+			Logger.printstackrace(e);
+			Logger.runTimeException(e.getMessage());
+		}
+		finally {
+			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return order;
 	}

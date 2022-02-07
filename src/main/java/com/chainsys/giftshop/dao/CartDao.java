@@ -3,25 +3,25 @@ package com.chainsys.giftshop.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.chainsys.giftshop.model.viewcartPojo;
+import com.chainsys.giftshop.model.ViewCartPojo;
 
 public interface CartDao {
 
-	public void insertview(viewcartPojo vcar);
+	public void insertview(ViewCartPojo vcar);
 
-	public List<viewcartPojo> insertcart1(viewcartPojo vcar);
+	public List<ViewCartPojo> insertcart1(ViewCartPojo vcar);
 
-	public List<viewcartPojo> showcart(viewcartPojo vcar1) throws ClassNotFoundException, SQLException;
+	public List<ViewCartPojo> showcart(ViewCartPojo vcar1) throws ClassNotFoundException, SQLException;
 
-	public List<viewcartPojo> showcart();
+	public List<ViewCartPojo> showcart();
 
-	public List<viewcartPojo> showcart1(viewcartPojo vcar1);
+	public List<ViewCartPojo> showcart1(ViewCartPojo vcar1);
 
-	public boolean emptycart(viewcartPojo vcar2) throws SQLException, ClassNotFoundException;
+	public boolean emptycart(ViewCartPojo vcar2) throws SQLException, ClassNotFoundException;
 
-	public List<viewcartPojo> mycart(viewcartPojo vcart);
+	public List<ViewCartPojo> mycart(ViewCartPojo vcart);
 
-	public int duplicatecart(viewcartPojo vcart);
+	public int duplicatecart(ViewCartPojo vcart);
 
-	public viewcartPojo removefromcart(viewcartPojo vcar);
+	public ViewCartPojo removefromcart(ViewCartPojo vcar);
 }

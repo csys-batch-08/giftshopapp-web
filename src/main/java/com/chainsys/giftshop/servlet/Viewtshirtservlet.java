@@ -15,13 +15,20 @@ import com.chainsys.giftshop.model.ProductPojo;
 
 @WebServlet("/viewtshirt")
 public class Viewtshirtservlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp){
 		ProductsDaoImpl pi = new ProductsDaoImpl();
 		List<ProductPojo> pp = pi.viewmenstshirt();
 		req.setAttribute("viewtshirt", pp);
 		RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
-		rd.forward(req, resp);
+		try {
+			rd.forward(req, resp);
+		} catch (ServletException |IOException e) {
+			e.printStackTrace();
+		} 
 
 	}
 }

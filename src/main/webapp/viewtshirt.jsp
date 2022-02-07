@@ -161,6 +161,7 @@ th, td {
 		</div>
 	</div>
 	<table>
+	<caption></caption>
 	<th></th>
 	<caption></caption>
 			<tr>
@@ -183,7 +184,7 @@ th, td {
 									<strong>RS:${menstshirts.standardCost}
 								
 								</strong>
-							</div>
+							</div><br>
 							
 								<a href="addtocart?
 		pid=${menstshirts.productId}
@@ -191,7 +192,7 @@ th, td {
 		&productName=${menstshirts.productName}
 		&type=${menstshirts.type}
 		&cost=${menstshirts.standardCost}">
-		<button type="button" class="btn btn-default">Add to cart</button></a>
+		<button type="button" class="btn btn-info">Add to cart</button></a>
 						</div>
 					</td>
 					<c:choose>

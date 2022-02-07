@@ -1,4 +1,4 @@
-<%@page import="com.chainsys.giftshop.model.viewcartPojo"%>
+<%@page import="com.chainsys.giftshop.model.ViewCartPojo"%>
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
@@ -197,9 +197,9 @@ margin-left:500px;
 		<table>
 		
 		<caption></caption>
-		
+		 <th></th>
 			<tr>
-                <th></th>
+               
 				<c:set var="count" value="1" />
 				<c:forEach items="${car}" var="cartproducts">
 				 <c:set var="sum" value="${cartproducts.standardcost*cartproducts.quantity}" />

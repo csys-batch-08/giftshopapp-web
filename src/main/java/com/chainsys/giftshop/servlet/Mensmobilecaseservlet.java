@@ -15,12 +15,18 @@ import com.chainsys.giftshop.model.ProductPojo;
 
 @WebServlet("/mensmobilecase")
 public class Mensmobilecaseservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp){
 		ProductsDaoImpl pi = new ProductsDaoImpl();
 		List<ProductPojo> pp = pi.mobilecase();
 		req.setAttribute("mensmobilecase", pp);
 		RequestDispatcher rd = req.getRequestDispatcher("mensmobilecase.jsp");
-		rd.forward(req, resp);
+		try {
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -12,25 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.impl.ViewCartDaoImpl;
-import com.chainsys.giftshop.model.viewcartPojo;
+import com.chainsys.giftshop.model.ViewCartPojo;
 
 @WebServlet("/editservlet")
 public class Editcartservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			
 		HttpSession session = req.getSession();
 		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
 		int productid = Integer.parseInt(req.getParameter("pid"));
-		viewcartPojo vcp = new viewcartPojo();
-		viewcartPojo vcpojo = new viewcartPojo();
+		ViewCartPojo vcp = new ViewCartPojo();
+		ViewCartPojo  vcpojo= new ViewCartPojo();
 		vcp.setProductid(productid);
 		vcp.setUserid(userid);
 		ViewCartDaoImpl vci = new ViewCartDaoImpl();
-		try {
 			vcpojo = vci.editcart(vcp);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
 		session.setAttribute("cartitems", vcpojo);
 		if (vcpojo.getSize().equals("ra")) {
 			RequestDispatcher rd = req.getRequestDispatcher("addcartone.jsp");
@@ -38,6 +38,9 @@ public class Editcartservlet extends HttpServlet {
 		} else {
 			RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
 			rd.forward(req, resp);
+		}
+		}catch (ClassNotFoundException | SQLException | IOException | ServletException e) {
+			e.printStackTrace();
 		}
 	}
 }

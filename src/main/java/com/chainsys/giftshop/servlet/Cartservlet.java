@@ -14,28 +14,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.impl.ViewCartDaoImpl;
-import com.chainsys.giftshop.model.viewcartPojo;
+import com.chainsys.giftshop.model.ViewCartPojo;
 
 @WebServlet("/cart")
 public class Cartservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp){
 		HttpSession session = req.getSession();
 		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
-		viewcartPojo vcar1 = new viewcartPojo();
+		ViewCartPojo vcar1 = new ViewCartPojo();
 		vcar1.setUserid(userid);
 		ViewCartDaoImpl vci = new ViewCartDaoImpl();
-		List<viewcartPojo> vcp = new ArrayList<viewcartPojo>();
+		List<ViewCartPojo> vcp = new ArrayList<>();
 		try {
 			vcp = vci.showcart(vcar1);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 		req.setAttribute("car", vcp);
 		RequestDispatcher rd = req.getRequestDispatcher("cart.jsp");
-		rd.forward(req, resp);
+		try {
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

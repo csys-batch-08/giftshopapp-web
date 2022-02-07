@@ -11,15 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.impl.ViewCartDaoImpl;
-import com.chainsys.giftshop.model.viewcartPojo;
+import com.chainsys.giftshop.model.ViewCartPojo;
 
 @WebServlet("/viewcart")
-public class viewcartservlet extends HttpServlet {
+public class Viewcartservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int flag = 0;
 		HttpSession session = req.getSession();
-		viewcartPojo vcart = (viewcartPojo) session.getAttribute("cartitems");
+		ViewCartPojo vcart = (ViewCartPojo) session.getAttribute("cartitems");
 		ViewCartDaoImpl dao = new ViewCartDaoImpl();
 		int productid = vcart.getProductid();
 		String image = vcart.getImage();
@@ -31,7 +33,7 @@ public class viewcartservlet extends HttpServlet {
 			size = "ra";
 		}
 		int qty = Integer.parseInt(req.getParameter("qty"));
-		viewcartPojo vcart1 = new viewcartPojo();
+		ViewCartPojo vcart1 = new ViewCartPojo();
 		int userid = (int) session.getAttribute("logincustomer");
 
 		vcart1.setUserid(userid);
@@ -43,7 +45,7 @@ public class viewcartservlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if (flag > 0) {
-			viewcartPojo vcar = new viewcartPojo(image, productname, type, standardcost, size, qty, userid, productid);
+			ViewCartPojo vcar = new ViewCartPojo(image, productname, type, standardcost, size, qty, userid, productid);
 			try {
 				dao.updatecart(vcar);
 			} catch (ClassNotFoundException | SQLException e) {
@@ -51,12 +53,10 @@ public class viewcartservlet extends HttpServlet {
 			}
 			resp.sendRedirect("cart");
 		} else {
-			viewcartPojo vcar = new viewcartPojo(image, productname, type, standardcost, size, qty, userid, productid);
+			ViewCartPojo vcar = new ViewCartPojo(image, productname, type, standardcost, size, qty, userid, productid);
 			try {
 				dao.insertview(vcar);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
+			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
 			resp.sendRedirect("cart");

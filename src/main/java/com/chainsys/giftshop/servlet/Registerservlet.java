@@ -15,7 +15,8 @@ import com.chainsys.giftshop.impl.UserDaoImpl;
 import com.chainsys.giftshop.model.UserPojo;
 
 @WebServlet("/reg")
-public class registerServlet extends HttpServlet {
+public class Registerservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UserDaoImpl ui = new UserDaoImpl();

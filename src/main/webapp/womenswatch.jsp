@@ -10,6 +10,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Womens watch</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -33,10 +34,6 @@ table img {
 	width: 150px;
 	height: 150px;
 } 
-.button1 {
-	margin-top: 15px;
-	margin-left: 3px;
-}
 
 .navbar {
   overflow: hidden;
@@ -114,11 +111,17 @@ table img {
 }
 
 
-th, td {
-  padding: 15px;
-  
-  padding-left:10px;
+table{
+margin-top:10px;
 }
+th, td {
+padding-left:60px;
+padding-right:5px;
+padding-bottom:40px;
+ 
+    
+}
+
 
 .back{
 position:absolute;
@@ -156,19 +159,17 @@ width: 100%;
 	</div>
 	 <table>
 		<caption></caption>
+		<th></th>
 			<tr>
-			<th></th>
 				<c:set var="count" value="1" />
 				<c:forEach items="${womenswatch}" var="womenswat">
 				
 				<td>
                             <div class="car">
 					<div><img src="${womenswat.image}"alt="show image"></div> 
-					<br>
-					<div>${womenswat.productId}</div>
 					<div>${womenswat.productName}</div> 
 					<div><strong>${womenswat.type}</strong></div> 
-					<div><strong>RS:${womenswat.standardCost}</strong></div> 		
+					<div><strong>RS:${womenswat.standardCost}</strong></div>	
 				<br>
 				
 		<a href="addtocartmobile?
@@ -177,12 +178,12 @@ width: 100%;
 		&productName=${womenswat.productName}
 		&type=${womenswat.type}
 		&cost=${womenswat.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a>
+				class="btn btn-info">Add to cart</button></a>
 	
 					</div>
 	</td>
 					<c:choose>
-				    <c:when test="${count==6}">
+				    <c:when test="${count==5}">
 				    <c:set var="count" value="1" />
 			<tr>
 			</c:when>

@@ -187,8 +187,9 @@ left:50px;
 	<form action="cancel" method="get">
 	<table>    
 	<caption></caption>
+	<th></th>
 			<tr>
-			<th></th>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${orderdetails}" var="orddetails">
 					<c:set var="totals" value="${orddetails.totalprice*orddetails.quantityordered}" />

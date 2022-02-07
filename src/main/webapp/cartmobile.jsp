@@ -1,4 +1,4 @@
-<%@page import="com.chainsys.giftshop.model.viewcartPojo"%>
+<%@page import="com.chainsys.giftshop.model.ViewCartPojo"%>
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>

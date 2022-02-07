@@ -10,6 +10,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Customize mobile case</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -32,7 +34,13 @@ body {
 
 
 table{
-margin-top:50px;
+margin-top:5px;
+}
+th, td {
+
+padding:35px;
+ 
+    
 }
 .car {
 
@@ -123,52 +131,6 @@ margin-top:50px;
 	display: block;
 }
 
-
-th, td {
-
-padding: 15px;
- padding-left:10px;
-}
-.button1 {
-	position: absolute;
-	top:449px;
-	left:100px;
-}
-.button2 {
-	position: absolute;
-	top:449px;
-	left:430px;
-}
-.button3 {
-	position: absolute;
-	top:448px;
-	left:760px;
-}
-.button4 {
-	position: absolute;
-	top:450px;
-	left:1080px;
-}
-.button5 {
-	position: absolute;
-	top:825px;
-	left:1080px;
-}
-.button6 {
-	position: absolute;
-	top:825px;
-	left:760px;
-}
-.button7 {
-	position: absolute;
-	top:825px;
-	left:430px;
-}
-.button8 {
-	position: absolute;
-	top:825px;
-	left:100px;
-}
 #myImg {
   border-radius: 5px;
   width: 150px;
@@ -262,6 +224,11 @@ padding: 15px;
 position:absolute;
 left:50px;
 }
+.button{
+  margin-left: 20px;;
+
+
+}
 </style>
 </head>
 <body>
@@ -285,8 +252,9 @@ left:50px;
 	</div>
 	 <table>
 	 <caption></caption>
+	 <th></th>
 	<tr>
-	<th></th>
+	
 				<c:set var="count" value="1" />
 				<c:forEach items="${mensmobilecase}" var="menscase">
 				
@@ -299,29 +267,23 @@ left:50px;
 									<span class="close">&times;</span> <img class="modal-content"id="img01"alt="show image">
 									<div id="caption"></div>
 								</div>
-								<br>
-					<br>
-					<div>${menscase.productId}</div>
 					<c:set var="pid" value="${menscase.productId}" scope="session" />
 					<div>${menscase.productName}</div> 
 					<div>${menscase.type}</div> 
-					<div><strong>RS:${menscase.standardCost}</strong></div> 
-				
-				<br>
-				
+					<div><strong>RS:${menscase.standardCost}</strong></div><br>
 		<a href="addtocartmobile?
 		pid=${menscase.productId}
 		&image=${menscase.image}
 		&productName=${menscase.productName}
 		&type=${menscase.type}
 		&cost=${menscase.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a>
+				class="btn btn-info">Add to cart</button></a>
 	
 					</div>
 	</td>
 	
 					<c:choose>
-				    <c:when test="${count==6}">
+				    <c:when test="${count==5}">
 				    <c:set var="count" value="1" />
 			<tr>
 			</c:when>

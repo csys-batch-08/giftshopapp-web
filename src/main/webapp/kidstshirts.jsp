@@ -10,6 +10,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Customized kids t-shirts</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -32,11 +35,8 @@ body {
 table img {
 	width: 150px;
 	height: 150px;
+	
 } 
-.button1 {
-	margin-top: 15px;
-	margin-left: 3px;
-}
 
 .navbar {
   overflow: hidden;
@@ -114,10 +114,15 @@ table img {
 }
 
 
+table{
+margin-top:10px;
+}
 th, td {
-  padding: 15px;
-  padding-left:10px;
-  
+padding-left:60px;
+padding-right:5px;
+padding-bottom:40px;
+ 
+    
 }
 
 .back{
@@ -159,17 +164,15 @@ width: 100%;
 	 <table>
 	 <caption></caption>
 	 
-	
+	<th></th>
 			<tr>
-			<th></th>
+			
 				<c:set var="count" value="1" />
 				<c:forEach items="${kidstshirts}" var="kidstee">
 				
 				<td>
                             <div class="car">
 					<div><img src="${kidstee.image}"alt="show image"></div> 
-					<br>
-					<div>${kidstee.productId}</div>
 					<div>${kidstee.productName}</div> 
 					<div>${kidstee.type}</div> 
 					<div><strong>RS:${kidstee.standardCost}</strong></div> 
@@ -182,13 +185,13 @@ width: 100%;
 		&productName=${kidstee.productName}
 		&type=${kidstee.type}
 		&cost=${kidstee.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a>
+				class="btn btn-info">Add to cart</button></a>
 	
 					</div>
 	</td>
 	
 					<c:choose>
-				    <c:when test="${count==6}">
+				    <c:when test="${count==5}">
 				    <c:set var="count" value="1" />
 			<tr>
 			</c:when>

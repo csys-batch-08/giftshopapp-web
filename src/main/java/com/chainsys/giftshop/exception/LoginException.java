@@ -1,7 +1,9 @@
 package com.chainsys.giftshop.exception;
 
-@SuppressWarnings("serial")
+
 public class LoginException extends Exception {
+
+	private static final long serialVersionUID = 1L;
 
 	public String getUserNameLoginMessage() {
 		return null;

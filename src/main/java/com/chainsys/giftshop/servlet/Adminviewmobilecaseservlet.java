@@ -14,13 +14,19 @@ import com.chainsys.giftshop.impl.ProductsDaoImpl;
 import com.chainsys.giftshop.model.ProductPojo;
 
 @WebServlet("/adminviewmobilecase")
-public class adminviewmobilecaseservlet extends HttpServlet {
+public class Adminviewmobilecaseservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) {
 		ProductsDaoImpl pi = new ProductsDaoImpl();
 		List<ProductPojo> pp = pi.adminviewmobilecase();
 		req.setAttribute("adminviewmobilecase", pp);
 		RequestDispatcher rd = req.getRequestDispatcher("adminviewmobilecase.jsp");
-		rd.forward(req, resp);
+		try {
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -2,7 +2,6 @@ package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +12,11 @@ import com.chainsys.giftshop.impl.OrdersDaoImpl;
 import com.chainsys.giftshop.model.OrdersPojo;
 
 @WebServlet("/cancel")
-public class orderdeleteservlet extends HttpServlet {
+public class Orderdeleteservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp){
 
 		HttpSession session = req.getSession();
 		int orderid = (int) session.getAttribute("orderdetailsid");
@@ -24,7 +25,11 @@ public class orderdeleteservlet extends HttpServlet {
 		OrdersDaoImpl obj2 = new OrdersDaoImpl();
 		boolean flag = obj2.cancelorder(vcar1);
 		if (flag) {
-			resp.sendRedirect("orderdelete.jsp");
+			try {
+				resp.sendRedirect("orderdelete.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

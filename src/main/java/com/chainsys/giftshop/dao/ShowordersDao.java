@@ -2,11 +2,11 @@ package com.chainsys.giftshop.dao;
 
 import java.util.List;
 
-import com.chainsys.giftshop.model.showordersPojo;
+import com.chainsys.giftshop.model.ShowOrdersPojo;
 
 public interface ShowordersDao {
 
-	public List<showordersPojo> myorders(showordersPojo showord);
+	public List<ShowOrdersPojo> myorders(ShowOrdersPojo showord);
 
-	public List<showordersPojo> orderdetails(showordersPojo orddetails);
+	public List<ShowOrdersPojo> orderdetails(ShowOrdersPojo orddetails);
 }

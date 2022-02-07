@@ -13,23 +13,29 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.giftshop.impl.ShowordersDaoImpl;
-import com.chainsys.giftshop.model.showordersPojo;
+import com.chainsys.giftshop.model.ShowOrdersPojo;
 
 @WebServlet("/orderdetails")
 public class Orderdetailsservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) {
+		try {
 		HttpSession session = req.getSession();
 		int orderid = Integer.parseInt(req.getParameter("ordid"));
 		session.setAttribute("order", orderid);
-		showordersPojo orddetails = new showordersPojo();
+		ShowOrdersPojo orddetails = new ShowOrdersPojo();
 		orddetails.setOrderid(orderid);
 		ShowordersDaoImpl soi = new ShowordersDaoImpl();
-		List<showordersPojo> sop = new ArrayList<>();
+		List<ShowOrdersPojo> sop = new ArrayList<>();
 		sop = soi.orderdetails(orddetails);
 		req.setAttribute("orderdetails", sop);
 		RequestDispatcher rd = req.getRequestDispatcher("orderdetails.jsp");
-		rd.forward(req, resp);
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 }

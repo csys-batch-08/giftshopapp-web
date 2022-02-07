@@ -1,5 +1,5 @@
 <%@page import="com.chainsys.giftshop.model.OrdersPojo"%>
-<%@page import="com.chainsys.giftshop.model.viewcartPojo"%>
+<%@page import="com.chainsys.giftshop.model.ViewCartPojo"%>
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
@@ -34,15 +34,11 @@ font-size: 85px;
 
 <iframe src="https://giphy.com/embed/g0sx0vvZd3JbGDhmxd" width="620" height="620" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>
 
-<script>
- 
+         <script>
          setTimeout(function(){
             window.location.href = 'homepage.jsp';
          }, 4000);
-      </script>
-     
-     
-		
+      </script>	
       <h1>Your order cancelled</h1>
       
      

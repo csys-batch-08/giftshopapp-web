@@ -1,7 +1,6 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,22 +14,26 @@ import com.chainsys.giftshop.model.OrdersPojo;
 
 @WebServlet("/reorder")
 public class Reorderservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
-		int productid = Integer.parseInt(req.getParameter("pid"));
-		OrdersPojo vcp = new OrdersPojo();
-		OrdersPojo vcpojo = new OrdersPojo();
-		vcp.setProductid(productid);
-		vcp.setUserid(userid);
-		OrdersDaoImpl vci = new OrdersDaoImpl();
-
-		vcpojo = vci.reorder(vcpojo);
-		session.setAttribute("cartitems", vcpojo);
-		RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
-		rd.forward(req, resp);
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			HttpSession session = req.getSession();
+			int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
+			int productid = Integer.parseInt(req.getParameter("pid"));
+			OrdersPojo vcp = new OrdersPojo();
+			OrdersPojo vcpojo = new OrdersPojo();
+			vcp.setProductid(productid);
+			vcp.setUserid(userid);
+			OrdersDaoImpl vci = new OrdersDaoImpl();
+			vcpojo = vci.reorder(vcpojo);
+			session.setAttribute("cartitems", vcpojo);
+			RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
+			rd.forward(req, resp);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 }

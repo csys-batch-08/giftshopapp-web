@@ -156,7 +156,7 @@ padding:55px;
 }
 .button2 {
 	position: absolute;
-	top:449px;
+	top:459px;
 	left:430px;
 }
 .button3 {
@@ -232,7 +232,7 @@ left:50px;
 					<br>
 					${mesnproducts.productName}
 				${mesnproducts.description}
-					<strong>Price:RS:${mesnproducts.standardCost}</strong>
+					<strong>Starts from RS:${mesnproducts.standardCost}</strong>
 					<br>
 					</div>
 					
@@ -252,35 +252,35 @@ left:50px;
 	</table>  
 	<div class="button1">
 					<a href="mensviewtshirt"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 			<div class="button2">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button3">
 					<a href="mensmobilecase"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button4">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button5">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button6">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button7">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
 				<div class="button8">
 					<a href="viewtshirt.jsp"><button type="button"
-				class="btn btn-default">View product</button> </a>
+				class="btn btn-success">View product</button> </a>
 				</div>
  
 </body>

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +13,15 @@ import javax.servlet.http.HttpSession;
 import com.chainsys.giftshop.impl.OrdersDaoImpl;
 import com.chainsys.giftshop.impl.ViewCartDaoImpl;
 import com.chainsys.giftshop.model.OrdersPojo;
-import com.chainsys.giftshop.model.viewcartPojo;
+import com.chainsys.giftshop.model.ViewCartPojo;
 
 @WebServlet("/buynow")
-public class buynowservlet extends HttpServlet {
+public class Buynowservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp){
+		try {
 		HttpSession session = req.getSession();
 		int uid = (int) session.getAttribute("logincustomer");
 		int ordip = 0;
@@ -30,15 +32,12 @@ public class buynowservlet extends HttpServlet {
 		obj.createorder(order);
 
 		ordip = obj.getorder(order);
-		viewcartPojo vcar1 = new viewcartPojo();
+		ViewCartPojo vcar1 = new ViewCartPojo();
 		vcar1.setUserid(uid);
 		ViewCartDaoImpl obj1 = new ViewCartDaoImpl();
-		List<viewcartPojo> cartlist = null;
-		try {
+		List<ViewCartPojo> cartlist = null;
+		
 			cartlist = obj1.showcart1(vcar1);
-		} catch (ClassNotFoundException | SQLException e1) {
-			e1.printStackTrace();
-		}
 		for (int i = 0; cartlist.size() > i; i++) {
 			OrdersPojo orders = new OrdersPojo();
 			orders.setUserid(uid);
@@ -51,19 +50,20 @@ public class buynowservlet extends HttpServlet {
 			OrdersDaoImpl ord = new OrdersDaoImpl();
 			ord.insertorder(orders);
 		}
-		viewcartPojo vcar2 = new viewcartPojo();
+		ViewCartPojo vcar2 = new ViewCartPojo();
 		vcar2.setUserid(uid);
 		ViewCartDaoImpl obj2 = new ViewCartDaoImpl();
-		try {
+	
 			flag = obj2.emptycart(vcar2);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		 		if (flag) {
+			
+				resp.sendRedirect("exit.jsp");
+			
 		}
-		if (flag) {
-			resp.sendRedirect("exit.jsp");
-		}
+	}catch (ClassNotFoundException | SQLException | IOException e) {
+		e.printStackTrace();
+	} 
+
 	}
 
 }

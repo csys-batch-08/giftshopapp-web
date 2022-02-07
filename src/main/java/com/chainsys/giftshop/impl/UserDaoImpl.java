@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.chainsys.giftshop.dao.UserDao;
 import com.chainsys.giftshop.model.UserPojo;
-import com.chainsys.giftshop.model.userloginPojo;
+import com.chainsys.giftshop.model.UserloginPojo;
 import com.chainsys.giftshop.util.ConnectionUtil;
 
 public class UserDaoImpl implements UserDao {
@@ -18,10 +18,10 @@ public class UserDaoImpl implements UserDao {
 	public boolean insert(UserPojo user) {
 		PreparedStatement pstmt = null;
 		Connection con = null;
-		String Query = "insert into user_gift(user_name,email,mobile_number,user_Password,address) values(?,?,?,?,?)";
+		String query = "insert into user_gift(user_name,email,mobile_number,user_Password,address) values(?,?,?,?,?)";
 		try {
 			con = ConnectionUtil.gbconnection();
-			pstmt = con.prepareStatement(Query);
+			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setLong(3, user.getMobilenumber());
@@ -119,20 +119,20 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public ResultSet validateuser1(userloginPojo ul) throws ClassNotFoundException, SQLException {
+	public ResultSet validateuser1(UserloginPojo ul) throws ClassNotFoundException, SQLException {
 		ResultSet rs = null;
 		String validate = "select user_id,user_name,user_password,email,mobile_number,role,address from user_gift where email = ? and user_password = ?";
 		Connection con = ConnectionUtil.gbconnection();
-		PreparedStatement Pstmt1 = con.prepareStatement(validate);
-		Pstmt1.setString(1, ul.getUsername());
-		Pstmt1.setString(2, ul.getPassword());
-		rs = Pstmt1.executeQuery();
+		PreparedStatement Pstmt = con.prepareStatement(validate);
+		Pstmt.setString(1, ul.getUsername());
+		Pstmt.setString(2, ul.getPassword());
+		rs = Pstmt.executeQuery();
 		return rs;
 	}
 
 	@Override
 	public List<UserPojo> showusers() {
-		List<UserPojo> products = new ArrayList<UserPojo>();
+		List<UserPojo> products = new ArrayList<>();
 		String products1 = "select user_id,user_name,email,mobile_number,address from user_gift";
 		Connection con;
 		UserPojo users = null;
