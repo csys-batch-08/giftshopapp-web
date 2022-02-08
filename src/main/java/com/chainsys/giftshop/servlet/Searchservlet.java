@@ -18,7 +18,7 @@ public class Searchservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp){
+	protected void service(HttpServletRequest req, HttpServletResponse resp) {
 		String productName = req.getParameter("proname");
 		ProductsDaoImpl pr = new ProductsDaoImpl();
 		List<ProductPojo> pp = pr.serachProduct(productName);
@@ -27,7 +27,7 @@ public class Searchservlet extends HttpServlet {
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

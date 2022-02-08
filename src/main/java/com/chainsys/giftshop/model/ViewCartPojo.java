@@ -3,7 +3,7 @@ package com.chainsys.giftshop.model;
 import java.io.Serializable;
 
 public class ViewCartPojo implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	private String image;
 	private String productname;

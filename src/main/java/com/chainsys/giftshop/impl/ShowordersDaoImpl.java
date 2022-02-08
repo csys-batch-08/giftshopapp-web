@@ -42,8 +42,7 @@ public class ShowordersDaoImpl implements ShowordersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return view;
@@ -76,33 +75,32 @@ public class ShowordersDaoImpl implements ShowordersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return view;
 
 	}
+
 	public String checkstatus(ShowOrdersPojo orddetails) {
 		PreparedStatement pstmt = null;
 		Connection con = null;
 		ResultSet rs = null;
-		String status=null;
+		String status = null;
 		String query = "select status from gorders where order_id=?";
 		try {
 			con = ConnectionUtil.gbconnection();
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, orddetails.getOrderid());
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				status=rs.getNString("status");
+			if (rs.next()) {
+				status = rs.getNString("status");
 			}
 
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return status;

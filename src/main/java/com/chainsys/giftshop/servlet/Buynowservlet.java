@@ -19,49 +19,49 @@ public class Buynowservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp){
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 		try {
-		HttpSession session = req.getSession();
-		int uid = (int) session.getAttribute("logincustomer");
-		int ordip = 0;
-		boolean flag = false;
-		OrdersPojo order = new OrdersPojo();
-		order.setUserid(uid);
-		OrdersDaoImpl obj = new OrdersDaoImpl();
-		obj.createorder(order);
+			HttpSession session = req.getSession();
+			int uid = (int) session.getAttribute("logincustomer");
+			int ordip = 0;
+			boolean flag = false;
+			OrdersPojo order = new OrdersPojo();
+			order.setUserid(uid);
+			OrdersDaoImpl obj = new OrdersDaoImpl();
+			obj.createorder(order);
 
-		ordip = obj.getorder(order);
-		ViewCartPojo vcar1 = new ViewCartPojo();
-		vcar1.setUserid(uid);
-		ViewCartDaoImpl obj1 = new ViewCartDaoImpl();
-		List<ViewCartPojo> cartlist = null;
-		
+			ordip = obj.getorder(order);
+			ViewCartPojo vcar1 = new ViewCartPojo();
+			vcar1.setUserid(uid);
+			ViewCartDaoImpl obj1 = new ViewCartDaoImpl();
+			List<ViewCartPojo> cartlist = null;
+
 			cartlist = obj1.showcartpage(vcar1);
-		for (int i = 0; cartlist.size() > i; i++) {
-			OrdersPojo orders = new OrdersPojo();
-			orders.setUserid(uid);
-			orders.setOrderid(ordip);
-			orders.setProductid(cartlist.get(i).getProductid());
-			orders.setQuantiy(cartlist.get(i).getQuantity());
-			orders.setProdutsize(cartlist.get(i).getSize());
-			orders.setProducttype(cartlist.get(i).getType());
-			orders.setTotalprice(cartlist.get(i).getStandardcost());
-			OrdersDaoImpl ord = new OrdersDaoImpl();
-			ord.insertorder(orders);
-		}
-		ViewCartPojo vcar2 = new ViewCartPojo();
-		vcar2.setUserid(uid);
-		ViewCartDaoImpl obj2 = new ViewCartDaoImpl();
-	
+			for (int i = 0; cartlist.size() > i; i++) {
+				OrdersPojo orders = new OrdersPojo();
+				orders.setUserid(uid);
+				orders.setOrderid(ordip);
+				orders.setProductid(cartlist.get(i).getProductid());
+				orders.setQuantiy(cartlist.get(i).getQuantity());
+				orders.setProdutsize(cartlist.get(i).getSize());
+				orders.setProducttype(cartlist.get(i).getType());
+				orders.setTotalprice(cartlist.get(i).getStandardcost());
+				OrdersDaoImpl ord = new OrdersDaoImpl();
+				ord.insertorder(orders);
+			}
+			ViewCartPojo vcar2 = new ViewCartPojo();
+			vcar2.setUserid(uid);
+			ViewCartDaoImpl obj2 = new ViewCartDaoImpl();
+
 			flag = obj2.emptycart(vcar2);
-		 		if (flag) {
-			
+			if (flag) {
+
 				resp.sendRedirect("exit.jsp");
-			
+
+			}
+		} catch (IOException e) {
+			e.getMessage();
 		}
-	}catch (IOException e) {
-		e.printStackTrace();
-	} 
 
 	}
 

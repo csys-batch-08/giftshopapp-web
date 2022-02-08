@@ -1,6 +1,7 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,9 +29,9 @@ public class ShowProductsServlet extends HttpServlet {
 			resp.sendRedirect("adminlogin.jsp");
 			HttpSession session = req.getSession();
 			session.setAttribute("productname", product);
-		}catch (NumberFormatException  | IOException e) {	
-			e.printStackTrace();
+		} catch (NumberFormatException | IOException e) {
+			e.getMessage();
 		}
-		
+
 	}
 }

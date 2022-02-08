@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.chainsys.giftshop.dao.OrdersDao;
 import com.chainsys.giftshop.logger.Logger;
 import com.chainsys.giftshop.model.OrdersPojo;
@@ -29,8 +28,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
@@ -55,8 +53,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 
@@ -82,8 +79,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
@@ -101,8 +97,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
@@ -126,8 +121,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return orderid;
@@ -151,8 +145,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
@@ -181,8 +174,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return orderlist;
@@ -208,8 +200,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pstmt, con);
 		}
 		return flag;
@@ -237,8 +228,7 @@ public class OrdersDaoImpl implements OrdersDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return order;

@@ -19,7 +19,7 @@ public class Womensproductsservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp){
+	protected void service(HttpServletRequest req, HttpServletResponse resp) {
 		ProductsDaoImpl pi = new ProductsDaoImpl();
 		List<ProductPojo> pp = pi.womens();
 		req.setAttribute("womens", pp);
@@ -27,7 +27,7 @@ public class Womensproductsservlet extends HttpServlet {
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 }

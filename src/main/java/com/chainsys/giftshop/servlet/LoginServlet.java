@@ -2,6 +2,7 @@ package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,19 +16,22 @@ import com.chainsys.giftshop.model.UserloginPojo;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-		PrintWriter out=null;
-		UserloginPojo userlogin=null;
+		PrintWriter out = null;
+		UserloginPojo userlogin = null;
 		try {
-		String username = req.getParameter("username");
-		String pwd = req.getParameter("password");
-		UserloginPojo ulp = new UserloginPojo(username, pwd);
-		UserDaoImpl ui = new UserDaoImpl();
-		HttpSession session = req.getSession();
-		out = resp.getWriter();
-		userlogin = ui.validateuser(ulp);
-		if(userlogin != null) {
+			String username = req.getParameter("username");
+			String pwd = req.getParameter("password");
+			UserloginPojo ulp = new UserloginPojo(username, pwd);
+			UserDaoImpl ui = new UserDaoImpl();
+			HttpSession session = req.getSession();
+			out = resp.getWriter();
+			userlogin = ui.validateuser(ulp);
+			if (userlogin == null) {
+				throw new LoginException();
+			}
 			session.setAttribute("logincustomer", userlogin.getUserid());
 			if (userlogin.getRole().equals("admin")) {
 				resp.sendRedirect("adminlogin.jsp");
@@ -39,20 +43,15 @@ public class LoginServlet extends HttpServlet {
 				throw new LoginException();
 
 			}
-		}else {
-			throw new LoginException();
-		} 
-		}
-		catch (IOException e) {	
-			e.printStackTrace();
-			
-		}catch(LoginException e) {
+		} catch (IOException e) {
+			e.getMessage();
+
+		} catch (LoginException e) {
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Invlid MailId or Password');");
 			out.println("location='login.jsp';");
 			out.println("</script>");
 		}
-		
 
 	}
 }

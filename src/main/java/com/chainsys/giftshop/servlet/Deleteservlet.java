@@ -16,7 +16,7 @@ public class Deleteservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp){
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		try {
 			PrintWriter out = resp.getWriter();
 			int productid = Integer.parseInt(req.getParameter("pid"));
@@ -27,9 +27,9 @@ public class Deleteservlet extends HttpServlet {
 			out.println("alert('Product deleted successfully');");
 			out.println("location='adminlogin.jsp';");
 			out.println("</script>");
-		}catch(NumberFormatException | IOException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException | IOException e) {
+			e.getMessage();
 		}
-		
+
 	}
 }

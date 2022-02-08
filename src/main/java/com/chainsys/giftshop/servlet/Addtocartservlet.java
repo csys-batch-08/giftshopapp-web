@@ -18,28 +18,28 @@ public class Addtocartservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp){
-try {
-	HttpSession session = req.getSession();
-	int productid = Integer.parseInt(req.getParameter("pid"));
-	String image = req.getParameter("image");
-	String pname = req.getParameter("productName");
-	String type = req.getParameter("type");
-	Double price = Double.parseDouble(req.getParameter("cost"));
-	int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
-	ViewCartPojo vcart = new ViewCartPojo();
-	vcart.setImage(image);
-	vcart.setProductid(productid);
-	session.setAttribute("pidd", productid);
-	vcart.setProductname(pname);
-	vcart.setType(type);
-	vcart.setUserid(userid);
-	vcart.setStandardcost(price);
-	session.setAttribute("cartitems", vcart);
-	RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
-	rd.forward(req, resp);
-}catch(NumberFormatException | ServletException | IOException e) {
-	e.printStackTrace();
-}	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			HttpSession session = req.getSession();
+			int productid = Integer.parseInt(req.getParameter("pid"));
+			String image = req.getParameter("image");
+			String pname = req.getParameter("productName");
+			String type = req.getParameter("type");
+			Double price = Double.parseDouble(req.getParameter("cost"));
+			int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
+			ViewCartPojo vcart = new ViewCartPojo();
+			vcart.setImage(image);
+			vcart.setProductid(productid);
+			session.setAttribute("pidd", productid);
+			vcart.setProductname(pname);
+			vcart.setType(type);
+			vcart.setUserid(userid);
+			vcart.setStandardcost(price);
+			session.setAttribute("cartitems", vcart);
+			RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
+			rd.forward(req, resp);
+		} catch (NumberFormatException | ServletException | IOException e) {
+			e.getMessage();
+		}
 	}
 }

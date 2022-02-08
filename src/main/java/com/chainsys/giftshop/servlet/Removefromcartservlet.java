@@ -1,6 +1,7 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,22 +20,22 @@ public class Removefromcartservlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-		HttpSession session = req.getSession();
-		int uid = (int) session.getAttribute("logincustomer");
-		int productid = Integer.parseInt(req.getParameter("pid"));
-		String size = req.getParameter("size");
-		ViewCartPojo vcar = new ViewCartPojo();
-		vcar.setProductid(productid);
-		vcar.setUserid(uid);
-		vcar.setSize(size);
-		ViewCartDaoImpl pi = new ViewCartDaoImpl();
-		ViewCartPojo vcp = null;
-	    vcp = pi.removefromcart(vcar);
-		vcp.setProductid(productid);
-		RequestDispatcher rd = req.getRequestDispatcher("cart");
-		rd.forward(req, resp);
-		}catch (NumberFormatException | IOException e) {	
-			e.printStackTrace();
+			HttpSession session = req.getSession();
+			int uid = (int) session.getAttribute("logincustomer");
+			int productid = Integer.parseInt(req.getParameter("pid"));
+			String size = req.getParameter("size");
+			ViewCartPojo vcar = new ViewCartPojo();
+			vcar.setProductid(productid);
+			vcar.setUserid(uid);
+			vcar.setSize(size);
+			ViewCartDaoImpl pi = new ViewCartDaoImpl();
+			ViewCartPojo vcp = null;
+			vcp = pi.removefromcart(vcar);
+			vcp.setProductid(productid);
+			RequestDispatcher rd = req.getRequestDispatcher("cart");
+			rd.forward(req, resp);
+		} catch (NumberFormatException | IOException e) {
+			e.getMessage();
 		}
 	}
 }

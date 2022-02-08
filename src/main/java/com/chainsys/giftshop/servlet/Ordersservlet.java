@@ -19,7 +19,7 @@ public class Ordersservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp){
+	protected void service(HttpServletRequest req, HttpServletResponse resp) {
 		HttpSession session = req.getSession();
 		int userid = Integer.parseInt(session.getAttribute("logincustomer").toString());
 		OrdersDaoImpl oi = new OrdersDaoImpl();
@@ -32,7 +32,7 @@ public class Ordersservlet extends HttpServlet {
 		try {
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 
 	}

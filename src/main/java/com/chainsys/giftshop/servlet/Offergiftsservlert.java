@@ -14,11 +14,11 @@ import com.chainsys.giftshop.impl.ProductsDaoImpl;
 import com.chainsys.giftshop.model.ProductPojo;
 
 @WebServlet("/offersgift")
-public class Offergiftsservlert extends HttpServlet {	
+public class Offergiftsservlert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp){
+	protected void service(HttpServletRequest req, HttpServletResponse resp) {
 
 		ProductsDaoImpl pi = new ProductsDaoImpl();
 		List<ProductPojo> pp = pi.offersgift();
@@ -26,8 +26,8 @@ public class Offergiftsservlert extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher("offersgift.jsp");
 		try {
 			rd.forward(req, resp);
-		}catch (ServletException | IOException e) {
-			e.printStackTrace();
+		} catch (ServletException | IOException e) {
+			e.getMessage();
 		}
 
 	}

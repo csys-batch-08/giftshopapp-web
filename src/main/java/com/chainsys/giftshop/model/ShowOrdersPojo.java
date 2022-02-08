@@ -3,7 +3,6 @@ package com.chainsys.giftshop.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-
 public class ShowOrdersPojo implements Serializable {
 
 	private static final long serialVersionUID = 1L;

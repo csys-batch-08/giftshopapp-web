@@ -1,6 +1,7 @@
 package com.chainsys.giftshop.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +33,7 @@ public class Reorderservlet extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("addcart.jsp");
 			rd.forward(req, resp);
 		} catch (ServletException | IOException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 
 	}

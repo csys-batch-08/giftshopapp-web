@@ -5,15 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.chainsys.giftshop.dao.ProductsDao;
 import com.chainsys.giftshop.logger.Logger;
 import com.chainsys.giftshop.model.ProductPojo;
 import com.chainsys.giftshop.util.ConnectionUtil;
 
 public class ProductsDaoImpl implements ProductsDao {
-
-
 
 	private static final String P_TYPE = "p_type";
 	private static final String QUANTITY_ONHAND = "quantity_onhand";
@@ -41,11 +38,10 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt.setString(7, product1.getImage());
 			pstmt.setString(8, product1.getType());
 			pstmt.executeUpdate();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
@@ -65,8 +61,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
@@ -84,15 +79,15 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ProductPojo pp = new ProductPojo();
-				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getString(CATEGORY), rs.getString(IMAGE));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getString(CATEGORY),
+						rs.getString(IMAGE));
 				products.add(pp);
 			}
 
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 
@@ -110,12 +105,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			con = ConnectionUtil.gbconnection();
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
-			
+
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 	}
@@ -133,20 +127,18 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
-						rs.getString(IMAGE));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST),
+						rs.getString(CATEGORY), rs.getString(IMAGE));
 				products.add(pp);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 
 		return products;
-
 	}
 
 	@Override
@@ -162,15 +154,14 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery(query);
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
-						rs.getString(IMAGE));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST),
+						rs.getString(CATEGORY), rs.getString(IMAGE));
 				products.add(pp);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 
@@ -191,15 +182,14 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
-						rs.getString(IMAGE));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST),
+						rs.getString(CATEGORY), rs.getString(IMAGE));
 				products.add(pp);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 
@@ -220,15 +210,14 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
-						rs.getString(IMAGE));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST),
+						rs.getString(CATEGORY), rs.getString(IMAGE));
 				products.add(pp);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -248,8 +237,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pstmt, con);
 		}
 	}
@@ -271,8 +259,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return -1;
@@ -291,15 +278,14 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt.setString(1, productname);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
-						rs.getInt(QUANTITY_ONHAND));
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION),
+						rs.getDouble(STANDARD_COST), rs.getString(CATEGORY), rs.getInt(QUANTITY_ONHAND));
 				return pp;
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return pp;
@@ -319,20 +305,19 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				pp = new ProductPojo();
-				
+
 				pp.setImage(rs.getString(IMAGE));
 				pp.setProductName(rs.getString(PRODUCT_NAME));
 				pp.setProductId(rs.getInt(PRODUCT_ID));
 				pp.setStandardCost(rs.getDouble(STANDARD_COST));
 				pp.setType(rs.getString(P_TYPE));
-				
-        		products.add(pp);
+
+				products.add(pp);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -352,16 +337,16 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
-						rs.getInt(QUANTITY_ONHAND), rs.getString(IMAGE), rs.getString(P_TYPE));
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION),
+						rs.getDouble(STANDARD_COST), rs.getString(CATEGORY), rs.getInt(QUANTITY_ONHAND),
+						rs.getString(IMAGE), rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -381,16 +366,16 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
-						rs.getInt(QUANTITY_ONHAND), rs.getString(IMAGE), rs.getString(P_TYPE));
-				
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION),
+						rs.getDouble(STANDARD_COST), rs.getString(CATEGORY), rs.getInt(QUANTITY_ONHAND),
+						rs.getString(IMAGE), rs.getString(P_TYPE));
+
 				products.add(pp);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -410,16 +395,16 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
-						rs.getInt(QUANTITY_ONHAND), rs.getString(IMAGE), rs.getString(P_TYPE));
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION),
+						rs.getDouble(STANDARD_COST), rs.getString(CATEGORY), rs.getInt(QUANTITY_ONHAND),
+						rs.getString(IMAGE), rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -448,11 +433,10 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -479,11 +463,10 @@ public class ProductsDaoImpl implements ProductsDao {
 				pp.setProductId(rs.getInt(PRODUCT_ID));
 				products.add(pp);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -512,11 +495,10 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -547,8 +529,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -580,8 +561,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -610,11 +590,10 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -646,8 +625,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -679,8 +657,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -709,11 +686,10 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products.add(pp);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;
@@ -740,8 +716,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return searchproducts;
@@ -768,11 +743,10 @@ public class ProductsDaoImpl implements ProductsDao {
 
 				products1.add(pp);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products1;
@@ -799,8 +773,7 @@ public class ProductsDaoImpl implements ProductsDao {
 		} catch (Exception e) {
 			Logger.printstackrace(e);
 			Logger.runTimeException(e.getMessage());
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}
 		return products;

@@ -16,7 +16,7 @@ public class Orderdeleteservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp){
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
 		HttpSession session = req.getSession();
 		int orderid = (int) session.getAttribute("orderdetailsid");
@@ -28,7 +28,7 @@ public class Orderdeleteservlet extends HttpServlet {
 			try {
 				resp.sendRedirect("orderdelete.jsp");
 			} catch (IOException e) {
-				e.printStackTrace();
+				e.getMessage();
 			}
 		}
 	}

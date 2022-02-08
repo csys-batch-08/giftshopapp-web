@@ -3,7 +3,7 @@ package com.chainsys.giftshop.model;
 import java.io.Serializable;
 
 public class UserloginPojo implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	private int userid;
 	private String username;
@@ -69,7 +69,6 @@ public class UserloginPojo implements Serializable {
 		this.password = password;
 	}
 
-
 	@Override
 	public String toString() {
 		return "userlogin [username=" + username + ", password=" + password + "]";
@@ -87,16 +86,16 @@ public class UserloginPojo implements Serializable {
 		this.role = role;
 	}
 
-	public UserloginPojo(String email,String password) {
+	public UserloginPojo(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
-		
+
 	}
 
 	public UserloginPojo() {
 		super();
-	
+
 	}
 
 	public UserloginPojo(int userid, String role) {
@@ -105,7 +104,4 @@ public class UserloginPojo implements Serializable {
 		this.role = role;
 	}
 
-	
-
-	
 }
