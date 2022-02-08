@@ -277,9 +277,9 @@ th, td {
 				<h3><strong>RS:${sessionScope.cartitems.getStandardcost()}</strong></h3>
 				<div class="counter">
 					<div class="qty mt-5">
-						<span class="minus bg-dark" onclick="minus()">-</span> <input
+						<label for="count" class="minus bg-dark" onclick="minus()">-</label> <input
 							type="number" class="count" id="count" name="qty" value="1">
-						<span class="plus bg-dark" onclick="plus()">+</span>
+						<label for="count" class="plus bg-dark" onclick="plus()">+</label>
 					</div>
 				</div> <br>
 				<div class="button">

@@ -283,9 +283,9 @@ th, td {
 					</select></h4>
 				<div class="counter">
 					<div class="qty mt-5">
-						<label class="minus bg-dark" onclick="minus()">-</label> <input
+						<label for="count" class="minus bg-dark" onclick="minus()">-</label> <input
 							type="number" class="count" id="count" name="qty" value="1">
-						<label class="plus bg-dark" onclick="plus()">+</label>
+						<label for="count" class="plus bg-dark" onclick="plus()">+</label>
 					</div>
 				</div> <br>
 				<div class="button">
