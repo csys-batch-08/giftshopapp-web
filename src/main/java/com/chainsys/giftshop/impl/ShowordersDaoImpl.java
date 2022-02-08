@@ -27,16 +27,16 @@ public class ShowordersDaoImpl implements ShowordersDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ShowOrdersPojo showords = new ShowOrdersPojo();
-				showords.setUserid(rs.getInt(1));
-				showords.setOrderid(rs.getInt(2));
-				showords.setOrderdate(rs.getDate(3));
-				showords.setStatus(rs.getString(4));
-				showords.setQuantityordered(rs.getInt(5));
-				showords.setTotalprice(rs.getDouble(6));
-				showords.setSize(rs.getString(7));
-				showords.setProductname(rs.getString(8));
-				showords.setStandardcost(rs.getDouble(9));
-				showords.setImage(rs.getString(10));
+				showords.setUserid(rs.getInt("user_id"));
+				showords.setOrderid(rs.getInt("order_id"));
+				showords.setOrderdate(rs.getDate("order_date"));
+				showords.setStatus(rs.getString("status"));
+				showords.setQuantityordered(rs.getInt("quantity_ordered"));
+				showords.setTotalprice(rs.getDouble("total_price"));
+				showords.setSize(rs.getString("p_size"));
+				showords.setProductname(rs.getString("product_name"));
+				showords.setStandardcost(rs.getDouble("standard_cost"));
+				showords.setImage(rs.getString("image"));
 				view.add(showords);
 			}
 		} catch (Exception e) {
@@ -63,13 +63,13 @@ public class ShowordersDaoImpl implements ShowordersDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ShowOrdersPojo orderdetails = new ShowOrdersPojo();
-				orderdetails.setOrderid(rs.getInt(1));
-				orderdetails.setQuantityordered(rs.getInt(2));
-				orderdetails.setTotalprice(rs.getDouble(3));
-				orderdetails.setSize(rs.getString(4));
-				orderdetails.setProductname(rs.getString(5));
-				orderdetails.setImage(rs.getString(6));
-				orderdetails.setStandardcost(rs.getDouble(7));
+				orderdetails.setOrderid(rs.getInt("order_id"));
+				orderdetails.setQuantityordered(rs.getInt("quantity_ordered"));
+				orderdetails.setTotalprice(rs.getDouble("total_price"));
+				orderdetails.setSize(rs.getString("p_size"));
+				orderdetails.setProductname(rs.getString("product_name"));
+				orderdetails.setImage(rs.getString("image"));
+				orderdetails.setStandardcost(rs.getDouble("toalllll"));
 				view.add(orderdetails);
 			}
 

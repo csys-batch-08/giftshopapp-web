@@ -11,6 +11,14 @@ import com.chainsys.giftshop.model.UserloginPojo;
 import com.chainsys.giftshop.util.ConnectionUtil;
 
 public class UserDaoImpl implements UserDao {
+	private static final String ADDRESS = "address";
+	private static final String MOBILE_NUMBER = "mobile_number";
+	private static final String EMAIL = "email";
+	private static final String USER_NAME = "user_name";
+	private static final String USER_ID = "user_id";
+
+
+
 	@Override
 	public boolean insert(UserPojo user) {
 		PreparedStatement pstmt = null;
@@ -55,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setLong(1, user.getMobilenumber());
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				logUser = new UserPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5));
+				logUser = new UserPojo(rs.getInt(USER_ID), rs.getString(USER_NAME), rs.getString(EMAIL), rs.getLong(MOBILE_NUMBER), rs.getString("role"));
 			}
 
 		} catch (Exception e) {
@@ -81,7 +89,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(1, user.getEmail());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				logUser = new UserPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5));
+				logUser = new UserPojo(rs.getInt(USER_ID), rs.getString(USER_NAME), rs.getString(EMAIL), rs.getLong(MOBILE_NUMBER), rs.getString("role"));
 
 			}
 
@@ -97,10 +105,11 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public UserloginPojo validateuser(UserloginPojo ulp)  {
+		UserloginPojo userlogin=null;
 		PreparedStatement pstmt = null;
 		Connection con = null;
 		ResultSet rs = null;
-		String query = "select user_id,user_name,user_password,email,mobile_number,role,address from user_gift where email = ? and user_password = ?";
+		String query = "select user_id,role from user_gift where email = ? and user_password = ?";
 		try {
 			con = ConnectionUtil.gbconnection();
 			pstmt = con.prepareStatement(query);
@@ -108,7 +117,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(2, ulp.getPassword());
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				ulp=new UserloginPojo(rs.getInt("user_id"),rs.getString("user_name"),rs.getString("user_password"),rs.getString("email"),rs.getLong("mobile_number"),rs.getString("address"),rs.getString("role"));
+				userlogin=new UserloginPojo(rs.getInt(USER_ID),rs.getString("role"));
 			}
 		}catch (Exception e) {
 			Logger.printstackrace(e);
@@ -117,7 +126,7 @@ public class UserDaoImpl implements UserDao {
 		finally {
 			ConnectionUtil.close(rs, pstmt, con);
 		}	
-		return ulp;
+		return userlogin;
 	}
 
 	@Override
@@ -133,7 +142,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				users = new UserPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5));
+				users = new UserPojo(rs.getInt(USER_ID), rs.getString(USER_NAME), rs.getString(EMAIL), rs.getLong(MOBILE_NUMBER), rs.getString(ADDRESS));
 
 				products.add(users);
 			}
@@ -161,8 +170,8 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setString(1, users + "%");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				UserPojo search = new UserPojo(rs.getInt("user_id"), rs.getString("user_name"), rs.getString("email"),
-						rs.getLong("mobile_number"), rs.getString("address"));
+				UserPojo search = new UserPojo(rs.getInt(USER_ID), rs.getString(USER_NAME), rs.getString(EMAIL),
+						rs.getLong(MOBILE_NUMBER), rs.getString(ADDRESS));
 				searchproducts.add(search);
 			}
 		} catch (Exception e) {

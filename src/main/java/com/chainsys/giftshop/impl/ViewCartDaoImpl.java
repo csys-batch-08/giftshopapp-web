@@ -12,6 +12,15 @@ import com.chainsys.giftshop.util.ConnectionUtil;
 
 public class ViewCartDaoImpl {
 
+	private static final String USER_ID = "user_id";
+	private static final String PRODUCT_ID = "product_id";
+	private static final String QUANTITY = "quantity";
+	private static final String P_SIZE = "p_size";
+	private static final String P_TYPE = "p_type";
+	private static final String STANDARD_COST = "standard_cost";
+	private static final String PRODUCT_NAME = "product_name";
+	private static final String IMAGE = "image";
+
 	public void insertview(ViewCartPojo vcar){
 		PreparedStatement pstmt = null;
 		Connection con = null;
@@ -89,13 +98,13 @@ public class ViewCartDaoImpl {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				vcar1 = new ViewCartPojo();
-				vcar1.setImage(rs.getString(1));
-				vcar1.setProductname(rs.getString(2));
-				vcar1.setType(rs.getString(3));
-				vcar1.setStandardcost(rs.getDouble(4));
-				vcar1.setSize(rs.getString(5));
-				vcar1.setQuantity(rs.getInt(6));
-				vcar1.setProductid(rs.getInt(7));
+				vcar1.setImage(rs.getString(IMAGE));
+				vcar1.setProductname(rs.getString(PRODUCT_NAME));
+				vcar1.setType(rs.getString(P_TYPE));
+				vcar1.setStandardcost(rs.getDouble(STANDARD_COST));
+				vcar1.setSize(rs.getString(P_SIZE));
+				vcar1.setQuantity(rs.getInt(QUANTITY));
+				vcar1.setProductid(rs.getInt(PRODUCT_ID));
 				cart.add(vcar1);
 			}
 		}catch (Exception e) {
@@ -120,8 +129,8 @@ public class ViewCartDaoImpl {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				vcp = new ViewCartPojo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
-						rs.getString(5), rs.getInt(6), rs.getInt(7));
+				vcp = new ViewCartPojo(rs.getString(IMAGE), rs.getString(PRODUCT_NAME), rs.getString(P_TYPE), rs.getDouble(STANDARD_COST),
+						rs.getString(P_SIZE), rs.getInt(QUANTITY), rs.getInt(USER_ID));
 				view.add(vcp);
 			}
 
@@ -172,16 +181,16 @@ public class ViewCartDaoImpl {
 			pstmt.setInt(1, vcart.getUserid());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-
-				vcart.setImage(rs.getString(1));
-				vcart.setUserid(rs.getInt(2));
-				vcart.setProductid(rs.getInt(3));
-				vcart.setProductname(rs.getString(4));
-				vcart.setType(rs.getString(5));
-				vcart.setSize(rs.getString(6));
-				vcart.setQuantity(rs.getInt(7));
-				vcart.setStandardcost(rs.getDouble(8));
-				vcart.setTotalprice(rs.getDouble(9));
+				
+				vcart.setImage(rs.getString(IMAGE));
+				vcart.setUserid(rs.getInt(USER_ID));
+				vcart.setProductid(rs.getInt(PRODUCT_ID));
+				vcart.setProductname(rs.getString(PRODUCT_NAME));
+				vcart.setType(rs.getString(P_TYPE));
+				vcart.setSize(rs.getString(P_SIZE));
+				vcart.setQuantity(rs.getInt(QUANTITY));
+				vcart.setStandardcost(rs.getDouble(STANDARD_COST));
+				vcart.setTotalprice(rs.getDouble(STANDARD_COST));
 				view.add(vcart);
 			}
 		}catch (Exception e) {
@@ -209,7 +218,7 @@ public class ViewCartDaoImpl {
 			pstmt.setString(3, vcart1.getSize());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				qtyn = rs.getInt("quantity");
+				qtyn = rs.getInt(QUANTITY);
 			}
 		}catch (Exception e) {
 			Logger.printstackrace(e);
@@ -297,20 +306,20 @@ public class ViewCartDaoImpl {
 		ResultSet rs=null;
 		try {
 			con = ConnectionUtil.gbconnection();
-			String query = "select * from gcart where user_id=? and product_id=?";
+			String query = "select image,product_name,p_type,standard_cost,p_size,quantity,user_id,product_id from gcart where user_id=? and product_id=?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, vcp.getUserid());
 			pstmt.setInt(2, vcp.getProductid());
 		    rs = pstmt.executeQuery();
 			while (rs.next()) {
-				vcp.setImage(rs.getString(1));
-				vcp.setProductname(rs.getString(2));
-				vcp.setType(rs.getString(3));
-				vcp.setStandardcost(rs.getDouble(4));
-				vcp.setSize(rs.getString(5));
-				vcp.setQuantity(rs.getInt(6));
-				vcp.setUserid(rs.getInt(7));
-				vcp.setProductid(rs.getInt(8));
+				vcp.setImage(rs.getString(IMAGE));
+				vcp.setProductname(rs.getString(PRODUCT_NAME));
+				vcp.setType(rs.getString(P_TYPE));
+				vcp.setStandardcost(rs.getDouble(STANDARD_COST));
+				vcp.setSize(rs.getString(P_SIZE));
+				vcp.setQuantity(rs.getInt(QUANTITY));
+				vcp.setUserid(rs.getInt(USER_ID));
+				vcp.setProductid(rs.getInt(PRODUCT_ID));
 			}
 		}catch (Exception e) {
 			Logger.printstackrace(e);

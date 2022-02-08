@@ -15,6 +15,15 @@ public class ProductsDaoImpl implements ProductsDao {
 
 
 
+	private static final String P_TYPE = "p_type";
+	private static final String QUANTITY_ONHAND = "quantity_onhand";
+	private static final String PRODUCT_ID = "product_id";
+	private static final String STANDARD_COST = "standard_cost";
+	private static final String IMAGE = "image";
+	private static final String CATEGORY = "category";
+	private static final String DESCRIPTION = "description";
+	private static final String PRODUCT_NAME = "product_name";
+
 	@Override
 	public void insert(ProductPojo product1) {
 		String query = "insert into gproducts (product_id,product_name,description,standard_cost,category,quantity_onhand,image,p_type)values(?,?,?,?,?,?,?,?)";
@@ -75,7 +84,7 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ProductPojo pp = new ProductPojo();
-				pp = new ProductPojo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getString(CATEGORY), rs.getString(IMAGE));
 				products.add(pp);
 			}
 
@@ -124,8 +133,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
-						rs.getString(7));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
+						rs.getString(IMAGE));
 				products.add(pp);
 			}
 		} catch (Exception e) {
@@ -153,8 +162,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery(query);
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
-						rs.getString(7));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
+						rs.getString(IMAGE));
 				products.add(pp);
 			}
 		} catch (Exception e) {
@@ -182,8 +191,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
-						rs.getString(7));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
+						rs.getString(IMAGE));
 				products.add(pp);
 			}
 		} catch (Exception e) {
@@ -211,8 +220,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
-						rs.getString(7));
+				pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
+						rs.getString(IMAGE));
 				products.add(pp);
 			}
 		} catch (Exception e) {
@@ -257,7 +266,7 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt.setString(1, prodname);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				return rs.getInt(1);
+				return rs.getInt(PRODUCT_ID);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
@@ -282,8 +291,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt.setString(1, productname);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				pp = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
-						rs.getInt(6));
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
+						rs.getInt(QUANTITY_ONHAND));
 				return pp;
 			}
 		} catch (Exception e) {
@@ -310,12 +319,14 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setProductId(rs.getInt(5));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
-				products.add(pp);
+				
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
+				
+        		products.add(pp);
 			}
 		} catch (Exception e) {
 			Logger.printstackrace(e);
@@ -341,8 +352,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				pp = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
-						rs.getInt(6), rs.getString(7), rs.getString(8));
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
+						rs.getInt(QUANTITY_ONHAND), rs.getString(IMAGE), rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
@@ -370,9 +381,9 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				pp = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
-						rs.getInt(6), rs.getString(7), rs.getString(8));
-
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
+						rs.getInt(QUANTITY_ONHAND), rs.getString(IMAGE), rs.getString(P_TYPE));
+				
 				products.add(pp);
 			}
 		} catch (Exception e) {
@@ -399,8 +410,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 
-				pp = new ProductPojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
-						rs.getInt(6), rs.getString(7), rs.getString(8));
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION), rs.getDouble(STANDARD_COST), rs.getString(CATEGORY),
+						rs.getInt(QUANTITY_ONHAND), rs.getString(IMAGE), rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
@@ -429,11 +440,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			while (rs.next()) {
 
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setProductId(rs.getInt(5));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
@@ -460,14 +471,12 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
-				pp.setProductId(rs.getInt(5));
-
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
 				products.add(pp);
 			}
 		}catch (Exception e) {
@@ -495,11 +504,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			while (rs.next()) {
 
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
-				pp.setProductId(rs.getInt(5));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
 
 				products.add(pp);
 			}
@@ -527,11 +536,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
-				pp.setProductId(rs.getInt(5));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
 
 				products.add(pp);
 			}
@@ -560,11 +569,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			while (rs.next()) {
 
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setProductId(rs.getInt(5));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
@@ -593,11 +602,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			while (rs.next()) {
 
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setProductId(rs.getInt(5));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
@@ -626,11 +635,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			while (rs.next()) {
 
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setProductId(rs.getInt(5));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
@@ -659,11 +668,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			while (rs.next()) {
 
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setProductId(rs.getInt(5));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
@@ -692,11 +701,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			while (rs.next()) {
 
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setProductId(rs.getInt(5));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
 
 				products.add(pp);
 			}
@@ -722,8 +731,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt.setString(1, proName + "%");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				ProductPojo pp = new ProductPojo(rs.getString("product_name"), rs.getString("description"),
-						rs.getString("category"), rs.getString("image"));
+				ProductPojo pp = new ProductPojo(rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION),
+						rs.getString(CATEGORY), rs.getString(IMAGE));
 
 				searchproducts.add(pp);
 			}
@@ -751,11 +760,11 @@ public class ProductsDaoImpl implements ProductsDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				pp = new ProductPojo();
-				pp.setImage(rs.getString(3));
-				pp.setProductName(rs.getString(1));
-				pp.setProductId(rs.getInt(5));
-				pp.setStandardCost(rs.getDouble(2));
-				pp.setType(rs.getString(4));
+				pp.setImage(rs.getString(IMAGE));
+				pp.setProductName(rs.getString(PRODUCT_NAME));
+				pp.setProductId(rs.getInt(PRODUCT_ID));
+				pp.setStandardCost(rs.getDouble(STANDARD_COST));
+				pp.setType(rs.getString(P_TYPE));
 
 				products1.add(pp);
 			}
@@ -781,8 +790,8 @@ public class ProductsDaoImpl implements ProductsDao {
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				pp = new ProductPojo(rs.getInt("product_id"), rs.getString("product_name"), rs.getString("description"),
-						rs.getString("category"), rs.getString("image"));
+				pp = new ProductPojo(rs.getInt(PRODUCT_ID), rs.getString(PRODUCT_NAME), rs.getString(DESCRIPTION),
+						rs.getString(CATEGORY), rs.getString(IMAGE));
 
 				products.add(pp);
 			}

@@ -99,5 +99,13 @@ public class UserloginPojo implements Serializable {
 	
 	}
 
+	public UserloginPojo(int userid, String role) {
+		super();
+		this.userid = userid;
+		this.role = role;
+	}
+
+	
+
 	
 }
