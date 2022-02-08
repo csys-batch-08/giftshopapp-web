@@ -273,7 +273,7 @@ th, td {
 				<h1>${sessionScope.cartitems.getProductname()}</h1>
 				<h3>${sessionScope.cartitems.getType()}</h3>
 				<h3><strong>RS:${sessionScope.cartitems.getStandardcost()}</strong></h3>
-				<h4><label for="size">Choose your size:</label> <select name="size">
+				<h4><label for="size" id="size">Choose your size:</label> <select name="size">
 						<option value="S">S</option>
 						<option value="M">M</option>
 						<option value="L">L</option>
@@ -283,9 +283,9 @@ th, td {
 					</select></h4>
 				<div class="counter">
 					<div class="qty mt-5">
-						<span class="minus bg-dark" onclick="minus()">-</span> <input
+						<label class="minus bg-dark" onclick="minus()">-</label> <input
 							type="number" class="count" id="count" name="qty" value="1">
-						<span class="plus bg-dark" onclick="plus()">+</span>
+						<label class="plus bg-dark" onclick="plus()">+</label>
 					</div>
 				</div> <br>
 				<div class="button">

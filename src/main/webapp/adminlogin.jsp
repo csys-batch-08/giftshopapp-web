@@ -276,35 +276,35 @@ background-color: goldenrod;
     <form action="insert" method="post">
         <div class="user-details">
             <div class="input-box">
-                <span class="details">Product id</span>
+                <label class="details">Product id</label>
                 <input type="text"id="productid" name="productid"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product id" required>
               </div>
             <div class="input-box">
-                <span class="details">Product name</span>
+                <label class="details">Product name</label>
                 <input type="text" id="productname" name ="productname"placeholder="Enter product name" required>
               </div>
               <div class="input-box">
-                <span class="details">Description</span>
+                <label class="details">Description</label>
                 <input type="text" id="productdescription" name ="productdescription"placeholder="Enter product Decription" required>
               </div>
               <div class="input-box">
-                <span class="details">price</span>
+                <label class="details">price</label>
                 <input type="text" id="productprice" name ="productprice"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"placeholder="Enter product price" required>
               </div>
               <div class="input-box">
-                <span class="details">category</span>
+                <label class="details">category</label>
                 <input type="text" id="productcategory" name ="productcategory" placeholder="Enter product category" required>
               </div>
               <div class="input-box">
-                <span class="details">quantity</span>
+                <label class="details">quantity</label>
                 <input type="text" id="productquantity" name ="productquantity" pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"placeholder="Enter product quantity" required>
               </div>
                <div class="input-box">
-                <span class="details">Image</span>
+                <label class="details">Image</label>
                 <input type="text" id="image" name ="image" placeholder="Insert product image" required>
               </div>
                <div class="input-box">
-                <span class="details">Type</span>
+                <label class="details">Type</label>
                 <input type="text" id="type" name ="type"placeholder="enter product type" required>
               </div>
             </div>
@@ -350,15 +350,15 @@ background-color: goldenrod;
     <form action="update" method="post">
 			<div class="user-details">
 				<div class="input-box">
-					<span class="details">Product id</span> <input type="text"
+					<label class="details">Product id</label> <input type="text"
 						name="productid"id="productsid"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product id" required>
 				</div>
 				<div class="input-box">
-					<span class="details">price</span> <input type="text" name="price"id="price"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"
+					<label class="details">price</label> <input type="text" name="price"id="price"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd"
 						placeholder="Enter product price to update" required>
 				</div>
 				<div class="input-box">
-					<span class="details">quantity</span> <input type="number"
+					<label class="details">quantity</label> <input type="number"
 						name="quantity"id="number"pattern="[1-9]{1}[0-9]+" title="Negative values not allowd" placeholder="Enter product quantity to update"
 						required>
 				</div>

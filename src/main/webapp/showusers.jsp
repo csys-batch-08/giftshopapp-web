@@ -159,7 +159,7 @@ top:-6px;
 		<a href="index.jsp">Logout</a>
 	<a href="adminlogin.jsp">Home</a> 
 		<div class="searchproduct">
-         <form action="searchuser" method=post><br> <input type="text" name="users"
+         <form action="searchuser" method=post><br> <label for="proname"></label><input type="text" name="users"
 			id="proname"placeholder="search users">
 		<button type="submit">search</button>
 	</form>
