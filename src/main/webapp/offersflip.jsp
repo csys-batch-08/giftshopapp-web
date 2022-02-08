@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>your offers</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <style>
 
 
@@ -33,7 +34,7 @@ body {
   border: 1	px solid #cccccc;
   perspective: 1000px;
   margin-left:120px;
-  margin-top:15px;
+  margin-top:60px;
   
 }
 
@@ -115,7 +116,6 @@ body {
   transform: rotateY(180deg);
 }
 
-/* dfjisfdndsjf */
 
 .flip-box2 {
   background-color: transparent;
@@ -160,12 +160,18 @@ body {
   color: white;
   transform: rotateY(180deg);
 }
- .abc{
+ .ml2 {
+  margin-left:400px;
+  font-weight: 900;
+  font-size: 3.5em;
+  color: maroon;
+ 
+}
 
-            font-size: 50px;
-               color:maroon;            
-               
-        }
+.ml2 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
         .flip{
         
        margin-top:-40px;
@@ -188,9 +194,7 @@ body {
 <body>
 
 <div class="abc">
- <marquee width="100%" direction="left" height="100px">
-       pick your offers !!!
-        </marquee>
+       <h3 class="ml2">pick your offers !!!</h3>
         </div>
 <div class="flip">
 <div class="flip-box">
@@ -237,4 +241,28 @@ body {
 <img src="images/Daco_61605.png"alt="show image"height="60px"width="300">
 </div>
 </body>
+<script type="text/javascript">
+
+//Wrap every letter in a span
+var textWrapper = document.querySelector('.ml2');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml2 .letter',
+    scale: [4,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 950,
+    delay: (el, i) => 70*i
+  }).add({
+    targets: '.ml2',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+
+</script>
 </html>

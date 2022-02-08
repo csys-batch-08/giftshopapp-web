@@ -13,6 +13,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Offer for kids</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <style>
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
@@ -62,29 +63,49 @@ table {
 	color: maroon;
 }
 
-.qwerty {
-	font-size: 40px;
-	color: maroon;
-	margin-top: -500px;
-	margin-left: 170px;
+   .qwerty{
+        
+   width: 100px;
+  height: 100px;
+  position: relative;
+  animation-name: example;
+  animation-duration: 10s;  
+        font-size: 40px;
+               color:maroon; 
+               margin-top:-500px;
+                margin-left:170px;
+        }
+        @keyframes example {
+  from {top: 0px;}
+  to {top: 200px;}
+}
+        .qwertyyy{
+         width: 100px;
+  height: 100px;
+  position: relative;
+  animation-name: example;
+  animation-duration: 10s;    
+         font-size: 40px;
+               color:maroon; 
+               margin-top:-100px;
+                margin-left:1000px;
+        }
+        .ml2 {
+  margin-left:400px;
+  font-weight: 900;
+  font-size: 3.5em;
+  color: maroon;
+ 
 }
 
-.qwertyyy {
-	font-size: 40px;
-	color: maroon;
-	margin-top: -400px;
-	margin-left: 1000px;
+.ml2 .letter {
+  display: inline-block;
+  line-height: 1em;
 }
-</
-head
->
+</head>
 </style>
 <body>
-	<div class="abc">
-		<marquee width="100%" direction="left" height="100px">
-			offers of the day !!! </marquee>
-	</div>
-
+	 <h3 class="ml2">offers of the day !!!</h3>
 
 
 
@@ -134,21 +155,42 @@ head
 	</table>
 
 	<div class="qwerty">
-		<marquee width="100%" direction="down" height="400px">
+
 			<p>
 				Normal<br>price<br>
 				<del>$1605</del>
 			</p>
-		</marquee>
 	</div>
 
 	<div class="qwertyyy">
-		<marquee width="100%" direction="down" height="400px">
 			<p>
 				Normal<br>price<br>
 				<del>$885</del>
 			</p>
-		</marquee>
 	</div>
 </body>
+<script type="text/javascript">
+
+//Wrap every letter in a span
+var textWrapper = document.querySelector('.ml2');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml2 .letter',
+    scale: [4,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 950,
+    delay: (el, i) => 70*i
+  }).add({
+    targets: '.ml2',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+
+</script>
 </html>
