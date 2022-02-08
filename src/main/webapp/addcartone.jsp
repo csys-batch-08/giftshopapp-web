@@ -83,8 +83,7 @@ img {
 	font-family: inherit;
 	margin: 0;
 	font-style: italic;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-		sans-serif;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',sans-serif;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
