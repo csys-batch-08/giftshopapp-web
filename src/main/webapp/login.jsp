@@ -134,7 +134,7 @@ form .user-details .input-box{
             <form action="login" method="post">
               <div class="user-details">
                 <div class="input-box">
-                 <label for="username">User name</label>
+                 <label for="Mail id">E mail</label>
                   <input type="text" id="username"name="username"pattern="[a-z0-9]+[@][a-zA-Z]+[.][a-z]+"					
             title="You have to insert @ and . in the username ex.abc@gmail.com" placeholder="Enter your mail id"  required>
                 </div>

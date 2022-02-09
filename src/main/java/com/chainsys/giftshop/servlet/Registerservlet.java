@@ -39,15 +39,14 @@ public class Registerservlet extends HttpServlet {
 				UserPojo usedmail;
 				try {
 					usedmail = ui.validateUsermail(user2);
-					if (usedmail == null) {
-						UserPojo user = new UserPojo(username, password, email, phone, address);
-						boolean flag = ui.insert(user);
-						if (flag) {
-							resp.sendRedirect("login.jsp");
-						}
-					} else {
+					if (usedmail != null) {
 						throw new LoginException();
 
+					}
+					UserPojo user = new UserPojo(username, password, email, phone, address);
+					boolean flag = ui.insert(user);
+					if (flag) {
+						resp.sendRedirect("login.jsp");
 					}
 				} catch (LoginException e) {
 
@@ -63,7 +62,7 @@ public class Registerservlet extends HttpServlet {
 				out.println("location='registration.jsp';");
 				out.println("</script>");
 			}
-		} catch (IOException e1) {
+		} catch (IOException | NumberFormatException e1) {
 			e1.getMessage();
 		}
 

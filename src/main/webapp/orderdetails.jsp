@@ -7,8 +7,8 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,13 +37,12 @@ body {
 table img {
 	width: 150px;
 	height: 150px;
-	
 }
 
 table {
 	width: 20%;
 	float: left;
-	margin-top:80px;
+	margin-top: 80px;
 }
 
 .button {
@@ -126,8 +125,6 @@ table {
 	display: block;
 }
 
-
-
 th, td {
 	padding: 30px;
 }
@@ -145,19 +142,16 @@ th, td {
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-     width: 100%;
+	width: 100%;
 	background-color: white;
-	 width: 100%;
+	width: 100%;
 	padding: 20px;
-	border-radius:3px;
-	
-	
-	
+	border-radius: 3px;
 }
 
-.back{
-position:absolute;
-left:50px;
+.back {
+	position: absolute;
+	left: 50px;
 }
 
 .button {
@@ -168,7 +162,7 @@ left:50px;
 </style>
 </head>
 <body>
-		<div class="navbar">
+	<div class="navbar">
 		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
 			href="cart">My cart</a>
 		<div class="dropdown">
@@ -185,58 +179,63 @@ left:50px;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-	<c:set var="orderdetailsid" value="${sessionScope.order}" scope="session" />
+	<c:set var="orderdetailsid" value="${sessionScope.order}"
+		scope="session" />
 	<form action="cancel" method="get">
-	<table>    
-	<caption></caption>
-	<th></th>
+		<table>
+			<caption></caption>
+			<th></th>
 			<tr>
-			
+
 				<c:set var="count" value="1" />
 				<c:forEach items="${orderdetails}" var="orddetails">
-					<c:set var="totals" value="${orddetails.totalprice*orddetails.quantityordered}" />
+					<c:set var="totals"
+						value="${orddetails.totalprice*orddetails.quantityordered}" />
 					<c:set var="total" value="${total+totals}" />
 
 					<td>
 						<div class="car">
-								<div><img src="${orddetails.image}"alt="show image"></div>
+							<div>
+								<img src="${orddetails.image}" alt="show image">
+							</div>
 							<div>${orddetails.productname}</div>
 							<div>Quantity:${orddetails.quantityordered}</div>
-							<c:choose>  
-    <c:when test="${orddetails.size =='ra'}">    
-    </c:when>  
-    <c:otherwise>  
-      size:${orddetails.size} 
-    </c:otherwise>  
-</c:choose>
-							RS:${orddetails.totalprice}
-							<div><strong>Purchase amount:Rs:${orddetails.totalprice*orddetails.quantityordered}</strong> </div>
-							
-							</div>
-							<td>
-						
 							<c:choose>
-				    <c:when test="${count==4}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-			</tr>	
-	</table>
-	
-	             <c:set var="String" value="${status}" />
-			<c:if test="${fn:containsIgnoreCase(String, 'ordered')}">
-				 
-                <div class="button">
-                <input type="submit" value="cancel order">
-               </div>
+								<c:when test="${orddetails.size =='ra'}">
+								</c:when>
+								<c:otherwise>  
+      size:${orddetails.size} 
+    </c:otherwise>
+							</c:choose>
+							RS:${orddetails.totalprice}
+							<div>
+								<strong>Purchase
+									amount:Rs:${orddetails.totalprice*orddetails.quantityordered}</strong>
+							</div>
 
-			</c:if>
-</form>
+						</div>
+					<td><c:choose>
+							<c:when test="${count==4}">
+								<c:set var="count" value="1" />
+								<tr>
+							</c:when>
+							<c:otherwise>
+								<c:set var="count" value="${count+1}" />
+							</c:otherwise>
+						</c:choose>
+				</c:forEach>
+			</tr>
+		</table>
+
+		<c:set var="String" value="${status}" />
+		<c:if test="${fn:containsIgnoreCase(String, 'ordered')}">
+
+			<div class="button">
+				<input type="submit" value="cancel order">
+			</div>
+
+		</c:if>
+	</form>
 	<div class="total">Total amount:Rs:${total}</div>
 </body>
 </html>

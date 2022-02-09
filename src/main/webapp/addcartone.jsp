@@ -270,11 +270,11 @@ th, td {
 		<caption></caption>
 		<tr>
 		<th></th>
-		<td><img src="${sessionScope.cartitems.getImage()}"alt="show image"></td>
+		<td><img src="${cartitems.getImage()}"alt="show image"></td>
 			<td>
-				<h1>${sessionScope.cartitems.getProductname()}</h1>
-				<h3>${sessionScope.cartitems.getType()}</h3>
-				<h3><strong>RS:${sessionScope.cartitems.getStandardcost()}</strong></h3>
+				<h1>${cartitems.getProductname()}</h1>
+				<h3>${cartitems.getType()}</h3>
+				<h3><strong>RS:${cartitems.getStandardcost()}</strong></h3>
 				<div class="counter">
 					<div class="qty mt-5">
 						<label for="count" class="minus bg-dark" onclick="minus()">-</label> <input

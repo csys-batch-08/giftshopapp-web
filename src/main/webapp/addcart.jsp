@@ -268,11 +268,11 @@ th, td {
 		
 		<tr>
 		<th></th>
-			<td><img src="${sessionScope.cartitems.getImage()}"alt="show image"></td>
+			<td><img src="${cartitems.getImage()}"alt="show image"></td>
 			<td>
-				<h1>${sessionScope.cartitems.getProductname()}</h1>
-				<h3>${sessionScope.cartitems.getType()}</h3>
-				<h3><strong>RS:${sessionScope.cartitems.getStandardcost()}</strong></h3>
+				<h1>${cartitems.getProductname()}</h1>
+				<h3>${cartitems.getType()}</h3>
+				<h3><strong>RS:${cartitems.getStandardcost()}</strong></h3>
 				<h4><label for="size">Choose your size:</label> <select name="size" id="size">
 						<option value="S">S</option>
 						<option value="M">M</option>
