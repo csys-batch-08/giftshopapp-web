@@ -12,13 +12,16 @@
 <meta charset="ISO-8859-1">
 <title>Occasions</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <style>
 @import
@@ -39,33 +42,32 @@ body {
 	background-attachment: fixed;
 }
 
- table img {
+table img {
 	width: 150px;
 	height: 150px;
-	
-} 
-table{
-margin-top:30px;
 }
-h2{
 
-margin-left:600px;
+table {
+	margin-top: 30px;
 }
+
+h2 {
+	margin-left: 600px;
+}
+
 .button1 {
 	margin-top: 180px;
 	margin-left: -140px;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
- 
- 
-  
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -131,77 +133,79 @@ margin-left:600px;
 	display: block;
 }
 
-
 th, td {
-
-padding:55px;
-    padding-top: 10px;
-    
+	padding: 55px;
+	padding-top: 10px;
 }
-.car {
 
+.car {
 	border-style: solid;
 	border-color: goldenrod;
-     width: 100%;
+	width: 100%;
 	background-color: white;
-	margin-top:-60px;
+	margin-top: -60px;
 	margin-bottom: 70px;
 	padding: 20px;
-	border-radius:3px;
-	
-	
-	
+	border-radius: 3px;
 }
+
 .button1 {
 	position: absolute;
-	top:280px;
-	left:230px;
+	top: 280px;
+	left: 230px;
 }
+
 .button2 {
 	position: absolute;
-	top:465px;
-	left:430px;
+	top: 465px;
+	left: 430px;
 }
+
 .button3 {
 	position: absolute;
-	top:464px;
-	left:765px;
+	top: 464px;
+	left: 765px;
 }
+
 .button4 {
 	position: absolute;
-	top:465px;
-	left:1120px;
+	top: 465px;
+	left: 1120px;
 }
+
 .button5 {
 	position: absolute;
-	top:845px;
-	left:1120px;
+	top: 845px;
+	left: 1120px;
 }
 
 .button6 {
 	position: absolute;
-	top:853px;
-	left:765px;
+	top: 853px;
+	left: 765px;
 }
+
 .button7 {
 	position: absolute;
-	top:848px;
-	left:430px;
+	top: 848px;
+	left: 430px;
 }
+
 .button8 {
 	position: absolute;
-	top:854px;
-	left:100px;
+	top: 854px;
+	left: 100px;
 }
-.back{
-position:absolute;
-left:50px;
+
+.back {
+	position: absolute;
+	left: 50px;
 }
 </style>
 
 </head>
 <body>
-		<div class="navbar">
+	<div class="navbar">
 		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
 			href="cart">My cart</a>
 		<div class="dropdown">
@@ -218,70 +222,68 @@ left:50px;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-<h2>occasions</h2>
+	<h2>occasions</h2>
 
-<table>
+	<table>
 		<caption></caption>
 		<th></th>
-			<tr>
-			
-				<c:set var="count" value="1" />
-				<c:forEach items="${occasions}" var="occasionsproducts">
-				
+		<tr>
+
+			<c:set var="count" value="1" />
+			<c:forEach items="${occasions}" var="occasionsproducts">
+
 				<td>
-                            <div class="car">
-					<img src="${occasionsproducts.image}"alt="show image">
-					<br>
-					${occasionsproducts.productName}
-				${occasionsproducts.description}
-					<strong>Starts from RS:${occasionsproducts.standardCost}</strong>
-					<br>
+					<div class="car">
+						<img src="${occasionsproducts.image}" alt="show image"> <br>
+						${occasionsproducts.productName} ${occasionsproducts.description}
+						<strong>Starts from RS:${occasionsproducts.standardCost}</strong>
+						<br>
 					</div>
-					
-	</td>
-					<c:choose>
-				    <c:when test="${count==4}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
+
+				</td>
+				<c:choose>
+					<c:when test="${count==4}">
+						<c:set var="count" value="1" />
+						<tr></tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="${count+1}" />
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
-			</tr>	
-	</table>  
+		</tr>
+	</table>
 	<div class="button1">
-					<a href="valentinesday"><button type="button"
+		<a href="valentinesday"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button2">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button2">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button3">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button3">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-			<div class="button4">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button4">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button5">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button5">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button6">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button6">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button7">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button7">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button8">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button8">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
+	</div>
 </body>
 </html>

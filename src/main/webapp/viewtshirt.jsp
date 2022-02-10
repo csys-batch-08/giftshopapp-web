@@ -12,13 +12,16 @@
 <meta charset="ISO-8859-1">
 <title>T shirts</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <style>
 @import
@@ -164,51 +167,46 @@ th, td {
 		</div>
 	</div>
 	<table>
-	<caption></caption>
-	<th></th>
-	<caption></caption>
-			<tr>
-			
-				<c:set var="count" value="1" />
-				<c:forEach items="${menstshirt}" var="menstshirts">
-				
-					<td>
-						<div class="car">
-							<div>
-								<img src="${menstshirts.image}"alt="show images">
-							</div>
-							<div>
-								${menstshirts.productName}
-							</div>
-							<div>
-								${menstshirts.type}
-							</div>
-							<div>
-									<strong>RS:${menstshirts.standardCost}
-								
-								</strong>
-							</div><br>
-							
-								<a href="addtocart?
+		<caption></caption>
+		<th></th>
+		<caption></caption>
+		<tr>
+
+			<c:set var="count" value="1" />
+			<c:forEach items="${menstshirt}" var="menstshirts">
+
+				<td>
+					<div class="car">
+						<div>
+							<img src="${menstshirts.image}" alt="show images">
+						</div>
+						<div>${menstshirts.productName}</div>
+						<div>${menstshirts.type}</div>
+						<div>
+							<strong>RS:${menstshirts.standardCost} </strong>
+						</div>
+						<br> <a
+							href="addtocart?
 		pid=${menstshirts.productId}
 		&image=${menstshirts.image}
 		&productName=${menstshirts.productName}
 		&type=${menstshirts.type}
 		&cost=${menstshirts.standardCost}">
-		<button type="button" class="btn btn-info">Add to cart</button></a>
-						</div>
-					</td>
-					<c:choose>
-				    <c:when test="${count==5}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
+							<button type="button" class="btn btn-info">Add to cart</button>
+						</a>
+					</div>
+				</td>
+				<c:choose>
+					<c:when test="${count==5}">
+						<c:set var="count" value="1" />
+						<tr></tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="${count+1}" />
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
-			</tr>	
+		</tr>
 	</table>
 </body>
 </html>

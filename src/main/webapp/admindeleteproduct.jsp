@@ -3,14 +3,16 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous"/>
+<link
+	href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous" rel="stylesheet">
 
 <title>All products</title>
 <style>
@@ -31,30 +33,26 @@ body {
 	background-size: 1370px 620px;
 	background-size: cover;
 	background-attachment: fixed;
-	
-	 
 }
 
- table img {
+table img {
 	width: 150px;
 	height: 150px;
 	border-style: solid;
 	border-radius: 5%;
 	border: 5px solid #daa520;
-} 
-.navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
-  position:fixed;
- 
- 
-  
 }
+
+.navbar {
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
+	position: fixed;
+}
+
 .navbar a {
-	
 	font-size: 16px;
 	color: black;
 	text-align: center;
@@ -117,76 +115,85 @@ body {
 .dropdown:hover .dropdown-content {
 	display: block;
 }
-th, td {
-padding: 20px; 
-padding-right:43px;
-} 
-.back{
-position:relative;
-left:-1000px;
-}
-.car{
-margin-top:60px;
-} 
 
+th, td {
+	padding: 20px;
+	padding-right: 43px;
+}
+
+.back {
+	position: relative;
+	left: -1000px;
+}
+
+.car {
+	margin-top: 60px;
+}
 </style>
 
 </head>
 
 <body>
 <body>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous"></script>
-    <script>$('#invokesToastMessage').click(function deleteproduct() { toastr.success('message', 'title'); });</script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous"></script>
+	<script>
+		$('#invokesToastMessage').click(function deleteproduct() {
+			toastr.success('message', 'title');
+		});
+	</script>
 </body>
 
 <div class="navbar">
-		<a href="index.jsp">Logout</a> 
-		<a href="adminlogin.jsp">Home</a> 
-		
- <div class="back">
-      <a href="adminlogin.jsp">Back</a>
-      </div>
+	<a href="index.jsp">Logout</a> <a href="adminlogin.jsp">Home</a>
+
+	<div class="back">
+		<a href="adminlogin.jsp">Back</a>
 	</div>
-	
- <table>
- <caption></caption>
- <th></th>
-	    <tr>
-	   
-				<c:set var="count" value="1" />
-				<c:forEach items="${deleteproduct}" var="deletepro">
-       <td>
-					<div class="car">
-					<img src="${deletepro.image}"alt="show image"> 
-					<div>Product id:${deletepro.productId}</div> 
+</div>
+
+<table>
+	<caption></caption>
+	<th></th>
+	<tr>
+		<c:set var="count" value="1" />
+		<c:forEach items="${deleteproduct}" var="deletepro">
+			<td>
+				<div class="car">
+					<img src="${deletepro.image}" alt="show image">
+					<div>Product id:${deletepro.productId}</div>
 					<div>${deletepro.productName}</div>
 					<div class="button">
-				     <a href="delproduct?pid=${deletepro.productId}"><button onclick="deleteproduct()">Delete product</button></a>
-					 </div>
-				     </div>			
-	  <td>
-			<c:choose>
-			<c:when test="${count==5}">			
-			<c:set var="count" value="1" />
-	  <tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-	 </tr>
-	</table>		
+						<a href="delproduct?pid=${deletepro.productId}"><button
+								onclick="deleteproduct()">Delete product</button></a>
+					</div>
+				</div>
+			</td>
+			<td><c:choose>
+					<c:when test="${count==5}">
+						<c:set var="count" value="1" />
+						<tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="${count+1}" />
+					</c:otherwise>
+				</c:choose></td>
+		</c:forEach>
+	</tr>
+</table>
 </body>
 <script type="text/javascript">
-function deleteproduct() {
-	var result = confirm("Are you sure want to delete?");
-	if (result == false) {
-		event.preventDefault();
+	function deleteproduct() {
+		var result = confirm("Are you sure want to delete?");
+		if (result == false) {
+			event.preventDefault();
+		}
 	}
-}
 </script>
 </html>

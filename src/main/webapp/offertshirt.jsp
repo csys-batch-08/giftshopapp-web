@@ -6,13 +6,15 @@
 <%@ page isELIgnored="false"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Offer of the day</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <style>
 @import
@@ -33,108 +35,120 @@ body {
 	/* background-size: cover; */
 	background-attachment: fixed;
 }
+
 table img {
 	width: 300px;
 	height: 300px;
+}
 
-}
 table {
-padding: 30px;
-	padding-left:330px;
+	padding: 30px;
+	padding-left: 330px;
 }
+
 .button {
 	margin-top: 170px;
 	margin-left: 33px;
 }
+
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-    width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 5px;
-	border-radius:3px;
-	
-	
+	border-radius: 3px;
 }
- 
-        .qwerty{
-        
-   width: 100px;
-  height: 100px;
-  position: relative;
-  animation-name: example;
-  animation-duration: 10s;  
-        font-size: 40px;
-               color:maroon; 
-               margin-top:-500px;
-                margin-left:170px;
-        }
-        @keyframes example {
-  from {top: 0px;}
-  to {top: 200px;}
+
+.qwerty {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	animation-name: example;
+	animation-duration: 10s;
+	font-size: 40px;
+	color: maroon;
+	margin-top: -500px;
+	margin-left: 170px;
 }
-        .qwertyyy{
-         width: 100px;
-  height: 100px;
-  position: relative;
-  animation-name: example;
-  animation-duration: 10s;    
-         font-size: 40px;
-               color:maroon; 
-               margin-top:-100px;
-                margin-left:1000px;
-        }
-        
-    .ml2 {
-  margin-left:400px;
-  font-weight: 900;
-  font-size: 3.5em;
-  color: maroon;
- 
+
+@
+keyframes example {
+	from {top: 0px;
+}
+
+to {
+	top: 200px;
+}
+
+}
+.qwertyyy {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	animation-name: example;
+	animation-duration: 10s;
+	font-size: 40px;
+	color: maroon;
+	margin-top: -100px;
+	margin-left: 1000px;
+}
+
+.ml2 {
+	margin-left: 400px;
+	font-weight: 900;
+	font-size: 3.5em;
+	color: maroon;
 }
 
 .ml2 .letter {
-  display: inline-block;
-  line-height: 1em;
+	display: inline-block;
+	line-height: 1em;
 }
-     
-</head>
+</
+head
+>
 </style>
 <body>
- <h3 class="ml2">offers of the day !!!</h3>
+	<h3 class="ml2">offers of the day !!!</h3>
 
-                       <table>
-                       <caption></caption>
-		
-			<tr>
+	<table>
+		<caption></caption>
+
+		<tr>
 			<th></th>
-			 <c:set var="count" value="1" />
-				<c:forEach items="${offertshirt}" var="offerstee">
-				
+			<c:set var="count" value="1" />
+			<c:forEach items="${offertshirt}" var="offerstee">
+
 				<td>
-                            <div class="car">
-					<div><img src="${offerstee.image}"alt="show image"></div> 
-					
-					<div>${offerstee.productName}</div> 
-					<div>${offerstee.type}</div> 
-					<div><strong>Offer price:Rs:${offerstee.standardCost}</strong></div> 
-				
-			
-				
-		<a href="addtocart?
+					<div class="car">
+						<div>
+							<img src="${offerstee.image}" alt="show image">
+						</div>
+
+						<div>${offerstee.productName}</div>
+						<div>${offerstee.type}</div>
+						<div>
+							<strong>Offer price:Rs:${offerstee.standardCost}</strong>
+						</div>
+
+
+
+						<a
+							href="addtocart?
 		pid=${offerstee.productId}
 		&image=${offerstee.image}
 		&productName=${offerstee.productName}
 		&type=${offerstee.type}
-		&cost=${offerstee.standardCost}"><button type="button"
-				class="btn btn-default">Add to cart</button></a>
-	
+		&cost=${offerstee.standardCost}"><button
+								type="button" class="btn btn-default">Add to cart</button></a>
+
 					</div>
-	</td>
-					<c:choose>
+				</td>
+				<c:choose>
 					<c:when test="${count==6}">
 						<c:set var="count" value="1" />
-						<tr>
+						<tr></tr>
 					</c:when>
 					<c:otherwise>
 						<c:set var="count" value="${count+1}" />
@@ -142,15 +156,21 @@ padding: 30px;
 				</c:choose>
 			</c:forEach>
 		</tr>
-	</table>   
+	</table>
 	<div class="qwerty">
-      <p>Normal<br>price<br><del>$1450</del></p>
+		<p>
+			Normal<br>price<br>
+			<del>$1450</del>
+		</p>
 	</div>
-	
-	   <div class="qwertyyy">
-     <p>Normal<br>price<br><del>$810</del></p>
+
+	<div class="qwertyyy">
+		<p>
+			Normal<br>price<br>
+			<del>$810</del>
+		</p>
 	</div>
-	
+
 </body>
 <script type="text/javascript">
 

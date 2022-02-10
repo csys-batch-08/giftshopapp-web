@@ -15,11 +15,11 @@
 	crossorigin="anonymous"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	rel="stylesheet" id="bootstrap-css">
 
 
 <style>
@@ -86,7 +86,8 @@ img {
 	font-family: inherit;
 	margin: 0;
 	font-style: italic;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',sans-serif;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+		sans-serif;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
@@ -270,41 +271,44 @@ th, td {
 		</div>
 
 		<table>
-		<caption></caption>
-		<tr>
-		<th></th>
-		<td><img src="${cartitems.getImage()}"alt="show image"></td>
-			<td>
-				<h1>${cartitems.getProductname()}</h1>
-				<h3>${cartitems.getType()}</h3>
-				<h3><strong>RS:${cartitems.getStandardcost()}</strong></h3>
-				<div class="counter">
-					<div class="qty mt-5">
-						<label for="count" class="minus bg-dark" onclick="minus()">-</label> <input
-							type="number" class="count" id="count" name="qty" value="1">
-						<label for="count" class="plus bg-dark" onclick="plus()">+</label>
+			<caption></caption>
+			<tr>
+				<th></th>
+				<td><img src="${cartitems.getImage()}" alt="show image"></td>
+				<td>
+					<h1>${cartitems.getProductname()}</h1>
+					<h3>${cartitems.getType()}</h3>
+					<h3>
+						<strong>RS:${cartitems.getStandardcost()}</strong>
+					</h3>
+					<div class="counter">
+						<div class="qty mt-5">
+							<label for="count" class="minus bg-dark" onclick="minus()">-</label>
+							<input type="number" class="count" id="count" name="qty"
+								value="1"> <label for="count" class="plus bg-dark"
+								onclick="plus()">+</label>
+						</div>
+					</div> <br>
+					<div class="button">
+						<button type="submit" class="bbtn btn-dark">Add to cart</button>
 					</div>
-				</div> <br>
-				<div class="button">
-					<button type="submit" class="bbtn btn-dark">Add to cart</button>
-				</div>
-			</td>
+				</td>
 			</tr>
 		</table>
 	</form>
 </body>
-                     <script>
-                    function minus() {
-                    	var count=document.getElementById('count');
-						count.value--;
-						if(count.value==0){
-							count.value=1;
-						}
-					}
-                    function plus() {
-						var count=document.getElementById('count');
-				
-						count.value++;
-					}
-                    </script>
+<script>
+	function minus() {
+		var count = document.getElementById('count');
+		count.value--;
+		if (count.value == 0) {
+			count.value = 1;
+		}
+	}
+	function plus() {
+		var count = document.getElementById('count');
+
+		count.value++;
+	}
+</script>
 </html>

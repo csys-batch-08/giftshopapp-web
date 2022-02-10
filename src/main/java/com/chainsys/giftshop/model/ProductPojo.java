@@ -10,7 +10,7 @@ public class ProductPojo implements Serializable {
 	private String description;
 	private double standardCost;
 	private String category;
-	private int quantityonhand;
+	private int quantityOnHand;
 	private String image;
 	private String type;
 
@@ -55,11 +55,11 @@ public class ProductPojo implements Serializable {
 	}
 
 	public int getQuantityonhand() {
-		return quantityonhand;
+		return quantityOnHand;
 	}
 
 	public void setQuantityonhand(int quantityonhand) {
-		this.quantityonhand = quantityonhand;
+		this.quantityOnHand = quantityonhand;
 	}
 
 	public String getImage() {
@@ -86,13 +86,13 @@ public class ProductPojo implements Serializable {
 		this.description = description;
 		this.standardCost = standardCost;
 		this.category = category;
-		this.quantityonhand = quantityonhand;
+		this.quantityOnHand = quantityonhand;
 	}
 
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", description=" + description
-				+ ", standardCost=" + standardCost + ", category=" + category + ", quantityonhand=" + quantityonhand
+				+ ", standardCost=" + standardCost + ", category=" + category + ", quantityonhand=" + quantityOnHand
 				+ "]";
 	}
 
@@ -100,7 +100,7 @@ public class ProductPojo implements Serializable {
 		super();
 		this.productId = productId;
 		this.standardCost = standardCost;
-		this.quantityonhand = quantityonhand;
+		this.quantityOnHand = quantityonhand;
 	}
 
 	public ProductPojo(int productId) {
@@ -116,7 +116,7 @@ public class ProductPojo implements Serializable {
 		this.description = description;
 		this.standardCost = standardCost;
 		this.category = category;
-		this.quantityonhand = quantityonhand;
+		this.quantityOnHand = quantityonhand;
 		this.image = image;
 	}
 
@@ -145,7 +145,7 @@ public class ProductPojo implements Serializable {
 		this.description = description;
 		this.standardCost = standardCost;
 		this.category = category;
-		this.quantityonhand = quantityonhand;
+		this.quantityOnHand = quantityonhand;
 		this.image = image;
 		this.type = type;
 	}

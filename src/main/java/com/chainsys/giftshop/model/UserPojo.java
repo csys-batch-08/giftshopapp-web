@@ -5,19 +5,19 @@ import java.io.Serializable;
 public class UserPojo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int userid;
+	private int userId;
 	private String userName;
 	private String password;
 	private String email;
-	private Long mobilenumber;
+	private Long mobileNumber;
 	private String address;
 
 	public int getUserid() {
-		return userid;
+		return userId;
 	}
 
 	public void setUserid(int userid) {
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public String getUsername() {
@@ -45,7 +45,7 @@ public class UserPojo implements Serializable {
 	}
 
 	public Long getMobilenumber() {
-		return mobilenumber;
+		return mobileNumber;
 	}
 
 	public String getAddress() {
@@ -57,7 +57,7 @@ public class UserPojo implements Serializable {
 	}
 
 	public void setMobilenumber(Long mobilenumber) {
-		this.mobilenumber = mobilenumber;
+		this.mobileNumber = mobilenumber;
 	}
 
 	public UserPojo(String username, String password, String email, Long mobilenumber) {
@@ -65,7 +65,7 @@ public class UserPojo implements Serializable {
 		this.userName = username;
 		this.password = password;
 		this.email = email;
-		this.mobilenumber = mobilenumber;
+		this.mobileNumber = mobilenumber;
 	}
 
 	public UserPojo() {
@@ -77,16 +77,16 @@ public class UserPojo implements Serializable {
 		userName = username;
 		this.password = password;
 		this.email = email;
-		this.mobilenumber = mobilenumber;
+		this.mobileNumber = mobilenumber;
 		this.address = address;
 	}
 
 	public UserPojo(int userid, String username, String email, Long mobilenumber, String address) {
 		super();
-		this.userid = userid;
+		this.userId = userid;
 		userName = username;
 		this.email = email;
-		this.mobilenumber = mobilenumber;
+		this.mobileNumber = mobilenumber;
 		this.address = address;
 	}
 

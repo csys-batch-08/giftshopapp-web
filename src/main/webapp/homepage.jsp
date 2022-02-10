@@ -7,7 +7,8 @@
 <title>Welcome gift shop</title>
 
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <style>
 body {
@@ -149,14 +150,15 @@ body {
 	top: 2px;
 	position: fixed;
 }
+
 .blink_me {
-  animation: blinker 1s linear infinite;
+	animation: blinker 1s linear infinite;
 }
 
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
+@
+keyframes blinker { 50% {
+	opacity: 0;
+}
 }
 </style>
 
@@ -165,10 +167,10 @@ body {
 
 
 	<div class="navbar">
-		<a href="offersflip.jsp"> <div class="blink_me">$ Offers of the day $</div></a> 
-		<a href="index.jsp">Logout</a> 
-			<a href="orders">My orders</a> 
-			<a href="cart">My cart</a>
+		<a href="offersflip.jsp">
+			<div class="blink_me">$ Offers of the day $</div>
+		</a> <a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
+			href="cart">My cart</a>
 
 
 		<div class="dropdown">
@@ -177,22 +179,20 @@ body {
 			</button>
 
 			<div class="dropdown-content">
-				<a href="mensproducts">mens</a> 
-				<a href="womensshowproducts">womens</a> 
-				<a href="kidsshowproducts">kids</a> 
-				<a href="occasionsshowproducts">occasions</a>
+				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
+				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
 			</div>
 
 		</div>
 
-		<a href="userallproducts">All collections</a>
-		 <a href="homepage.jsp">Home</a>
+		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
 
 	</div>
 
 
 	<div id="logo">
-		<img src="images/pngwing.com (2).png" height="45px" width="150px" alt="show image">
+		<img src="images/pngwing.com (2).png" height="45px" width="150px"
+			alt="show image">
 	</div>
 
 	<div id="title">

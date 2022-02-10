@@ -12,13 +12,16 @@
 <meta charset="ISO-8859-1">
 <title>Womens products</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <style>
 @import
@@ -40,26 +43,24 @@ body {
 	background-attachment: fixed;
 }
 
- table img {
+table img {
 	width: 150px;
 	height: 150px;
+}
 
-} 
 .button1 {
 	margin-top: 15px;
 	margin-left: 3px;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
- 
- 
-  
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -125,78 +126,80 @@ body {
 	display: block;
 }
 
-
 th, td {
+	padding: 55px;
+}
 
-padding:55px;
- 
-    
+table {
+	margin-top: -70px;
 }
-table{
-margin-top:-70px;
-}
-h2{
 
-margin-left:600px;
+h2 {
+	margin-left: 600px;
 }
+
 .car {
-
 	border-style: solid;
 	border-color: goldenrod;
-     width: 100%;
+	width: 100%;
 	background-color: white;
-	margin-top:-60px;
+	margin-top: -60px;
 	margin-bottom: 70px;
 	padding: 20px;
-	border-radius:3px;
-	
-	
-	
+	border-radius: 3px;
 }
+
 .button1 {
 	position: absolute;
-	top:435px;
-	left:85px;
+	top: 435px;
+	left: 85px;
 }
+
 .button2 {
 	position: absolute;
-	top:449px;
-	left:400px;
+	top: 449px;
+	left: 400px;
 }
+
 .button3 {
 	position: absolute;
-	top:448px;
-	left:740px;
+	top: 448px;
+	left: 740px;
 }
+
 .button4 {
 	position: absolute;
-	top:448px;
-	left:1080px;
+	top: 448px;
+	left: 1080px;
 }
+
 .button5 {
 	position: absolute;
-	top:825px;
-	left:1080px;
+	top: 825px;
+	left: 1080px;
 }
 
 .button6 {
 	position: absolute;
-	top:825px;
-	left:740px;
+	top: 825px;
+	left: 740px;
 }
+
 .button7 {
 	position: absolute;
-	top:825px;
-	left:400px;
+	top: 825px;
+	left: 400px;
 }
+
 .button8 {
 	position: absolute;
-	top:825px;
-	left:85px;
+	top: 825px;
+	left: 85px;
 }
-.back{
-position:absolute;
-left:50px;
+
+.back {
+	position: absolute;
+	left: 50px;
 }
 </style>
 
@@ -219,69 +222,71 @@ left:50px;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-<h2>Womens products</h2>
-<table>
+	<h2>Womens products</h2>
+	<table>
 		<caption></caption>
 		<th></th>
-			<tr>
-			
-				<c:set var="count" value="1" />
-				<c:forEach items="${womens}" var="womesnproducts">
-				
+		<tr>
+
+			<c:set var="count" value="1" />
+			<c:forEach items="${womens}" var="womesnproducts">
+
 				<td>
-                            <div class="car">
-					<img src="${womesnproducts.image}"alt="show image">
-					<div>${womesnproducts.productName}</div>
-				<div>${womesnproducts.description}</div>
-					<div><strong>Starts from RS:${womesnproducts.standardCost}</strong></div>
+					<div class="car">
+						<img src="${womesnproducts.image}" alt="show image">
+						<div>${womesnproducts.productName}</div>
+						<div>${womesnproducts.description}</div>
+						<div>
+							<strong>Starts from RS:${womesnproducts.standardCost}</strong>
+						</div>
 					</div>
-					
-	</td>
-					<c:choose>
-				    <c:when test="${count==4}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
+
+				</td>
+				<c:choose>
+					<c:when test="${count==4}">
+						<c:set var="count" value="1" />
+						<tr></tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="${count+1}" />
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
-			</tr>	
+		</tr>
 		</tbody>
-	</table> 
+	</table>
 	<div class="button1">
-					<a href="womenscaricature"><button type="button"
+		<a href="womenscaricature"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button2">
-					<a href="womenswatch"><button type="button"
+	</div>
+	<div class="button2">
+		<a href="womenswatch"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button3">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button3">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-			<div class="button4">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button4">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button5">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button5">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-default">View product</button> </a>
-				</div>
-				<div class="button6">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button6">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button7">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button7">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div>
-				<div class="button8">
-					<a href="viewtshirt.jsp"><button type="button"
+	</div>
+	<div class="button8">
+		<a href="viewtshirt.jsp"><button type="button"
 				class="btn btn-success">View product</button> </a>
-				</div> 
-	
+	</div>
+
 </body>
 </html>

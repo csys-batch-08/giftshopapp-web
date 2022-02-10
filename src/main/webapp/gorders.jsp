@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,12 +16,14 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
+
 body {
 	background-image: url("images/plain-yellow-wall-product-background.jpg");
 	background-repeat: no-repeat;
@@ -29,6 +31,7 @@ body {
 	/* background-size: cover; */
 	background-attachment: fixed;
 }
+
 table img {
 	width: 150px;
 	height: 150px;
@@ -41,23 +44,20 @@ table img {
   width: 150px; */
 }
 
-
-
 th, td {
 	padding-left: 35px;
-	Padding-top:60px;
+	Padding-top: 60px;
 }
+
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-     width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 20px;
-	border-radius:3px;
-	
-	
-	
+	border-radius: 3px;
 }
+
 .navbar {
 	overflow: hidden;
 	background-color: seashell;
@@ -66,6 +66,7 @@ th, td {
 	height: 55px;
 	position: FIXED;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -82,10 +83,12 @@ th, td {
 	margin-right: 5px;
 	position: relative;
 }
+
 .dropdown {
 	float: right;
 	overflow: hidden;
 }
+
 .dropdown .dropbtn {
 	font-size: 18px;
 	border: none;
@@ -99,9 +102,11 @@ th, td {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
 }
+
 .navbar a:hover, .dropdown:hover .dropbtn {
 	background-color: goldenrod;
 }
+
 .dropdown-content {
 	display: none;
 	position: fixed;
@@ -110,6 +115,7 @@ th, td {
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
 }
+
 .dropdown-content a {
 	float: none;
 	color: black;
@@ -118,20 +124,23 @@ th, td {
 	display: block;
 	text-align: left;
 }
+
 .dropdown-content a:hover {
 	background-color: #ddd;
 }
+
 .dropdown:hover .dropdown-content {
 	display: block;
 }
-.back{
-position:absolute;
-left:50px;
+
+.back {
+	position: absolute;
+	left: 50px;
 }
 </style>
 </head>
 <body>
-		<div class="navbar">
+	<div class="navbar">
 		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
 			href="cart">My cart</a>
 		<div class="dropdown">
@@ -149,38 +158,38 @@ left:50px;
 		</div>
 	</div>
 
-	<form action="orderdetails"method="post">
-	    <table>
-	   <caption></caption>
-<th></th>
+	<form action="orderdetails" method="post">
+		<table>
+			<caption></caption>
+			<th></th>
 			<tr>
-			
+
 				<c:set var="count" value="1" />
 				<c:forEach items="${showorders}" var="orders">
-				<fmt:parseDate pattern="yyyy-MM-dd" value="${orders.orderdate}"
-				var="parsedDate" />
-		   <td>
-                    <div class="car">
-					Order id:${orders.orderid}
-				    Order date:<fmt:formatDate pattern="dd-MM-yyyy" value="${parsedDate}" />
-					Status:${orders.status}
-					<br>
-	              <input type="button" value="view details"onclick="window.location='orderdetails?ordid=${orders.orderid}'">
-					</div>
-	</td>
+					<fmt:parseDate pattern="yyyy-MM-dd" value="${orders.orderdate}"
+						var="parsedDate" />
+					<td>
+						<div class="car">
+							Order id:${orders.orderid} Order date:
+							<fmt:formatDate pattern="dd-MM-yyyy" value="${parsedDate}" />
+							Status:${orders.status} <br> <input type="button"
+								value="view details"
+								onclick="window.location='orderdetails?ordid=${orders.orderid}'">
+						</div>
+					</td>
 					<c:choose>
-				    <c:when test="${count==5}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-			</tr>	
-	</table>  
+						<c:when test="${count==5}">
+							<c:set var="count" value="1" />
+							<tr></tr>
+						</c:when>
+						<c:otherwise>
+							<c:set var="count" value="${count+1}" />
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</tr>
+		</table>
 
-</form>
+	</form>
 </body>
 </html>

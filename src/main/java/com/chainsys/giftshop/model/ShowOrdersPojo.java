@@ -6,39 +6,39 @@ import java.sql.Date;
 public class ShowOrdersPojo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int userid;
-	private int orderid;
-	private Date orderdate;
+	private int userId;
+	private int orderId;
+	private Date orderDate;
 	private String status;
-	private int quantityordered;
-	private double totalprice;
+	private int quantityOrdered;
+	private double totalPrice;
 	private String size;
-	private String productname;
-	private double standardcost;
+	private String productName;
+	private double standardCost;
 	private String image;
 
 	public int getUserid() {
-		return userid;
+		return userId;
 	}
 
 	public void setUserid(int userid) {
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public int getOrderid() {
-		return orderid;
+		return orderId;
 	}
 
 	public void setOrderid(int orderid) {
-		this.orderid = orderid;
+		this.orderId = orderid;
 	}
 
 	public Date getOrderdate() {
-		return orderdate;
+		return orderDate;
 	}
 
 	public void setOrderdate(Date orderdate) {
-		this.orderdate = orderdate;
+		this.orderDate = orderdate;
 	}
 
 	public String getStatus() {
@@ -50,19 +50,19 @@ public class ShowOrdersPojo implements Serializable {
 	}
 
 	public int getQuantityordered() {
-		return quantityordered;
+		return quantityOrdered;
 	}
 
 	public void setQuantityordered(int quantityordered) {
-		this.quantityordered = quantityordered;
+		this.quantityOrdered = quantityordered;
 	}
 
 	public double getTotalprice() {
-		return totalprice;
+		return totalPrice;
 	}
 
 	public void setTotalprice(double totalprice) {
-		this.totalprice = totalprice;
+		this.totalPrice = totalprice;
 	}
 
 	public ShowOrdersPojo() {
@@ -78,19 +78,19 @@ public class ShowOrdersPojo implements Serializable {
 	}
 
 	public String getProductname() {
-		return productname;
+		return productName;
 	}
 
 	public void setProductname(String productname) {
-		this.productname = productname;
+		this.productName = productname;
 	}
 
 	public double getStandardcost() {
-		return standardcost;
+		return standardCost;
 	}
 
 	public void setStandardcost(double standardcost) {
-		this.standardcost = standardcost;
+		this.standardCost = standardcost;
 	}
 
 	public String getImage() {
@@ -104,15 +104,15 @@ public class ShowOrdersPojo implements Serializable {
 	public ShowOrdersPojo(int userid, int orderid, Date orderdate, String status, int quantityordered, int totalprice,
 			String size, String productname, double standardcost, String image) {
 		super();
-		this.userid = userid;
-		this.orderid = orderid;
-		this.orderdate = orderdate;
+		this.userId = userid;
+		this.orderId = orderid;
+		this.orderDate = orderdate;
 		this.status = status;
-		this.quantityordered = quantityordered;
-		this.totalprice = totalprice;
+		this.quantityOrdered = quantityordered;
+		this.totalPrice = totalprice;
 		this.size = size;
-		this.productname = productname;
-		this.standardcost = standardcost;
+		this.productName = productname;
+		this.standardCost = standardcost;
 		this.image = image;
 	}
 

@@ -5,20 +5,20 @@ import java.io.Serializable;
 public class UserloginPojo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int userid;
-	private String username;
+	private int userId;
+	private String userName;
 	private String password;
 	private String email;
-	private Long mobilenumber;
+	private Long mobileNumber;
 	private String address;
 	private String role;
 
 	public int getUserid() {
-		return userid;
+		return userId;
 	}
 
 	public void setUserid(int userid) {
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public String getEmail() {
@@ -30,11 +30,11 @@ public class UserloginPojo implements Serializable {
 	}
 
 	public Long getMobilenumber() {
-		return mobilenumber;
+		return mobileNumber;
 	}
 
 	public void setMobilenumber(Long mobilenumber) {
-		this.mobilenumber = mobilenumber;
+		this.mobileNumber = mobilenumber;
 	}
 
 	public String getAddress() {
@@ -54,11 +54,11 @@ public class UserloginPojo implements Serializable {
 	}
 
 	public String getUsername() {
-		return username;
+		return userName;
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.userName = username;
 	}
 
 	public String getPassword() {
@@ -71,17 +71,17 @@ public class UserloginPojo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "userlogin [username=" + username + ", password=" + password + "]";
+		return "userlogin [username=" + userName + ", password=" + password + "]";
 	}
 
 	public UserloginPojo(int userid, String username, String password, String email, Long mobilenumber, String address,
 			String role) {
 		super();
-		this.userid = userid;
-		this.username = username;
+		this.userId = userid;
+		this.userName = username;
 		this.password = password;
 		this.email = email;
-		this.mobilenumber = mobilenumber;
+		this.mobileNumber = mobilenumber;
 		this.address = address;
 		this.role = role;
 	}
@@ -100,7 +100,7 @@ public class UserloginPojo implements Serializable {
 
 	public UserloginPojo(int userid, String role) {
 		super();
-		this.userid = userid;
+		this.userId = userid;
 		this.role = role;
 	}
 

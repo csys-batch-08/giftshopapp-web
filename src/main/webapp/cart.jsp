@@ -12,11 +12,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>cart</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <style>
 @import
@@ -40,20 +46,21 @@ body {
 table img {
 	width: 150px;
 	height: 150px;
-} 
+}
+
 .button1 {
 	margin-top: 15px;
 	margin-left: 3px;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
-
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -119,59 +126,64 @@ table img {
 	display: block;
 }
 
-
 th, td {
-  padding: 15px;
-  
-  
+	padding: 15px;
 }
-.total{
- position:fixed;left: 1070px;top: 150px; text-align: justify;
-            border: 3px solid goldenrod;
-            width: 200px;
-            background-color: white;
-            
-}
-form .button{
-   height: 45px;
-   margin: 35px 0;
-   
- }
-  form .button input{
-   height: 7%;
-   width: 10%;
-   border-radius: 5px;
-   border: none;
-   color: #fff;
-   font-size: 18px;
-   font-weight: 500;
-   letter-spacing: 1px;
-   cursor: pointer;
-   transition: all 0.3s ease;
-   background:rgba(165, 110, 9, 0.863);
-   position: fixed;left: 1100px;top: 195px;
- }
- form .button input:hover{
-  transform: scale(0.99);
-  background:rgb(241, 175, 7);
-  }
 
-.back{
-position:absolute;
-left:50px;
+.total {
+	position: fixed;
+	left: 1070px;
+	top: 150px;
+	text-align: justify;
+	border: 3px solid goldenrod;
+	width: 200px;
+	background-color: white;
 }
+
+form .button {
+	height: 45px;
+	margin: 35px 0;
+}
+
+form .button input {
+	height: 7%;
+	width: 10%;
+	border-radius: 5px;
+	border: none;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	background: rgba(165, 110, 9, 0.863);
+	position: fixed;
+	left: 1100px;
+	top: 195px;
+}
+
+form .button input:hover {
+	transform: scale(0.99);
+	background: rgb(241, 175, 7);
+}
+
+.back {
+	position: absolute;
+	left: 50px;
+}
+
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 20px;
-	border-radius:3px;	
-}
-h2{
-margin-left:500px;
+	border-radius: 3px;
 }
 
+h2 {
+	margin-left: 500px;
+}
 </style>
 </head>
 <body>
@@ -194,65 +206,63 @@ margin-left:500px;
 		</div>
 	</div>
 
-		<form action="buynow"method="post">
+	<form action="buynow" method="post">
 		<h2 class="Products">your cart</h2>
-		
+
 		<table>
-		
-		<caption></caption>
-		 <th></th>
+
+			<caption></caption>
+			<th></th>
 			<tr>
-               
+
 				<c:set var="count" value="1" />
 				<c:forEach items="${car}" var="cartproducts">
-				 <c:set var="sum" value="${cartproducts.standardcost*cartproducts.quantity}" />
-	             <c:set var="sum1" value="${sum1+sum}"/>
-											
-			<td>
-                     <div class="car">
-					<div class="images"><img src="${cartproducts.image}"alt="show image"></div> 
-					${cartproducts.productname}<br>
-					${cartproducts.type}<br>
-					RS:${cartproducts.standardcost}
-					
-					<strong><c:choose>  
-                    <c:when test="${cartproducts.size =='ra'}">    
-                    </c:when>  
-                    <c:otherwise>  
+					<c:set var="sum"
+						value="${cartproducts.standardcost*cartproducts.quantity}" />
+					<c:set var="sum1" value="${sum1+sum}" />
+
+					<td>
+						<div class="car">
+							<div class="images">
+								<img src="${cartproducts.image}" alt="show image">
+							</div>
+							${cartproducts.productname}<br> ${cartproducts.type}<br>
+							RS:${cartproducts.standardcost} <strong><c:choose>
+									<c:when test="${cartproducts.size =='ra'}">
+									</c:when>
+									<c:otherwise>  
                     Size:${cartproducts.size} 
-                    </c:otherwise>  
-                     </c:choose></strong><br>
-                     
-					<strong>quantity:${cartproducts.quantity}</strong> <br>
-					<strong>Purchase amount:${sum}</strong><br><br>
-					
-					<a href="editservlet?pid=${cartproducts.productid}&qty=${cartproducts.quantity}">
-			         <button type="button"class="bbtn btn-primary">Update cart</button>
-			         </a>
-			         <br><br>
-			        <a href="removecart?pid=${cartproducts.productid}&size=${cartproducts.size}">
-			         <button type="button"class="bbtn btn-danger">Remove from cart</button>
-			         </a>
-                     </div>
-		    <td>
-					    <c:choose>
-                        <c:when test="${count==4}">
-                        <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
-			</c:forEach>
-			</tr>	
-	</table>						
-                  <div class="button">
-                    <input type="submit" value="Buy now">
-                  </div>				
-</form>
-			<div class="total">Total amount RS:${sum1}</div>
-			
-		
+                    </c:otherwise>
+								</c:choose></strong><br> <strong>quantity:${cartproducts.quantity}</strong> <br>
+							<strong>Purchase amount:${sum}</strong><br> <br> <a
+								href="editservlet?pid=${cartproducts.productid}&qty=${cartproducts.quantity}">
+								<button type="button" class="bbtn btn-primary">Update
+									cart</button>
+							</a> <br> <br> <a
+								href="removecart?pid=${cartproducts.productid}&size=${cartproducts.size}">
+								<button type="button" class="bbtn btn-danger">Remove
+									from cart</button>
+							</a>
+						</div>
+					</td>
+					<td><c:choose>
+							<c:when test="${count==4}">
+								<c:set var="count" value="1" />
+								<tr>
+							</c:when>
+							<c:otherwise>
+								<c:set var="count" value="${count+1}" />
+							</c:otherwise>
+						</c:choose></td>
+				</c:forEach>
+			</tr>
+		</table>
+		<div class="button">
+			<input type="submit" value="Buy now">
+		</div>
+	</form>
+	<div class="total">Total amount RS:${sum1}</div>
+
+
 </body>
 </html>

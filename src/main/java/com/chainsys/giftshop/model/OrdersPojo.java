@@ -10,14 +10,14 @@ public class OrdersPojo implements Serializable {
 		super();
 	}
 
-	private int productid;
-	private String productname;
-	private String producttype;
-	private int orderid;
-	private int userid;
-	private Date orderdate;
-	private String produtsize;
-	private double totalprice;
+	private int productId;
+	private String productName;
+	private String productType;
+	private int orderId;
+	private int userId;
+	private Date orderDate;
+	private String produtSize;
+	private double totalPrice;
 	private int quantiy;
 	private String status;
 	private String image;
@@ -31,67 +31,67 @@ public class OrdersPojo implements Serializable {
 	}
 
 	public int getProductid() {
-		return productid;
+		return productId;
 	}
 
 	public void setProductid(int productid) {
-		this.productid = productid;
+		this.productId = productid;
 	}
 
 	public String getProductname() {
-		return productname;
+		return productName;
 	}
 
 	public void setProductname(String productname) {
-		this.productname = productname;
+		this.productName = productname;
 	}
 
 	public String getProducttype() {
-		return producttype;
+		return productType;
 	}
 
 	public void setProducttype(String producttype) {
-		this.producttype = producttype;
+		this.productType = producttype;
 	}
 
 	public int getOrderid() {
-		return orderid;
+		return orderId;
 	}
 
 	public void setOrderid(int orderid) {
-		this.orderid = orderid;
+		this.orderId = orderid;
 	}
 
 	public int getUserid() {
-		return userid;
+		return userId;
 	}
 
 	public void setUserid(int userid) {
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public Date getOrderdate() {
-		return orderdate;
+		return orderDate;
 	}
 
 	public void setOrderdate(Date orderdate) {
-		this.orderdate = orderdate;
+		this.orderDate = orderdate;
 	}
 
 	public String getProdutsize() {
-		return produtsize;
+		return produtSize;
 	}
 
 	public void setProdutsize(String produtsize) {
-		this.produtsize = produtsize;
+		this.produtSize = produtsize;
 	}
 
 	public double getTotalprice() {
-		return totalprice;
+		return totalPrice;
 	}
 
 	public void setTotalprice(double totalprice) {
-		this.totalprice = totalprice;
+		this.totalPrice = totalprice;
 	}
 
 	public int getQuantiy() {
@@ -105,12 +105,12 @@ public class OrdersPojo implements Serializable {
 	public OrdersPojo(String productname, String producttype, int orderid, int userid, Date orderdate,
 			String produtsize, int quantiy, String status) {
 		super();
-		this.productname = productname;
-		this.producttype = producttype;
-		this.orderid = orderid;
-		this.userid = userid;
-		this.orderdate = orderdate;
-		this.produtsize = produtsize;
+		this.productName = productname;
+		this.productType = producttype;
+		this.orderId = orderid;
+		this.userId = userid;
+		this.orderDate = orderdate;
+		this.produtSize = produtsize;
 		this.quantiy = quantiy;
 		this.status = status;
 	}
@@ -125,10 +125,10 @@ public class OrdersPojo implements Serializable {
 
 	public OrdersPojo(int productid, int orderid, int userid, Date orderdate, String status) {
 		super();
-		this.productid = productid;
-		this.orderid = orderid;
-		this.userid = userid;
-		this.orderdate = orderdate;
+		this.productId = productid;
+		this.orderId = orderid;
+		this.userId = userid;
+		this.orderDate = orderdate;
 		this.status = status;
 	}
 
@@ -136,13 +136,13 @@ public class OrdersPojo implements Serializable {
 			String produtsize, double totalprice, int quantiy, String status) {
 		super();
 
-		this.productname = productname;
-		this.producttype = producttype;
-		this.orderid = orderid;
-		this.userid = userid;
-		this.orderdate = orderdate;
-		this.produtsize = produtsize;
-		this.totalprice = totalprice;
+		this.productName = productname;
+		this.productType = producttype;
+		this.orderId = orderid;
+		this.userId = userid;
+		this.orderDate = orderdate;
+		this.produtSize = produtsize;
+		this.totalPrice = totalprice;
 		this.quantiy = quantiy;
 		this.status = status;
 	}

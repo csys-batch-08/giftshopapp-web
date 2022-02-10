@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -20,7 +19,8 @@
 	crossorigin="anonymous">
 <style>
 @import
-	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
+	;
 
 * {
 	margin: 0;
@@ -56,7 +56,8 @@ img {
 	color: black;
 	text-decoration: none;
 	font-style: italic;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',sans-serif;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+		sans-serif;
 	font-size: 18px;
 	text-align: center;
 	padding: 14px 16px;
@@ -162,6 +163,7 @@ div {
 .plus:hover {
 	background-color: #717fe0 !important;
 }
+
 span {
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -233,76 +235,81 @@ th, td {
 </head>
 
 <body>
-<form action="viewcart"method="get">
-	<div class="navbar">
-		<div class="home">
-			<a href="homepage.jsp">Home</a>
-		</div>
-		<div class="products">
-			<a href="userallproducts">All collections</a>
-		</div>
-		<div class="dropdown">
-			<button class="dropbtn">
-				categories <em class="fa fa-caret-down"></em>
-			</button>
-			<div class="dropdown-content">
-				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
-				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
+	<form action="viewcart" method="get">
+		<div class="navbar">
+			<div class="home">
+				<a href="homepage.jsp">Home</a>
+			</div>
+			<div class="products">
+				<a href="userallproducts">All collections</a>
+			</div>
+			<div class="dropdown">
+				<button class="dropbtn">
+					categories <em class="fa fa-caret-down"></em>
+				</button>
+				<div class="dropdown-content">
+					<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
+					<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
+				</div>
+			</div>
+			<div class="cart">
+				<a href="cart">My cart</a>
+			</div>
+			<div class="orders">
+				<a href="orders">My orders</a>
+			</div>
+			<div class="logout">
+				<a href="index.jsp">Logout</a>
+			</div>
+			<div class="back">
+				<a href="homepage.jsp">Back</a>
 			</div>
 		</div>
-		<div class="cart">
-			<a href="cart">My cart</a>
-		</div>
-		<div class="orders">
-			<a href="orders">My orders</a>
-		</div>
-		<div class="logout">
-			<a href="index.jsp">Logout</a>
-		</div>
-		<div class="back">
-			<a href="homepage.jsp">Back</a>
-		</div>
-	</div>
 
 
 
-	<table>
-		<caption></caption>
-		
-		<tr>
-		<th></th>
-			<td><img src="${cartitems.getImage()}"alt="show image"></td>
-			<td>
-				<h1>${cartitems.getProductname()}</h1>
-				<h3>${cartitems.getType()}</h3>
-				<h3><strong>RS:${cartitems.getStandardcost()}</strong></h3>
-				<h4><label for="size">Choose your size:</label> <select name="size" id="size">
-						<option value="S">S</option>
-						<option value="M">M</option>
-						<option value="L">L</option>
-						<option value="XL">XL</option>
-						<option value="2XL">2XL</option>
-						<option value="3xl">3XL</option>
-					</select></h4>
-				<div class="counter">
-					<div class="qty mt-5">
-						<label for="count" class="minus bg-dark" onclick="minus()">-</label> <input
-							type="number" class="count" id="count" name="qty" value="1">
-						<label for="count" class="plus bg-dark" onclick="plus()">+</label>
+		<table>
+			<caption></caption>
+
+			<tr>
+				<th></th>
+				<td><img src="${cartitems.getImage()}" alt="show image"></td>
+				<td>
+					<h1>${cartitems.getProductname()}</h1>
+					<h3>${cartitems.getType()}</h3>
+					<h3>
+						<strong>RS:${cartitems.getStandardcost()}</strong>
+					</h3>
+					<h4>
+						<label for="size">Choose your size:</label> <select name="size"
+							id="size">
+							<option value="S">S</option>
+							<option value="M">M</option>
+							<option value="L">L</option>
+							<option value="XL">XL</option>
+							<option value="2XL">2XL</option>
+							<option value="3xl">3XL</option>
+						</select>
+					</h4>
+					<div class="counter">
+						<div class="qty mt-5">
+							<label for="count" class="minus bg-dark" onclick="minus()">-</label>
+							<input type="number" class="count" id="count" name="qty"
+								value="1"> <label for="count" class="plus bg-dark"
+								onclick="plus()">+</label>
+						</div>
+					</div> <br>
+					<div class="button">
+						<button type="submit" class="bbtn btn-dark">Add to cart</button>
 					</div>
-				</div> <br>
-				<div class="button">
-					<button type="submit" class="bbtn btn-dark">Add to cart</button>
-				</div>
-			</td>
+				</td>
 			</tr>
-	</table>
+		</table>
 	</form>
 </body>
 <script>
 	function minus() {
 		var count = document.getElementById('count');
-
 		count.value--;
 		if (count.value == 0) {
 			count.value = 1;
@@ -310,9 +317,7 @@ th, td {
 	}
 	function plus() {
 		var count = document.getElementById('count');
-
 		count.value++;
 	}
 </script>
 </html>
-

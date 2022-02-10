@@ -12,16 +12,20 @@
 <meta charset="ISO-8859-1">
 <title>All collections</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <style>
 @import
@@ -50,62 +54,69 @@ table img {
 	border: 5px solid #daa520;
 }
 
-.button{
-position: absolute;
-	top:330px;
-	left:43px;
+.button {
+	position: absolute;
+	top: 330px;
+	left: 43px;
 }
+
 .button1 {
-		position: absolute;
-		top:330px;
-		left:333px;
-	} 
+	position: absolute;
+	top: 330px;
+	left: 333px;
+}
+
 .button2 {
 	position: absolute;
-		top:330px;
-		left:615px;
+	top: 330px;
+	left: 615px;
 }
+
 .button3 {
-position: absolute;
-		top:330px;
-		left:895px;
+	position: absolute;
+	top: 330px;
+	left: 895px;
 }
+
 .button4 {
-position: absolute;
-		top:330px;
-		left:1180px;
+	position: absolute;
+	top: 330px;
+	left: 1180px;
 }
+
 .button5 {
 	position: absolute;
-	top:585px;
-	left:43px;
+	top: 585px;
+	left: 43px;
 }
 
 .button6 {
 	position: absolute;
-	top:585px;
-	left:333px;
+	top: 585px;
+	left: 333px;
 }
+
 .button7 {
 	position: absolute;
-	top:585px;
-	left:615px;
+	top: 585px;
+	left: 615px;
 }
+
 .button8 {
 	position: absolute;
-	top:585px;
-	left:895px;
+	top: 585px;
+	left: 895px;
 }
+
 .button9 {
 	position: absolute;
-	top:585px;
-	left:1180px;
+	top: 585px;
+	left: 1180px;
 }
 
-
-.back{
-position:absolute;
-left:50px;
+.back {
+	position: absolute;
+	left: 50px;
 }
 
 span b {
@@ -114,11 +125,10 @@ span b {
 }
 
 th, td {
-    padding-top:-215px;
+	padding-top: -215px;
 	padding-right: 100px;
 	padding-bottom: 70px;
 	padding-left: 32px;
-	
 }
 
 .navbar {
@@ -194,21 +204,22 @@ th, td {
 	display: block;
 }
 
-.back{
-position:absolute;
-left:50px;
+.back {
+	position: absolute;
+	left: 50px;
 }
-.input-group{
-width:30%;
-position:absolute;
-left:280px;
-top:13px;
+
+.input-group {
+	width: 30%;
+	position: absolute;
+	left: 280px;
+	top: 13px;
 }
 </style>
 </head>
 <body>
 
-		<div class="navbar">
+	<div class="navbar">
 		<a href="index.jsp">Logout</a> <a href="orders">My orders</a> <a
 			href="cart">My cart</a>
 		<div class="dropdown">
@@ -218,7 +229,7 @@ top:13px;
 			<div class="dropdown-content">
 				<a href="mensproducts">mens</a> <a href="womensshowproducts">womens</a>
 				<a href="kidsshowproducts">kids</a> <a href="occasionsshowproducts">occasions</a>
-			</div>	
+			</div>
 		</div>
 		<a href="userallproducts">All collections</a> <a href="homepage.jsp">Home</a>
 		<div class="back">
@@ -230,26 +241,25 @@ top:13px;
 	<table>
 		<caption></caption>
 		<th></th>
-			<tr>
-			
-				<c:set var="count" value="1" />
-				<c:forEach items="${usershow}" var="userproducts">
+		<tr>
 
-					<td><img src="${userproducts.image}"alt="show image">
-					<div>${userproducts.productName}</div>
-					</td>
-					
-					<c:choose>
-				    <c:when test="${count==5}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
+			<c:set var="count" value="1" />
+			<c:forEach items="${usershow}" var="userproducts">
+
+				<td><img src="${userproducts.image}" alt="show image">
+					<div>${userproducts.productName}</div></td>
+
+				<c:choose>
+					<c:when test="${count==5}">
+						<c:set var="count" value="1" />
+						<tr></tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="${count+1}" />
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
-			</tr>	
+		</tr>
 		</tbody>
 	</table>
 
@@ -272,8 +282,8 @@ top:13px;
 				class="btn btn-default">View product</button> </a>
 	</div>
 	<div class="button4">
-		<a href="kidsmugs"><button type="button"
-				class="btn btn-default">View product</button> </a>
+		<a href="kidsmugs"><button type="button" class="btn btn-default">View
+				product</button> </a>
 	</div>
 	<div class="button5">
 		<a href="kidstshirts"><button type="button"

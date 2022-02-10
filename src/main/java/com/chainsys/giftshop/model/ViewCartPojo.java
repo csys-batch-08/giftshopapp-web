@@ -6,21 +6,21 @@ public class ViewCartPojo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String image;
-	private String productname;
+	private String productName;
 	private String type;
-	private double standardcost;
+	private double standardCost;
 	private String size;
 	private int quantity;
-	private int userid;
-	private int productid;
-	private double totalprice;
+	private int userId;
+	private int productId;
+	private double totalPrice;
 
 	public double getTotalprice() {
-		return totalprice;
+		return totalPrice;
 	}
 
 	public void setTotalprice(double d) {
-		this.totalprice = d;
+		this.totalPrice = d;
 	}
 
 	public String getImage() {
@@ -32,11 +32,11 @@ public class ViewCartPojo implements Serializable {
 	}
 
 	public String getProductname() {
-		return productname;
+		return productName;
 	}
 
 	public void setProductname(String productname) {
-		this.productname = productname;
+		this.productName = productname;
 	}
 
 	public String getType() {
@@ -48,11 +48,11 @@ public class ViewCartPojo implements Serializable {
 	}
 
 	public double getStandardcost() {
-		return standardcost;
+		return standardCost;
 	}
 
 	public void setStandardcost(double standardcost) {
-		this.standardcost = standardcost;
+		this.standardCost = standardcost;
 	}
 
 	public String getSize() {
@@ -72,31 +72,31 @@ public class ViewCartPojo implements Serializable {
 	}
 
 	public int getUserid() {
-		return userid;
+		return userId;
 	}
 
 	public void setUserid(int userid) {
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public int getProductid() {
-		return productid;
+		return productId;
 	}
 
 	public void setProductid(int productid) {
-		this.productid = productid;
+		this.productId = productid;
 	}
 
 	public ViewCartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
 			int userid) {
 		super();
 		this.image = image;
-		this.productname = productname;
+		this.productName = productname;
 		this.type = type;
-		this.standardcost = standardcost;
+		this.standardCost = standardcost;
 		this.size = size;
 		this.quantity = quantity;
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public ViewCartPojo() {
@@ -105,36 +105,36 @@ public class ViewCartPojo implements Serializable {
 
 	@Override
 	public String toString() {
-		return "viewcartPojo [image=" + image + ", productname=" + productname + ", type=" + type + ", standardcost="
-				+ standardcost + ", size=" + size + ", quantity=" + quantity + ", userid=" + userid + ", productid="
-				+ productid + ", totalprice=" + totalprice + "]";
+		return "viewcartPojo [image=" + image + ", productname=" + productName + ", type=" + type + ", standardcost="
+				+ standardCost + ", size=" + size + ", quantity=" + quantity + ", userid=" + userId + ", productid="
+				+ productId + ", totalprice=" + totalPrice + "]";
 	}
 
 	public ViewCartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
 			int userid, int productid) {
 		super();
 		this.image = image;
-		this.productname = productname;
+		this.productName = productname;
 		this.type = type;
-		this.standardcost = standardcost;
+		this.standardCost = standardcost;
 		this.size = size;
 		this.quantity = quantity;
-		this.userid = userid;
-		this.productid = productid;
+		this.userId = userid;
+		this.productId = productid;
 	}
 
 	public ViewCartPojo(String image, String productname, String type, double standardcost, String size, int quantity,
 			int userid, int productid, double totalprice) {
 		super();
 		this.image = image;
-		this.productname = productname;
+		this.productName = productname;
 		this.type = type;
-		this.standardcost = standardcost;
+		this.standardCost = standardcost;
 		this.size = size;
 		this.quantity = quantity;
-		this.userid = userid;
-		this.productid = productid;
-		this.totalprice = totalprice;
+		this.userId = userid;
+		this.productId = productid;
+		this.totalPrice = totalprice;
 	}
 
 	public ViewCartPojo(String image2, String productname2, String type2, Double standardcost2, int qty, int userid2,

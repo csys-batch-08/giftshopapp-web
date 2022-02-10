@@ -4,13 +4,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Customized kids t-shirts</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
 
@@ -36,19 +38,16 @@ body {
 table img {
 	width: 150px;
 	height: 150px;
-	
-} 
+}
 
 .navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
- 
- 
-  
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -114,31 +113,28 @@ table img {
 	display: block;
 }
 
-
-table{
-margin-top:10px;
+table {
+	margin-top: 10px;
 }
+
 th, td {
-padding-left:60px;
-padding-right:5px;
-padding-bottom:40px;
- 
-    
+	padding-left: 60px;
+	padding-right: 5px;
+	padding-bottom: 40px;
 }
 
-.back{
-position:absolute;
-left:50px;
+.back {
+	position: absolute;
+	left: 50px;
 }
+
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 20px;
-	border-radius:3px;
-	
-	
+	border-radius: 3px;
 }
 </style>
 </head>
@@ -160,50 +156,53 @@ width: 100%;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-	
-	
-	 <table>
-	 <caption></caption>
-	 
-	<th></th>
-			<tr>
-			
-				<c:set var="count" value="1" />
-				<c:forEach items="${kidstshirts}" var="kidstee">
-				
+
+
+	<table>
+		<caption></caption>
+
+		<th></th>
+		<tr>
+
+			<c:set var="count" value="1" />
+			<c:forEach items="${kidstshirts}" var="kidstee">
+
 				<td>
-                            <div class="car">
-					<div><img src="${kidstee.image}"alt="show image"></div> 
-					<div>${kidstee.productName}</div> 
-					<div>${kidstee.type}</div> 
-					<div><strong>RS:${kidstee.standardCost}</strong></div> 
-				
-				<br>
-				
-	<a href="addtocart?
+					<div class="car">
+						<div>
+							<img src="${kidstee.image}" alt="show image">
+						</div>
+						<div>${kidstee.productName}</div>
+						<div>${kidstee.type}</div>
+						<div>
+							<strong>RS:${kidstee.standardCost}</strong>
+						</div>
+
+						<br> <a
+							href="addtocart?
 		pid=${kidstee.productId}
 		&image=${kidstee.image}
 		&productName=${kidstee.productName}
 		&type=${kidstee.type}
-		&cost=${kidstee.standardCost}"><button type="button"
-				class="btn btn-info">Add to cart</button></a>
-	
+		&cost=${kidstee.standardCost}"><button
+								type="button" class="btn btn-info">Add to cart</button></a>
+
 					</div>
-	</td>
-	
-					<c:choose>
-				    <c:when test="${count==5}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
+				</td>
+
+				<c:choose>
+					<c:when test="${count==5}">
+						<c:set var="count" value="1" />
+						<tr></tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="${count+1}" />
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
-			</tr>	
-			
-	</table>  
+		</tr>
+
+	</table>
 
 </body>
 </html>

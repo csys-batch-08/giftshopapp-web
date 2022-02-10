@@ -2,8 +2,8 @@
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,6 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
-	
 }
 
 body {
@@ -33,23 +32,21 @@ body {
 table img {
 	width: 150px;
 	height: 150px;
-	
-} 
+}
+
 .button1 {
 	margin-top: 15px;
 	margin-left: 3px;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
- 
- 
-  
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -115,57 +112,54 @@ table img {
 	display: block;
 }
 
-
 th, td {
-  padding: 10px;
-  padding-right: 35px;
-  
-  
+	padding: 10px;
+	padding-right: 35px;
 }
-.back{
-position:absolute;
-left:50px;
-}
-.car {
 
+.back {
+	position: absolute;
+	left: 50px;
+}
+
+.car {
 	border-style: solid;
 	border-color: goldenrod;
-    width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 20px;
-	border-radius:3px;
-	
-	
-}
-.images{
-display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
+	border-radius: 3px;
 }
 
+.images {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+}
 </style>
 </head>
 <body>
-<div class="navbar">
-		<a href="index.jsp">Logout</a> 
-<a href="adminlogin.jsp">Home</a> 
-		
-<div class="back">
-      <a href="adminshowproducts">Back</a>
-      </div>
-	</div>
- <table>
-		<caption></caption>
-			<th></th>
-			<tr>
-			
-				<c:set var="count" value="1" />
-				<c:forEach items="${adminviewmenstshirt}" var="adminshowmenstshirt">
+	<div class="navbar">
+		<a href="index.jsp">Logout</a> <a href="adminlogin.jsp">Home</a>
 
-            <td>
+		<div class="back">
+			<a href="adminshowproducts">Back</a>
+		</div>
+	</div>
+	<table>
+		<caption></caption>
+		<th></th>
+		<tr>
+
+			<c:set var="count" value="1" />
+			<c:forEach items="${adminviewmenstshirt}" var="adminshowmenstshirt">
+
+				<td>
 					<div class="car">
-					<div class="images"><img src="${adminshowmenstshirt.image}"alt="show image"></div>
+						<div class="images">
+							<img src="${adminshowmenstshirt.image}" alt="show image">
+						</div>
 						<div>product id:${adminshowmenstshirt.productId}</div>
 						<div>Product name:${adminshowmenstshirt.productName}</div>
 						<div>Description:${adminshowmenstshirt.description}</div>
@@ -174,18 +168,18 @@ display: block;
 						<div>Quantity:${adminshowmenstshirt.quantityonhand}</div>
 						<div>Type:${adminshowmenstshirt.type}</div>
 					</div>
-	       <td>
-					<c:choose>
-				    <c:when test="${count==3}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
+				</td>
+				<td><c:choose>
+						<c:when test="${count==3}">
+							<c:set var="count" value="1" />
+							<tr>
+						</c:when>
+						<c:otherwise>
+							<c:set var="count" value="${count+1}" />
+						</c:otherwise>
+					</c:choose></td>
 			</c:forEach>
-			</tr>		
+		</tr>
 	</table>
 </body>
 </html>

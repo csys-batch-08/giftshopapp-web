@@ -217,7 +217,7 @@ th, td {
 					<td><c:choose>
 							<c:when test="${count==4}">
 								<c:set var="count" value="1" />
-								<tr>
+								<tr></tr>
 							</c:when>
 							<c:otherwise>
 								<c:set var="count" value="${count+1}" />

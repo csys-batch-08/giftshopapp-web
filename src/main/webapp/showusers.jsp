@@ -14,13 +14,16 @@
 
 <title>Users</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"></script>
 <style>
 @import
@@ -128,81 +131,78 @@ table img {
 }
 
 td {
-	 padding: 20px;
-	 padding-right: 25px;
-	  padding-left: 20px;
+	padding: 20px;
+	padding-right: 25px;
+	padding-left: 20px;
 }
 
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 20px;
-	border-radius:3px;
-	
-	
+	border-radius: 3px;
 }
+
 .back {
 	position: relative;
 	left: -1000px;
 }
-.searchproduct{
-position:absolute;
-left:570px;
-top:-6px;
-}
 
+.searchproduct {
+	position: absolute;
+	left: 570px;
+	top: -6px;
+}
 </style>
 
 </head>
 
 <body>
 	<div class="navbar">
-		<a href="index.jsp">Logout</a>
-	<a href="adminlogin.jsp">Home</a> 
+		<a href="index.jsp">Logout</a> <a href="adminlogin.jsp">Home</a>
 		<div class="searchproduct">
-         <form action="searchuser" method=post><br> <label for="proname"></label><input type="text" name="users"
-			id="proname"placeholder="search users">
-		<button type="submit">search</button>
-	</form>
-	</div>
+			<form action="searchuser" method=post>
+				<br> <label for="proname"></label><input type="text"
+					name="users" id="proname" placeholder="search users">
+				<button type="submit">search</button>
+			</form>
+		</div>
 		<div class="back">
 			<a href="adminlogin.jsp">Back</a>
 		</div>
 
 	</div>
 	<h2 class="Products">Users</h2>
-	 
+
 	<table>
 		<caption></caption>
 		<th></th>
-			<tr>
-			
-				<c:set var="count" value="1" />
-				<c:forEach items="${users}" var="showusers">
+		<tr>
 
-<td>
+			<c:set var="count" value="1" />
+			<c:forEach items="${users}" var="showusers">
+
+				<td>
 					<div class="car">
-						<div>User id:${showusers.userid}</div> 
+						<div>User id:${showusers.userid}</div>
 						<div>Name:${showusers.username}</div>
 						<div>Email:${showusers.email}</div>
 						<div>Mobile number:${showusers.mobilenumber}</div>
 						<div>Address:${showusers.address}</div>
 					</div>
-					<td>
-					
-					<c:choose>
-				    <c:when test="${count==4}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
+				<td><c:choose>
+						<c:when test="${count==4}">
+							<c:set var="count" value="1" />
+							<tr></tr>
+						</c:when>
+						<c:otherwise>
+							<c:set var="count" value="${count+1}" />
+						</c:otherwise>
+					</c:choose>
 			</c:forEach>
-			</tr>	
+		</tr>
 	</table>
 </body>
 </html>

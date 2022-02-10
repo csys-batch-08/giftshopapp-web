@@ -1,10 +1,10 @@
-<%@page import="com.chainsys.giftshop.model.OrdersPojo"%>
+Fsa<%@page import="com.chainsys.giftshop.model.OrdersPojo"%>
 <%@page import="com.chainsys.giftshop.model.ViewCartPojo"%>
 <%@page import="com.chainsys.giftshop.model.ProductPojo"%>
 <%@page import="com.chainsys.giftshop.impl.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +14,7 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
+
 * {
 	margin: 0;
 	padding: 0;
@@ -21,11 +22,10 @@
 	font-family: 'Poppins', sans-serif;
 }
 
-h1{
-
-margin-left:780px;
-margin-top:-500px;
-font-size: 85px;
+h1 {
+	margin-left: 780px;
+	margin-top: -500px;
+	font-size: 85px;
 }
 </style>
 
@@ -33,16 +33,17 @@ font-size: 85px;
 <body>
 
 
-  <iframe src="https://giphy.com/embed/g0sx0vvZd3JbGDhmxd" width="620" height="620"  class="giphy-embed" title="gif"></iframe>
+	<iframe src="https://giphy.com/embed/g0sx0vvZd3JbGDhmxd" width="620"
+		height="620" class="giphy-embed" title="gif"></iframe>
 
-         <script>
+	<script>
          setTimeout(function(){
             window.location.href = 'homepage.jsp';
          }, 4000);
-      </script>	
-      <h1>Your order cancelled</h1>
-      
-     
+      </script>
+	<h1>Your order cancelled</h1>
+
+
 
 </body>
 

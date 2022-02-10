@@ -4,23 +4,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+	pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Womens caricature</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
 <style>
-
 @import
-	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous")
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
 	;
-
 * {
 	margin: 0;
 	padding: 0;
@@ -38,22 +37,21 @@ body {
 table img {
 	width: 150px;
 	height: 150px;
-} 
+}
+
 .button1 {
 	margin-top: 15px;
 	margin-left: 3px;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color:seashell;
-  width:100%;
-  margin-top:1px;
-  height:55px;
- 
- 
-  
+	overflow: hidden;
+	background-color: seashell;
+	width: 100%;
+	margin-top: 1px;
+	height: 55px;
 }
+
 .navbar a {
 	float: left;
 	font-size: 16px;
@@ -119,36 +117,32 @@ table img {
 	display: block;
 }
 
-
-table{
-margin-top:10px;
+table {
+	margin-top: 10px;
 }
+
 th, td {
-padding-left:40px;
-padding-right:5px;
-padding-bottom:40px;
- 
-    
+	padding-left: 40px;
+	padding-right: 5px;
+	padding-bottom: 40px;
 }
 
-.back{
-position:absolute;
-left:50px;
+.back {
+	position: absolute;
+	left: 50px;
 }
+
 .car {
 	border-style: solid;
 	border-color: goldenrod;
-width: 100%;
+	width: 100%;
 	background-color: white;
 	padding: 20px;
-	border-radius:3px;
-	
-	
+	border-radius: 3px;
 }
-.button{
-  margin-left: 20px;;
 
-
+.button {
+	margin-left: 20px;;
 }
 </style>
 </head>
@@ -170,43 +164,50 @@ width: 100%;
 			<a href="homepage.jsp">Back</a>
 		</div>
 	</div>
-	 <table>
+	<table>
 		<caption></caption>
 		<th></th>
-			<tr>
-				<c:set var="count" value="1" />
-				<c:forEach items="${womenscaricature}" var="womenscari">
-				
-				<td>
-                            <div class="car">
-					<div><img src="${womenscari.image}"alt="show image"></div> 
-					<br>
-					<div>${womenscari.productName}</div> 
-					<div>${womenscari.type}</div> 
-					<div><strong>Starts from RS:${womenscari.standardCost}</strong></div> <br>
+		<tr>
+			<c:set var="count" value="1" />
+			<c:forEach items="${womenscaricature}" var="womenscari">
 
-		<div class="button">	
-		<a href="addtocartmobile?
+				<td>
+					<div class="car">
+						<div>
+							<img src="${womenscari.image}" alt="show image">
+						</div>
+						<br>
+						<div>${womenscari.productName}</div>
+						<div>${womenscari.type}</div>
+						<div>
+							<strong>Starts from RS:${womenscari.standardCost}</strong>
+						</div>
+						<br>
+
+						<div class="button">
+							<a
+								href="addtocartmobile?
 		pid=${womenscari.productId}
 		&image=${womenscari.image}
 		&productName=${womenscari.productName}
 		&type=${womenscari.type}
-		&cost=${womenscari.standardCost}"><button type="button"
-				class="btn btn-info">Add to cart</button></a></div>	
-	
+		&cost=${womenscari.standardCost}"><button
+									type="button" class="btn btn-info">Add to cart</button></a>
+						</div>
+
 					</div>
-	</td>
-					<c:choose>
-				    <c:when test="${count==5}">
-				    <c:set var="count" value="1" />
-			<tr>
-			</c:when>
-			<c:otherwise>
-			<c:set var="count" value="${count+1}" />
-			</c:otherwise>
-			</c:choose>
+				</td>
+				<c:choose>
+					<c:when test="${count==5}">
+						<c:set var="count" value="1" />
+						<tr></tr>
+					</c:when>
+					<c:otherwise>
+						<c:set var="count" value="${count+1}" />
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
-			</tr>	
-	</table>  
+		</tr>
+	</table>
 </body>
 </html>
